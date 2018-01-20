@@ -39,8 +39,14 @@ released = false
 PD = 0;  //Point of Direction
 
 dragging = false;
-snapToWorld = 0; // after swiping the view around, the view tries to snap to this world
+snapTweenID = -1;
 dx = 0;
+view_xview_previous = view_xview[0];
+view_xpos_normalized = 0;
+dir=0
+
+objectAge = 0;
+currentWorld = 0;
 </string>
           </argument>
         </arguments>
@@ -64,6 +70,8 @@ dx = 0;
           <argument>
             <kind>1</kind>
             <string>if mouse_check_button_pressed(mb_left) {
+    //if snapTweenID &gt; -1 TweenDestroy(snapTweenID);
+    //if TweenExists(snapTweenID) TweenStop(snapTweenID)
     dragging = true
     drag_x = mouse_x
     drag_y = mouse_y;
@@ -107,34 +115,14 @@ if (dragging) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Swipe Action Individualy
-/*
-if (device_mouse_check_button_pressed(0, mb_left))
-    {
-    Swipe = true;
-    MouseXStart = mouse_x;
-    MouseYStart = mouse_y;
-    }
-*/
-//if (Swipe = true) {
-/*
-if released {
-    released = false;
-    MouseX = mouse_x;
-    MouseY = mouse_y;
-    SwipeTime++;
-    PD = point_direction(MouseXStart, MouseYStart, MouseX, MouseY);
-*/
-
-if !dragging {
-    //if (device_mouse_check_button_released(0, mb_left))
+            <string>if !dragging {
     if released {
         PD = point_direction(drag_x, drag_y, MouseX, drag_y);
         Swipe = false;
         SwipeSpeed = point_distance(drag_x, drag_y, MouseX, drag_y) / dragTime;
 
         dragTime = 0;
-
+        /*
         if ((PD &gt; 315) and (PD &lt; 45)) //Right
         and (SwipeSpeed &gt; 4.5)
         {
@@ -155,35 +143,48 @@ if !dragging {
         {
          // code is executed for swiping down //       
         }
+        */
 
         released = false;
     }
-//}
 }
 
 view_xview[0] = max(view_xview[0],-view_wview[0]);
-view_xview[0] = min(view_xview[0],view_wview[0]*(numWorlds+1));
+view_xview[0] = min(view_xview[0],view_wview[0]*numWorlds);
 
+// bounce back if view is out of range
+/*
 if view_xview[0] &lt; 0 {
-    PD = 180;
-    SwipeSpeed = max(SwipeSpeed+2,6);
+    //PD = 180;
+    SwipeSpeed = min(30,max(SwipeSpeed+2,6));
     view_xview[0] += SwipeSpeed;
 } else {
-    if abs(SwipeSpeed) &gt; 0.1 {
-        var swipeSign = -1;
-        if ((PD &gt; 135) and (PD &lt; 225)) swipeSign = 1;
-
-        // bounce back
-        if view_xview[0] &lt; 0 and swipeSign &lt; 0 {
-            swipeSign *= -1;
-            //SwipeSpeed *= .5;
+    if view_xview[0] &gt; view_wview[0]*(numWorlds-1) {
+        //PD = 0;
+        SwipeSpeed = min(30,max(SwipeSpeed+2,6));
+        view_xview[0] -= SwipeSpeed;    
+    } else {
+        if abs(SwipeSpeed) &gt; 0.1 {
+            var swipeSign = -1;
+            if ((PD &gt; 135) and (PD &lt; 225)) swipeSign = 1;
+    
+            // bounce back
+            if view_xview[0] &lt; 0 and swipeSign &lt; 0 {
+                swipeSign *= -1;
+                //SwipeSpeed *= .5;
+            }
+    
+            view_xview[0] += SwipeSpeed*swipeSign;
+    
+            SwipeSpeed *= .92;
         }
-
-        view_xview[0] += SwipeSpeed*swipeSign;
-
-        SwipeSpeed *= .92;
     }
 }
+*/
+
+/////////////////////////////////////////////
+// snap to a world if not dragging
+/////////////////////////////////////////////
 
 var cx;
 for (var i=0;i&lt;numWorlds;i+=1) {
@@ -191,21 +192,52 @@ for (var i=0;i&lt;numWorlds;i+=1) {
 }
 
 var vx = view_xview[0]+view_wview[0]/2;
-//var 
+
+if view_xview[0] &gt; view_xview_previous dir = -1;
+if view_xview[0] &lt; view_xview_previous dir = 1;
+
 dx = cx[numWorlds-1];
+
 if !dragging and vx - view_wview[0]/2 &gt; 0 and vx + view_wview[0]/2 &lt; numWorlds*view_wview[0] {
-    for (var i=0;i&lt;numWorlds-1;i+=1) {
-        if vx &gt;= cx[i] - view_wview[0]/3 and vx &lt; cx[i+1] - view_wview[0]/3 {
-            dx = cx[i];
-            break;
-        }
+
+    // moving right
+    if dir == -1 {
+        for (i=0;i&lt;numWorlds-1;i+=1) if vx &gt;= cx[i] - view_wview[0]*.67 and vx &lt; cx[i+1] - view_wview[0]*.67 break;
+        dx = cx[i];
+    } else {
+        for (i=numWorlds-1;i&gt;0;i-=1) if vx &lt;= cx[i] + view_wview[0]*.67 and vx &gt; cx[i-1] + view_wview[0]*.67 break;
+        dx = cx[i];
     }
 
-    view_xview[0] = dx - view_wview[0]/2;
+    //view_xview[0] = dx - view_wview[0]/2;
+    currentWorld = i;
+}
+
+if !dragging {
+    if vx - view_wview[0]/2 &gt; 0 and vx + view_wview[0]/2 &lt; numWorlds*view_wview[0] {
+        if !TweenExists(snapTweenID) snapTweenID = TweenFire(id, tween_xView, EaseLinear, TWEEN_MODE_ONCE, true, 0.0, .1, view_xview[0], dx - view_wview[0]/2);
+    } else {
+        if view_xview[0] &lt; 0 {
+            dx = cx[0];
+            if !TweenExists(snapTweenID) snapTweenID = TweenFire(id, tween_xView, EaseLinear, TWEEN_MODE_ONCE, true, 0.0, .1, view_xview[0], dx - view_wview[0]/2);
+        } else {
+            if view_xview[0] &gt; view_wview[0]*(numWorlds-1) {
+                dx = cx[numWorlds-1];
+                if !TweenExists(snapTweenID) snapTweenID = TweenFire(id, tween_xView, EaseLinear, TWEEN_MODE_ONCE, true, 0.0, .1, view_xview[0], dx - view_wview[0]/2);
+            }
+        }
+    }
 }
 
 x = view_xview[0] + xstart;
 y = view_yview[0] + ystart;
+
+view_xpos_normalized = max(0,view_xview[0])/(view_wview[0]*numWorlds);//(view_wview[0]*numWorlds)/(view_xview[0]+view_wview[0]/2);
+background_color = merge_colour(c_black,make_color_rgb(64,127,255),view_xpos_normalized)
+
+view_xview_previous = view_xview[0];
+
+objectAge += 1;
 </string>
           </argument>
         </arguments>
@@ -258,7 +290,8 @@ if debug &gt; 0 {
     draw_text(8, 12, "Swipe = " + string(Swipe));
     draw_text(8, 34, "Swipe Speed = " + string(SwipeSpeed));
     draw_text(8, 58, "Point Direction = " + string(PD));
-    draw_text(8, 66, "snap to = " + string(dx));
+    //draw_text(8, 80, "snap to = " + string(dx));
+    draw_text(8, 80, "dir  = " + string(dir));
 }
 
 </string>
@@ -287,6 +320,18 @@ if debug &gt; 0 {
 var sliderHeight = 32;
 draw_set_color(c_white);
 draw_rectangle(x-sliderWidth,y-sliderHeight,x+sliderWidth,y+sliderHeight,false);
+
+
+draw_set_color(background_color);
+var cx,xx;
+for (var i=0;i&lt;numWorlds;i+=1) {
+    xx = view_xview[0]+view_wview[0]*.0875+((i*view_wview[0])/(view_wview[0]*numWorlds)*(view_wview[0]*.9));
+    draw_circle(xx,y,12,false);
+    if i == currentWorld draw_sprite_ext(sUFO,0,xx,y,1,1,8*sin(objectAge*.05),c_white,1);
+}
+
+//var currentPos = view_xview[0]+view_xpos_normalized*view_wview[0];
+//draw_sprite_ext(sUFO,0,currentPos,y,1,1,8*sin(objectAge*.05),c_white,1);
 </string>
           </argument>
         </arguments>
