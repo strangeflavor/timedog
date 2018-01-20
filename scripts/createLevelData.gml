@@ -1,0 +1,37 @@
+#define createLevelData
+/*globalvar levelDataGrid; 
+levelDataGrid = ds_grid_create(10,25);
+ds_grid_set_region(levelDataGrid,0,9,0,24,-1);
+*/
+
+globalvar levelDataMap; 
+levelDataMap = ds_map_create();
+
+var n = 0; // 'encoded' level index
+var levelMap = -1;
+
+for (var i=0;i<numLevels;i+=1) {
+    for (var j=0;j<numWorlds;j+=1) {
+        n = j*100 + i;
+        levelMap = ds_map_create();
+        levelMap[? "name"] = string(i+1);
+        levelMap[? "playcount"] = 0;
+        if i < 4 levelMap[? "locked"] = false else levelMap[? "locked"] = true;
+
+        levelDataMap[? n] = levelMap;
+    }
+}
+
+#define getLevelData
+///getLevelData(levelID,key)
+
+var levelMap = levelDataMap[? argument0];
+
+return levelMap[? argument1];
+
+#define prepareButton
+///prepareButton(buttonID)
+var buttonID = argument0;
+
+buttonID.levelName = getLevelData(buttonID.levelID,"name");
+buttonID.locked = getLevelData(buttonID.levelID,"locked");
