@@ -16,7 +16,7 @@ for (var i=0;i<numLevels;i+=1) {
         levelMap = ds_map_create();
         levelMap[? "name"] = string(i+1);
         levelMap[? "playcount"] = 0;
-        if i < 4 levelMap[? "locked"] = false else levelMap[? "locked"] = true;
+        if i == 0 and j == 0 levelMap[? "locked"] = false else levelMap[? "locked"] = true;
 
         levelDataMap[? n] = levelMap;
     }
@@ -35,3 +35,10 @@ var buttonID = argument0;
 
 buttonID.levelName = getLevelData(buttonID.levelID,"name");
 buttonID.locked = getLevelData(buttonID.levelID,"locked");
+#define unlockAdjacent
+var completedLevel = argument0;
+var buttonDistance = 90;
+
+if collision_point(completedLevel.x+buttonDistance,completedLevel.y,oButton,false,true) {
+
+}

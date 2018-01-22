@@ -30,6 +30,8 @@ MouseX = 0;
 MouseY = 0;
 MouseXStart = 0;
 MouseYStart = 0;
+drag_x = 0;
+drag_y = 0;
 
 Swipe = false;
 dragTime = 0;
@@ -39,11 +41,16 @@ released = false
 PD = 0;  //Point of Direction
 
 dragging = false;
+
 snapTweenID = -1;
+flyUFOID = -1;
+ufoX = -1;
+slider_position_xx = 0;
+
 dx = 0;
 view_xview_previous = view_xview[0];
 view_xpos_normalized = 0;
-dir=0
+dir=-1
 
 objectAge = 0;
 currentWorld = 0;
@@ -243,7 +250,7 @@ objectAge += 1;
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="8" enumb="75">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -287,11 +294,11 @@ if debug &gt; 0 {
     
     draw_set_colour(c_white);
     
-    draw_text(8, 12, "Swipe = " + string(Swipe));
-    draw_text(8, 34, "Swipe Speed = " + string(SwipeSpeed));
-    draw_text(8, 58, "Point Direction = " + string(PD));
-    //draw_text(8, 80, "snap to = " + string(dx));
-    draw_text(8, 80, "dir  = " + string(dir));
+    draw_text(8, 12, "Swipe Speed = " + string(SwipeSpeed));
+    draw_text(8, 34, "Point Direction = " + string(PD));
+    draw_text(8, 58, "xview  = " + string(view_xview[0]));
+    draw_text(8, 80, "x  = " + string(x));
+    draw_text(8, 102, "mousex  = " + string(mouse_x));
 }
 
 </string>
@@ -321,17 +328,32 @@ var sliderHeight = 32;
 draw_set_color(c_white);
 draw_rectangle(x-sliderWidth,y-sliderHeight,x+sliderWidth,y+sliderHeight,false);
 
-
 draw_set_color(background_color);
 var cx,xx;
 for (var i=0;i&lt;numWorlds;i+=1) {
-    xx = view_xview[0]+view_wview[0]*.0875+((i*view_wview[0])/(view_wview[0]*numWorlds)*(view_wview[0]*.9));
-    draw_circle(xx,y,12,false);
-    if i == currentWorld draw_sprite_ext(sUFO,0,xx,y,1,1,8*sin(objectAge*.05),c_white,1);
+    xx = view_wview[0]*.0875+((i*view_wview[0])/(view_wview[0]*numWorlds)*(view_wview[0]*.9));
+    draw_circle(view_xview[0]+xx,y,12,false);
+    //if i == currentWorld draw_sprite_ext(sUFO,0,xx,y,1,1,8*sin(objectAge*.05),c_white,1);
+    if i == currentWorld slider_position_xx = xx;
 }
 
-//var currentPos = view_xview[0]+view_xpos_normalized*view_wview[0];
-//draw_sprite_ext(sUFO,0,currentPos,y,1,1,8*sin(objectAge*.05),c_white,1);
+
+if ufoX == -1 {
+    ufoX = slider_position_xx;
+} else {
+    if ufoX != slider_position_xx {
+        //if !TweenExists(flyUFOID) flyUFOID = TweenFire(id, tween_UFO, EaseLinear, TWEEN_MODE_ONCE, true, 0.0, .5, ufoX, slider_position_xx);
+        if !TweenExists(flyUFOID) {
+            ufoX_array[0] = 0;
+            flyUFOID = TweenFire(id, "", EaseOutElastic, TWEEN_MODE_ONCE, true, 0.0, .4, ufoX, slider_position_xx);
+        }
+
+        ufoX = TweenCalc(flyUFOID);
+    }
+}
+
+var flipUFO = -dir;
+draw_sprite_ext(sUFO,0,view_xview[0]+ufoX,y,flipUFO,1,8*sin(objectAge*.05),c_white,1);
 </string>
           </argument>
         </arguments>

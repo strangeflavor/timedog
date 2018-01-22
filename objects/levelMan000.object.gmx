@@ -5,10 +5,10 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>oButton</parentName>
+  <parentName>levelManager</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
+    <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,13 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>buttonSize = 80;
+            <string>/// advance to next wave
+waveComplete = true;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -48,71 +49,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>rollOver = false;
+            <string>if alarm[1] == -1 alarm[1] = choose(.5,1,1,1,2,2,3)*60*60;
+waveID = pickWave();
+wave += 1;
 
-if mouse_x &gt; x and mouse_x &lt; x + buttonSize {
-    if mouse_y &gt; y and mouse_y &lt; y + buttonSize {
-        rollOver = true;
-    }
-}
-
-if rollOver {
-    if mouse_check_button(mb_left) {
-        image_alpha = .5;
-    }
-
-    if mouse_check_button_released(mb_left) and !locked {
-        currentLevel = levelID;
-        room_goto_next();
-    }
-
-    if mouse_check_button_released(mb_right) and !locked {
-        unlockAdjacent(id);
-    }
-} else {
-    image_alpha = 1;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>var rr = 0;
-var fill = false;
-if rollOver and !locked {
-    rr = 4;
-    fill = true;
-    image_blend = make_color_rgb(irandom(255),irandom(255),irandom(255));
-} else {
-    image_blend = c_white;
-}
-
-if locked fill = true;
-
-draw_roundrect_colour_ext(x-rr,y-rr,x+buttonSize+rr,y+buttonSize+rr,4,4,image_blend,image_blend,!fill);
-
-if rollOver draw_set_color(c_black) else draw_set_color(c_white);
-draw_set_valign(fa_top);
-draw_set_halign(fa_left);
-draw_text(x+4,y+4,string(world+1)+'-'+string(levelID - (levelID div 100)*100+1));//+','+string(levelName));
-draw_text(x+4,y+32,string(levelID));//+','+string(levelName));
+alarm[0] = 60;
 </string>
           </argument>
         </arguments>

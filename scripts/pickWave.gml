@@ -127,3 +127,48 @@ for (var i=0;i<32;i+=1) formationComplete[i] = false;
 wave = -1;
 checkForEndOfWave = false;
 formationCount = 0;
+#define createLevelManager
+var managerObject = managerArray[currentLevel];
+
+instance_create(vw/2,vh/2,managerObject);
+
+#define manageManagers
+///manageManagers()
+
+
+// world 1
+for (var i=0;i<100;i+=1) {
+    managerArray[i] = levelMan000;
+}
+
+for (var i=100;i<200;i+=1) {
+    managerArray[i] = levelManager;
+}
+
+for (var i=300;i<400;i+=1) {
+    managerArray[i] = levelManager;
+}
+
+for (var i=400;i<500;i+=1) {
+    managerArray[i] = levelManager;
+}
+
+for (var i=500;i<600;i+=1) {
+    managerArray[i] = levelManager;
+}
+
+for (var i=600;i<700;i+=1) {
+    managerArray[i] = levelManager;
+}
+
+for (var i=700;i<800;i+=1) {
+    managerArray[i] = levelManager;
+}
+
+for (var i=800;i<900;i+=1) {
+    managerArray[i] = levelManager;
+}
+
+for (var i=900;i<1000;i+=1) {
+    managerArray[i] = levelManager;
+}
