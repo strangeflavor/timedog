@@ -37,8 +37,29 @@ buttonID.levelName = getLevelData(buttonID.levelID,"name");
 buttonID.locked = getLevelData(buttonID.levelID,"locked");
 #define unlockAdjacent
 var completedLevel = argument0;
-var buttonDistance = 90;
+var buttonDistance = 80;
+var buttonID;
 
-if collision_point(completedLevel.x+buttonDistance,completedLevel.y,oButton,false,true) {
+// right
+buttonID = collision_point(completedLevel.x+buttonSize+buttonDistance,completedLevel.y+buttonSize/2,oButton,false,true) 
+if buttonID != noone {
+    buttonID.locked = false;
+}
 
+// left
+buttonID = collision_point(completedLevel.x-buttonDistance,completedLevel.y+buttonSize/2,oButton,false,true) 
+if buttonID != noone {
+    buttonID.locked = false;
+}
+
+// up
+buttonID = collision_point(completedLevel.x+buttonSize/2,completedLevel.y-buttonSize/2,oButton,false,true) 
+if buttonID != noone {
+    buttonID.locked = false;
+}
+
+// down
+buttonID = collision_point(completedLevel.x+buttonSize/2,completedLevel.y+buttonSize+buttonSize/2,oButton,false,true) 
+if buttonID != noone {
+    buttonID.locked = false;
 }

@@ -108,6 +108,7 @@
   </sounds>
   <sprites name="sprites">
     <sprites name="menu">
+      <sprite>sprites\s1x1_Mask</sprite>
       <sprite>sprites\sUFO</sprite>
       <sprite>sprites\sTitle</sprite>
     </sprites>
@@ -390,7 +391,7 @@
     <room>rooms\rDeepSpace</room>
     <room>rooms\rMysteryPlanet</room>
   </rooms>
-  <constants number="14">
+  <constants number="17">
     <constant name="stop">0</constant>
     <constant name="retreat">1</constant>
     <constant name="attack">2</constant>
@@ -405,6 +406,9 @@
     <constant name="_APPROACH">4</constant>
     <constant name="_BACKANDFORTH_HORI">5</constant>
     <constant name="_ATK_BEAMS">0</constant>
+    <constant name="_WIN_TIME">0</constant>
+    <constant name="_WIN_BOSS">1</constant>
+    <constant name="_WIN_FORMATIONS_COMPLETE">2</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

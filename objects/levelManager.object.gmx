@@ -25,15 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>wave = -1;
+            <string>levelComplete = false;
+for (var i=0;i&lt;32;i+=1) formationComplete[i] = false;
+formationCount = 0;
+
+wave = -1;
 waveID = -1;
 waveComplete = false;
 checkForEndOfWave = false;
 formationCompleteGracePeriod = -600;
 
+levelComplete = false;
 
 for (var i=0;i&lt;16;i+=1) occupiedTimer[i] = 0;
 
+winCondition = _WIN_TIME;
+winConditionValue = 30*60*60;
 
 instance_create(vw/2,vh/2,levelIntroSplashScreen);
 
@@ -89,6 +96,41 @@ waveID = pickWave();
 wave += 1;
 
 alarm[0] = 60;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>switch winCondition {
+    case _WIN_TIME:
+        if objectAge &gt;= winConditionValue {
+        
+        }
+    break;
+    /*
+    case _WIN_BOSS:
+    break;
+    case _WIN_FORMATIONS_COMPLETE:
+    break;
+    */
+}
 </string>
           </argument>
         </arguments>

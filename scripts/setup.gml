@@ -27,11 +27,6 @@ currentLevel = -1;
 
 createLevelData();
 
-globalvar levelComplete,formationComplete,formationCount;
-levelComplete = false;
-for (var i=0;i<32;i+=1) formationComplete[i] = false;
-formationCount = 0;
-
 ///////////////////////////////////////////////
 // system objects
 ///////////////////////////////////////////////
