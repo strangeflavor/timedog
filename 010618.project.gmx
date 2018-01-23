@@ -168,16 +168,15 @@
   <scripts name="scripts">
     <scripts name="gameflow">
       <script>scripts\setup.gml</script>
-      <script>scripts\pickWave.gml</script>
       <script>scripts\startroom.gml</script>
+      <script>scripts\beginLevel.gml</script>
+      <script>scripts\prepDialog.gml</script>
+      <script>scripts\pickWave.gml</script>
+      <script>scripts\drawTimeHUD.gml</script>
     </scripts>
     <scripts name="menus">
       <script>scripts\createLevelData.gml</script>
       <script>scripts\makeLevelButtons.gml</script>
-    </scripts>
-    <scripts name="levels">
-      <script>scripts\prepDialog.gml</script>
-      <script>scripts\setupTimeline.gml</script>
     </scripts>
     <scripts name="formations">
       <script>scripts\occupySpace.gml</script>
@@ -305,7 +304,6 @@
     </scripts>
     <script>scripts\endTimeline.gml</script>
     <scripts name="obsoslete">
-      <script>scripts\abooosbosol.gml</script>
       <script>scripts\buttonscirpobosos.gml</script>
       <script>scripts\sobosletl.gml</script>
       <script>scripts\sokosobolete.gml</script>
@@ -316,27 +314,17 @@
     <font>fonts\fFont</font>
   </fonts>
   <objects name="objects">
-    <objects name="debug">
-      <object>objects\oConsole</object>
+    <objects name="gameflow">
+      <object>objects\levelIntroSplashScreen</object>
+      <object>objects\levelManager</object>
+      <object>objects\levelMan000</object>
+      <object>objects\waveCompleteSplash</object>
     </objects>
     <objects name="menu">
       <object>objects\oLevelMenu</object>
       <object>objects\oEraSlider</object>
       <object>objects\oButton</object>
       <object>objects\oLevelButton</object>
-    </objects>
-    <objects name="gameflow">
-      <object>objects\levelManager</object>
-      <object>objects\levelMan000</object>
-      <object>objects\levelIntroSplashScreen</object>
-      <object>objects\waveCompleteSplash</object>
-    </objects>
-    <objects name="system">
-      <object>objects\controller</object>
-      <object>objects\oMenu</object>
-      <object>objects\oFX</object>
-      <object>objects\oAudio</object>
-      <object>objects\oHUD</object>
     </objects>
     <objects name="formations">
       <object>objects\formationParent</object>
@@ -348,6 +336,16 @@
       <object>objects\fThexSpitter</object>
       <object>objects\oTimelinePlayer</object>
       <object>objects\oTimelineLooper</object>
+    </objects>
+    <objects name="debug">
+      <object>objects\oConsole</object>
+    </objects>
+    <objects name="system">
+      <object>objects\controller</object>
+      <object>objects\oMenu</object>
+      <object>objects\oFX</object>
+      <object>objects\oAudio</object>
+      <object>objects\oHUD</object>
     </objects>
     <objects name="player">
       <object>objects\oShip</object>
@@ -380,8 +378,8 @@
     </objects>
   </objects>
   <timelines name="timelines">
-    <timeline>timelines\tBasicFwd</timeline>
     <timeline>timelines\tLvl1</timeline>
+    <timeline>timelines\tBasicFwd</timeline>
     <timeline>timelines\tDeepSpace</timeline>
   </timelines>
   <rooms name="rooms">
@@ -391,7 +389,7 @@
     <room>rooms\rDeepSpace</room>
     <room>rooms\rMysteryPlanet</room>
   </rooms>
-  <constants number="17">
+  <constants number="19">
     <constant name="stop">0</constant>
     <constant name="retreat">1</constant>
     <constant name="attack">2</constant>
@@ -409,6 +407,8 @@
     <constant name="_WIN_TIME">0</constant>
     <constant name="_WIN_BOSS">1</constant>
     <constant name="_WIN_FORMATIONS_COMPLETE">2</constant>
+    <constant name="_WIN_TIMELINE_END">3</constant>
+    <constant name="_WIN_PROTECTION">4</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

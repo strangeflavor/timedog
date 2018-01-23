@@ -26,48 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>trace('created '+object_get_name(object_index));
-formationCount += 1;
-myFormationID = formationCount;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="1" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>var formationsComplete = 0;
-var gracePeriod = -120;
-
-formationComplete[myFormationID] = true;
-
-for (var i=0;i&lt;32;i+=1) {
-    if formationComplete[i] == true {
-        formationsComplete += 1;
-    }
-}
-
-trace(string(formationsComplete)+' out of '+string(formationCount)+' down');
-
-if formationsComplete &gt;= formationCount {
-    trace('!!!!!! checking for end of wave');
-    levelManager.checkForEndOfWave = true;
-    levelManager.formationCompleteGracePeriod = gracePeriod;
-}
+levelManager.formationCount += 1;
+myFormationID = levelManager.formationCount;
 </string>
           </argument>
         </arguments>
