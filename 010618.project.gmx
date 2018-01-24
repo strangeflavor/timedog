@@ -302,6 +302,7 @@
       <script>scripts\show.gml</script>
       <script>scripts\trace.gml</script>
     </scripts>
+    <script>scripts\x_axis_get.gml</script>
     <script>scripts\endTimeline.gml</script>
     <scripts name="obsoslete">
       <script>scripts\buttonscirpobosos.gml</script>
@@ -314,6 +315,7 @@
     <font>fonts\fFont</font>
   </fonts>
   <objects name="objects">
+    <object>objects\columnB</object>
     <objects name="gameflow">
       <object>objects\levelIntroSplashScreen</object>
       <object>objects\levelManager</object>

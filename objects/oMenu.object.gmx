@@ -37,6 +37,8 @@ cStart = choose(c1,c3,c5);
 cDest = choose(c2,c4);
 objectAge = 0;
 cycleDuration = 60*4;
+
+make(columnB);
 </string>
           </argument>
         </arguments>
@@ -96,9 +98,15 @@ if objectAge == cycleDuration {
     }
 }
 
-draw_background_tiled_ext(bgStarfield,0,0,1,1,image_blend,1);
-draw_sprite_ext(sTitle,0,view_wview[0]/2,view_hview[0]/2,scale,scale,0,merge_color(image_blend,c_white,.5),1);
+//draw_background_tiled_ext(bgStarfield,0,0,1,1,image_blend,1);
+draw_set_blend_mode_ext(bm_src_alpha,bm_dest_alpha);
+draw_sprite_ext(sTitle,0,view_wview[0]/2,view_hview[0]*.86,scale,scale,0,merge_color(image_blend,c_white,.5),image_alpha);
+draw_set_blend_mode(bm_normal);
 
+
+background_color = merge_color(image_blend,c_dkgray,.5)
+
+if objectAge &gt; 240 image_alpha -= .0025;
 /*
 draw_sprite_ext(sShip,0,80,120,5,5,0,c_white,1);
 
