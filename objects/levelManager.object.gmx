@@ -45,12 +45,14 @@ winConditionValue = 30*60*60;
 instance_create(vw/2,vh/2,levelIntroSplashScreen);
 
 alarm[0] = 1; // kicks off 
+
+active = false;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="1">
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -128,8 +130,8 @@ beginLevel();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///endLevel();
-endLevel();
+            <string>///catchEndLevel();
+if active catchEndLevel();
 </string>
           </argument>
         </arguments>

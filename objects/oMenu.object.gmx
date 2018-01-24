@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>c1 = make_color_rgb(45,79,175);
+            <string>mouse_clear(mb_left);
+mouse_clear(mb_right);
+
+c1 = make_color_rgb(45,79,175);
 c2 = make_color_rgb(218,2,167);
 c3 = make_color_rgb(77,253,120);
 c4 = make_color_rgb(253,209,77);

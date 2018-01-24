@@ -13,14 +13,18 @@ switch winCondition {
     break;
 }
 
-#define endLevel
+active = true;
+
+#define catchEndLevel
 if winCondition == _WIN_TIMELINE_END {
     if timeline_position > timeline_max_moment(timeline_index) { 
         timeline_running = false;
         trace('***** timeline done');
-    }
 
-    make(x,y,waveCompleteSplash);
+        completedLevel = true;
+        make(x,y,endLevel);
+        active = false;
+    }
 }
 
 #define setupTimeline

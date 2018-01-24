@@ -20,10 +20,11 @@ room_set_view(rMysteryPlanet,0,true,0,0,vw,vh,0,0,vw,vh,0,0,0,0,-1)
 // gameplay
 ///////////////////////////////////////////////
 
-globalvar numLevels,numWorlds,currentLevel;
+globalvar numLevels,numWorlds,currentLevel,completedLevel;
 numLevels = 16; // levels per world
 numWorlds = 10; // worlds total
 currentLevel = -1;
+completedLevel = false;
 
 createLevelData();
 
@@ -31,7 +32,6 @@ createLevelData();
 // system objects
 ///////////////////////////////////////////////
 
-make(oHUD);
 make(oConsole);
 make(controller);
 make(oAudio);

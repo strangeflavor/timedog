@@ -38,28 +38,26 @@ buttonID.locked = getLevelData(buttonID.levelID,"locked");
 #define unlockAdjacent
 var completedLevel = argument0;
 var buttonDistance = 80;
-var buttonID;
+var buttonID_left,buttonID_right,buttonID_top,buttonID_bottom;
 
 // right
-buttonID = collision_point(completedLevel.x+buttonSize+buttonDistance,completedLevel.y+buttonSize/2,oButton,false,true) 
-if buttonID != noone {
-    buttonID.locked = false;
-}
+buttonID_right = collision_point(completedLevel.x+buttonSize+buttonDistance,completedLevel.y+buttonSize/2,oButton,false,true) 
+buttonID_left = collision_point(completedLevel.x-buttonDistance,completedLevel.y+buttonSize/2,oButton,false,true) 
+buttonID_top = collision_point(completedLevel.x+buttonSize/2,completedLevel.y-buttonSize/2,oButton,false,true) 
+buttonID_bottom = collision_point(completedLevel.x+buttonSize/2,completedLevel.y+buttonSize+buttonSize/2,oButton,false,true) 
 
-// left
-buttonID = collision_point(completedLevel.x-buttonDistance,completedLevel.y+buttonSize/2,oButton,false,true) 
-if buttonID != noone {
-    buttonID.locked = false;
-}
+unlockLevel(buttonID_right);
+unlockLevel(buttonID_left);
+unlockLevel(buttonID_top);
+unlockLevel(buttonID_bottom);
 
-// up
-buttonID = collision_point(completedLevel.x+buttonSize/2,completedLevel.y-buttonSize/2,oButton,false,true) 
-if buttonID != noone {
-    buttonID.locked = false;
-}
+#define unlockLevel
+///unlockLevel(levelID)
+var levelMap;
+var lID = argument0;
 
-// down
-buttonID = collision_point(completedLevel.x+buttonSize/2,completedLevel.y+buttonSize+buttonSize/2,oButton,false,true) 
-if buttonID != noone {
-    buttonID.locked = false;
+if lID != noone {
+    lIDlocked = false;
+    levelMap = levelDataMap[? lID.levelID];
+    levelMap[? "locked"] = false;
 }

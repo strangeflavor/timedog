@@ -318,7 +318,7 @@
       <object>objects\levelIntroSplashScreen</object>
       <object>objects\levelManager</object>
       <object>objects\levelMan000</object>
-      <object>objects\waveCompleteSplash</object>
+      <object>objects\endLevel</object>
     </objects>
     <objects name="menu">
       <object>objects\oLevelMenu</object>

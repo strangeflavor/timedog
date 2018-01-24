@@ -10,6 +10,7 @@ switch argument0 {
     case rDeepSpace:
         // prepare waves, set up level
         createLevelManager();
+        make(oHUD);
         //instance_create(vw/2,vh/2,levelManager);
         //musicPlaying = sound_loop(musicTrainJams);
     break;
