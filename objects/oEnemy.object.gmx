@@ -165,7 +165,8 @@ direction = pDirection;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>active=true;
+            <string>if yStop != -1 checkStop = true;
+active = true;
 </string>
           </argument>
         </arguments>
@@ -238,12 +239,16 @@ direction = pDirection;
 
     if checkStop == true {
         if y &gt; yStop {
+            /*
             pSpeed = speed;
             pDirection = direction;
 
             checkStop = false;
             friction = .8;
             doEvent(stop);
+            */
+            checkStop = false;
+            timeline_index = -1;
         }
     }
     

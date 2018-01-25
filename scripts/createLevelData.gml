@@ -57,7 +57,7 @@ var levelMap;
 var lID = argument0;
 
 if lID != noone {
-    lIDlocked = false;
+    lID.locked = false;
     levelMap = levelDataMap[? lID.levelID];
     levelMap[? "locked"] = false;
 }

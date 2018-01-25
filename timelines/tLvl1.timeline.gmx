@@ -23,8 +23,10 @@
     with instance_create(-32,32,fChain) {
         enemy = oMiniThex;
         path = pLShape;
-        size = 8;
-        if irandom(10) _path_scale_delta = .1;
+        size = 5;
+        _path_scale_delta = .2;
+        
+        yStop = vh - 100;
     }
 }
 </string>
@@ -34,7 +36,7 @@
     </event>
   </entry>
   <entry>
-    <step>120</step>
+    <step>180</step>
     <event>
       <action>
         <libid>1</libid>
@@ -56,7 +58,8 @@
     with instance_create(room_width-32,32,fChain) {
         enemy = oMiniThex;
         path = pLShapeMirror;
-        size = 8;
+        size = 5;
+        _path_scale_delta = .2;
     }
 }
 </string>

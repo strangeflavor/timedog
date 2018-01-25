@@ -315,11 +315,12 @@
     <font>fonts\fFont</font>
   </fonts>
   <objects name="objects">
-    <object>objects\columnB</object>
-    <objects name="gameflow">
-      <object>objects\levelIntroSplashScreen</object>
+    <objects name="level men">
       <object>objects\levelManager</object>
       <object>objects\levelMan000</object>
+    </objects>
+    <objects name="gameflow">
+      <object>objects\levelIntroSplashScreen</object>
       <object>objects\endLevel</object>
     </objects>
     <objects name="menu">
@@ -327,6 +328,7 @@
       <object>objects\oEraSlider</object>
       <object>objects\oButton</object>
       <object>objects\oLevelButton</object>
+      <object>objects\columnB</object>
     </objects>
     <objects name="formations">
       <object>objects\formationParent</object>
