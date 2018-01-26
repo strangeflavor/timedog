@@ -218,6 +218,10 @@ active = true;
           <argument>
             <kind>1</kind>
             <string>if active {
+    //////////////////////////
+    // misc updates
+    //////////////////////////
+
     objectAge += 1;
     if HP &lt; 0 instance_destroy();
     if killWhenBelowScreen {
@@ -228,6 +232,10 @@ active = true;
         recoil -= 1;
         y+=1;
     }
+
+    //////////////////////////
+    // handle paths
+    //////////////////////////
 
     if path_index = -1 {
         if path &gt; -1 {
@@ -241,26 +249,11 @@ active = true;
         }
     }
 
-    if phase[currentPhase] &gt; -1 {
-        script_execute(phase[currentPhase]);
-        if y &gt; yStop {
-            /*
-            pSpeed = speed;
-            pDirection = direction;
+    //////////////////////////
+    // run phase
+    //////////////////////////
 
-            checkStop = false;
-            friction = .8;
-            doEvent(stop);
-            */
-            checkStop = false;
-            timeline_index = -1;
-            
-        }
-    }
-
-    if currentPhase &lt; 8 and phaseCondition[currentPhase+1] &gt; -1 {
-        checkPhaseCondition();
-    }
+    enemy_RunPhase(currentPhase);
 
 } else {
     if waitTime &gt; 0 waitTime -= 1 else active = true;

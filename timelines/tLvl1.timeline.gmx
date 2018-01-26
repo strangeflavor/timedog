@@ -23,12 +23,16 @@
     with instance_create(-32,32,fChain) {
         enemy = oMiniThex;
         path = pLShape;
-        size = 5;
+        size = 3;
         _path_scale_delta = .2;
 
+        // fly away before reaching bottom of screen
         phaseCondition[0] = _PHASE_CONDITION_Y;
+        phaseConditionArguments[0,0] = vh - 180;
+
+        phaseDelay[1] = 60;
         phase[1] = enemy_flyAway;
-        yStop = vh - 180;
+        phaseArguments[1,0] = 120;
     }
 }
 </string>
@@ -56,7 +60,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if occupySpace(_RIGHTCOLUMN,90) {
+            <string>/*
+if occupySpace(_RIGHTCOLUMN,90) {
     with instance_create(room_width-32,32,fChain) {
         enemy = oMiniThex;
         path = pLShapeMirror;
@@ -64,6 +69,7 @@
         _path_scale_delta = .2;
     }
 }
+*/
 </string>
           </argument>
         </arguments>

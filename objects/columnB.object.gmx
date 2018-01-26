@@ -81,7 +81,7 @@ if mode == 'midi' {
 ftime = _get_timer();
 npoints = 5 + (ftime);//sqr(max(.001,x_axis_get())*(npointsDefault*.75));
 rad = 5;//sqr(2*max(.01,(y_axis_get()*2)));
-trace(ftime)
+//trace(ftime)
 
 step = stepstart + (ftime * (stepend - stepstart));
 

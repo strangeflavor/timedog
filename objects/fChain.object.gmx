@@ -98,7 +98,7 @@ if path &gt; -1 {
 }
 
 count += 1;
-if count &gt; size instance_destroy() else alarm[0] = rate;
+if count &gt;= size instance_destroy() else alarm[0] = rate;
 </string>
           </argument>
         </arguments>
