@@ -48,10 +48,12 @@ rate = 9;
 size = 8;
 count = 0;
 
-alarm[0] = 1;
-
 _enemy_speed = -1;
 _enemy_direction = -1;
+
+yStop = -1;
+
+alarm[0] = 1;
 </string>
           </argument>
         </arguments>
@@ -77,11 +79,15 @@ _enemy_direction = -1;
             <string>var eID = -1;
 
 if path &gt; -1 {
-    with instance_create(x,y,enemy) {
+    eID = instance_create(x,y,enemy);
+    with eID {
         path_start(other.path,other._path_speed,other.endaction,false);
         path_scale = other._path_scale;
+        yStop = other.yStop;
     }
     
+    formationTransferPhaseVars(eID);
+
     _path_scale += _path_scale_delta;
 } else {
     eID = instance_create(x,y,enemy);

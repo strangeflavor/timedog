@@ -25,12 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>HP = 1;
+            <string>objectAge = 0;
+HP = 1;
 recoil = 0;
 state = _NONE;
 use_state_path = false;
 
-alarm[0] = 1;
 value = 0;
 
 image_xscale = 2*scale
@@ -46,7 +46,7 @@ myFormationPosition = -1;
 formationSize = -1; // # of allies in the same formation. if this enemy is destroyed and hasLeader = true and allies &lt;= 0, value is inverted
 
 waitTime = -1;
-active = true;
+active = false;
 
 path = -1;
 path_endtime = -1;
@@ -56,7 +56,9 @@ killWhenBelowScreen = true;
 explosionType = sLargeExplosion;
 value = 1;
 
-objectAge = 0;
+phaseCreateVars();
+
+alarm[0] = 1;
 </string>
           </argument>
         </arguments>
@@ -217,6 +219,10 @@ active = true;
             <kind>1</kind>
             <string>if active {
     objectAge += 1;
+    if HP &lt; 0 instance_destroy();
+    if killWhenBelowScreen {
+       if y &gt; (vh + 64*scale) kill(self);
+    }
 
     if recoil &gt; 0 {
         recoil -= 1;
@@ -228,16 +234,15 @@ active = true;
             trace('enemy starting path at spd '+string(path_speed));
             path_start(path,path_speed,path_action_continue,false);
         }
+    } else {
+        if path_endtime &gt; -1 and objectAge == path_endtime {
+            path = -1;
+            path_end();
+        }
     }
 
-    if path_endtime &gt; -1 and objectAge == path_endtime {
-        path = -1;
-        path_end();
-    }
-
-    if HP &lt; 0 instance_destroy();
-
-    if checkStop == true {
+    if phase[currentPhase] &gt; -1 {
+        script_execute(phase[currentPhase]);
         if y &gt; yStop {
             /*
             pSpeed = speed;
@@ -249,12 +254,14 @@ active = true;
             */
             checkStop = false;
             timeline_index = -1;
+            
         }
     }
-    
-    if killWhenBelowScreen {
-       if y &gt; (vh + 64*scale) kill(self);
+
+    if currentPhase &lt; 8 and phaseCondition[currentPhase+1] &gt; -1 {
+        checkPhaseCondition();
     }
+
 } else {
     if waitTime &gt; 0 waitTime -= 1 else active = true;
 }

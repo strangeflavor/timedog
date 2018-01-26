@@ -28,6 +28,8 @@
             <string>trace('created '+object_get_name(object_index));
 levelManager.formationCount += 1;
 myFormationID = levelManager.formationCount;
+
+phaseCreateVars();
 </string>
           </argument>
         </arguments>

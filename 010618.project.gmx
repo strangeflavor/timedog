@@ -194,6 +194,7 @@
       <script>scripts\makeTurret.gml</script>
       <script>scripts\do_state.gml</script>
       <script>scripts\addRecoil.gml</script>
+      <script>scripts\phaseCreateVars.gml</script>
     </scripts>
     <scripts name="audio">
       <script>scripts\sfx.gml</script>
@@ -305,7 +306,6 @@
     <script>scripts\x_axis_get.gml</script>
     <script>scripts\endTimeline.gml</script>
     <scripts name="obsoslete">
-      <script>scripts\buttonscirpobosos.gml</script>
       <script>scripts\sobosletl.gml</script>
       <script>scripts\sokosobolete.gml</script>
     </scripts>
@@ -393,7 +393,7 @@
     <room>rooms\rDeepSpace</room>
     <room>rooms\rMysteryPlanet</room>
   </rooms>
-  <constants number="19">
+  <constants number="22">
     <constant name="stop">0</constant>
     <constant name="retreat">1</constant>
     <constant name="attack">2</constant>
@@ -413,6 +413,9 @@
     <constant name="_WIN_FORMATIONS_COMPLETE">2</constant>
     <constant name="_WIN_TIMELINE_END">3</constant>
     <constant name="_WIN_PROTECTION">4</constant>
+    <constant name="_PHASE_CONDITION_Y">0</constant>
+    <constant name="_PHASE_CONDITION_TIME">1</constant>
+    <constant name="_PHASE_CONDITION_HP">2</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
