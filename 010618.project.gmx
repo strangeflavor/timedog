@@ -129,6 +129,7 @@
       <sprite>sprites\spr_drone</sprite>
       <sprite>sprites\sSpring</sprite>
       <sprite>sprites\sThexbot</sprite>
+      <sprite>sprites\sThexbotCenter</sprite>
     </sprites>
     <sprites name="fx">
       <sprite>sprites\sChargeShot</sprite>
@@ -146,6 +147,7 @@
     </sprites>
   </sprites>
   <backgrounds name="background">
+    <background>background\bgTest</background>
     <background>background\bgStarfield</background>
     <background>background\bgStarfieldTop</background>
     <background>background\b0</background>
@@ -162,6 +164,7 @@
     <path>paths\pSine</path>
     <path>paths\pHalfCircleReversed</path>
     <path>paths\pHalfCircle</path>
+    <path>paths\pMoonShaped</path>
     <path>paths\pCurvedApproach</path>
     <path>paths\pCurvedApproachMirror</path>
   </paths>
@@ -180,6 +183,7 @@
     </scripts>
     <scripts name="formations">
       <script>scripts\occupySpace.gml</script>
+      <script>scripts\form_boxChains0.gml</script>
       <script>scripts\form_curvedLeft.gml</script>
     </scripts>
     <scripts name="ai">
@@ -195,6 +199,7 @@
       <script>scripts\do_state.gml</script>
       <script>scripts\addRecoil.gml</script>
       <script>scripts\phaseCreateVars.gml</script>
+      <script>scripts\enemy_flyAway.gml</script>
     </scripts>
     <scripts name="audio">
       <script>scripts\sfx.gml</script>
@@ -306,7 +311,6 @@
     <script>scripts\x_axis_get.gml</script>
     <script>scripts\endTimeline.gml</script>
     <scripts name="obsoslete">
-      <script>scripts\sobosletl.gml</script>
       <script>scripts\sokosobolete.gml</script>
     </scripts>
   </scripts>
@@ -332,6 +336,7 @@
     </objects>
     <objects name="formations">
       <object>objects\formationParent</object>
+      <object>objects\fBoxes</object>
       <object>objects\fDroneFollowers</object>
       <object>objects\fMaze</object>
       <object>objects\fLogisticSpawner</object>
@@ -392,6 +397,7 @@
     <room>rooms\rLevelSelect</room>
     <room>rooms\rDeepSpace</room>
     <room>rooms\rMysteryPlanet</room>
+    <room>rooms\roomTest</room>
   </rooms>
   <constants number="22">
     <constant name="stop">0</constant>

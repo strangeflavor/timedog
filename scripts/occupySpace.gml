@@ -35,3 +35,11 @@ if occupiedTimer[_CENTER] > 0 occupiedTimer[_CENTER] -= 1;
 
 //formationOccupies[fLogisticSpawner] = _CENTER;
 //formationOccupies[fMaze] = _CENTER;
+#define formationTransferVars
+///passFormationVars(enemyID);
+
+var enemyID = argument0;
+
+enemyID.space = space;
+enemyID.formationStartX = x;
+enemyID.formationStartY = y;

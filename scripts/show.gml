@@ -15,6 +15,6 @@ var _output = '';
 for (i=0;i<16;i+=1) {
     if arg[i] != '' _output += ', '+arg[i];
 }
-    _output = string_copy(_output,3,string_length(_output));
-    show_message(_output);
 
+_output = string_copy(_output,3,string_length(_output));
+show_message(_output);

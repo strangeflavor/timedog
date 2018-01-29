@@ -1,5 +1,6 @@
 #define phaseCreateVars
 currentPhase = 0;
+currentPhaseAge = 0;
 currentPhaseDelay = 0;
 
 for (var i=0;i<8;i+=1) {
@@ -43,6 +44,7 @@ switch phaseCondition[currentPhase] {
         }
     break;
     case _PHASE_CONDITION_TIME:
+        if currentPhaseAge > phaseCondition[currentPhase] met_condition = true;
     break;
     case _PHASE_CONDITION_HP:
     break;
@@ -51,12 +53,14 @@ switch phaseCondition[currentPhase] {
 if met_condition {
     currentPhase += 1;
     currentPhaseDelay = phaseDelay[currentPhase];
+    currentPhaseAge = 0;
 }
 
 #define enemy_RunPhase
 ///enemy_RunPhase(phase_index);
 // NB, phase scripts only use 3 arguments at the moment
 var phase_index = argument0;
+currentPhaseAge += 1;
 
 if currentPhaseDelay >= 0 {
     currentPhaseDelay -= 1;
@@ -70,8 +74,5 @@ if currentPhaseDelay >= 0 {
     }
 }
 
-#define enemy_flyAway
-///enemy_flyAway(wait,direction)
-_direction = argument0;
-if x < room_width/2 direction = 180 else direction = 0;
-speed = 8;
+#define sobsolete2
+

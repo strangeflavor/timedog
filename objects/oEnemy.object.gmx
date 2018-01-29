@@ -27,17 +27,39 @@
             <kind>1</kind>
             <string>objectAge = 0;
 HP = 1;
-recoil = 0;
-state = _NONE;
-use_state_path = false;
-
+active = false;
+invul = false;
+invulTime = -1;
+explosionType = sLargeExplosion;
 value = 0;
-
+recoil = 0;
 image_xscale = 2*scale
 image_yscale = 2*scale
 
+///////////////////////////
+// behavior/phase stuff
+///////////////////////////
+
+state = _NONE;
+use_state_path = false;
+
 yStop = vh*2
-checkStop = true;
+
+killWhenBelowScreen = true;
+killWhenOffscreen = true;
+offScreenTimer = 180;
+
+phaseCreateVars();
+
+path = -1;
+path_endtime = -1;
+killWhenPathComplete = false;
+
+waitTime = -1;
+
+///////////////////////////
+// formation stuff
+///////////////////////////
 
 amLeader = false;
 hasLeader = false;
@@ -45,18 +67,9 @@ myFormationIndex = -1;
 myFormationPosition = -1;
 formationSize = -1; // # of allies in the same formation. if this enemy is destroyed and hasLeader = true and allies &lt;= 0, value is inverted
 
-waitTime = -1;
-active = false;
-
-path = -1;
-path_endtime = -1;
-
-killWhenBelowScreen = true;
-
-explosionType = sLargeExplosion;
-value = 1;
-
-phaseCreateVars();
+space = _NONE;
+formationStartX = xstart;
+formationStartY = ystart;
 
 alarm[0] = 1;
 </string>
@@ -167,8 +180,10 @@ direction = pDirection;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if yStop != -1 checkStop = true;
-active = true;
+            <string>///active = true;
+if waitTime &lt; 0 {
+    active = true;
+}
 </string>
           </argument>
         </arguments>
@@ -228,6 +243,20 @@ active = true;
        if y &gt; (vh + 64*scale) kill(self);
     }
 
+    if killWhenOffscreen {
+        if x &gt; room_width or x &lt; 0 or y &gt; room_height or y &lt; 0 {
+            if offScreenTimer &lt;= 0 kill(self);
+            offScreenTimer -= 1;
+        }
+    } else {
+        offScreenTimer = 360;
+    }
+
+    if invulTime &gt; 0 and invul {
+        invulTime -= 1;
+        if invulTime == 0 invul = false;
+    }
+
     if recoil &gt; 0 {
         recoil -= 1;
         y+=1;
@@ -243,9 +272,10 @@ active = true;
             path_start(path,path_speed,path_action_continue,false);
         }
     } else {
-        if path_endtime &gt; -1 and objectAge == path_endtime {
+        if (path_endtime &gt; -1 and objectAge == path_endtime) {
             path = -1;
             path_end();
+            if killWhenPathComplete instance_destroy();
         }
     }
 
@@ -256,7 +286,11 @@ active = true;
     enemy_RunPhase(currentPhase);
 
 } else {
-    if waitTime &gt; 0 waitTime -= 1 else active = true;
+    if waitTime &gt; 0 {
+        waitTime -= 1;
+    } else {
+        active = true;
+    }
 }
 </string>
           </argument>
@@ -280,7 +314,7 @@ active = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if active {
+            <string>if active and !invul {
     HP -= other.damage;
     with other {
         HP -= 1;
@@ -289,6 +323,32 @@ active = true;
             sfx(sndDamageEnemy)
         }
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if debug &gt; 0 {
+    draw_set_halign(fa_middle);
+    draw_text(x,y+sprite_get_height(sprite_index)/2,'*a'+string(active));
 }
 </string>
           </argument>

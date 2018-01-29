@@ -52,8 +52,6 @@ _enemy_speed = -1;
 _enemy_direction = -1;
 
 yStop = -1;
-
-alarm[0] = 1;
 </string>
           </argument>
         </arguments>
@@ -83,9 +81,10 @@ if path &gt; -1 {
     with eID {
         path_start(other.path,other._path_speed,other.endaction,false);
         path_scale = other._path_scale;
+        path_speed = other._path_speed;
         yStop = other.yStop;
     }
-    
+
     formationTransferPhaseVars(eID);
 
     _path_scale += _path_scale_delta;
@@ -96,6 +95,8 @@ if path &gt; -1 {
         eID.speed = _enemy_speed;
     }
 }
+
+formationTransferVars(eID);
 
 count += 1;
 if count &gt;= size instance_destroy() else alarm[0] = rate;
