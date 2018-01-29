@@ -134,6 +134,8 @@ startroom(room);
             <kind>1</kind>
             <string>///surface_reset_target();
 //surface_reset_target();
+
+
 </string>
           </argument>
         </arguments>
@@ -157,7 +159,7 @@ startroom(room);
           <argument>
             <kind>1</kind>
             <string>if !surface_exists(surf) surf = surface_create(view_wview[0], view_hview[0]);
-view_xview[1] = view_xview[0];
+if view_wview[1] == vw view_xview[1] = view_xview[0]; // condition here is to allow f2 debug zoomout
 view_surface_id[1] = surf;
 //surface_set_target(surf);
 </string>
@@ -246,6 +248,39 @@ if debug &gt;= 1 {
     view_hview[0] = vh;
     view_xview[0] = x;
     view_yview[0] = y;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="113">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if view_wview[1] == vw {
+    view_wview[1] *= 1.5;
+    view_hview[1] *= 1.5;
+    view_xview[1] -= 128 // view_wview[1]*.75;
+    view_yview[1] -= 64 //view_hview[1]*.75;
+} else {
+    view_xview[1] = 0;
+    view_yview[1] = 0;
+    view_wview[1] = vw;
+    view_hview[1] = vh;
 }
 </string>
           </argument>

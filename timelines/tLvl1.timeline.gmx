@@ -21,7 +21,8 @@
             <kind>1</kind>
             <string>random_set_seed(1234);
 
-form_curvedLeft(-160,12);
+//form_curvedLeft(-160,12);
+form_curvedRight(160,12);
 
 timeline_speed = 0;
 

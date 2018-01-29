@@ -26,6 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>//surfaceID = makeMenuSurface();
+mouse_clear(mb_left);
+mouse_clear(mb_right);
+
 makeLevelButtons();
 makeEraSliders();
 

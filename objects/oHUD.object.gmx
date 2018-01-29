@@ -107,7 +107,12 @@ prepDialog(room);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if active {
+            <string>if debug &gt; 0 {
+    draw_set_color(c_white);
+    draw_rectangle(0,0,room_width,room_height,true);
+}
+
+if active {
     if showHud {
         /*
         l = 8*scale;
