@@ -81,7 +81,7 @@ form_boxChains0(-64,vw/4,8);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///form_boxChains0(64,vw/3,8);
+            <string>///form_boxChains0(-64,vw/2,8);
 form_boxChains0(-64,vw/2,8);
 </string>
           </argument>
@@ -163,7 +163,8 @@ form_boxChains0(0,vw/2+100,4);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>form_curvedLeft(-160,12);
+            <string>///form_curvedLeft(-160,12);
+form_curvedLeft(-160,0,6);
 </string>
           </argument>
         </arguments>
@@ -189,7 +190,8 @@ form_boxChains0(0,vw/2+100,4);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>form_curvedRight(-240,12);
+            <string>///form_curvedRight(-240,12);
+form_curvedRight(-240,0,6);
 </string>
           </argument>
         </arguments>
@@ -215,7 +217,8 @@ form_boxChains0(0,vw/2+100,4);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>form_curvedLeft(-160,12);
+            <string>///form_curvedLeft(-160,64,12);
+form_curvedLeft(-160,64,12);
 </string>
           </argument>
         </arguments>
@@ -241,7 +244,8 @@ form_boxChains0(0,vw/2+100,4);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>form_curvedRight(-240,12);
+            <string>///form_curvedRight(-240,12);
+form_curvedRight(-240,64,12);
 </string>
           </argument>
         </arguments>

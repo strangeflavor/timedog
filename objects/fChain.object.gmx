@@ -77,7 +77,7 @@ yStop = -1;
             <string>var eID = -1;
 
 if path &gt; -1 {
-    eID = instance_create(x,y,enemy);
+    eID = make(x,y,enemy);
     with eID {
         path_start(other.path,other._path_speed,other.endaction,false);
         path_scale = other._path_scale;
@@ -89,7 +89,7 @@ if path &gt; -1 {
 
     _path_scale += _path_scale_delta;
 } else {
-    eID = instance_create(x,y,enemy);
+    eID = make(x,y,enemy);
     if _enemy_direction != -1 {
         eID.direction = _enemy_direction;
         eID.speed = _enemy_speed;

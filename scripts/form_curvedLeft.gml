@@ -16,12 +16,14 @@ for (var i = 0; i < 16; i += 1;) {
 
 var xoffset = arg[0];
 if xoffset == -1 xoffset = 0;
+var yoffset = arg[1];
+if yoffset == -1 yoffset = 0;
 
-var count = arg[1];
+var count = arg[2];
 if count < 1 count = 5;
 
 for (var i=0;i<count;i+=1) {
-    tId = make(vw/2+xoffset+i*2,-32,oMiniThex);
+    tId = make(vw/2+xoffset+i*2,-32+yoffset,oMiniThex);
 
     tId.waitTime = (i+1)*6;//irandom(6);// i*10;
     tId.invulTime = 6;
@@ -63,8 +65,10 @@ for (var i = 0; i < 16; i += 1;) {
 
 var xoffset = arg[0];
 if xoffset == -1 xoffset = 0;
+var yoffset = arg[1];
+if yoffset == -1 yoffset = 0;
 
-var count = arg[1];
+var count = arg[2];
 if count < 1 count = 5;
 
 for (var i=0;i<count;i+=1) {
