@@ -53,6 +53,7 @@ phaseCreateVars();
 
 path = -1;
 path_endtime = -1;
+path_endaction = path_action_continue;
 killWhenPathComplete = false;
 
 waitTime = -1;
@@ -266,10 +267,10 @@ if waitTime &lt; 0 {
     // handle paths
     //////////////////////////
 
-    if path_index = -1 {
+    if path_index == -1 {
         if path &gt; -1 {
             trace('enemy starting path at spd '+string(path_speed));
-            path_start(path,path_speed,path_action_continue,false);
+            path_start(path,path_speed,path_endaction,false);
         }
     } else {
         if (path_endtime &gt; -1 and objectAge == path_endtime) {

@@ -20,8 +20,8 @@ _path_speed = arg[3];
 
 if xoffset == -1 xoffset = 0;
 if _ystop == -1 _ystop = vh/2 - choose(60,120,180); // choose(180,120,200,300,400);
-if _rate == -1 rate = 8;
-if _path_speed == -1 _path_speed = 16;
+if _rate == -1 rate = 4;
+if _path_speed == -1 _path_speed = 32;
 
 with make(-32+xoffset,32,fChain) {
     space = _LEFTCOLUMN;
@@ -36,7 +36,7 @@ with make(-32+xoffset,32,fChain) {
     phaseCondition[0] = _PHASE_CONDITION_Y;
     phaseConditionArguments[0,0] = other._ystop - 60;
 
-    phaseDelay[1] = 90;
+    phaseDelay[1] = 45;
     phase[1] = enemy_flyAway;
     phaseArguments[1,0] = 120;
 }

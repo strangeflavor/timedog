@@ -21,11 +21,6 @@
             <kind>1</kind>
             <string>random_set_seed(1234);
 
-//form_curvedLeft(-160,12);
-form_curvedRight(160,12);
-
-timeline_speed = 0;
-
 /*
 var box_rate = 240;
 
@@ -123,7 +118,7 @@ form_boxChains0(0,vw/2,4);
     </event>
   </entry>
   <entry>
-    <step>390</step>
+    <step>480</step>
     <event>
       <action>
         <libid>1</libid>
@@ -143,8 +138,6 @@ form_boxChains0(0,vw/2,4);
             <kind>1</kind>
             <string>///form_boxChains0(0,vw/2+100,4);
 form_boxChains0(0,vw/2+100,4);
-
-form_curvedLeft(16,-64);
 </string>
           </argument>
         </arguments>
@@ -152,7 +145,111 @@ form_curvedLeft(16,-64);
     </event>
   </entry>
   <entry>
-    <step>1080</step>
+    <step>570</step>
+    <event>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>form_curvedLeft(-160,12);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </entry>
+  <entry>
+    <step>660</step>
+    <event>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>form_curvedRight(-240,12);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </entry>
+  <entry>
+    <step>720</step>
+    <event>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>form_curvedLeft(-160,12);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </entry>
+  <entry>
+    <step>810</step>
+    <event>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>form_curvedRight(-240,12);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </entry>
+  <entry>
+    <step>1170</step>
     <event>
       <action>
         <libid>1</libid>
