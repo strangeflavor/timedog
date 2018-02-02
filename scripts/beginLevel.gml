@@ -4,6 +4,7 @@ switch winCondition {
         timeline_index = winConditionValue;
         timeline_running = true;
         timeline_loop = false;
+        if debugTimelineStartPos > -1 timeline_position = debugTimelineStartPos;
     break;
     case _WIN_FORMATIONS_COMPLETE:
         waveID = pickWave();

@@ -2,10 +2,11 @@
 // screen stuff
 ///////////////////////////////////////////////
 
-globalvar scale,vw,vh,screen_w,screen_h,developer,debug;
+globalvar scale,vw,vh,screen_w,screen_h,developer,debug,debugTimelineStartPos;
 debug = 0;
 scale = 1;
 developer = true;
+debugTimelineStartPos = -1;
 
 vw = 480*scale;
 vh = 640*scale;

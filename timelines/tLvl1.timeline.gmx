@@ -55,7 +55,7 @@ for (var i=0;i&lt;8;i+=1) {
           <argument>
             <kind>1</kind>
             <string>///form_boxChains0(64,vw/3,8);
-form_boxChains0(-64,vw/4,8);
+form_boxChains0(180,vw/4,8);
 </string>
           </argument>
         </arguments>
@@ -63,7 +63,7 @@ form_boxChains0(-64,vw/4,8);
     </event>
   </entry>
   <entry>
-    <step>180</step>
+    <step>120</step>
     <event>
       <action>
         <libid>1</libid>
@@ -90,7 +90,7 @@ form_boxChains0(-64,vw/2,8);
     </event>
   </entry>
   <entry>
-    <step>360</step>
+    <step>210</step>
     <event>
       <action>
         <libid>1</libid>
@@ -108,8 +108,8 @@ form_boxChains0(-64,vw/2,8);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///form_boxChains0(0,vw/2,6);
-form_boxChains0(0,vw/2,4);
+            <string>///form_boxChains0(0,vh/2,6);
+form_boxChains0(200,vh/4,4);
 
 </string>
           </argument>
@@ -118,7 +118,7 @@ form_boxChains0(0,vw/2,4);
     </event>
   </entry>
   <entry>
-    <step>480</step>
+    <step>300</step>
     <event>
       <action>
         <libid>1</libid>
@@ -145,7 +145,7 @@ form_boxChains0(0,vw/2+100,4);
     </event>
   </entry>
   <entry>
-    <step>570</step>
+    <step>390</step>
     <event>
       <action>
         <libid>1</libid>
@@ -163,8 +163,8 @@ form_boxChains0(0,vw/2+100,4);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///form_curvedLeft(-160,12);
-form_curvedLeft(-160,0,6);
+            <string>///form_curvedLeft(-160,0,12);
+form_curvedLeft(-160,-80,12);
 </string>
           </argument>
         </arguments>
@@ -172,7 +172,7 @@ form_curvedLeft(-160,0,6);
     </event>
   </entry>
   <entry>
-    <step>660</step>
+    <step>480</step>
     <event>
       <action>
         <libid>1</libid>
@@ -190,8 +190,8 @@ form_curvedLeft(-160,0,6);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///form_curvedRight(-240,12);
-form_curvedRight(-240,0,6);
+            <string>///form_curvedRight(-240,0,12);
+form_curvedRight(-240,-80,12);
 </string>
           </argument>
         </arguments>
@@ -199,7 +199,7 @@ form_curvedRight(-240,0,6);
     </event>
   </entry>
   <entry>
-    <step>720</step>
+    <step>540</step>
     <event>
       <action>
         <libid>1</libid>
@@ -218,7 +218,7 @@ form_curvedRight(-240,0,6);
           <argument>
             <kind>1</kind>
             <string>///form_curvedLeft(-160,64,12);
-form_curvedLeft(-160,64,12);
+form_curvedLeft(-160,-40,12);
 </string>
           </argument>
         </arguments>
@@ -226,7 +226,7 @@ form_curvedLeft(-160,64,12);
     </event>
   </entry>
   <entry>
-    <step>810</step>
+    <step>630</step>
     <event>
       <action>
         <libid>1</libid>
@@ -244,8 +244,8 @@ form_curvedLeft(-160,64,12);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///form_curvedRight(-240,12);
-form_curvedRight(-240,64,12);
+            <string>///form_curvedRight(-240,64,12);
+form_curvedRight(-240,-40,12);
 </string>
           </argument>
         </arguments>
@@ -253,7 +253,7 @@ form_curvedRight(-240,64,12);
     </event>
   </entry>
   <entry>
-    <step>1170</step>
+    <step>990</step>
     <event>
       <action>
         <libid>1</libid>

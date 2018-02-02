@@ -78,7 +78,7 @@ if rollOver and objectAge &gt; 10 {
         image_alpha = .5;
     }
 
-    if mouse_check_button_released(mb_left) and !locked {
+    if mouse_check_button_released(mb_left) and !locked and abs(frac(view_xview[0]/vw)) &lt; .03 {
         currentLevel = levelID;
         room_goto_next();
     }

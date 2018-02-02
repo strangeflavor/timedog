@@ -1,5 +1,5 @@
 #define form_curvedLeft
-///form_curvedLeft(xoffset,count);
+///form_curvedLeft(xoffset,yoffset,count);
 trace('starting form curved left');
 
 var arg;
@@ -23,7 +23,7 @@ var count = arg[2];
 if count < 1 count = 5;
 
 for (var i=0;i<count;i+=1) {
-    tId = make(vw/2+xoffset+i*2,-32+yoffset,oMiniThex);
+    tId = make(vw/2+xoffset+i*2,yoffset,oMiniThex);
 
     tId.waitTime = (i+1)*6;//irandom(6);// i*10;
     tId.invulTime = 6;
@@ -48,7 +48,7 @@ for (var i=0;i<count;i+=1) {
 }
 
 #define form_curvedRight
-///form_curvedLeft(xoffset,count);
+///form_curvedLeft(xoffset,yoffset,count);
 trace('starting form curved left');
 
 var arg;
@@ -72,7 +72,7 @@ var count = arg[2];
 if count < 1 count = 5;
 
 for (var i=0;i<count;i+=1) {
-    tId = make(vw/2+xoffset+i*2,-32,oMiniThex);
+    tId = make(vw/2+xoffset+i*2,yoffset,oMiniThex);
 
     tId.waitTime = (i+1)*6;//irandom(6);// i*10;
     tId.invulTime = 6;
