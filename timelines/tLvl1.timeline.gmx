@@ -164,7 +164,7 @@ form_boxChains0(0,vw/2+100,4);
           <argument>
             <kind>1</kind>
             <string>///form_curvedLeft(-160,0,12);
-form_curvedLeft(-160,-80,12);
+form_curvedLeft(-160,-160,12);
 </string>
           </argument>
         </arguments>
@@ -172,7 +172,7 @@ form_curvedLeft(-160,-80,12);
     </event>
   </entry>
   <entry>
-    <step>480</step>
+    <step>520</step>
     <event>
       <action>
         <libid>1</libid>
@@ -191,7 +191,7 @@ form_curvedLeft(-160,-80,12);
           <argument>
             <kind>1</kind>
             <string>///form_curvedRight(-240,0,12);
-form_curvedRight(-240,-80,12);
+form_curvedRight(-180,-160,12);
 </string>
           </argument>
         </arguments>
@@ -199,7 +199,7 @@ form_curvedRight(-240,-80,12);
     </event>
   </entry>
   <entry>
-    <step>540</step>
+    <step>600</step>
     <event>
       <action>
         <libid>1</libid>
@@ -217,8 +217,7 @@ form_curvedRight(-240,-80,12);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///form_curvedLeft(-160,64,12);
-form_curvedLeft(-160,-40,12);
+            <string>form_boxChains0(90,vw/2,8);
 </string>
           </argument>
         </arguments>
@@ -226,7 +225,7 @@ form_curvedLeft(-160,-40,12);
     </event>
   </entry>
   <entry>
-    <step>630</step>
+    <step>680</step>
     <event>
       <action>
         <libid>1</libid>
@@ -244,8 +243,12 @@ form_curvedLeft(-160,-40,12);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///form_curvedRight(-240,64,12);
-form_curvedRight(-240,-40,12);
+            <string>with make(room_width-64,-32,oBeamCannon) {
+    path = pCurvedApproach;
+    path_speed = 6;
+    path_endtime = 45;
+    endaction = path_action_stop;
+}
 </string>
           </argument>
         </arguments>

@@ -215,6 +215,11 @@ draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
 if debug &gt;= 1 {
     draw_text(8*scale,vh-24*scale,instance_count);
+
+    with oEnemy {
+        draw_set_halign(fa_middle);
+        draw_text(x,y+sprite_get_height(sprite_index)/2,'*a'+string(active));
+    }
 }
 </string>
           </argument>
@@ -299,7 +304,7 @@ trace('saved '+string(levelManager.timeline_position)+' to debugTimelineStartPos
     view_wview[1] *= 1.5;
     view_hview[1] *= 1.5;
     view_xview[1] -= 128 // view_wview[1]*.75;
-    view_yview[1] -= 64 //view_hview[1]*.75;
+    view_yview[1] -= 160 //view_hview[1]*.75;
 } else {
     view_xview[1] = 0;
     view_yview[1] = 0;

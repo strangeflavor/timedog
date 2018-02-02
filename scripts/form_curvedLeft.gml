@@ -1,5 +1,5 @@
 #define form_curvedLeft
-///form_curvedLeft(xoffset,yoffset,count);
+///form_curvedLeft(xoffset,yoffset,count,speed);
 trace('starting form curved left');
 
 var arg;
@@ -22,13 +22,16 @@ if yoffset == -1 yoffset = 0;
 var count = arg[2];
 if count < 1 count = 5;
 
+var _speed = arg[3];
+if _speed == -1 _speed = 12;
+
 for (var i=0;i<count;i+=1) {
     tId = make(vw/2+xoffset+i*2,yoffset,oMiniThex);
 
     tId.waitTime = (i+1)*6;//irandom(6);// i*10;
     tId.invulTime = 6;
     tId.path = pMoonShaped;
-    tId.path_speed = 8;
+    tId.path_speed = _speed;
 
     //tId.phaseCondition[0] = _PHASE_CONDITION_TIME;
     //tId.phaseConditionArguments[0,0] = i*30;
@@ -48,7 +51,7 @@ for (var i=0;i<count;i+=1) {
 }
 
 #define form_curvedRight
-///form_curvedLeft(xoffset,yoffset,count);
+///form_curvedRight(xoffset,yoffset,count,speed);
 trace('starting form curved left');
 
 var arg;
@@ -70,6 +73,8 @@ if yoffset == -1 yoffset = 0;
 
 var count = arg[2];
 if count < 1 count = 5;
+var _speed = arg[3];
+if _speed == -1 _speed = 12;
 
 for (var i=0;i<count;i+=1) {
     tId = make(vw/2+xoffset+i*2,yoffset,oMiniThex);
@@ -77,7 +82,7 @@ for (var i=0;i<count;i+=1) {
     tId.waitTime = (i+1)*6;//irandom(6);// i*10;
     tId.invulTime = 6;
     tId.path = pMoonShaped;
-    tId.path_speed = -8;
+    tId.path_speed = -_speed;
     tId.path_position = 1;
     tId.path_endaction = path_action_reverse;
 
