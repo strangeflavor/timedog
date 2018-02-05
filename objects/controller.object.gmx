@@ -37,6 +37,7 @@ active = true;
 objectAge = 0;
 
 surf = -1;
+noisesurf = -1;
 </string>
           </argument>
         </arguments>
@@ -171,6 +172,8 @@ draw_set_alpha(1);
           <argument>
             <kind>1</kind>
             <string>if !surface_exists(surf) surf = surface_create(view_wview[0], view_hview[0]);
+if !surface_exists(noisesurf) noisesurf = surface_create(view_wview[0], view_hview[0]);
+
 if view_wview[1] == vw view_xview[1] = view_xview[0]; // condition here is to allow f2 debug zoomout
 
 view_surface_id[1] = surf;
@@ -196,22 +199,30 @@ view_surface_id[1] = surf;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if surface_exists(surf) {
+            <string>if surface_exists(surf) and room != rTitle {
     // noise test
-    if view_wview[1] == vw {
-        surface_set_target(surf);
+    if surface_exists(noisesurf) {
+        if frac(objectAge/6) == 0 {
+            if view_wview[1] == vw and 
+                surface_set_target(noisesurf);
+    
+                draw_set_color(make_color_rgb(64+irandom(128),128+irandom(128),128+irandom(128)));
+                for(var i=0;i&lt;6;i+=1) {
+                    draw_circle(irandom(view_wview[0]),irandom(view_hview[0]),60+irandom(120),false);
+                }
         
-        draw_set_alpha(.25);
-        draw_circle_colour(irandom(view_wview[0]),irandom(view_hview[0]),60+irandom(120),c_black,c_black,false);
+                surface_reset_target();
+            }
+    } else {
         
-        for(var i=0;i&lt;16;i+=1) {
-            draw_circle_colour(irandom(view_wview[0]),irandom(view_hview[0]),60+irandom(120),c_black,c_black,false);
-        }
-        surface_reset_target();
-        draw_set_alpha(1);
     }
 
-    draw_surface_stretched(surf, 0, 0, display_get_gui_width(), display_get_gui_height());
+    draw_surface_stretched(surf, 0, 0, display_get_gui_width(), display_get_gui_height());    
+    draw_set_blend_mode_ext(bm_dest_color, bm_zero);
+    //draw_set_alpha(.5);
+    draw_surface_stretched(noisesurf, 0, 0, display_get_gui_width(), display_get_gui_height());
+    draw_set_blend_mode(bm_normal);
+    //draw_set_alpha(1);
 }
 </string>
           </argument>
