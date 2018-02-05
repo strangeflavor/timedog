@@ -205,7 +205,7 @@ if y &lt; 0 y = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !invincible kill(self);
+            <string>if !invincible and other.dangerous kill(self);
 </string>
           </argument>
         </arguments>

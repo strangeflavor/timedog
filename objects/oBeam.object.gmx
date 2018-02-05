@@ -27,10 +27,14 @@
             <kind>1</kind>
             <string>image_blend = c_aqua;
 duration = 60*5;
+dangerous = false;
 objectAge = 0;
 
 xo = 0;
 yo = 0;
+
+image_xscale = 0;
+image_yscale = 1;
 </string>
           </argument>
         </arguments>
@@ -85,6 +89,47 @@ objectAge += 1;
           <argument>
             <kind>1</kind>
             <string>if objectAge == 1 make(x,y,oFXFlare);
+
+if objectAge == 3 {
+    image_xscale_tween = TweenFire(id, "", EaseInExpo, TWEEN_MODE_ONCE, true, 0.0, .5, .1, 1);
+    image_xscale = TweenCalc(image_xscale_tween);
+}
+
+if objectAge &gt; 9 {
+    if TweenExists(image_xscale_tween) {
+        image_xscale = TweenCalc(image_xscale_tween);
+    }
+}
+
+if objectAge &gt; 36 {
+    dangerous = true;
+    image_blend = make_color_rgb(64,128+irandom(64),128+irandom(128));
+    if frac(objectAge/3) == 0 image_blend = merge_color(c_dkgray,image_blend,.25)
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_sprite_ext(sprite_index,0,x,y,image_xscale,image_yscale,0,image_blend,1);
 </string>
           </argument>
         </arguments>
