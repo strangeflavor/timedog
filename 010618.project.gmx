@@ -145,6 +145,9 @@
     <sprites name="maze">
       <sprite>sprites\sBlock</sprite>
     </sprites>
+    <sprites name="noisetest">
+      <sprite>sprites\sBrak</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bgTest</background>
@@ -347,6 +350,7 @@
       <object>objects\oTimelineLooper</object>
     </objects>
     <objects name="debug">
+      <object>objects\surfaceTester</object>
       <object>objects\oConsole</object>
     </objects>
     <objects name="system">
@@ -354,6 +358,7 @@
       <object>objects\oMenu</object>
       <object>objects\oFX</object>
       <object>objects\oAudio</object>
+      <object>objects\oBG</object>
       <object>objects\oHUD</object>
     </objects>
     <objects name="player">
