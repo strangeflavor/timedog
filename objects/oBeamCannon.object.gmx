@@ -89,7 +89,7 @@ explosionType = sLargeExplosion;
         owner = other.id;
         duration = 120;
     }
-    addRecoil(30);
+    addRecoil(60);
 }
 
 if objectAge == 210 {

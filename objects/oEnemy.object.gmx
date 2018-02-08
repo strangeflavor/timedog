@@ -259,8 +259,8 @@ if waitTime &lt; 0 {
     }
 
     if recoil &gt; 0 {
-        recoil -= 1;
-        y+=1;
+        recoil -= 4;
+        y+=4;
     }
 
     //////////////////////////
@@ -269,7 +269,7 @@ if waitTime &lt; 0 {
 
     if path_index == -1 {
         if path &gt; -1 {
-            trace('enemy starting path at spd '+string(path_speed));
+            //trace('enemy starting path at spd '+string(path_speed));
             path_start(path,path_speed,path_endaction,false);
         }
     } else {

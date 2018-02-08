@@ -38,6 +38,7 @@ switch phaseCondition[currentPhase] {
     case _PHASE_CONDITION_Y:
         var yStop = phaseConditionArguments[currentPhase,0];
         if y > yStop {
+            y = yStop;
             timeline_running = false;
             path_end();
             met_condition = true;
