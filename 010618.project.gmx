@@ -126,6 +126,7 @@
     </sprites>
     <sprites name="enemy">
       <sprite>sprites\sprMidboss0</sprite>
+      <sprite>sprites\sFireAtPlayer</sprite>
       <sprite>sprites\spr_drone</sprite>
       <sprite>sprites\sSpring</sprite>
       <sprite>sprites\sThexbot</sprite>
@@ -150,6 +151,7 @@
     </sprites>
   </sprites>
   <backgrounds name="background">
+    <background>background\smp_bokeh</background>
     <background>background\bgTest</background>
     <background>background\bgStarfield</background>
     <background>background\bgStarfieldTop</background>
@@ -260,6 +262,7 @@
       <scripts name="steering">
         <script>scripts\sb_seek.gml</script>
         <script>scripts\sb_seek_strike.gml</script>
+        <script>scripts\sb_seek_arrive.gml</script>
         <script>scripts\sb_flee.gml</script>
         <script>scripts\sb_pursuit.gml</script>
         <script>scripts\sb_evade.gml</script>
@@ -313,10 +316,12 @@
     </scripts>
     <script>scripts\x_axis_get.gml</script>
     <script>scripts\endTimeline.gml</script>
-    <scripts name="obsoslete">
-      <script>scripts\sokosobolete.gml</script>
-    </scripts>
   </scripts>
+  <shaders name="shaders">
+    <shader type="GLSLES">shaders\shader_bloom.shader</shader>
+    <shader type="GLSLES">shaders\shader_bokeh.shader</shader>
+    <shader type="GLSLES">shaders\shader_volumeLight.shader</shader>
+  </shaders>
   <fonts name="fonts">
     <font>fonts\fArial</font>
     <font>fonts\fFont</font>
@@ -370,7 +375,9 @@
     </objects>
     <objects name="enemy">
       <object>objects\oEnemy</object>
+      <object>objects\oSteering</object>
       <object>objects\oMidBoss</object>
+      <object>objects\oFireAtPlayer</object>
       <object>objects\oAimAtPlayer</object>
       <object>objects\oDrone</object>
       <object>objects\oMiniThex</object>
@@ -404,7 +411,7 @@
     <room>rooms\rMysteryPlanet</room>
     <room>rooms\roomTest</room>
   </rooms>
-  <constants number="22">
+  <constants number="23">
     <constant name="stop">0</constant>
     <constant name="retreat">1</constant>
     <constant name="attack">2</constant>
@@ -424,9 +431,10 @@
     <constant name="_WIN_FORMATIONS_COMPLETE">2</constant>
     <constant name="_WIN_TIMELINE_END">3</constant>
     <constant name="_WIN_PROTECTION">4</constant>
-    <constant name="_PHASE_CONDITION_Y">0</constant>
-    <constant name="_PHASE_CONDITION_TIME">1</constant>
-    <constant name="_PHASE_CONDITION_HP">2</constant>
+    <constant name="_PHASE_CONDITION_X">0</constant>
+    <constant name="_PHASE_CONDITION_Y">1</constant>
+    <constant name="_PHASE_CONDITION_TIME">2</constant>
+    <constant name="_PHASE_CONDITION_HP">3</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

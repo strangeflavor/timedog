@@ -271,7 +271,7 @@ if debug &gt;= 1 {
 
     with oEnemy {
         draw_set_halign(fa_middle);
-        draw_text(x,y+sprite_get_height(sprite_index)/2,'*a'+string(active));
+        draw_text(x,y+sprite_get_height(sprite_index)+2,'*a'+string(active)+', p'+string(currentPhase));
     }
 }
 </string>

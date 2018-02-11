@@ -10,15 +10,10 @@ var _weight = argument[3];
 var _desired_velocity = vect_subtract(_target,position);
 var _distance = vect_len(_desired_velocity);
 
-if(_distance < _slow_radius) { //Inside slowing radius
-    //_desired_velocity = vect_multr(vect_norm(_desired_velocity), (max_speed) * (_distance / _slow_radius));
-    max_speed = max_speed_strike;
-    _desired_velocity = vect_multr(vect_norm(_desired_velocity), max_speed);
-    my_color = c_red;
+if(_distance < _slow_radius) {
+    _desired_velocity = vect_multr(vect_norm(_desired_velocity), (max_speed) * (_distance / _slow_radius));
 } else { // Outside slowing radius
-    max_speed = max_speed_normal;
     _desired_velocity = vect_multr(vect_norm(_desired_velocity), max_speed);
-    my_color = c_white;
 }
 
 return (vect_multr(vect_subtract(_desired_velocity,velocity),_weight));

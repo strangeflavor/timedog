@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>oEnemy</parentName>
+  <parentName>oSteering</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -49,9 +49,6 @@ doStrike = false;
 canstrike = -90;
 endStrikeTimer = 0;
 
-/// Setup Steering Behaviour Support
-
-//Non-Steering behaviour stuff
 my_color = c_white;
 
 image_xscale = 3;
@@ -59,10 +56,6 @@ image_yscale = image_xscale;
 
 
 //Steering behaviour stuff
-position = vect2(x,y); // will be used to update xy
-velocity = vect2(0,0);
-steering = vect2(0,0); // desired velocity
-
 max_speed_normal = 3;
 max_speed_strike = 16;
 max_speed = max_speed_normal;
@@ -89,6 +82,33 @@ max_force = max_force_normal; // How fast it turns
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Screen Wrap
+/*
+if position[1] &gt; room_width position[1] = 0;
+if position[2] &gt; room_height position[2] = 0;
+if position[1] &lt; 0 position[1] = room_width;
+if position[2] &lt; 0 position[2] = room_height;
+*/
+</string>
+          </argument>
+        </arguments>
       </action>
       <action>
         <libid>1</libid>
@@ -149,33 +169,6 @@ x = position[1];
 y = position[2];
 
 image_angle = vect_direction(velocity);
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Screen Wrap
-/*
-if position[1] &gt; room_width position[1] = 0;
-if position[2] &gt; room_height position[2] = 0;
-if position[1] &lt; 0 position[1] = room_width;
-if position[2] &lt; 0 position[2] = room_height;
-*/
 </string>
           </argument>
         </arguments>

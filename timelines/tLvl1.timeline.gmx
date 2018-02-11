@@ -284,8 +284,18 @@ with make(64,-32,oBeamCannon) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///form_boxChains0(64,vw/3,8);
-form_boxChains_Descent(vw-240,vw/4,8);
+            <string>///form_boxChains_Descent(vw-240,vw/4,8);
+
+/*
+with instance_create(-64,room_height/4,fChain) {
+    enemy = oAimAtPlayer;
+    size = 5;
+}
+*/
+
+make(-64,vh-vh/3,oFireAtPlayer);
+
+//make(-64,vh-vh/3,oDrone);
 </string>
           </argument>
         </arguments>

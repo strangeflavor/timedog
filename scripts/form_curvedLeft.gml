@@ -38,7 +38,7 @@ for (var i=0;i<count;i+=1) {
     /*
     tId.phaseDelay[1] = 90;
     tId.phase[1] = enemy_flyAway;
-    tId.phaseArguments[1,0] = 120;    
+    tId.phaseArguments[1,0] = 120;
     */
 
     /*
