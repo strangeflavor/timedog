@@ -94,6 +94,8 @@
   </datafiles>
   <NewExtensions>
     <extension index="0">extensions\TweenGMS</extension>
+    <extension index="1">extensions\PostFx Bundle 1</extension>
+    <extension index="2">extensions\Vignette and Noise shader</extension>
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\sndGet</sound>
@@ -147,6 +149,10 @@
       <sprite>sprites\sBlock</sprite>
     </sprites>
     <sprites name="noisetest">
+      <sprite>sprites\sPaper</sprite>
+      <sprite>sprites\sObsolet</sprite>
+      <sprite>sprites\sFilmGrain</sprite>
+      <sprite>sprites\sGradientCircle</sprite>
       <sprite>sprites\sBrak</sprite>
     </sprites>
   </sprites>
@@ -312,15 +318,21 @@
       <script>scripts\make.gml</script>
       <script>scripts\scrDrawConsole.gml</script>
       <script>scripts\show.gml</script>
+      <script>scripts\tune.gml</script>
       <script>scripts\trace.gml</script>
     </scripts>
     <script>scripts\x_axis_get.gml</script>
     <script>scripts\endTimeline.gml</script>
+    <script>scripts\draw_SHADER_sceneFringe.gml</script>
+    <script>scripts\draw_SHADER_glitter.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shader_bloom.shader</shader>
     <shader type="GLSLES">shaders\shader_bokeh.shader</shader>
     <shader type="GLSLES">shaders\shader_volumeLight.shader</shader>
+    <shader type="GLSLES">shaders\shader_sceneFringe.shader</shader>
+    <shader type="GLSLES">shaders\shd_vignette_noise.shader</shader>
+    <shader type="GLSLES">shaders\shader_glitter.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fArial</font>
@@ -355,6 +367,7 @@
       <object>objects\oTimelineLooper</object>
     </objects>
     <objects name="debug">
+      <object>objects\oTuner</object>
       <object>objects\surfaceTester</object>
       <object>objects\oConsole</object>
     </objects>
@@ -397,6 +410,7 @@
     <objects name="TweenGMS">
       <object>objects\obj_SharedTweener</object>
     </objects>
+    <object>objects\obj_vignette_noise</object>
   </objects>
   <timelines name="timelines">
     <timeline>timelines\tLvl1</timeline>

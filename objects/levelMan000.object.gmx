@@ -42,6 +42,9 @@
             <string>winCondition = _WIN_TIMELINE_END;
 winConditionValue = tLvl1;
 
+TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,0,2,50);
+TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,1,0,25);
+
 alarm[1] = 180;
 </string>
           </argument>
@@ -65,8 +68,8 @@ alarm[1] = 180;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>background_vspeed[0] *= 1.5;
-background_vspeed[1] *= 1.5;
+            <string>//background_vspeed[0] *= 1.5;
+//background_vspeed[1] *= 1.5;
 
 alarm[1] = 180;
 </string>

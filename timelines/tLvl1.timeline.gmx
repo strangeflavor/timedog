@@ -21,16 +21,15 @@
             <kind>1</kind>
             <string>random_set_seed(1234);
 
-/*
 var box_rate = 240;
 
 for (var i=0;i&lt;8;i+=1) {
     timeline_moment_add_script(timeline_index,16+box_rate*i,form_boxChains0);
     if frac(i/2) != 0 box_rate -= 30;;
 }
-*/
 
-timeline_position = 740;
+
+//timeline_position = 740;
 </string>
           </argument>
         </arguments>
@@ -303,7 +302,7 @@ make(-64,vh-vh/3,oFireAtPlayer);
     </event>
   </entry>
   <entry>
-    <step>2000</step>
+    <step>20000</step>
     <event>
       <action>
         <libid>1</libid>

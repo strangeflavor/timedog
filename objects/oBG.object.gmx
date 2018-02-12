@@ -25,13 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>objectAge = 0;
+            <string>if instance_number(oBG) &gt; 1 kill(self);
+objectAge = 0;
 noisesurf = -1;
 
-background_index[1] = bgStarfieldTop;
-background_index[0] = bgStarfield;
+//background_index[1] = bgStarfieldTop;
+//background_index[0] = bgStarfield;
 //background_visible[0] = true;
 //background_visible[1] = true;
+
+noisealpha = 1;
 </string>
           </argument>
         </arguments>
@@ -82,87 +85,84 @@ background_y[1] += background_vspeed[1];
             <kind>1</kind>
             <string>if !surface_exists(noisesurf) noisesurf = surface_create(view_wview[0], view_hview[0]);
 
+///////////////////////////////////
+// draw flat bg color cycle
+///////////////////////////////////
+
+var c1 = make_color_rgb(0,0,30);
+var c2 = make_color_rgb(0,5,50);
+
+var bg_color = merge_color(c1,c2,abs(sin(objectAge*.008)));
+
+draw_set_color(bg_color)
+draw_rectangle(0,0,vw,vh,false);
+
+///////////////////////////////////
+// draw to and draw noise surface w/ blend mode
+///////////////////////////////////
+
+draw_set_blend_mode_ext(4,2);
+
 if surface_exists(noisesurf) {
-    if view_wview[1] == vw {
+    if view_wview[1] == vw and view_current == 0 {
         // draw new noise every n frames
-        if frac(objectAge/9) == 0 {
-            surface_set_target(noisesurf);
-
-            draw_sprite_ext(sBrak,0,vw/2+irandom(256)-128,vh/2+irandom(256)-128,1,1,1,c_white,1);
-            if irandom(6) == 1 {
-                //draw_set_color(make_color_rgb(64+irandom(128),128+irandom(128),128+irandom(128)));
-                draw_set_color(choose(c_white,c_red,c_blue));
-                for(var i=0;i&lt;12;i+=1) {
-                    draw_circle(irandom(view_wview[0]),irandom(view_hview[0]),60+irandom(120),false);
-                }
+        surface_set_target(noisesurf);
+        if frac(objectAge/50) == 0 {
+            switch irandom(1) {
+                case 0:
+                    //draw_sprite_ext(sBrak,0,vw/2+irandom(256)-128,vh/2+irandom(256)-128,1,1,1,c_white,.5);
+                    draw_sprite_ext(sFilmGrain,irandom(2),vw/2+irandom(128)-64,vh/2+irandom(128)-64,choose(1,-1,2,-2),choose(1,-1,2,-2),1,c_white,.3);
+                break;
+                case 1:
+                    draw_sprite_ext(sPaper,0,vw/2+irandom(128)-64,vh/2+irandom(128)-64,choose(1,-1,2,-2),choose(1,-1,2,-2),1,c_white,.6);
+                break;
             }
-
-            surface_reset_target();
         } else {
             // fade
-            surface_set_target(noisesurf);
-            draw_set_alpha(.1);
-            draw_rectangle_colour(0,0,vw,vh,c_white,c_white,c_white,c_white,false);
+            draw_set_alpha(.01);
+            var c_fade = bg_color;
+            draw_rectangle_colour(0,0,vw,vh,c_fade,c_fade,c_fade,c_fade,false);
             draw_set_alpha(1);
 
-            surface_reset_target();
+            if irandom(400) == 1 {
+                draw_clear_alpha(c2,.01);
+                draw_set_alpha(1);
+                draw_rectangle_color(0,0,vw,vh,c_black,c_black,c_black,c_black,false);
+            }
         }
+        surface_reset_target();
     }
 
-    // draw backgrounds
-    draw_background_tiled_ext(background_index[0],0,background_y[0],1,1,c_white,1);
-    draw_background_tiled_ext(background_index[1],0,background_y[1],1,1,c_white,1);
-
-    // draw noise    
-    //make(surfaceTester);
-    /*
-    draw_set_blend_mode_ext(9,5);
     draw_surface_stretched(noisesurf, 0, 0, display_get_gui_width(), display_get_gui_height());
     draw_set_blend_mode(bm_normal);
-    */  
-
-
-    var timeMult = 0.0025; //make the animation slower or faster...
-    var time = current_time * timeMult;
-    var oscillatorValue = sin(time);
-    var oscillatorValueAbs = abs(sin(time));
-    
-    //SHADER SETUP
-
-        // Display setup ---------------------------------------------------------------------------
-        display_set_gui_size(room_width, room_height);
-    
-        if os_type == os_android
-        {     
-            vRatio = display_get_gui_width() / display_get_gui_height(); //distort the sampler uvs according to the screen ratio in the mobile devices...
-        }else{
-            vRatio = 1.0;
-        }
-        
-        // Samplers / Textures ---------------------------------------------------------------------
-        
-        // Shader setup ----------------------------------------------------------------------------
-        var shader      = shader_bloom;
-        var u_vRatio    = shader_get_uniform(shader, "u_vRatio");
-        var u_threshold = shader_get_uniform(shader, "u_threshold");
-        var u_radius    = shader_get_uniform(shader, "u_radius");
-        var u_amount    = shader_get_uniform(shader, "u_amount");
-        
-        var threshold = 0.75;
-        var radius = 0.02;
-        var amount = 5.0;
-        
-        shader_set(shader);
-            shader_set_uniform_f(u_vRatio, vRatio);
-            shader_set_uniform_f(u_radius, radius);
-            shader_set_uniform_f(u_threshold, threshold);
-            shader_set_uniform_f(u_amount, amount * oscillatorValueAbs);
-            draw_surface(application_surface,0,0);
-        shader_reset();
-
 }
 
+///////////////////////////////////
+// draw starfields
+///////////////////////////////////
 
+for (var i=0;i&lt;background_vspeed[0]/2;i+=1) {
+    draw_background_tiled_ext(bgStarfield,0,background_y[0]+i*2,2,2,c_blue,.75);
+    draw_background_tiled_ext(bgStarfieldTop,0,background_y[1]+i*3,2,2,c_white,.75);
+}
+
+draw_background_tiled_ext(bgStarfield,0,background_y[0],2,2,c_blue,1);
+
+///////////////////////////////////
+// draw aura around player ship
+///////////////////////////////////
+
+draw_set_blend_mode_ext(9,2);
+draw_set_alpha(.15);
+if instance_exists(oShip) draw_sprite(sGradientCircle,0,oShip.x,oShip.y);
+draw_set_alpha(1);
+draw_set_blend_mode(bm_normal);
+
+///////////////////////////////////
+// draw to scene fringe shader
+///////////////////////////////////
+
+draw_SHADER_sceneFringe(1);
 </string>
           </argument>
         </arguments>
