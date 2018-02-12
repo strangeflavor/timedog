@@ -28,6 +28,7 @@
             <string>if instance_number(oBG) &gt; 1 kill(self);
 objectAge = 0;
 noisesurf = -1;
+starssurf = -1;
 
 //background_index[1] = bgStarfieldTop;
 //background_index[0] = bgStarfield;
@@ -35,6 +36,8 @@ noisesurf = -1;
 //background_visible[1] = true;
 
 noisealpha = 1;
+
+pos = 0;
 </string>
           </argument>
         </arguments>
@@ -84,6 +87,7 @@ background_y[1] += background_vspeed[1];
           <argument>
             <kind>1</kind>
             <string>if !surface_exists(noisesurf) noisesurf = surface_create(view_wview[0], view_hview[0]);
+if !surface_exists(starssurf) starssurf = surface_create(view_wview[0], view_hview[0]);
 
 ///////////////////////////////////
 // draw flat bg color cycle
@@ -107,20 +111,20 @@ if surface_exists(noisesurf) {
     if view_wview[1] == vw and view_current == 0 {
         // draw new noise every n frames
         surface_set_target(noisesurf);
-        if frac(objectAge/50) == 0 {
+        if frac(objectAge/30) == 0 {
             switch irandom(1) {
                 case 0:
                     //draw_sprite_ext(sBrak,0,vw/2+irandom(256)-128,vh/2+irandom(256)-128,1,1,1,c_white,.5);
-                    draw_sprite_ext(sFilmGrain,irandom(2),vw/2+irandom(128)-64,vh/2+irandom(128)-64,choose(1,-1,2,-2),choose(1,-1,2,-2),1,c_white,.3);
+                    draw_sprite_ext(sFilmGrain,irandom(2),vw/2+irandom(128)-64,vh/2+irandom(128)-64,choose(1,-1,2,-2),choose(1,-1,2,-2),1,c_white,.2);
                 break;
                 case 1:
-                    draw_sprite_ext(sPaper,0,vw/2+irandom(128)-64,vh/2+irandom(128)-64,choose(1,-1,2,-2),choose(1,-1,2,-2),1,c_white,.6);
+                    draw_sprite_ext(sPaper,0,vw/2+irandom(128)-64,vh/2+irandom(128)-64,choose(1,-1,2,-2),choose(1,-1,2,-2),1,c_white,.5);
                 break;
             }
         } else {
             // fade
             draw_set_alpha(.01);
-            var c_fade = bg_color;
+            var c_fade = merge_color(bg_color,c_black,0);
             draw_rectangle_colour(0,0,vw,vh,c_fade,c_fade,c_fade,c_fade,false);
             draw_set_alpha(1);
 
@@ -137,26 +141,49 @@ if surface_exists(noisesurf) {
     draw_set_blend_mode(bm_normal);
 }
 
+draw_set_alpha(.5)
+draw_rectangle_colour(0,0,vw,vh,c_black,c_black,c_black,c_black,false);
+draw_set_alpha(1)
+
 ///////////////////////////////////
 // draw starfields
 ///////////////////////////////////
 
-for (var i=0;i&lt;background_vspeed[0]/2;i+=1) {
-    draw_background_tiled_ext(bgStarfield,0,background_y[0]+i*2,2,2,c_blue,.75);
-    draw_background_tiled_ext(bgStarfieldTop,0,background_y[1]+i*3,2,2,c_white,.75);
-}
+if surface_exists(starssurf) {
+    surface_set_target(starssurf);
+    draw_clear_alpha(c_white,0)
+        
+    var starfieldAlpha = 1;
 
-draw_background_tiled_ext(bgStarfield,0,background_y[0],2,2,c_blue,1);
+    for (var i=0;i&lt;background_vspeed[0]/8;i+=1) {
+        draw_background_tiled_ext(bgStarfield,0,background_y[0]+i*2,2,2,c_blue,starfieldAlpha);
+        draw_background_tiled_ext(bgStarfieldTop,0,background_y[1]+i*3,2,2,c_white,starfieldAlpha);
+    }
+
+    draw_background_tiled_ext(bgStarfield,0,background_y[0],2,2,merge_color(c_white,c_blue,abs(sin(objectAge*.002))),1);
+    surface_reset_target();
+
+    draw_surface_stretched(starssurf, 0, 0, display_get_gui_width(), display_get_gui_height());
+    draw_set_alpha(.5);
+    //make(surfaceTester); //7,9
+    //draw_set_blend_mode_ext(surfaceTester.srcmode,surfaceTester.destmode);
+    draw_set_blend_mode_ext(7,9);
+    draw_rectangle_color(0,0,vw,vh,c_black,c_black,c_white,c_white,false);
+    draw_set_alpha(1);
+    draw_set_blend_mode(bm_normal);
+}
 
 ///////////////////////////////////
 // draw aura around player ship
 ///////////////////////////////////
 
-draw_set_blend_mode_ext(9,2);
-draw_set_alpha(.15);
-if instance_exists(oShip) draw_sprite(sGradientCircle,0,oShip.x,oShip.y);
-draw_set_alpha(1);
-draw_set_blend_mode(bm_normal);
+//if irandom(2) == 1 {
+    draw_set_blend_mode_ext(9,2);
+    draw_set_alpha(irandom(10)*.1);
+    if instance_exists(oShip) draw_sprite(sGradientCircle,0,oShip.x+irandom(6)-3,oShip.y+irandom(6)-3);
+    draw_set_alpha(1);
+    draw_set_blend_mode(bm_normal);
+//}
 
 ///////////////////////////////////
 // draw to scene fringe shader

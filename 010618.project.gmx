@@ -325,6 +325,7 @@
     <script>scripts\endTimeline.gml</script>
     <script>scripts\draw_SHADER_sceneFringe.gml</script>
     <script>scripts\draw_SHADER_glitter.gml</script>
+    <script>scripts\draw_SHADER_bokeh.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shader_bloom.shader</shader>
@@ -333,6 +334,8 @@
     <shader type="GLSLES">shaders\shader_sceneFringe.shader</shader>
     <shader type="GLSLES">shaders\shd_vignette_noise.shader</shader>
     <shader type="GLSLES">shaders\shader_glitter.shader</shader>
+    <shader type="GLSLES">shaders\shader6.shader</shader>
+    <shader type="GLSLES">shaders\sh_saturation.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fArial</font>
@@ -411,6 +414,7 @@
       <object>objects\obj_SharedTweener</object>
     </objects>
     <object>objects\obj_vignette_noise</object>
+    <object>objects\o_shader_start</object>
   </objects>
   <timelines name="timelines">
     <timeline>timelines\tLvl1</timeline>

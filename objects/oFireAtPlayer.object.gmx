@@ -146,7 +146,7 @@ if currentPhase == 1 {
 */
 
 if currentPhase == 2 {
-    enemy_move_rotate(oShip.x,oShip.y,0,.5);
+    if instance_exists(oShip) enemy_move_rotate(oShip.x,oShip.y,0,.5);
 }
 </string>
           </argument>
