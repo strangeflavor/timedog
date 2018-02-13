@@ -37,6 +37,8 @@ active = true;
 objectAge = 0;
 
 surf = -1;
+
+screen_scale = 1;
 </string>
           </argument>
         </arguments>
@@ -170,10 +172,9 @@ draw_set_alpha(1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !surface_exists(surf) surf = surface_create(view_wview[0], view_hview[0]);
+            <string>if !surface_exists(surf) surf = surface_create(base_w, base_h);
 
 if view_wview[1] == vw view_xview[1] = view_xview[0]; // condition here is to allow f2 debug zoomout
-
 view_surface_id[1] = surf;
 </string>
           </argument>
@@ -235,10 +236,11 @@ if surface_exists(surf) and room != rTitle {
     //draw_set_alpha(1);
 }
 */
-
+/*
 if surface_exists(surf) and room != rTitle {
     draw_surface_stretched(surf, 0, 0, display_get_gui_width(), display_get_gui_height());    
 }
+*/
 </string>
           </argument>
         </arguments>
@@ -298,6 +300,34 @@ if debug &gt;= 1 {
             <kind>1</kind>
             <string>debugTimelineStartPos = levelManager.timeline_position - 30;
 trace('saved '+string(levelManager.timeline_position)+' to debugTimelineStartPos');
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="115">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/*
+screen_scale += 1;
+screenResize(false);
+*/
+
+window_set_fullscreen(!window_get_fullscreen());
 </string>
           </argument>
         </arguments>

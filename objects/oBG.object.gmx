@@ -38,6 +38,13 @@ starssurf = -1;
 noisealpha = 1;
 
 pos = 0;
+
+for (var i=0;i&lt;3;i+=1) {
+    twinkleSpotX[i] = vw/2+irandom(80)-40;
+    twinkleSpotY[i] = vh/2+irandom(80)-40;
+    tXVel[i] = choose(1,-1)*choose(1,2,.5);
+    tYVel[i] = choose(1,-1)*choose(1,2,.5);
+}
 </string>
           </argument>
         </arguments>
@@ -161,29 +168,52 @@ if surface_exists(starssurf) {
     }
 
     draw_background_tiled_ext(bgStarfield,0,background_y[0],2,2,merge_color(c_white,c_blue,abs(sin(objectAge*.002))),1);
+    
+    // draw twinkle blocker circles
+    for (var i=0;i&lt;3;i+=1) {
+        //draw_set_color(c_black);
+        //make(surfaceTester); //7,9
+        //draw_set_blend_mode_ext(surfaceTester.srcmode,surfaceTester.destmode);
+        draw_set_blend_mode_ext(9,1);
+        draw_circle(twinkleSpotX[i],twinkleSpotY[i],32,false);
+        draw_set_blend_mode(bm_normal);
+
+        twinkleSpotX[i] += tXVel[i];
+        twinkleSpotY[i] += tYVel[i];
+        if twinkleSpotX[i] &gt;= vw or twinkleSpotX[i] &lt;= 0 {
+            tXVel[i] = -sign(tXVel[i])*choose(1,2,.5);
+        }
+
+        if twinkleSpotY[i] &gt;= vh or twinkleSpotY[i] &lt;= 0 {
+            tYVel[i] = -sign(tYVel[i])*choose(1,2,.5);
+        }
+    }
+    
+    
     surface_reset_target();
 
     draw_surface_stretched(starssurf, 0, 0, display_get_gui_width(), display_get_gui_height());
-    draw_set_alpha(.5);
+    draw_set_alpha(1);
+        
     //make(surfaceTester); //7,9
     //draw_set_blend_mode_ext(surfaceTester.srcmode,surfaceTester.destmode);
-    draw_set_blend_mode_ext(7,9);
+    /*
+    draw_set_blend_mode_ext(1,2);
     draw_rectangle_color(0,0,vw,vh,c_black,c_black,c_white,c_white,false);
     draw_set_alpha(1);
     draw_set_blend_mode(bm_normal);
+    */
 }
 
 ///////////////////////////////////
 // draw aura around player ship
 ///////////////////////////////////
 
-//if irandom(2) == 1 {
-    draw_set_blend_mode_ext(9,2);
-    draw_set_alpha(irandom(10)*.1);
-    if instance_exists(oShip) draw_sprite(sGradientCircle,0,oShip.x+irandom(6)-3,oShip.y+irandom(6)-3);
-    draw_set_alpha(1);
-    draw_set_blend_mode(bm_normal);
-//}
+draw_set_blend_mode_ext(9,2);
+draw_set_alpha(irandom(10)*.1);
+if instance_exists(oShip) draw_sprite(sGradientCircle,0,oShip.x+irandom(6)-3,oShip.y+irandom(6)-3);
+draw_set_alpha(1);
+draw_set_blend_mode(bm_normal);
 
 ///////////////////////////////////
 // draw to scene fringe shader

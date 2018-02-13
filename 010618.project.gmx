@@ -323,6 +323,7 @@
     </scripts>
     <script>scripts\x_axis_get.gml</script>
     <script>scripts\endTimeline.gml</script>
+    <script>scripts\screenResize.gml</script>
     <script>scripts\draw_SHADER_sceneFringe.gml</script>
     <script>scripts\draw_SHADER_glitter.gml</script>
     <script>scripts\draw_SHADER_bokeh.gml</script>

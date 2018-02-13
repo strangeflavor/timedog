@@ -51,7 +51,7 @@ objectAge = 0;
             <kind>1</kind>
             <string>objectAge += 1;
 if objectAge &gt; introDuration {
-    oHUD.showHud = true;
+    if instance_exists(oHUD) oHUD.showHud = true;
     instance_destroy();
 }
 </string>
