@@ -17,9 +17,11 @@ if fullscreen {
     screen_w = base_w*screen_scale;
     screen_h = base_h*screen_scale;
 
+    /*
     if screen_scale > 3 {
         screen_scale = 1;
     }
+    */
 
     var aspect = base_w / base_h ; // get the GAME aspect ratio
     if (display_get_width() < display_get_height())
@@ -40,7 +42,11 @@ surface_resize(application_surface, ww, hh);
 window_set_size(ww, hh);
 screen_w = ww;
 screen_h = hh;
-recenter_window = true;
+alarm[0] = 1; //recenter_window = true;
+
+trace('resized window to '+string(ww)+'x'+string(hh));
+//show('ww: '+string(ww)+', hh: '+string(hh))
+//show('display_get_width: '+string(display_get_width())+', display_get_height: '+string(display_get_height()))
 
 if ww > display_get_width() or hh > display_get_height() {
     screen_scale = 1;

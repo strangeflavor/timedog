@@ -44,6 +44,30 @@ screen_scale = 1;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///window_center();
+window_center();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -236,11 +260,11 @@ if surface_exists(surf) and room != rTitle {
     //draw_set_alpha(1);
 }
 */
-/*
-if surface_exists(surf) and room != rTitle {
+
+if surface_exists(surf) and room == rDeepSpace {
     draw_surface_stretched(surf, 0, 0, display_get_gui_width(), display_get_gui_height());    
 }
-*/
+
 </string>
           </argument>
         </arguments>
@@ -322,12 +346,8 @@ trace('saved '+string(levelManager.timeline_position)+' to debugTimelineStartPos
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
-screen_scale += 1;
+            <string>screen_scale += .5;
 screenResize(false);
-*/
-
-window_set_fullscreen(!window_get_fullscreen());
 </string>
           </argument>
         </arguments>
@@ -403,6 +423,29 @@ if view_wview[1] == vw {
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+      </action>
+    </event>
+    <event eventtype="9" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if keyboard_check(vk_lalt) or keyboard_check(vk_ralt) window_set_fullscreen(!window_get_fullscreen());
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
   </events>

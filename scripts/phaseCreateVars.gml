@@ -16,6 +16,8 @@ for (var i=0;i<8;i+=1) {
 }
 
 #define formationTransferPhaseVars
+///formationTransferPhaseVars()
+
 var eID = argument0;
 
 eID.currentPhase = 0;
@@ -31,6 +33,9 @@ for (var i=0;i<8;i+=1) {
 }
 
 eID.currentPhaseDelay = eID.phaseDelay[0];
+
+enemyCount += 1;
+myEnemies[enemyCount] = eID;
 
 #define checkPhaseCondition
 var met_condition = false;
@@ -67,6 +72,7 @@ currentPhaseAge += 1;
 
 if currentPhaseDelay >= 0 {
     currentPhaseDelay -= 1;
+    if currentPhaseDelay == 0 show('phase delay don');
 } else {
     if phase[phase_index] > -1 {
         script_execute(phase[phase_index],phaseArguments[phase_index,0],phaseArguments[phase_index,1],phaseArguments[phase_index,2],phaseArguments[phase_index,3]);

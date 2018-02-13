@@ -65,7 +65,7 @@ with make(vw-32-(32*_size)+xoffset,-32,fChain) {
 
 #define form_boxChains_Descent
 ///form_boxChains0(xoffset,ystop,rate,path_speed,size);
-trace('starting form boxchains0');
+trace('starting form boxchains_descent');
 
 var arg;
 for (var i = 0; i < 16; i += 1;) {
@@ -104,7 +104,8 @@ with make(-32+xoffset,32,fChain) {
     phaseCondition[0] = _PHASE_CONDITION_Y;
     phaseConditionArguments[0,0] = other._ystop - 60;
 
-    phaseDelay[1] = 90;
+    phaseDelay[1] = _PHASE_DELAY_WAIT;
+        advancePhase_AbsoluteTime[1] = 180;
     phase[1] = enemy_move;//_formation;
     phaseArguments[1,0] = 270;
     phaseArguments[1,1] = 4;
@@ -124,8 +125,9 @@ with make(vw-32-(32*_size)+xoffset,-32,fChain) {
     phaseCondition[0] = _PHASE_CONDITION_Y;
     phaseConditionArguments[0,0] = other._ystop;
 
-    phaseDelay[1] = 60;
-    phase[1] = enemy_move_formation;
+    phaseDelay[1] = _PHASE_DELAY_WAIT;
+        advancePhase_AbsoluteTime[1] = 180;
+    phase[1] = enemy_move;
     phaseArguments[1,0] = 270;
     phaseArguments[1,1] = 4;
 }

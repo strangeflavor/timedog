@@ -430,7 +430,7 @@
     <room>rooms\rMysteryPlanet</room>
     <room>rooms\roomTest</room>
   </rooms>
-  <constants number="23">
+  <constants number="24">
     <constant name="stop">0</constant>
     <constant name="retreat">1</constant>
     <constant name="attack">2</constant>
@@ -454,6 +454,7 @@
     <constant name="_PHASE_CONDITION_Y">1</constant>
     <constant name="_PHASE_CONDITION_TIME">2</constant>
     <constant name="_PHASE_CONDITION_HP">3</constant>
+    <constant name="_PHASE_DELAY_WAIT">999999</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

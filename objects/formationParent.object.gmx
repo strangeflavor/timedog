@@ -36,7 +36,15 @@ formationStartY = ystart;
 
 _path_speed = 1;
 _path_scale = 1;
-        
+
+for (var i=0;i&lt;16;i+=1) {
+    // advances the phase of the enemies' created by this formation based on time since the formation was created
+    advancePhase_AbsoluteTime[i] = -1;
+}
+
+for (var i=0;i&lt;64;i+=1) myEnemies[i] = -1;
+enemyCount = 0;
+
 phaseCreateVars();
 </string>
           </argument>
@@ -63,6 +71,19 @@ phaseCreateVars();
             <string>wait -= 1;
 if wait == 0 alarm[0] = 1;
 
+if advancePhase_AbsoluteTime[currentPhase] &gt; 0 {
+    advancePhase_AbsoluteTime[currentPhase] -= 1;
+    if advancePhase_AbsoluteTime[currentPhase] == 0 {
+        for (var i=0;i&lt;64;i+=1) {
+            if myEnemies[i] &gt; -1 {
+                show('absolute phase update go!');
+                myEnemies[i].currentPhaseDelay = 0;
+            } else {
+                break;
+            }
+        }
+    }
+}
 </string>
           </argument>
         </arguments>

@@ -21,15 +21,16 @@
             <kind>1</kind>
             <string>random_set_seed(1234);
 
+timeline_position = 740;
+
+/*
 var box_rate = 240;
 
 for (var i=0;i&lt;8;i+=1) {
     timeline_moment_add_script(timeline_index,16+box_rate*i,form_boxChains0);
     if frac(i/2) != 0 box_rate -= 30;;
 }
-
-
-//timeline_position = 740;
+*/
 </string>
           </argument>
         </arguments>
@@ -284,6 +285,7 @@ with make(64,-32,oBeamCannon) {
           <argument>
             <kind>1</kind>
             <string>///form_boxChains_Descent(vw-240,vw/4,8);
+form_boxChains_Descent(vw-240,vw/4,8);
 
 /*
 with instance_create(-64,room_height/4,fChain) {
@@ -292,9 +294,7 @@ with instance_create(-64,room_height/4,fChain) {
 }
 */
 
-make(-64,vh-vh/3,oFireAtPlayer);
-
-//make(-64,vh-vh/3,oDrone);
+//make(-64,vh-vh/3,oFireAtPlayer);
 </string>
           </argument>
         </arguments>
