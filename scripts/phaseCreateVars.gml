@@ -34,9 +34,6 @@ for (var i=0;i<8;i+=1) {
 
 eID.currentPhaseDelay = eID.phaseDelay[0];
 
-enemyCount += 1;
-myEnemies[enemyCount] = eID;
-
 #define checkPhaseCondition
 var met_condition = false;
 switch phaseCondition[currentPhase] {

@@ -30,6 +30,7 @@ levelManager.formationCount += 1;
 myFormationID = levelManager.formationCount;
 
 wait = 1;
+active = true;
 space = _NONE;
 formationStartX = xstart;
 formationStartY = ystart;
@@ -41,6 +42,7 @@ for (var i=0;i&lt;16;i+=1) {
     // advances the phase of the enemies' created by this formation based on time since the formation was created
     advancePhase_AbsoluteTime[i] = -1;
 }
+advancePhase_AbsoluteIndex = 0;
 
 for (var i=0;i&lt;64;i+=1) myEnemies[i] = -1;
 enemyCount = 0;
@@ -69,17 +71,26 @@ phaseCreateVars();
           <argument>
             <kind>1</kind>
             <string>wait -= 1;
-if wait == 0 alarm[0] = 1;
+if wait == -1 {
+    active = true;
+    alarm[0] = 1;
+}
 
-if advancePhase_AbsoluteTime[currentPhase] &gt; 0 {
-    advancePhase_AbsoluteTime[currentPhase] -= 1;
-    if advancePhase_AbsoluteTime[currentPhase] == 0 {
-        for (var i=0;i&lt;64;i+=1) {
-            if myEnemies[i] &gt; -1 {
-                show('absolute phase update go!');
-                myEnemies[i].currentPhaseDelay = 0;
-            } else {
-                break;
+if active {
+    if advancePhase_AbsoluteTime[advancePhase_AbsoluteIndex] &gt; 0 {
+        advancePhase_AbsoluteTime[advancePhase_AbsoluteIndex] -= 1;
+        if advancePhase_AbsoluteTime[advancePhase_AbsoluteIndex] == 0 {
+            for (var i=0;i&lt;64;i+=1) {
+                if myEnemies[i] &gt; -1 {
+                    if instance_exists(myEnemies[i]) myEnemies[i].currentPhaseDelay = 0;
+                } else {
+                    break;
+                }
+            }
+
+            advancePhase_AbsoluteIndex += 1;
+            if advancePhase_AbsoluteTime[advancePhase_AbsoluteIndex] &lt;= -1 {
+                kill(self);
             }
         }
     }

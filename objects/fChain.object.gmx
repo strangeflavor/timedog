@@ -99,7 +99,14 @@ if path &gt; -1 {
 formationTransferVars(eID);
 
 count += 1;
-if count &gt;= size instance_destroy() else alarm[0] = rate;
+//if count &gt;= size kill(self) else alarm[0] = rate;
+if count &lt; size {
+    alarm[0] = rate;
+} else {
+    if advancePhase_AbsoluteTime[advancePhase_AbsoluteIndex] == -1 {
+        kill(self);
+    }
+}
 </string>
           </argument>
         </arguments>

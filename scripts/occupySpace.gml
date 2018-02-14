@@ -43,3 +43,7 @@ var enemyID = argument0;
 enemyID.space = space;
 enemyID.formationStartX = x;
 enemyID.formationStartY = y;
+
+// absolute formation control stuff
+myEnemies[enemyCount] = enemyID;
+enemyCount += 1;

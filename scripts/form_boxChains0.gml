@@ -64,7 +64,7 @@ with make(vw-32-(32*_size)+xoffset,-32,fChain) {
 }
 
 #define form_boxChains_Descent
-///form_boxChains0(xoffset,ystop,rate,path_speed,size);
+///form_boxChains_Descent(xoffset,ystop,rate,path_speed,size,descentSpeed,wiggle,wait);
 trace('starting form boxchains_descent');
 
 var arg;
@@ -84,14 +84,20 @@ _ystop = arg[1];
 _rate = arg[2];
 _path_speed = arg[3];
 _size = arg[4];
+_descentSpeed = arg[5];
+_wiggle = arg[6];
+_wait = arg[7];
 
 if xoffset == -1 xoffset = 0;
 if _ystop == -1 _ystop = vh/2 - choose(60,120,180); // choose(180,120,200,300,400);
 if _rate == -1 rate = 4;
 if _path_speed == -1 _path_speed = 32;
 if _size == -1 _size = 3;
+if _wait == -1 _wait = 0;
 
 with make(-32+xoffset,32,fChain) {
+    wait = other._wait;
+
     space = _LEFTCOLUMN;
     size = 3;
     enemy = oMiniThex;
@@ -104,15 +110,16 @@ with make(-32+xoffset,32,fChain) {
     phaseCondition[0] = _PHASE_CONDITION_Y;
     phaseConditionArguments[0,0] = other._ystop - 60;
 
+        advancePhase_AbsoluteTime[0] = 120+other._wait;
     phaseDelay[1] = _PHASE_DELAY_WAIT;
-        advancePhase_AbsoluteTime[1] = 180;
     phase[1] = enemy_move;//_formation;
     phaseArguments[1,0] = 270;
-    phaseArguments[1,1] = 4;
+    phaseArguments[1,1] = 8;
 }
 
 with make(vw-32-(32*_size)+xoffset,-32,fChain) {
-    wait = 15;
+    wait = other._wait + 8;
+
     space = _RIGHTCOLUMN;
     size = 3;
     enemy = oMiniThex;
@@ -125,9 +132,9 @@ with make(vw-32-(32*_size)+xoffset,-32,fChain) {
     phaseCondition[0] = _PHASE_CONDITION_Y;
     phaseConditionArguments[0,0] = other._ystop;
 
+        advancePhase_AbsoluteTime[0] = 135+other.wait;
     phaseDelay[1] = _PHASE_DELAY_WAIT;
-        advancePhase_AbsoluteTime[1] = 180;
     phase[1] = enemy_move;
     phaseArguments[1,0] = 270;
-    phaseArguments[1,1] = 4;
+    phaseArguments[1,1] = 8;
 }
