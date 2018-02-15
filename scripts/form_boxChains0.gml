@@ -132,7 +132,7 @@ with make(vw-32-(32*_size)+xoffset,-32,fChain) {
     phaseCondition[0] = _PHASE_CONDITION_Y;
     phaseConditionArguments[0,0] = other._ystop;
 
-        advancePhase_AbsoluteTime[0] = 135+other.wait;
+        advancePhase_AbsoluteTime[0] = 135+other._wait;
     phaseDelay[1] = _PHASE_DELAY_WAIT;
     phase[1] = enemy_move;
     phaseArguments[1,0] = 270;

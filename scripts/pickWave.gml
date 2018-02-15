@@ -128,7 +128,7 @@ wave = -1;
 checkForEndOfWave = false;
 formationCount = 0;
 #define createLevelManager
-var managerObject = managerArray[currentLevel];
+var managerObject = managerArray[GAMEFLOW_currentLevel];
 
 instance_create(vw/2,vh/2,managerObject);
 

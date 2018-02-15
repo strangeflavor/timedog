@@ -56,15 +56,44 @@ alarm[0] = 1;
           <argument>
             <kind>1</kind>
             <string>// we may need to unlock stuff or update scores if we've returned to the level select screen after completing a level
-if completedLevel {
-    completedLevel = false;
-    
+if GAMEFLOW_completedLevel {
+    GAMEFLOW_completedLevel = false;
+
+    oEraSlider.waitForUnlock = true;
     with oLevelButton {
-        if levelID == currentLevel {
+        waitForUnlock = true;
+
+        if levelID == GAMEFLOW_currentLevel {
             unlockAdjacent(id);
         }
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="119">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>GAMEFLOW_completedLevel = true;
+GAMEFLOW_currentLevel = irandom(9);
+
+alarm[0] = 1;
 </string>
           </argument>
         </arguments>

@@ -24,13 +24,16 @@ room_set_view(rMysteryPlanet,0,true,0,0,vw,vh,0,0,vw,vh,0,0,0,0,-1)
 // gameplay
 ///////////////////////////////////////////////
 
-globalvar numLevels,numWorlds,currentLevel,completedLevel;
+globalvar numLevels,numWorlds;
 numLevels = 16; // levels per world
 numWorlds = 10; // worlds total
-currentLevel = -1;
 completedLevel = false;
 
 createLevelData();
+
+globalvar GAMEFLOW_completedLevel,GAMEFLOW_currentLevel;
+GAMEFLOW_completedLevel = false;
+GAMEFLOW_currentLevel = -1;
 
 ///////////////////////////////////////////////
 // system objects

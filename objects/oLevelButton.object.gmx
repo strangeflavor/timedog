@@ -39,10 +39,36 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>waitForUnlock = false;
+
 buttonSize = 80;
 image_xscale = buttonSize;
 image_yscale = buttonSize;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>locked = false;
+
+
 </string>
           </argument>
         </arguments>
@@ -65,29 +91,31 @@ image_yscale = buttonSize;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>rollOver = false;
-
-if mouse_x &gt; x and mouse_x &lt; x + buttonSize {
-    if mouse_y &gt; y and mouse_y &lt; y + buttonSize {
-        rollOver = true;
+            <string>if !waitForUnlock {
+    rollOver = false;
+    
+    if mouse_x &gt; x and mouse_x &lt; x + buttonSize {
+        if mouse_y &gt; y and mouse_y &lt; y + buttonSize {
+            rollOver = true;
+        }
     }
-}
-
-if rollOver and objectAge &gt; 10 {
-    if mouse_check_button(mb_left) {
-        image_alpha = .5;
+    
+    if rollOver and objectAge &gt; 10 {
+        if mouse_check_button(mb_left) {
+            image_alpha = .5;
+        }
+    
+        if mouse_check_button_released(mb_left) and !locked and abs(frac(view_xview[0]/vw)) &lt; .03 {
+            GAMEFLOW_currentLevel = levelID;
+            room_goto_next();
+        }
+    
+        if mouse_check_button_released(mb_right) { //and !locked {
+            unlockAdjacent(id);
+        }
+    } else {
+        image_alpha = 1;
     }
-
-    if mouse_check_button_released(mb_left) and !locked and abs(frac(view_xview[0]/vw)) &lt; .03 {
-        currentLevel = levelID;
-        room_goto_next();
-    }
-
-    if mouse_check_button_released(mb_right) { //and !locked {
-        unlockAdjacent(id);
-    }
-} else {
-    image_alpha = 1;
 }
 </string>
           </argument>

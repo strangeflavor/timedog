@@ -46,18 +46,25 @@ buttonID_left = collision_point(completedLevel.x-buttonDistance,completedLevel.y
 buttonID_top = collision_point(completedLevel.x+buttonSize/2,completedLevel.y-buttonSize/2,oButton,false,true) 
 buttonID_bottom = collision_point(completedLevel.x+buttonSize/2,completedLevel.y+buttonSize+buttonSize/2,oButton,false,true) 
 
-unlockLevel(buttonID_right);
-unlockLevel(buttonID_left);
-unlockLevel(buttonID_top);
-unlockLevel(buttonID_bottom);
+var unlockTime = 6;
+
+if unlockLevel(buttonID_right,unlockTime) unlockTime += 20;
+if unlockLevel(buttonID_left,120) unlockTime += 20;
+if unlockLevel(buttonID_top,180) unlockTime += 20;
+if unlockLevel(buttonID_bottom,240) unlockTime += 20;
 
 #define unlockLevel
-///unlockLevel(levelID)
+///unlockLevel(buttonID)
 var levelMap;
 var lID = argument0;
+var unlockTime = argument1;
 
 if lID != noone {
-    lID.locked = false;
+    lID.alarm[0] = unlockTime;
     levelMap = levelDataMap[? lID.levelID];
     levelMap[? "locked"] = false;
+    
+    return true;
+} else {
+    return false;
 }

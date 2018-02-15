@@ -22,7 +22,7 @@ if winCondition == _WIN_TIMELINE_END {
         timeline_running = false;
         trace('***** timeline done');
 
-        completedLevel = true;
+        GAMEFLOW_completedLevel = true;
         make(x,y,endLevel);
         active = false;
     }
