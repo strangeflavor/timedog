@@ -95,7 +95,7 @@ if _path_speed == -1 _path_speed = 32;
 if _size == -1 _size = 3;
 if _wait == -1 _wait = 0;
 
-with make(-32+xoffset,32,fChain) {
+with make(46+xoffset,32,fChain) {
     wait = other._wait;
 
     space = _LEFTCOLUMN;
@@ -115,9 +115,10 @@ with make(-32+xoffset,32,fChain) {
     phase[1] = enemy_move;//_formation;
     phaseArguments[1,0] = 270;
     phaseArguments[1,1] = 8;
+    phaseArguments[1,2] = 8;
 }
 
-with make(vw-32-(32*_size)+xoffset,-32,fChain) {
+with make(46+vw-(32*_size)+xoffset,-32,fChain) {
     wait = other._wait + 8;
 
     space = _RIGHTCOLUMN;
@@ -137,4 +138,5 @@ with make(vw-32-(32*_size)+xoffset,-32,fChain) {
     phase[1] = enemy_move;
     phaseArguments[1,0] = 270;
     phaseArguments[1,1] = 8;
+    phaseArguments[1,2] = 8;
 }

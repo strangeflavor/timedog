@@ -285,9 +285,49 @@ with make(64,-32,oBeamCannon) {
           <argument>
             <kind>1</kind>
             <string>///form_boxChains_Descent(vw-240,vh/4,8);
-form_boxChains_Descent(vw-240,vh/4,8,-1,3,8,false,0);
 
-form_boxChains_Descent(vw-320,vh/2,8,-1,3,8,false,60);
+var _wait = 0;
+
+form_boxChains_Descent(120,vh/4,8,-1,3,8,false,_wait);
+_wait += 60;
+
+form_boxChains_Descent(-100,vh/3,8,-1,3,7,false,_wait);
+_wait += 60;
+
+form_boxChains_Descent(160,vh/3,8,-1,3,8,false,_wait);
+_wait += 30;
+
+form_boxChains_Descent(-120,vh/3-50,8,-1,3,8,false,_wait);
+_wait += 30;
+
+form_boxChains_Descent(-0,vh/4,8,-1,4,7,false,_wait);
+_wait += 30;
+
+form_boxChains_Descent(90,vh/2,8,-1,4,8,false,_wait);
+_wait += 20;
+
+form_boxChains_Descent(-160,vh/3,8,-1,4,8,false,_wait);
+_wait += 20;
+
+form_boxChains_Descent(160,vh/3,8,-1,5,6,false,_wait);
+_wait += 20;
+
+form_boxChains_Descent(90,vh/2,8,-1,5,8,false,_wait);
+_wait += 10;
+
+form_boxChains_Descent(0,vh/2,8,-1,5,7,false,_wait);
+_wait += 10;
+
+form_boxChains_Descent(-180,vh/3,8,-1,6,8,false,_wait);
+_wait += 10;
+
+form_boxChains_Descent(80,vh/2,8,-1,6,7,false,_wait);
+_wait += 10;
+
+form_boxChains_Descent(120,vh/4,8,-1,6,8,false,_wait);
+_wait += 10;
+
+//form_boxChains_Descent(vw-320,vh/2,8,-1,3,8,false,60);
 
 //form_boxChains_Descent(120,vh/4,8,-1,3,8,false,120);
 

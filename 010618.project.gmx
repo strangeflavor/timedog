@@ -191,6 +191,7 @@
     <scripts name="menus">
       <script>scripts\createLevelData.gml</script>
       <script>scripts\makeLevelButtons.gml</script>
+      <script>scripts\buttonUnlockBurst.gml</script>
     </scripts>
     <scripts name="formations">
       <script>scripts\occupySpace.gml</script>
@@ -356,6 +357,7 @@
       <object>objects\oEraSlider</object>
       <object>objects\oButton</object>
       <object>objects\oLevelButton</object>
+      <object>objects\oButtonUnlockFX</object>
       <object>objects\columnB</object>
     </objects>
     <objects name="formations">
@@ -421,6 +423,7 @@
     <timeline>timelines\tLvl1</timeline>
     <timeline>timelines\tBasicFwd</timeline>
     <timeline>timelines\tDeepSpace</timeline>
+    <timeline>timelines\tButtonUnlock</timeline>
   </timelines>
   <rooms name="rooms">
     <room>rooms\rSetup</room>

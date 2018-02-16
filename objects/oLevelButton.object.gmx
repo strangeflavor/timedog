@@ -39,11 +39,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>waitForUnlock = false;
-
-buttonSize = 80;
+            <string>buttonSize = 80;
 image_xscale = buttonSize;
 image_yscale = buttonSize;
+
+
+// unlock sequence stuff
+waitForUnlock = false;
+shake = false;
 </string>
           </argument>
         </arguments>
@@ -66,9 +69,8 @@ image_yscale = buttonSize;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>locked = false;
-
-
+            <string>timeline_index = tButtonUnlock;
+timeline_running = true;
 </string>
           </argument>
         </arguments>
@@ -150,8 +152,13 @@ if rollOver and !locked {
 }
 
 if locked fill = true;
+//if waitForUnlock buttonSize = 60 else buttonSize = 80;
+//if alarm[0] &gt; -1 image_blend = c_red;
 
-draw_roundrect_colour_ext(x-rr,y-rr,x+buttonSize+rr,y+buttonSize+rr,4,4,image_blend,image_blend,!fill);
+var shakeOffset = 0;
+if shake shakeOffset = irandom(8) - 4;
+
+draw_roundrect_colour_ext(x-rr+shakeOffset,y-rr+shakeOffset,x+buttonSize+rr+shakeOffset,y+buttonSize+rr+shakeOffset,4,4,image_blend,image_blend,!fill);
 
 if rollOver draw_set_color(c_black) else draw_set_color(c_white);
 draw_set_valign(fa_top);

@@ -27,7 +27,6 @@ for (var r=0;r<numWorlds*view_wview[0];r+=view_wview[0]) {
     levelID = 0;
 }
 
-
 #define makeEraSliders
 ///makeEraSliders
 instance_create(room_width/2,room_height-80,oEraSlider);

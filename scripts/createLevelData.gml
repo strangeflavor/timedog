@@ -46,12 +46,13 @@ buttonID_left = collision_point(completedLevel.x-buttonDistance,completedLevel.y
 buttonID_top = collision_point(completedLevel.x+buttonSize/2,completedLevel.y-buttonSize/2,oButton,false,true) 
 buttonID_bottom = collision_point(completedLevel.x+buttonSize/2,completedLevel.y+buttonSize+buttonSize/2,oButton,false,true) 
 
-var unlockTime = 6;
+var unlockTime = 1;
 
-if unlockLevel(buttonID_right,unlockTime) unlockTime += 20;
-if unlockLevel(buttonID_left,120) unlockTime += 20;
-if unlockLevel(buttonID_top,180) unlockTime += 20;
-if unlockLevel(buttonID_bottom,240) unlockTime += 20;
+if unlockLevel(buttonID_top,unlockTime) unlockTime += 24;
+if unlockLevel(buttonID_left,unlockTime) unlockTime += 24;
+if unlockLevel(buttonID_right,unlockTime) unlockTime += 24;
+if unlockLevel(buttonID_bottom,unlockTime) unlockTime += 24;
+oLevelMenu.alarm[1] = unlockTime + 30;
 
 #define unlockLevel
 ///unlockLevel(buttonID)
@@ -60,11 +61,13 @@ var lID = argument0;
 var unlockTime = argument1;
 
 if lID != noone {
-    lID.alarm[0] = unlockTime;
-    levelMap = levelDataMap[? lID.levelID];
-    levelMap[? "locked"] = false;
-    
-    return true;
-} else {
-    return false;
+    if lID.locked {
+        lID.alarm[0] = unlockTime;
+        levelMap = levelDataMap[? lID.levelID];
+        levelMap[? "locked"] = false;
+        
+        return true;
+    }
 }
+
+return false;

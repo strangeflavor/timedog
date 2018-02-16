@@ -26,11 +26,13 @@ speed = _speed;
 image_angle = direction;
 
 #define enemy_move
-///enemy_move(direction, speed)
+///enemy_move(direction, speed, wiggleAmplitude)
 // moves in a direction at a speed
+var _wiggleAmplitude = argument2;
 
-direction = argument0;
+direction = argument0 + _wiggleAmplitude*sin(objectAge*.1);
 speed = argument1;
+
 
 #define enemy_steering
 ///enemy_steering(destx,desty,max_speed);
