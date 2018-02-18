@@ -135,10 +135,12 @@
       <sprite>sprites\sThexbotCenter</sprite>
     </sprites>
     <sprites name="fx">
-      <sprite>sprites\sChargeShot</sprite>
+      <sprite>sprites\sPlayerExplosion</sprite>
       <sprite>sprites\sLargeExplosion</sprite>
       <sprite>sprites\sMedExplosion</sprite>
       <sprite>sprites\sTinyExplosion</sprite>
+      <sprite>sprites\sBombLoop</sprite>
+      <sprite>sprites\sBombLoopCenter</sprite>
       <sprite>sprites\sGotPickup</sprite>
     </sprites>
     <sprites name="dialog">
@@ -158,6 +160,7 @@
   </sprites>
   <backgrounds name="background">
     <background>background\smp_bokeh</background>
+    <background>background\smp_spherize</background>
     <background>background\bgTest</background>
     <background>background\bgStarfield</background>
     <background>background\bgStarfieldTop</background>
@@ -336,7 +339,8 @@
     <shader type="GLSLES">shaders\shader_sceneFringe.shader</shader>
     <shader type="GLSLES">shaders\shd_vignette_noise.shader</shader>
     <shader type="GLSLES">shaders\shader_glitter.shader</shader>
-    <shader type="GLSLES">shaders\shader6.shader</shader>
+    <shader type="GLSLES">shaders\shader_magnify.shader</shader>
+    <shader type="GLSLES">shaders\shd_shockwave.shader</shader>
     <shader type="GLSLES">shaders\sh_saturation.shader</shader>
   </shaders>
   <fonts name="fonts">

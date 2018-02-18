@@ -42,7 +42,7 @@
             <string>explosionType = sMedExplosion;
 killWhenOffscreen = true;
 offScreenTimer = 18;
-value=-5;
+value = -1;
 
 image_speed = .2;
 

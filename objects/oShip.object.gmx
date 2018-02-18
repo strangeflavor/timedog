@@ -41,17 +41,62 @@ thrusterColor[3] = make_color_rgb(255,255,255);
 
 thrusterColorSize = 3;
 
-bigShotR = -1;
+bigShotR = -12;
 
 bigShotRMax = 64*scale;
-bigShotRMin = bigShotRMax*.6;
+bigShotRMin = bigShotRMax*.8;
 
 invincible = false;
 v=0;
 
 active = true;
+objectAge = 0;
 
 alarm[1] = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with make(oFX) {
+    sprite_index = sPlayerExplosion;
+    image_xscale = 4;
+    image_yscale = 4;
+    image_speed = .5;
+}
+
+with make(x-16,y-16,oFX) {
+    sprite_index = sPlayerExplosion;
+    image_xscale = 3;
+    image_yscale = -3;
+    image_speed = .25;
+    image_blend = make_color_rgb(128,128,30);
+}
+
+with make(x+16,y+16,oFX) {
+    sprite_index = sPlayerExplosion;
+    image_xscale = -3;
+    image_yscale = 3;
+    image_speed = .25;
+    image_blend = make_color_rgb(30,128,128);
+}
 </string>
           </argument>
         </arguments>
@@ -117,7 +162,7 @@ if v &gt; 12 {
 
 if active {
     bigShotR += 1;
-    
+
     if bigShotR &lt; bigShotRMax alarm[1] = 1;
 }
 </string>
@@ -171,18 +216,22 @@ alarm[0] = 4*scale;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// move player
-
-x += dx;
-y += dy;
-
-
-// check bounds
-
-if x &gt; room_width x = room_width;
-if x &lt; 0 x = 0;
-if y &gt; room_height y = room_height;
-if y &lt; 0 y = 0;
+            <string>if active  {
+    objectAge += 1;
+    
+    // move player
+    
+    x += dx;
+    y += dy;
+    
+    
+    // check bounds
+    
+    if x &gt; room_width x = room_width;
+    if x &lt; 0 x = 0;
+    if y &gt; room_height y = room_height;
+    if y &lt; 0 y = 0;
+}
 </string>
           </argument>
         </arguments>
@@ -305,9 +354,6 @@ with other instance_destroy();
     doMove = false;
     
     alarm[0] = -1;
-    
-    bigShotR = 3;
-    
     alarm[1] = 1; // start charging big shot
 }
 </string>
@@ -335,13 +381,17 @@ with other instance_destroy();
             <string>// fire bomb if large enough
 if active {
     if bigShotR &gt; bigShotRMin {
-        cId = instance_create(x,y-64*scale,oChargeShot);
+        cId = instance_create(x,y-80*scale,oChargeShot);
         cId.bigShotR = bigShotR;
         cId.bigShotRMax = bigShotRMax;
         cId.bombOriginX = mouse_x;
         cId.bombOriginY = mouse_y;
 
+        bigShotR = -80;
+        
         sfx(sndDropBomb);
+    } else {
+        bigShotR = -12;
     }
 
     originX = mouse_x;
@@ -354,8 +404,6 @@ if active {
 
     alarm[0] = 1;
     alarm[1] = -1;
-
-    bigShotR = -1;
 }
 </string>
           </argument>
@@ -425,13 +473,13 @@ alarm[1] = -1;
 //draw_sprite(sThruster,image_index,x,y);
 draw_sprite_ext(sThruster,image_index,x,y,image_xscale,image_yscale,0,thrusterColor[irandom(thrusterColorSize)],.777);
 
-if bigShotR &gt; bigShotRMin/3 {
+if bigShotR &gt; bigShotRMin/8 {
     draw_set_color(c_white);
 
     /*
-    if bigShotR &gt;= bigShotRMax {
-        xShake = irandom(8) - 4;
-        yShake = irandom(8) - 4;
+    if bigShotR &gt;= bigShotRMin {
+        xShake = irandom(bigShotR/(4*scale)) - bigShotR/(8*scale);
+        yShake = irandom(bigShotR/(4*scale)) - bigShotR/(8*scale);
     } else {
         xShake = 0;
         yShake = 0;
@@ -439,8 +487,9 @@ if bigShotR &gt; bigShotRMin/3 {
     */
 
     if bigShotR &gt;= bigShotRMin {
-        xShake = irandom(bigShotR/(4*scale)) - bigShotR/(8*scale);
-        yShake = irandom(bigShotR/(4*scale)) - bigShotR/(8*scale);
+        xShake = irandom(6)-3;
+        yShake = irandom(6)-3;
+        draw_set_color(merge_color(c_white,make_color_rgb(84,159,255),abs(sin(objectAge*.1))));
     } else {
         xShake = 0;
         yShake = 0;

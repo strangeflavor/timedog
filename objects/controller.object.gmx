@@ -442,7 +442,12 @@ if view_wview[1] == vw {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_check(vk_lalt) or keyboard_check(vk_ralt) window_set_fullscreen(!window_get_fullscreen());
+            <string>//if keyboard_check(vk_lalt) or keyboard_check(vk_ralt) {
+    window_set_fullscreen(!window_get_fullscreen());
+//    keyboard_clear(vk_lalt);
+//    keyboard_clear(vk_ralt);
+    exit;
+//}
 </string>
           </argument>
         </arguments>

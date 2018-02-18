@@ -64,7 +64,7 @@ l =0;
 e=instance_create(x,y,oChargeShotExplode);
 //e.vspeed = vspeed;
 //e.hspeed = hspeed;
-if bigShotR == bigShotRMax e.image_index = 0 else e.image_index = 7;
+//if bigShotR == bigShotRMax e.image_index = 0 else e.image_index = 7;
 
 instance_destroy();
 </string>
@@ -105,22 +105,27 @@ if myDirection == -1 hspeed -= .1;
 */
 
 //if alarm[0] &lt; 6 or mouse_check_button_released(mb_left) {
-
+    /*
 if launched == false {
+
     if point_distance(bombOriginX,bombOriginY,mouse_x,mouse_y) &gt; 100 {
         direction = point_direction(bombOriginX,bombOriginY,mouse_x,mouse_y);
         speed += l*.25;
         if speed &gt; 2*scale speed = 2*scale;
     } else {
         direction = 90;
-        speed = 1*scale;
+        speed = 1.5*scale;
     }
 
     l+=1;
     if l &gt; 15 or mouse_check_button_released(mb_left) launched = true;
 }
+    */
 
-draw_set_color(c_white);
+    direction = 90;
+    speed = 1.5*scale;
+
+draw_set_color(merge_color(c_white,make_color_rgb(84,159,255),abs(sin(current_time))));
 draw_circle(x,y,bigShotR/2,false);
 </string>
           </argument>
