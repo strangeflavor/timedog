@@ -31,7 +31,7 @@ active = false;
 invul = false;
 invulTime = -1;
 explosionType = sLargeExplosion;
-value = 0;
+value = -1;
 recoil = 0;
 image_xscale = 2*scale
 image_yscale = 2*scale
@@ -64,9 +64,8 @@ waitTime = -1;
 
 amLeader = false;
 hasLeader = false;
-myFormationIndex = -1;
-myFormationPosition = -1;
-formationSize = -1; // # of allies in the same formation. if this enemy is destroyed and hasLeader = true and allies &lt;= 0, value is inverted
+
+formationID = -1;
 
 space = _NONE;
 formationStartX = xstart;
@@ -98,13 +97,17 @@ alarm[0] = 1;
             <string>if active {
     if y &lt; vh + 32*scale {
         sfx(sndDefeatEnemy);
-    
-        fxId = instance_create(x,y,oFX);
+
+        fxId = make(oFX);
     
         fxId.sprite_index = explosionType;
         fxId.image_xscale = image_xscale/2;
         fxId.image_yscale = image_yscale/2;
-    
+
+        if formationID &gt; -1 {
+            if removeEnemyFromFormationTracker(formationID) &lt;= 0 value *= -1;
+        }
+        
         /*
         if myFormationIndex &gt; -1 {
             controller.formationArray[myFormationIndex,myFormationPosition] = -1;
@@ -125,7 +128,7 @@ alarm[0] = 1;
             }
         }
         */
-    
+
         if value &gt; 0 {
             repeat value {
                 instance_create(x+irandom(32)-16,y+irandom(32)-16,oPickup);

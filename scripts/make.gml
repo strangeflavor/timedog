@@ -7,3 +7,6 @@ return _instanceID;
 
 #define kill
 with argument0 instance_destroy();
+#define select
+/// select(index, ...values)
+return argument[argument[0] + 1];

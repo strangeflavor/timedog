@@ -26,14 +26,14 @@
           <argument>
             <kind>1</kind>
             <string>trace('created '+object_get_name(object_index));
-levelManager.formationCount += 1;
-myFormationID = levelManager.formationCount;
 
+value = 1;
 wait = 1;
 active = true;
 space = _NONE;
 formationStartX = xstart;
 formationStartY = ystart;
+formationID = -1; // used in cases where individual enemies need to know about the state of their formation brothers
 
 _path_speed = 1;
 _path_scale = 1;
@@ -70,8 +70,9 @@ phaseCreateVars();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>wait -= 1;
-if wait == -1 {
+            <string>//wait -= 1;
+//if wait == -1 {
+if (wait &amp;&amp; !--wait) {
     active = true;
     alarm[0] = 1;
 }

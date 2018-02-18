@@ -47,3 +47,27 @@ enemyID.formationStartY = y;
 // absolute formation control stuff
 myEnemies[enemyCount] = enemyID;
 enemyCount += 1;
+
+if formationID > -1 {
+    enemyID.formationID = formationID;
+    addEnemyToFormationTracker(formationID);
+}
+
+#define getFormationID
+///getFormationID()
+formationTracker.nextFormationID += 1;
+return formationTracker.nextFormationID;
+
+#define addEnemyToFormationTracker
+///addEnemyToFormationTracker(formationID)
+var fID = argument0;
+
+formationTracker.formationEnemies_Array[fID] += 1;
+
+#define removeEnemyFromFormationTracker
+///removeEnemyFromFormationTracker(formationID)
+
+var fID = argument0;
+formationTracker.formationEnemies_Array[fID] -= 1;
+
+return formationTracker.formationEnemies_Array[fID];

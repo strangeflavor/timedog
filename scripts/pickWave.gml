@@ -126,11 +126,12 @@ background_vspeed[1] += 1;
 for (var i=0;i<32;i+=1) formationComplete[i] = false;
 wave = -1;
 checkForEndOfWave = false;
-formationCount = 0;
+
 #define createLevelManager
 var managerObject = managerArray[GAMEFLOW_currentLevel];
 
-instance_create(vw/2,vh/2,managerObject);
+make(managerObject);
+make(formationTracker);
 
 #define manageManagers
 ///manageManagers()
@@ -138,8 +139,11 @@ instance_create(vw/2,vh/2,managerObject);
 
 // world 1
 for (var i=0;i<100;i+=1) {
-    managerArray[i] = levelMan000;
+    managerArray[i] = levelManager;
 }
+
+managerArray[0] = levelMan000;
+managerArray[1] = levelMan001;
 
 for (var i=100;i<200;i+=1) {
     managerArray[i] = levelManager;

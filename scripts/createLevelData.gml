@@ -4,7 +4,6 @@ levelDataGrid = ds_grid_create(10,25);
 ds_grid_set_region(levelDataGrid,0,9,0,24,-1);
 */
 
-globalvar levelDataMap; 
 levelDataMap = ds_map_create();
 
 var n = 0; // 'encoded' level index

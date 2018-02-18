@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>levelComplete = false;
 for (var i=0;i&lt;32;i+=1) formationComplete[i] = false;
-formationCount = 0;
 
 wave = -1;
 waveID = -1;

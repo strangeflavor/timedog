@@ -26,7 +26,10 @@ if _rate == -1 rate = 4;
 if _path_speed == -1 _path_speed = 32;
 if _size == -1 _size = 3;
 
+newFormationID = getFormationID();
+
 with make(-32+xoffset,32,fChain) {
+    formationID = other.newFormationID;
     space = _LEFTCOLUMN;
     size = 3;
     enemy = oMiniThex;
@@ -45,6 +48,7 @@ with make(-32+xoffset,32,fChain) {
 }
 
 with make(vw-32-(32*_size)+xoffset,-32,fChain) {
+    formationID = other.newFormationID;
     wait = 15;
     space = _RIGHTCOLUMN;
     size = 3;
@@ -85,8 +89,7 @@ _rate = arg[2];
 _path_speed = arg[3];
 _size = arg[4];
 _descentSpeed = arg[5];
-_wiggle = arg[6];
-_wait = arg[7];
+_wait = arg[6];
 
 if xoffset == -1 xoffset = 0;
 if _ystop == -1 _ystop = vh/2 - choose(60,120,180); // choose(180,120,200,300,400);
@@ -95,11 +98,11 @@ if _path_speed == -1 _path_speed = 32;
 if _size == -1 _size = 3;
 if _wait == -1 _wait = 0;
 
-with make(46+xoffset,32,fChain) {
+with make(vw/2-150+xoffset-(_size*16),32,fChain) {
     wait = other._wait;
 
     space = _LEFTCOLUMN;
-    size = 3;
+    size = other._size;
     enemy = oMiniThex;
     path = pLShape;
     _path_speed = other._path_speed;
@@ -118,11 +121,12 @@ with make(46+xoffset,32,fChain) {
     phaseArguments[1,2] = 8;
 }
 
-with make(46+vw-(32*_size)+xoffset,-32,fChain) {
+//with make(46+vw-(32*_size)+xoffset,-32,fChain) {
+with make(vw/2+150+xoffset+(_size*16),32,fChain) {
     wait = other._wait + 8;
 
     space = _RIGHTCOLUMN;
-    size = 3;
+    size = other._size;
     enemy = oMiniThex;
     path = pLShapeMirror;
     _path_speed = other._path_speed;

@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>formationParent</parentName>
+  <parentName>levelManager</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -39,25 +39,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>path = -1;
-_path_speed = 8;
-_path_scale = 1;
-_path_scale_delta = 0;
-endaction = path_action_stop;
-rate = 9;
-size = 8;
-count = 0;
+            <string>winCondition = _WIN_TIMELINE_END;
+winConditionValue = tLvl2;
 
-_enemy_speed = -1;
-_enemy_direction = -1;
+TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,0,2,50);
+TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,1,0,25);
 
-yStop = -1;
+alarm[1] = 180;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
+    <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -74,39 +68,7 @@ yStop = -1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var eID = -1;
-
-if path &gt; -1 {
-    eID = make(x,y,enemy);
-    with eID {
-        path_start(other.path,other._path_speed,other.endaction,false);
-        path_scale = other._path_scale;
-        path_speed = other._path_speed;
-        yStop = other.yStop;
-    }
-
-    formationTransferPhaseVars(eID);
-
-    _path_scale += _path_scale_delta;
-} else {
-    eID = make(x,y,enemy);
-    if _enemy_direction != -1 {
-        eID.direction = _enemy_direction;
-        eID.speed = _enemy_speed;
-    }
-}
-
-formationTransferVars(eID);
-
-count += 1;
-
-if count &lt; size {
-    alarm[0] = rate;
-} else {
-    if advancePhase_AbsoluteTime[advancePhase_AbsoluteIndex] == -1 {
-        kill(self);
-    }
-}
+            <string>alarm[1] = 180;
 </string>
           </argument>
         </arguments>

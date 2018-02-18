@@ -1,8 +1,9 @@
+#define setup
 ///////////////////////////////////////////////
 // screen stuff
 ///////////////////////////////////////////////
 
-globalvar scale,vw,vh,screen_w,screen_h,developer,debug,debugTimelineStartPos,base_w,base_h;
+//globalvar scale,vw,vh,screen_w,screen_h,developer,debug,debugTimelineStartPos,base_w,base_h;
 debug = 0;
 scale = 1;
 developer = true;
@@ -24,14 +25,13 @@ room_set_view(rMysteryPlanet,0,true,0,0,vw,vh,0,0,vw,vh,0,0,0,0,-1)
 // gameplay
 ///////////////////////////////////////////////
 
-globalvar numLevels,numWorlds;
+//globalvar numLevels,numWorlds;
 numLevels = 16; // levels per world
 numWorlds = 10; // worlds total
-completedLevel = false;
 
 createLevelData();
 
-globalvar GAMEFLOW_completedLevel,GAMEFLOW_currentLevel;
+//globalvar GAMEFLOW_completedLevel,GAMEFLOW_currentLevel;
 GAMEFLOW_completedLevel = false;
 GAMEFLOW_currentLevel = -1;
 
@@ -44,3 +44,6 @@ make(controller);
 make(oAudio);
 
 room_goto_next();
+
+#define switchtest
+show('testing '+string(argument0));

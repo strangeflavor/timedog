@@ -69,7 +69,6 @@ currentPhaseAge += 1;
 
 if currentPhaseDelay >= 0 {
     currentPhaseDelay -= 1;
-    if currentPhaseDelay == 0 show('phase delay don');
 } else {
     if phase[phase_index] > -1 {
         script_execute(phase[phase_index],phaseArguments[phase_index,0],phaseArguments[phase_index,1],phaseArguments[phase_index,2],phaseArguments[phase_index,3]);

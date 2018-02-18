@@ -347,6 +347,7 @@
     <objects name="level men">
       <object>objects\levelManager</object>
       <object>objects\levelMan000</object>
+      <object>objects\levelMan001</object>
     </objects>
     <objects name="gameflow">
       <object>objects\levelIntroSplashScreen</object>
@@ -369,6 +370,7 @@
       <object>objects\fChain</object>
       <object>objects\fBehind</object>
       <object>objects\fThexSpitter</object>
+      <object>objects\formationTracker</object>
       <object>objects\oTimelinePlayer</object>
       <object>objects\oTimelineLooper</object>
     </objects>
@@ -421,6 +423,7 @@
   </objects>
   <timelines name="timelines">
     <timeline>timelines\tLvl1</timeline>
+    <timeline>timelines\tLvl2</timeline>
     <timeline>timelines\tBasicFwd</timeline>
     <timeline>timelines\tDeepSpace</timeline>
     <timeline>timelines\tButtonUnlock</timeline>
@@ -433,7 +436,22 @@
     <room>rooms\rMysteryPlanet</room>
     <room>rooms\roomTest</room>
   </rooms>
-  <constants number="24">
+  <constants number="39">
+    <constant name="scale">global._scale</constant>
+    <constant name="vw">global._vw</constant>
+    <constant name="vh">global._vh</constant>
+    <constant name="screen_w">global._screen_w</constant>
+    <constant name="screen_h">global._screen_h</constant>
+    <constant name="base_w">global._base_w</constant>
+    <constant name="base_h">global._base_h</constant>
+    <constant name="developer">global._developer</constant>
+    <constant name="debug">global._debug</constant>
+    <constant name="debugTimelineStartPos">global._debugTimelineStartPos</constant>
+    <constant name="numLevels">global._numLevels</constant>
+    <constant name="numWorlds">global._numWorlds</constant>
+    <constant name="GAMEFLOW_completedLevel">global._GAMEFLOW_completedLevel</constant>
+    <constant name="GAMEFLOW_currentLevel">global._GAMEFLOW_currentLevel</constant>
+    <constant name="levelDataMap">global._levelDataMap</constant>
     <constant name="stop">0</constant>
     <constant name="retreat">1</constant>
     <constant name="attack">2</constant>
