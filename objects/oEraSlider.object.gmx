@@ -194,13 +194,14 @@ x = view_xview[0] + xstart;
 y = view_yview[0] + ystart;
 
 view_xpos_normalized = max(0,view_xview[0])/(view_wview[0]*numWorlds);//(view_wview[0]*numWorlds)/(view_xview[0]+view_wview[0]/2);
-
+/*
 if waitForUnlock {
     background_color = merge_colour(c_red,make_color_rgb(64,127,255),abs(sin(objectAge*.01)));
 } else {
     background_color = merge_colour(c_black,make_color_rgb(64,127,255),view_xpos_normalized);
 }
-
+*/
+background_color = merge_colour(c_black,make_color_rgb(64,127,255),view_xpos_normalized);
 view_xview_previous = view_xview[0];
 
 objectAge += 1;

@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>objectAge = 0;
+rollOver = false;
 </string>
           </argument>
         </arguments>

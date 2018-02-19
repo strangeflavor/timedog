@@ -39,11 +39,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>value = 3;
+            <string>value = 1;
 
 image_speed = .2;
 
-HP = 15;
+HP = 12;
 
 explosionType = sLargeExplosion;
 </string>

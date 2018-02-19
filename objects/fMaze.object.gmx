@@ -42,7 +42,7 @@
             <string>rate = 2;
 blocksize = 16;
 mm = -blocksize*2;
-mazeSize = 1280*choose(1,1,2);
+mazeSize = 1280;
 mazeSpeed = choose(5,6,7);
 
 alarm[0] = 30;
@@ -70,7 +70,7 @@ alarm[0] = 30;
             <kind>1</kind>
             <string>repeat (2) {
     for (var i=0;i&lt;room_width;i+=blocksize) {
-        instance_create(i,mm,oMazeBlock);
+        make(i,mm,oMazeBlock);
     }
 
     mm -= blocksize;
@@ -78,28 +78,31 @@ alarm[0] = 30;
 
 // sometimes place megablock
 if irandom(3) == 1 and abs(mm) &lt; abs(mazeSize)-4*blocksize {
-    with instance_create((irandom(((room_width-(blocksize*2))/blocksize))+1)*blocksize,mm-blocksize,oMazeBlock) {
+    with make((irandom(((room_width-(blocksize*2))/blocksize))+1)*blocksize,mm-blocksize,oMazeBlock) {
         image_xscale = 6;
         image_yscale = 6;
         image_blend = c_gray;
         depth -= 1;
         repeat 8 {
             with instance_place(x,y,oMazeBlock) {
-                instance_destroy();
+                value = 0;
+                kill();
             }
         }
 
-        if irandom(16) == 1 instance_destroy();
+        if irandom(16) == 1 kill();
     }
 }
 
 if abs(mm) &gt; abs(mazeSize) {
     var xpos = (irandom(((room_width-(blocksize*2))/blocksize))+1)*blocksize;
 
-    repeat(choose(1,1,2)) {
-        with instance_create(xpos+irandom(room_width/3)-room_width/6,room_height/2,mazeEater) {
-            ylimit = -other.mazeSize;
-            vspeed = -1;
+    if instance_number(mazeEater) &lt; 2 {
+        repeat(choose(1,1,2)) {
+            with make(xpos+irandom(room_width/3)-room_width/6,32,mazeEater) {
+                ylimit = -other.mazeSize;
+                //vspeed = -1;
+            }
         }
     }
 

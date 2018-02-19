@@ -46,6 +46,8 @@ instance_create(vw/2,vh/2,levelIntroSplashScreen);
 alarm[0] = 1; // kicks off 
 
 active = false;
+
+objectAge = 0;
 </string>
           </argument>
         </arguments>
@@ -130,7 +132,10 @@ beginLevel();
           <argument>
             <kind>1</kind>
             <string>///catchEndLevel();
-if active catchEndLevel();
+if active {
+    objectAge += 1;
+    catchEndLevel();
+}
 </string>
           </argument>
         </arguments>

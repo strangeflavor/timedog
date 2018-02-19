@@ -43,9 +43,11 @@
 image_index = irandom(image_number-0);
 active = false;
 
+killWhenOffscreen = false;
+
 if irandom(64) == 1 {// or instance_place(x,y,oMazeBlock) {
     value = 0;
-    instance_destroy();
+    kill(self);
 }
 
 HP = 99999;

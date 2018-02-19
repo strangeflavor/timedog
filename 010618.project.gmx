@@ -119,6 +119,11 @@
       <sprite>sprites\sShot</sprite>
       <sprite>sprites\sShip</sprite>
       <sprite>sprites\sThruster</sprite>
+      <sprite>sprites\sPickupPink</sprite>
+      <sprite>sprites\sPickupCrystal</sprite>
+      <sprite>sprites\sPickupTop</sprite>
+      <sprite>sprites\sPickupFlash</sprite>
+      <sprite>sprites\sPickupIrrid</sprite>
     </sprites>
     <sprites name="beams">
       <sprite>sprites\sBeam</sprite>
@@ -149,6 +154,7 @@
     </sprites>
     <sprites name="maze">
       <sprite>sprites\sBlock</sprite>
+      <sprite>sprites\sBlock2</sprite>
     </sprites>
     <sprites name="noisetest">
       <sprite>sprites\sPaper</sprite>
@@ -352,6 +358,7 @@
       <object>objects\levelManager</object>
       <object>objects\levelMan000</object>
       <object>objects\levelMan001</object>
+      <object>objects\levelManMaze_0</object>
     </objects>
     <objects name="gameflow">
       <object>objects\levelIntroSplashScreen</object>
@@ -362,7 +369,6 @@
       <object>objects\oEraSlider</object>
       <object>objects\oButton</object>
       <object>objects\oLevelButton</object>
-      <object>objects\oButtonUnlockFX</object>
       <object>objects\columnB</object>
     </objects>
     <objects name="formations">
@@ -418,6 +424,8 @@
     </objects>
     <objects name="fx">
       <object>objects\oFXFlare</object>
+      <object>objects\oButtonUnlockFX</object>
+      <object>objects\oPickupCollectedFX</object>
     </objects>
     <objects name="TweenGMS">
       <object>objects\obj_SharedTweener</object>

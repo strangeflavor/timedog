@@ -6,7 +6,8 @@ if argument_count >= 3 _instanceID = instance_create(argument[0],argument[1],arg
 return _instanceID;
 
 #define kill
-with argument0 instance_destroy();
+if argument_count == 0 instance_destroy() else with argument[0] instance_destroy();
+
 #define select
 /// select(index, ...values)
 return argument[argument[0] + 1];

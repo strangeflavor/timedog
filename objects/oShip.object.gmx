@@ -34,12 +34,16 @@ image_speed = .5;
 
 doMove = false;
 
-thrusterColor[0] = make_color_rgb(255,0,0);
-thrusterColor[1] = make_color_rgb(0,255,0);
-thrusterColor[2] = make_color_rgb(0,0,255);
-thrusterColor[3] = make_color_rgb(255,255,255);
+thrusterColor[0] = make_color_rgb(34,49,249);
+thrusterColor[1] = make_color_rgb(198,42,252);
+thrusterColor[2] = make_color_rgb(50,210,252);
+thrusterColor[3] = make_color_rgb(205,205,252);
+thrusterColor[4] = make_color_rgb(133,203,254);
+thrusterColor[5] = make_color_rgb(133,47,254);
+thrusterColor[6] = make_color_rgb(81,125,255);
+thrusterColor[7] = make_color_rgb(231,117,251);
 
-thrusterColorSize = 3;
+thrusterColorSize = 7;
 
 bigShotR = -12;
 
@@ -75,27 +79,40 @@ alarm[1] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with make(oFX) {
+            <string>oBG.alarm[0] = 30;
+levelManager.timeline_speed = 0;
+
+with make(oFX) {
+    depth += 1;
+    sprite_index = sBombLoop;
+    image_xscale = 12;
+    image_yscale = 12;
+    image_speed = .1;
+    image_alpha = .25;
+}
+
+with make(oFX) {
     sprite_index = sPlayerExplosion;
     image_xscale = 4;
     image_yscale = 4;
-    image_speed = .5;
+    image_speed = .4;
 }
 
 with make(x-16,y-16,oFX) {
     sprite_index = sPlayerExplosion;
     image_xscale = 3;
     image_yscale = -3;
-    image_speed = .25;
-    image_blend = make_color_rgb(128,128,30);
+    image_speed = .2;
+    image_blend = make_color_rgb(0,160,248);
 }
 
 with make(x+16,y+16,oFX) {
     sprite_index = sPlayerExplosion;
+    image_index = 1;
     image_xscale = -3;
     image_yscale = 3;
-    image_speed = .25;
-    image_blend = make_color_rgb(30,128,128);
+    image_speed = .2;
+    image_blend = make_color_rgb(0,248,160);
 }
 </string>
           </argument>
@@ -325,6 +342,7 @@ alarm[0] = 4*scale;
             <kind>1</kind>
             <string>score += 1;
 sfx(sndGet);
+other.collected = true;
 with other instance_destroy();
 </string>
           </argument>

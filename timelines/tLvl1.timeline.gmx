@@ -332,7 +332,7 @@ with instance_create(-64,room_height/4,fChain) {
     </event>
   </entry>
   <entry>
-    <step>20000</step>
+    <step>1740</step>
     <event>
       <action>
         <libid>1</libid>
@@ -350,7 +350,7 @@ with instance_create(-64,room_height/4,fChain) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// END LEVEL
+            <string>/// END LEVEL
 </string>
           </argument>
         </arguments>

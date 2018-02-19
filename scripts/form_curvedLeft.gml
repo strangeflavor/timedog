@@ -25,8 +25,12 @@ if count < 1 count = 5;
 var _speed = arg[3];
 if _speed == -1 _speed = 12;
 
+newFormationID = getFormationID();
+
 for (var i=0;i<count;i+=1) {
     tId = make(vw/2+xoffset+i*2,yoffset,oMiniThex);
+    tId.formationID = other.newFormationID;
+    addEnemyToFormationTracker(tId.formationID);
 
     tId.waitTime = (i+1)*6;//irandom(6);// i*10;
     tId.invulTime = 6;
@@ -76,8 +80,12 @@ if count < 1 count = 5;
 var _speed = arg[3];
 if _speed == -1 _speed = 12;
 
+newFormationID = getFormationID();
+
 for (var i=0;i<count;i+=1) {
     tId = make(vw/2+xoffset+i*2,yoffset,oMiniThex);
+    tId.formationID = other.newFormationID;
+    addEnemyToFormationTracker(tId.formationID);
 
     tId.waitTime = (i+1)*6;//irandom(6);// i*10;
     tId.invulTime = 6;

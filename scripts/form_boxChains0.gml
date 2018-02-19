@@ -30,6 +30,7 @@ newFormationID = getFormationID();
 
 with make(-32+xoffset,32,fChain) {
     formationID = other.newFormationID;
+    
     space = _LEFTCOLUMN;
     size = 3;
     enemy = oMiniThex;
@@ -98,7 +99,10 @@ if _path_speed == -1 _path_speed = 32;
 if _size == -1 _size = 3;
 if _wait == -1 _wait = 0;
 
+newFormationID = getFormationID();
+
 with make(vw/2-150+xoffset-(_size*16),32,fChain) {
+    formationID = other.newFormationID;
     wait = other._wait;
 
     space = _LEFTCOLUMN;
@@ -123,6 +127,7 @@ with make(vw/2-150+xoffset-(_size*16),32,fChain) {
 
 //with make(46+vw-(32*_size)+xoffset,-32,fChain) {
 with make(vw/2+150+xoffset+(_size*16),32,fChain) {
+    formationID = other.newFormationID;
     wait = other._wait + 8;
 
     space = _RIGHTCOLUMN;

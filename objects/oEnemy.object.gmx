@@ -107,27 +107,6 @@ alarm[0] = 1;
         if formationID &gt; -1 {
             if removeEnemyFromFormationTracker(formationID) &lt;= 0 value *= -1;
         }
-        
-        /*
-        if myFormationIndex &gt; -1 {
-            controller.formationArray[myFormationIndex,myFormationPosition] = -1;
-            //show_message('myformationindex: '+string(myFormationIndex)+', myformationposition: '+string(myFormationPosition));
-    
-            var alliesRemaining;
-            alliesRemaining = formationSize;
-    
-           for (i=0;i&lt;formationSize;i+=1) {
-                if controller.formationArray[myFormationIndex,i] &lt; 0 {
-                    alliesRemaining -= 1;
-                }
-            }
-    
-            if alliesRemaining &lt; 1 {
-                //show_message('no allies left');
-                value *= -1;
-            }
-        }
-        */
 
         if value &gt; 0 {
             repeat value {
@@ -242,14 +221,20 @@ if waitTime &lt; 0 {
     //////////////////////////
 
     objectAge += 1;
-    if HP &lt; 0 instance_destroy();
+    if HP &lt; 0 kill(self);
     if killWhenBelowScreen {
-       if y &gt; (vh + 64*scale) kill(self);
+       if y &gt; (vh + 64*scale) {
+        value = 0;
+        kill(self);
+       }
     }
 
     if killWhenOffscreen {
         if x &gt; room_width or x &lt; 0 or y &gt; room_height or y &lt; 0 {
-            if offScreenTimer &lt;= 0 kill(self);
+            if offScreenTimer &lt;= 0 {
+                value = 0;
+                kill(self);
+            }
             offScreenTimer -= 1;
         }
     } else {
@@ -279,7 +264,7 @@ if waitTime &lt; 0 {
         if (path_endtime &gt; -1 and objectAge == path_endtime) {
             path = -1;
             path_end();
-            if killWhenPathComplete instance_destroy();
+            if killWhenPathComplete kill(self);
         }
     }
 

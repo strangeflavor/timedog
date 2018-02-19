@@ -78,7 +78,7 @@ if objectAge &gt; introDuration {
             <kind>1</kind>
             <string>draw_set_halign(fa_middle);
 draw_set_valign(fa_middle);
-draw_text_ext(vw/2,vh/2+12*sin(objectAge*.2),'THREAT APPROACHING',-1,-1);
+draw_text_ext(vw/2,vh/2+12*sin(objectAge*.2),'START!',-1,-1);
 </string>
           </argument>
         </arguments>
