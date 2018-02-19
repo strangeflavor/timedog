@@ -41,8 +41,8 @@
             <kind>1</kind>
             <string>damage = .4;
 
-image_xscale = 7*scale;
-image_yscale = 7*scale;
+image_xscale = 6*scale;
+image_yscale = 6*scale;
 image_alpha = 1;
 image_speed = .25;
 
@@ -110,9 +110,39 @@ objectAge = 0;
           <argument>
             <kind>1</kind>
             <string>objectAge += 1;
-if objectAge &gt;= 120 kill(self);
+if objectAge &gt;= 90 kill(self);
 
 image_angle += 8;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="oMazeBlock">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if irandom(8) == 1 {
+    with other {
+        if irandom(8) == 1 value = 1;
+        kill(self);
+    }
+
+    objectAge += 1;
+}
 </string>
           </argument>
         </arguments>

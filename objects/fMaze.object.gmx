@@ -99,9 +99,8 @@ if abs(mm) &gt; abs(mazeSize) {
 
     if instance_number(mazeEater) &lt; 2 {
         repeat(choose(1,1,2)) {
-            with make(xpos+irandom(room_width/3)-room_width/6,32,mazeEater) {
+            with make(xpos+irandom(room_width/3)-room_width/6,48,mazeEater) {
                 ylimit = -other.mazeSize;
-                //vspeed = -1;
             }
         }
     }

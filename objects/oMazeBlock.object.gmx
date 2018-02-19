@@ -51,7 +51,7 @@ if irandom(64) == 1 {// or instance_place(x,y,oMazeBlock) {
 }
 
 HP = 99999;
-value = 5;
+value = 0;
 </string>
           </argument>
         </arguments>

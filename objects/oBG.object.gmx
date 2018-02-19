@@ -213,7 +213,7 @@ draw_set_alpha(1)
 if surface_exists(starssurf) {
     surface_set_target(starssurf);
     draw_clear_alpha(c_white,0)
-        
+
     var starfieldAlpha = 1;
 
     for (var i=0;i&lt;background_vspeed[0]/8;i+=1) {
@@ -222,7 +222,7 @@ if surface_exists(starssurf) {
     }
 
     draw_background_tiled_ext(bgStarfield,0,background_y[0],2,2,merge_color(c_white,c_blue,abs(sin(objectAge*.002))),1);
-    
+
     // draw twinkle blocker circles
     for (var i=0;i&lt;3;i+=1) {
         //draw_set_color(c_black);
@@ -242,13 +242,16 @@ if surface_exists(starssurf) {
             tYVel[i] = -sign(tYVel[i])*choose(1,2,.5);
         }
     }
-    
-    
+
     surface_reset_target();
 
+    //make(surfaceTester); //7,9
+    //draw_set_blend_mode_ext(surfaceTester.srcmode,surfaceTester.destmode);
+
+    draw_set_alpha(.5);
     draw_surface_stretched(starssurf, 0, 0, display_get_gui_width(), display_get_gui_height());
     draw_set_alpha(1);
-        
+
     //make(surfaceTester); //7,9
     //draw_set_blend_mode_ext(surfaceTester.srcmode,surfaceTester.destmode);
     /*
