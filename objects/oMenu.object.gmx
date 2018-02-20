@@ -98,15 +98,20 @@ if objectAge == cycleDuration {
     }
 }
 
+
+//background_color = merge_color(image_blend,c_dkgray,.5)
+draw_rectangle_colour(0,0,vw,vh,background_color,background_color,c_black,c_black,false);
+
 //draw_background_tiled_ext(bgStarfield,0,0,1,1,image_blend,1);
-draw_set_blend_mode_ext(bm_src_alpha,bm_dest_alpha);
-draw_sprite_ext(sTitle,0,view_wview[0]/2,view_hview[0]*.86,scale,scale,0,merge_color(image_blend,c_white,.5),image_alpha);
+draw_set_blend_mode_ext(5,0);
+//make(surfaceTester);
+//draw_set_blend_mode_ext(surfaceTester.srcmode,surfaceTester.destmode);
+
+//draw_sprite_ext(sTitle,0,view_wview[0]/2,view_hview[0]*.86,scale,scale,0,merge_color(image_blend,c_white,.5),image_alpha);
+draw_sprite_ext(sTitle,0,view_wview[0]/2,vh/2,scale,scale,0,merge_color(image_blend,c_white,.5),image_alpha);
 draw_set_blend_mode(bm_normal);
 
-
-background_color = merge_color(image_blend,c_dkgray,.5)
-
-if objectAge &gt; 240 image_alpha -= .0025;
+//if objectAge &gt; 240 image_alpha -= .0025;
 /*
 draw_sprite_ext(sShip,0,80,120,5,5,0,c_white,1);
 

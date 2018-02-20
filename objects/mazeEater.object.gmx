@@ -32,6 +32,7 @@ alarm[0] = 1;
 vspeed = 0;
 
 startedEating = false;
+eating = false;
 haventClearedBlock = 0;
 
 objectAge = 0;
@@ -57,8 +58,20 @@ objectAge = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>y = ystart+16*sin(objectAge*.1);
-objectAge += 1;
+            <string>
+
+if eating {
+    objectAge += 1;
+    if irandom(512) == 1 and abs(hspeed) &lt; 6 hspeed *= choose(-1,-1,1,2);
+    if hspeed &gt; 0 image_xscale = 1 else image_xscale = -1;
+} else {
+    if y &lt; vh/2 vspeed = 2 else vspeed = 0;
+}
+
+y = y+16*sin(objectAge*.1);
+if x &lt; 0 hspeed = choose(1,2);
+if x &gt;= room_width hspeed = choose(-1,-2);
+
 
 var clearedABlock = false;
 
@@ -78,26 +91,12 @@ repeat 8 {
 
 if clearedABlock {
     startedEating = true;
-
-    /*
-    fxId = make(x+irandom(32)-16,y+irandom(32)-16,oFX);
-    fxId.sprite_index = sLargeExplosion;
-    fxId.image_xscale = image_xscale;
-    fxId.image_yscale = image_yscale;
-    */
 } else {
     haventClearedBlock += 1;
 }
 
 if ww &gt; 30 ww += choose(0,0,0,2,-2);
 if ww &lt;= 30 ww += choose(1,2,3,0);
-
-if irandom(512) == 1 and abs(hspeed) &lt; 6 hspeed *= choose(-1,-1,1,2);
-if x &lt; 0 hspeed = choose(1,2);
-if x &gt;= room_width hspeed = choose(-1,-2);
-
-
-if hspeed &gt; 0 image_xscale = 1 else image_xscale = -1;
 </string>
           </argument>
         </arguments>
@@ -121,6 +120,7 @@ if hspeed &gt; 0 image_xscale = 1 else image_xscale = -1;
           <argument>
             <kind>1</kind>
             <string>with other kill(self);
+if irandom(16) == 1 make(x,y+8,oPickup);
 </string>
           </argument>
         </arguments>

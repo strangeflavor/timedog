@@ -17,15 +17,38 @@ switch winCondition {
 active = true;
 
 #define catchEndLevel
-if winCondition == _WIN_TIMELINE_END {
-    if timeline_position > timeline_max_moment(timeline_index) { 
-        timeline_running = false;
-        trace('***** timeline done');
+var caughtEndLevel = false;
 
-        GAMEFLOW_completedLevel = true;
-        make(x,y,endLevel);
-        active = false;
-    }
+switch winCondition {
+    case _WIN_TIMELINE_END:
+        if timeline_position > timeline_max_moment(timeline_index) { 
+            timeline_running = false;
+            trace('***** timeline done');
+            caughtEndLevel = true;
+        }
+    break;
+    case _WIN_BOSS:
+        if levelManager.bossDefeated {
+            caughtEndLevel = true;
+        }
+    break;
+    /*
+    case _WIN_TIME:
+        if objectAge >= winConditionValue {
+        
+        }
+    break;
+    */
+    /*
+    case _WIN_FORMATIONS_COMPLETE:
+    break;
+    */
+}
+
+if caughtEndLevel {
+    GAMEFLOW_completedLevel = true;
+    make(vw/2,vh/2,endLevel);
+    active = false;
 }
 
 #define setupTimeline

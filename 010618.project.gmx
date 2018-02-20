@@ -112,6 +112,8 @@
     <sprites name="menu">
       <sprite>sprites\s1x1_Mask</sprite>
       <sprite>sprites\sUFO</sprite>
+      <sprite>sprites\sSubTitle</sprite>
+      <sprite>sprites\sInText</sprite>
       <sprite>sprites\sTitle</sprite>
     </sprites>
     <sprites name="player">
@@ -417,6 +419,7 @@
       <object>objects\oMultiShot</object>
       <object>objects\oMazeBlock</object>
       <object>objects\mazeEater</object>
+      <object>objects\mazeEndpoint</object>
     </objects>
     <objects name="shots">
       <object>objects\oBullet</object>
