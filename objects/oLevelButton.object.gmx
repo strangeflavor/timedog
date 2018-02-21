@@ -101,17 +101,17 @@ timeline_running = true;
             rollOver = true;
         }
     }
-    
+
     if rollOver and objectAge &gt; 10 {
         if mouse_check_button(mb_left) {
             image_alpha = .5;
         }
-    
+
         if mouse_check_button_released(mb_left) and !locked and abs(frac(view_xview[0]/vw)) &lt; .03 {
             GAMEFLOW_currentLevel = levelID;
             room_goto_next();
         }
-    
+
         if mouse_check_button_released(mb_right) { //and !locked {
             unlockAdjacent(id);
         }
@@ -146,7 +146,7 @@ var fill = false;
 if rollOver and !locked {
     rr = 4;
     fill = true;
-    image_blend = make_color_rgb(irandom(255),irandom(255),irandom(255));
+    image_blend = merge_color(c_white,c_red,max(.1,.2,abs(sin(objectAge*.1))));
 } else {
     image_blend = c_white;
 }

@@ -51,6 +51,29 @@ alarm[0] = 30;
         </arguments>
       </action>
     </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with mazeEater flee = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -68,33 +91,12 @@ alarm[0] = 30;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//repeat (2) {
-    for (var i=0;i&lt;room_width;i+=blocksize) {
-        make(i,mm,oMazeBlock);
-    }
-
-    mm -= blocksize;
-//}
-
-// sometimes place megablock
-/*
-if irandom(3) == 1 and abs(mm) &lt; abs(mazeSize)-4*blocksize {
-    with make((irandom(((room_width-(blocksize*2))/blocksize))+1)*blocksize,mm-blocksize,oMazeBlock) {
-        image_xscale = 6;
-        image_yscale = 6;
-        image_blend = c_gray;
-        depth -= 1;
-        repeat 8 {
-            with instance_place(x,y,oMazeBlock) {
-                value = 0;
-                kill();
-            }
-        }
-
-        if irandom(16) == 1 kill();
-    }
+            <string>for (var i=0;i&lt;room_width;i+=blocksize) {
+    make(i+blocksize/2,mm,oMazeBlock);
 }
-*/
+
+mm -= blocksize;
+
 if abs(mm) &gt; abs(mazeSize) {
     var xpos = (irandom(((room_width-(blocksize*2))/blocksize))+1)*blocksize;
 
@@ -112,9 +114,10 @@ if abs(mm) &gt; abs(mazeSize) {
         active = true;
     }
 
-    with make(0,mm,mazeEndpoint) vspeed = other.mazeSpeed;
-    
-    instance_destroy();
+    with make(0,mm,mazeEndpoint) {
+        vspeed = other.mazeSpeed;
+        myMaze = other.id;
+    }
 } else {
     alarm[0] = rate;
 }
