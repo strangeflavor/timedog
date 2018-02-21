@@ -51,7 +51,7 @@ alarm[0] = 60;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>TweenSimpleMove(x,y,x/2,-128,40,EaseInCubic);
+            <string>TweenSimpleMove(x,y,x,-128,40,EaseInCubic);
 </string>
           </argument>
         </arguments>
@@ -110,7 +110,7 @@ draw_set_valign(fa_middle);
 draw_set_color(c_white);
 draw_text_ext(x,y,'CLEAR!!',-1,-1);
 
-y = ystart +8*sin(objectAge*.1)
+if !tweening y = ystart +8*sin(objectAge*.1)
 </string>
           </argument>
         </arguments>
