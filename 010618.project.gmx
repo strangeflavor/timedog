@@ -115,6 +115,7 @@
       <sprite>sprites\sSubTitle</sprite>
       <sprite>sprites\sInText</sprite>
       <sprite>sprites\sTitle</sprite>
+      <sprite>sprites\sDog</sprite>
     </sprites>
     <sprites name="player">
       <sprite>sprites\sPickupHitbox</sprite>
@@ -164,6 +165,9 @@
       <sprite>sprites\sFilmGrain</sprite>
       <sprite>sprites\sGradientCircle</sprite>
       <sprite>sprites\sBrak</sprite>
+    </sprites>
+    <sprites name="UI">
+      <sprite>sprites\sItemUI</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">

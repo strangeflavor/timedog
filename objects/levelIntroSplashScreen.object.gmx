@@ -79,9 +79,8 @@ TweenSimpleMove(x,y,x,-200,40,EaseInCubic);
 
 if y &gt; vh + 128 or y &lt; -128 {
     if instance_exists(oHUD) oHUD.showHud = true;
-    instance_destroy();
+    kill();
 }
-
 </string>
           </argument>
         </arguments>

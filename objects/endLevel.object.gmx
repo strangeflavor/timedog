@@ -28,6 +28,8 @@
             <string>duration = 180;
 objectAge = 0;
 
+tweening = false;
+
 alarm[0] = 60;
 </string>
           </argument>
@@ -51,7 +53,8 @@ alarm[0] = 60;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>TweenSimpleMove(x,y,x,-128,40,EaseInCubic);
+            <string>tweening = true;
+TweenSimpleMove(x,y,x,-128,40,EaseInCubic);
 </string>
           </argument>
         </arguments>
