@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -65,8 +65,8 @@ _speed = .5;
 ilength = 170;
  
 radius = (room_height*.9)/2;
-xcenter = room_width/2;
-ycenter = room_height/2;
+xcenter = x;//room_width/2;
+ycenter = y;//room_height/2;
 /*
 if mode == 'midi' {
     rad = 5;
@@ -96,7 +96,7 @@ for (i = 1; i &lt; npoints; i+=1)
     var radiusi = radius; //radius*sin(a*ftime); // VERY NICE
     _x = xcenter + cos(a) * (i/npoints) * radiusi;
     _y = ycenter + sin(a) * (i/npoints) * radiusi;
-    draw_circle(_x, room_height-_y, rad,false);
+    draw_circle(_x, _y, rad,false);
   }
 
   draw_set_blend_mode(bm_normal);

@@ -21,5 +21,6 @@
   <height>167</height>
   <frames>
     <frame index="0">images\sDog_0.png</frame>
+    <frame index="1">images\sDog_1.png</frame>
   </frames>
 </sprite>

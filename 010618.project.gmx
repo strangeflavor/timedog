@@ -115,6 +115,8 @@
       <sprite>sprites\sSubTitle</sprite>
       <sprite>sprites\sInText</sprite>
       <sprite>sprites\sTitle</sprite>
+      <sprite>sprites\sGridBG</sprite>
+      <sprite>sprites\sDigitalDog</sprite>
       <sprite>sprites\sDog</sprite>
     </sprites>
     <sprites name="player">
@@ -340,6 +342,7 @@
     <script>scripts\x_axis_get.gml</script>
     <script>scripts\endTimeline.gml</script>
     <script>scripts\screenResize.gml</script>
+    <script>scripts\draw_noisesurf.gml</script>
     <script>scripts\draw_SHADER_sceneFringe.gml</script>
     <script>scripts\draw_SHADER_glitter.gml</script>
     <script>scripts\draw_SHADER_bokeh.gml</script>
@@ -371,10 +374,12 @@
       <object>objects\endLevel</object>
     </objects>
     <objects name="menu">
+      <object>objects\oMenu</object>
       <object>objects\oLevelMenu</object>
       <object>objects\oEraSlider</object>
       <object>objects\oButton</object>
       <object>objects\oLevelButton</object>
+      <object>objects\oTitleDog</object>
       <object>objects\columnB</object>
     </objects>
     <objects name="formations">
@@ -397,11 +402,11 @@
     </objects>
     <objects name="system">
       <object>objects\controller</object>
-      <object>objects\oMenu</object>
       <object>objects\oFX</object>
       <object>objects\oAudio</object>
       <object>objects\oBG</object>
       <object>objects\oHUD</object>
+      <object>objects\timedogFM</object>
     </objects>
     <objects name="player">
       <object>objects\oShip</object>

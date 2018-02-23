@@ -113,14 +113,14 @@ if active {
         }
         */
         draw_set_alpha(1);
-        draw_sprite(sItemUI,0,16,vh - 64);
-        draw_sprite(sItemUI,1,16,vh - 64);
+        draw_sprite(sItemUI,0,8,vh - 64);
+        draw_sprite(sItemUI,1,8,vh - 64);
         draw_set_halign(fa_left);
         draw_set_valign(fa_bottom);
         draw_set_color(c_dkgray);
-        draw_text(52+2,vh - 6+2,'EQ');
-        draw_set_color(c_white);
-        draw_text(52,vh - 6,'EQ');
+        draw_text(47+2,vh - 6+2,'EQ');
+        draw_set_color(make_color_rgb(20+76,20+150,255));
+        draw_text(47,vh - 6,'EQ');
         if levelManager.winCondition == _WIN_TIME drawTimeHUD();
     }
 

@@ -20,6 +20,6 @@
   <width>800</width>
   <height>800</height>
   <frames>
-    <frame index="0">images\sTitle_0.png</frame>
+    <frame index="0">images\sGridBG_0.png</frame>
   </frames>
 </sprite>
