@@ -40,12 +40,12 @@
           <argument>
             <kind>1</kind>
             <string>explosionType = sMedExplosion;
-value=-5;
+value=1;
 
 HP = 1.5;
 
-image_xscale = scale*2;
-image_yscale = scale*2;
+//image_xscale = scale*2;
+//image_yscale = scale*2;
 
 //speed = 5;
 
@@ -67,7 +67,7 @@ phaseArguments[0,3] = .7; // max force
 */
 
 phaseCondition[0] = _PHASE_CONDITION_TIME;
-phaseConditionArguments[0,0] = 50;
+phaseConditionArguments[0,0] = 70;
 
 phase[1] = enemy_steering_player;
 phaseArguments[1,0] = 0.5; // max speed
@@ -81,9 +81,9 @@ phaseCondition[2] = _PHASE_CONDITION_TIME;
 phaseConditionArguments[2,0] = 12;
 
 phase[3] = enemy_move_rotate;
-phaseArguments[3,0] = -80; // destx
+if x &gt; vw/2 phaseArguments[3,0] = vw+80 else phaseArguments[3,0] = -80; // destx
 phaseArguments[3,1] = -32; // desty
-phaseArguments[3,2] = 3; // speed
+phaseArguments[3,2] = 5; // speed
 phaseArguments[3,3] = 4; // rotation amount
 </string>
           </argument>
@@ -121,31 +121,7 @@ phaseArguments[3,3] = 4; // rotation amount
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//image_angle = direction;
-
-/*
-if objectAge &lt; 50 {
-    if frac(objectAge/9) == 0 {
-        if instance_exists(oShip) direction = point_direction(x,y,oShip.x,oShip.y);// else direction = irandom(360);
-    }
-
-    image_angle = direction;
-} else {
-    if currentPhase &lt; 2 {
-        if frac(objectAge/18) == 0 {
-            if instance_exists(oShip) direction = point_direction(x,y,oShip.x,oShip.y);// else direction = irandom(360);
-        }
-        image_angle = direction;
-    }
-}
-
-if currentPhase == 1 {
-    if speed &gt; 0 speed *= .93;
-    if speed &lt; .2 speed = 0;
-}
-*/
-
-if currentPhase == 2 {
+            <string>if currentPhase == 2 {
     if instance_exists(oShip) enemy_move_rotate(oShip.x,oShip.y,0,.5);
 }
 </string>

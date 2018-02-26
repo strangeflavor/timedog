@@ -77,7 +77,12 @@ objectAge += 1;
           <argument>
             <kind>1</kind>
             <string>//draw_sprite(sprite_index,0,x,y);
-draw_sprite_ext(sprite_index,0,x,y,1,1,image_angle,c_white,1);
+var c1 = make_color_rgb(255,128,64);
+var c2 = make_color_rgb(64,128,255);
+draw_sprite_ext(sprite_index,1,x,y,1,1,image_angle,merge_color(c_black,c2,abs(sin(objectAge*.001))),1);
+//draw_sprite_ext(sprite_index,2,x,y,1,1,image_angle,merge_color(c_white,c1,abs(objectAge*.001)),1);
+draw_sprite_ext(sprite_index,2,x,y,1,1,image_angle,merge_color(c_white,c_black,abs(sin(objectAge*.001))),1);
+//draw_sprite(sMenuSubtitle,0,x-sprite_width/2+110,y-sprite_height/2+130);
 </string>
           </argument>
         </arguments>

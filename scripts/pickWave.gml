@@ -144,6 +144,7 @@ for (var i=0;i<100;i+=1) {
 
 managerArray[0] = levelMan000;
 managerArray[1] = levelMan001;
+managerArray[2] = levelManMidBoss_0;
 managerArray[4] = levelManMaze_0;
 
 for (var i=100;i<200;i+=1) {

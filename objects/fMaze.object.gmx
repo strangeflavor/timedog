@@ -43,7 +43,7 @@
 blocksize = 32;
 mm = -blocksize*2;
 mazeSize = 1280;
-mazeSpeed = choose(5,6,7);
+mazeSpeed = levelManager.mazeSpeed;
 
 alarm[0] = 30;
 </string>

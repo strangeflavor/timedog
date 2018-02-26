@@ -45,9 +45,11 @@ switch winCondition {
     */
 }
 
+if keyboard_check_pressed(vk_f9) caughtEndLevel = true;
+
 if caughtEndLevel {
     GAMEFLOW_completedLevel = true;
-    make(vw/2,vh/2,endLevel);
+    make(vw/2,vh+64,endLevel);
     active = false;
 }
 

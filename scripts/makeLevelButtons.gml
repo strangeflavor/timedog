@@ -14,11 +14,13 @@ var world = 0;
 for (var r=0;r<numWorlds*view_wview[0];r+=view_wview[0]) {
     for (var i=0;i<buttonsPerSide;i+=1) {
         for (var j=0;j<buttonsPerSide;j+=1) {
-            instanceID = instance_create(r+initialX+j*buttonDistance,initialY+i*buttonDistance,oLevelButton);
+            instanceID = make(r+initialX+j*buttonDistance,initialY+i*buttonDistance,oLevelButton);
             instanceID.buttonSize = buttonSize;
             instanceID.levelID = levelID + world*100;
             instanceID.world = (r div view_wview[0]);
             prepareButton(instanceID);
+            
+            if instanceID.levelID == 5 instanceID.shop = true;
 
             levelID += 1;
         }

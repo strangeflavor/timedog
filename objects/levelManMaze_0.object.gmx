@@ -46,7 +46,7 @@ TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,0,2,50);
 TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,1,0,25);
 
 mazes = 3;
-timeBetweenMazes = 180;
+timeBetweenMazes = 120;
 alarm[1] = 120;
 </string>
           </argument>
@@ -93,8 +93,13 @@ alarm[1] = 120;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>make(vw/2,vh/2,fMaze);
-mazes -= 1;
+            <string>if mazes &gt; 0 {
+    levelManager.mazeSpeed += 3;
+    make(vw/2,vh/2,fMaze);
+    mazes -= 1;
+} else {
+    alarm[2] = timeBetweenMazes;
+}
 </string>
           </argument>
         </arguments>

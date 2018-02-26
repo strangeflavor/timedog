@@ -28,6 +28,10 @@
             <string>active = false;
 objectAge = 0;
 
+////////////////////
+// formations &amp; wave stuff
+////////////////////
+
 for (var i=0;i&lt;32;i+=1) formationComplete[i] = false;
 
 wave = -1;
@@ -36,9 +40,13 @@ waveComplete = false;
 checkForEndOfWave = false;
 formationCompleteGracePeriod = -600;
 
-levelComplete = false;
-
 for (var i=0;i&lt;16;i+=1) occupiedTimer[i] = 0;
+
+////////////////////
+// maze
+////////////////////
+
+mazeSpeed = 5;
 
 ////////////////////
 // win condition stuff
@@ -48,6 +56,11 @@ winCondition = _WIN_TIME;
 winConditionValue = 30*60*60;
 bossDefeated = false;
 
+/////////////////////
+// start the level!
+/////////////////////
+
+levelComplete = false;
 instance_create(vw/2,vh/2,levelIntroSplashScreen);
 
 alarm[0] = 1; // kicks off 
@@ -125,6 +138,35 @@ if active {
           <argument>
             <kind>1</kind>
             <string>unoccupyTimers();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if debug {
+    draw_set_color(c_white);
+    draw_set_halign(fa_middle);
+    draw_set_valign(fa_middle);
+    draw_set_alpha(1);
+    draw_text(vw/2,32,timeline_position);
+}
 </string>
           </argument>
         </arguments>

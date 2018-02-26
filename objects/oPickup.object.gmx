@@ -68,6 +68,7 @@ if y &lt; (room_height + 32) {
 }
 */
 //fxID.image_blend = oShip.thrusterColor[irandom(2)];
+///if collected repeat 3 make(x+irandom(6)-3,y+irandom(6)-3,oPickupCollectedFX);
 if collected repeat 3 make(x+irandom(6)-3,y+irandom(6)-3,oPickupCollectedFX);
 </string>
           </argument>
@@ -200,8 +201,8 @@ draw_circle(x,y,r+8,true);
 
 //image_alpha = .5;
 draw_self();
-draw_sprite_ext(sPickupCrystal,0,x,y,image_xscale,image_yscale,0,c_white,1);
-draw_sprite_ext(sPickupFlash,image_index,x,y,image_xscale,image_yscale,0,c_white,1);
+draw_sprite_ext(sPickupCrystal,0,x,y,image_xscale,image_yscale,image_angle,c_white,1);
+draw_sprite_ext(sPickupFlash,image_index,x,y,image_xscale,image_yscale,image_angle,c_white,1);
 //draw_set_alpha(1);
 //draw_set_blend_mode(bm_normal);
 </string>

@@ -9,6 +9,8 @@ scale = 1;
 developer = true;
 debugTimelineStartPos = -1;
 
+gems = 0;
+
 base_w = 480;
 base_h = 640;
 vw = base_w*scale;
@@ -31,9 +33,9 @@ numWorlds = 10; // worlds total
 
 createLevelData();
 
-//globalvar GAMEFLOW_completedLevel,GAMEFLOW_currentLevel;
 GAMEFLOW_completedLevel = false;
 GAMEFLOW_currentLevel = -1;
+GAMEFLOW_gemsCollectedInLevel = 0;
 
 ///////////////////////////////////////////////
 // system objects

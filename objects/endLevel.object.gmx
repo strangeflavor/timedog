@@ -30,7 +30,32 @@ objectAge = 0;
 
 tweening = false;
 
-alarm[0] = 60;
+alarm[0] = 1;
+alarm[1] = 180;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///room_goto(rLevelSelect);
+room_goto(rLevelSelect);
 </string>
           </argument>
         </arguments>
@@ -54,7 +79,7 @@ alarm[0] = 60;
           <argument>
             <kind>1</kind>
             <string>tweening = true;
-TweenSimpleMove(x,y,x,-128,40,EaseInCubic);
+TweenSimpleMove(x,y,x,vh/2,120,EaseOutBounce);
 </string>
           </argument>
         </arguments>
@@ -78,9 +103,6 @@ TweenSimpleMove(x,y,x,-128,40,EaseInCubic);
           <argument>
             <kind>1</kind>
             <string>objectAge += 1;
-if y &gt; vh + 128 or y &lt; -128 {
-    room_goto(rLevelSelect);
-}
 </string>
           </argument>
         </arguments>
@@ -103,10 +125,10 @@ if y &gt; vh + 128 or y &lt; -128 {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(merge_color(c_black,c_teal,.5*abs(sin(objectAge*.025))));
-draw_roundrect(x-80,y-32,x+80,y+32,false);
+            <string>draw_sprite_pos(sSquareIrrid,objectAge*.2,0,y-30,vw,y-30,vw,y+30,0,y+30,1);
+
 draw_set_color(c_black);
-draw_roundrect(x-74,y-26,x+74,y+26,false);
+draw_rectangle(0,y-26,vw,y+26,false);
 
 draw_set_halign(fa_middle);
 draw_set_valign(fa_middle);

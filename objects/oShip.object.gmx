@@ -340,7 +340,7 @@ alarm[0] = 4*scale;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>score += 1;
+            <string>if debug GAMEFLOW_gemsCollectedInLevel += 10 else GAMEFLOW_gemsCollectedInLevel += 1;
 sfx(sndGet);
 other.collected = true;
 with other instance_destroy();

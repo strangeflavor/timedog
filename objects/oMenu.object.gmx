@@ -39,7 +39,7 @@ objectAge = 0;
 cycleDuration = 60*4;
 
 //make(vw/2,vh/2,columnB);
-make(vw/2+vw/4,vh/2,oTitleDog);
+make(vw/2+vw/5,vh-vh/4+20,oTitleDog);
 
 noisesurf = -1;
 starssurf = -1;
@@ -107,15 +107,25 @@ if objectAge == cycleDuration {
 //background_color = merge_color(image_blend,c_dkgray,.5)
 draw_rectangle_colour(0,0,vw,vh,background_color,background_color,c_black,c_black,false);
 bg_color = background_color;
-//draw_background_tiled_ext(bgStarfield,0,0,1,1,image_blend,1);
 
 draw_noisesurf();
 draw_set_blend_mode_ext(5,3);
+draw_sprite_ext(sGridBGTall,0,vw/2,vh/2+80,scale,scale,0,merge_color(image_blend,c_white,.5),.5);
+//draw_set_blend_mode(bm_normal);
+
+draw_set_blend_mode_ext(9,2);
 //make(surfaceTester);
 //draw_set_blend_mode_ext(surfaceTester.srcmode,surfaceTester.destmode);
-draw_sprite_ext(sTitle,0,view_wview[0]/2,vh/2,scale,scale,0,merge_color(image_blend,c_white,.5),.5);
 
+draw_sprite_ext(sOvalGrad,0,vw/2,120,2,2,0,c_white,.5);
+
+draw_set_blend_mode_ext(6,3);
+draw_sprite_ext(sTitleText,0,vw/2,120,scale,scale,0,c_white,1);
+
+draw_set_blend_mode_ext(3,7);
+draw_sprite_ext(sRectangleGrad,0,vw/2,vh/2-40,1,1+(irandom(10)-5)*.01,0,c_white,1);
 draw_set_blend_mode(bm_normal);
+draw_sprite_ext(sMenuSubtitle,0,vw/2,vh/2-45,1,1,0,c_white,1);
 </string>
           </argument>
         </arguments>

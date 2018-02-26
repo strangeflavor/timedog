@@ -32,7 +32,7 @@ mouse_clear(mb_right);
 makeLevelButtons();
 makeEraSliders();
 
-alarm[0] = 1;
+alarm[0] = 30;
 </string>
           </argument>
         </arguments>
@@ -55,9 +55,16 @@ alarm[0] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with oLevelButton {
-    waitForUnlock = false;
+            <string>with oLevelButton waitForUnlock = false;
+/*
+with oLevelButton {
+    waitForUnlock = true;
+
+    if levelID == GAMEFLOW_currentLevel {
+        unlockAdjacent(id);
+    }
 }
+*/
 </string>
           </argument>
         </arguments>
@@ -82,9 +89,39 @@ alarm[0] = 1;
             <kind>1</kind>
             <string>// we may need to unlock stuff or update scores if we've returned to the level select screen after completing a level
 if GAMEFLOW_completedLevel {
-    GAMEFLOW_completedLevel = false;
-
+    alarm[0] = 6;
     oEraSlider.waitForUnlock = true;
+
+    if GAMEFLOW_gemsCollectedInLevel &gt; 0 {
+        if !instance_exists(gemFeeder) make(gemFeeder);
+    } else {
+        GAMEFLOW_completedLevel = false;
+        with oLevelButton {
+            waitForUnlock = true;
+    
+            if levelID == GAMEFLOW_currentLevel {
+                unlockAdjacent(id);
+            }
+        }
+        //alarm[1] = 60;
+    }
+}
+  
+/*
+    GAMEFLOW_completedLevel = false;
+    oEraSlider.waitForUnlock = true;
+
+
+    if !instance_exists(gemFeeder) {
+        if GAMEFLOW_gemsCollectedInLevel &gt; 0 {
+            make(gemFeeder);
+        } else {
+            make(levelUnlocker);
+        }
+    
+    }
+*/
+    /*
     with oLevelButton {
         waitForUnlock = true;
 
@@ -92,7 +129,7 @@ if GAMEFLOW_completedLevel {
             unlockAdjacent(id);
         }
     }
-}
+    */
 </string>
           </argument>
         </arguments>

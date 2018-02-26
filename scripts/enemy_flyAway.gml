@@ -142,9 +142,22 @@ if phaseArguments[currentPhase,1] > 0 {
         }
     }
     */
+        var numShots = 3;
         with make(getTurretX(_turret),getTurretY(_turret),oBullet) {
             direction = other.direction;
             speed = 5;
+        }
+
+        if numShots == 3 {
+            with make(getTurretX(_turret),getTurretY(_turret),oBullet) {
+                direction = other.direction-30;
+                speed = 5;
+            }
+
+            with make(getTurretX(_turret),getTurretY(_turret),oBullet) {
+                direction = other.direction+30;
+                speed = 5;
+            }
         }
 
     phaseArguments[currentPhase,1] -= 1;
