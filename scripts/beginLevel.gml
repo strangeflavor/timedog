@@ -7,9 +7,7 @@ switch winCondition {
         if debugTimelineStartPos > -1 timeline_position = debugTimelineStartPos;
     break;
     case _WIN_FORMATIONS_COMPLETE:
-        waveID = pickWave();
-        wave += 1;
-        
+    case _WIN_TIME:
         alarm[1] = 60;
     break;
 }
@@ -32,15 +30,18 @@ switch winCondition {
             caughtEndLevel = true;
         }
     break;
+    case _WIN_FORMATIONS_COMPLETE:
+        if wave > 16 caughtEndLevel = true;
+    break;
+    case _WIN_TIME:
+        if oHUD.showHud winConditionValue -= 1;
+        if winConditionValue <= 0 caughtEndLevel = true;
+    break;
     /*
     case _WIN_TIME:
         if objectAge >= winConditionValue {
         
         }
-    break;
-    */
-    /*
-    case _WIN_FORMATIONS_COMPLETE:
     break;
     */
 }

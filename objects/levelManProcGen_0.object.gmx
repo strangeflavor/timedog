@@ -3,14 +3,28 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>levelManager</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -25,113 +39,39 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>introDuration = 120;
-objectAge = 0;
-tweening = false;
-alarm[0] = 60;
+            <string>winCondition = _WIN_TIME;
+winConditionValue = 60*60*1;
 
-introText = 'START!!';
-
-switch levelManager.winCondition {
-    case _WIN_TIME:
-        introText = 'SURVIVE!!';
-    break;
-    case _WIN_BOSS:
-        introText = 'DEFEAT!!';
-    break;
+TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,0,2,50);
+TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,1,0,25);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if pickWave() {
+    wave += 1;
+    alarm[1] = 120;
+} else {
+    alarm[1] = 30;
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>tweening = true;
-TweenSimpleMove(x,y,x,-200,40,EaseInCubic);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>objectAge += 1;
-
-if y &gt; vh + 128 or y &lt; -128 {
-    if instance_exists(oHUD) oHUD.showHud = true;
-    kill();
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="64">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/*
-draw_set_color(merge_color(c_black,make_color_rgb(255,255,0),.5*abs(sin(objectAge*.025))));
-draw_roundrect(x-80,y-32,x+80,y+32,false);
-*/
-
-//draw_sprite_ext(sSquareIrrid,objectAge*.2,x,y,2,1,0,c_white,1);
-draw_sprite_pos(sSquareIrrid,objectAge*.2,0,y-30,vw,y-30,vw,y+30,0,y+30,1);
-
-draw_set_color(c_black);
-draw_rectangle(0,y-26,vw,y+26,false);
-
-
-draw_set_halign(fa_middle);
-draw_set_valign(fa_middle);
-draw_set_color(c_white);
-draw_text_ext(x,y,introText,-1,-1);
-
-if !tweening y = ystart +8*sin(objectAge*.1)
 </string>
           </argument>
         </arguments>

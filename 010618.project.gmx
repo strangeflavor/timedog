@@ -206,7 +206,7 @@
       <script>scripts\startroom.gml</script>
       <script>scripts\beginLevel.gml</script>
       <script>scripts\prepDialog.gml</script>
-      <script>scripts\pickWave.gml</script>
+      <script>scripts\manageManagers.gml</script>
       <script>scripts\drawTimeHUD.gml</script>
     </scripts>
     <scripts name="menus">
@@ -374,6 +374,7 @@
       <object>objects\levelMan001</object>
       <object>objects\levelManMaze_0</object>
       <object>objects\levelManMidBoss_0</object>
+      <object>objects\levelManProcGen_0</object>
     </objects>
     <objects name="gameflow">
       <object>objects\levelIntroSplashScreen</object>
