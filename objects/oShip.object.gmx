@@ -50,7 +50,7 @@ bigShotR = -12;
 bigShotRMax = 64*scale;
 bigShotRMin = bigShotRMax*.8;
 
-invincible = false;
+invincible = true;
 v=0;
 
 active = true;

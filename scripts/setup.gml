@@ -6,7 +6,7 @@
 //globalvar scale,vw,vh,screen_w,screen_h,developer,debug,debugTimelineStartPos,base_w,base_h;
 debug = 0;
 scale = 1;
-developer = false;
+developer = true;
 debugTimelineStartPos = -1;
 
 gems = 0;

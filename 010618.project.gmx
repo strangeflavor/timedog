@@ -396,6 +396,9 @@
       <object>objects\gemFeeder</object>
       <object>objects\levelUnlocker</object>
       <object>objects\columnB</object>
+      <object>objects\oWeaponSelect</object>
+      <object>objects\weaponDelivery</object>
+      <object>objects\weaponPickup</object>
     </objects>
     <objects name="formations">
       <object>objects\formationParent</object>
@@ -475,6 +478,7 @@
     <room>rooms\rDeepSpace</room>
     <room>rooms\rMysteryPlanet</room>
     <room>rooms\roomTest</room>
+    <room>rooms\rWeaponSelect</room>
   </rooms>
   <constants number="42">
     <constant name="scale">global._scale</constant>

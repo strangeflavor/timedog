@@ -8,11 +8,15 @@ switch argument0 {
     break;
     case rDeepSpace:
         // prepare waves, set up level
+        /*
         createLevelManager();
         make(oHUD);
-        make(oBG);
+
 
         music_loop(musicGame);
+        */
+        make(oBG);
+        make(oWeaponSelect);
     break;
     case rLevelSelect:
         if audio_get_name(oAudio.musicPlaying) != 'musicTitle' {
