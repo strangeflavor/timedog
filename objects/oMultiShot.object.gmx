@@ -85,7 +85,11 @@ makeTurret(0,0,9);
           <argument>
             <kind>1</kind>
             <string>if objectAge == 45 {
-    repeat 7 shoot_spray(0,objectAge);
+    speedBoost = 3;
+    repeat 7 {
+        shoot_spray(0,objectAge,3+speedBoost);
+        if speedBoost &gt;= 0 speedBoost -= 1;
+    }
 }
 
 if objectAge == 120 {

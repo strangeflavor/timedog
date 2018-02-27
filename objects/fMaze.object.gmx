@@ -91,7 +91,9 @@ alarm[0] = 30;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for (var i=0;i&lt;room_width;i+=blocksize) {
+            <string>sfx(sndMazePC);
+
+for (var i=0;i&lt;room_width;i+=blocksize) {
     make(i+blocksize/2,mm,oMazeBlock);
 }
 

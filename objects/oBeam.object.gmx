@@ -103,7 +103,8 @@ if objectAge &gt; 9 {
 
 if objectAge &gt; 36 {
     dangerous = true;
-    image_blend = make_color_rgb(64,128+irandom(64),128+irandom(128));
+    //image_blend = make_color_rgb(64,128+irandom(64),128+irandom(128));
+    image_blend = c_aqua;
     if frac(objectAge/3) == 0 image_blend = merge_color(c_dkgray,image_blend,.25)
 }
 

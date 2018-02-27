@@ -44,6 +44,8 @@ winConditionValue = 60*60*1;
 
 TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,0,2,50);
 TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,1,0,25);
+
+waveRate = 120;
 </string>
           </argument>
         </arguments>
@@ -66,11 +68,14 @@ TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,1,0,25);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if pickWave() {
-    wave += 1;
-    alarm[1] = 120;
-} else {
-    alarm[1] = 30;
+            <string>if active {
+    if pickWave() {
+        wave += 1;
+        alarm[1] = waveRate;
+        waveRate *= .9;
+    } else {
+        alarm[1] = waveRate/2;
+    }
 }
 </string>
           </argument>

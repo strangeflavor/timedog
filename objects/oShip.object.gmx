@@ -79,8 +79,11 @@ alarm[1] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>oBG.alarm[0] = 30;
+            <string>sfx(sndPlayerHit);
+
+oBG.alarm[0] = 30;
 levelManager.timeline_speed = 0;
+levelManager.active = false;
 
 with make(oFX) {
     depth += 1;
@@ -88,7 +91,7 @@ with make(oFX) {
     image_xscale = 12;
     image_yscale = 12;
     image_speed = .1;
-    image_alpha = .25;
+    image_alpha = 1;
 }
 
 with make(oFX) {
@@ -294,7 +297,7 @@ alarm[0] = 4*scale;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !invincible kill(self);
+            <string>if !invincible kill();
 </string>
           </argument>
         </arguments>
@@ -341,7 +344,8 @@ alarm[0] = 4*scale;
           <argument>
             <kind>1</kind>
             <string>if debug GAMEFLOW_gemsCollectedInLevel += 10 else GAMEFLOW_gemsCollectedInLevel += 1;
-sfx(sndGet);
+pickupsfx(sndGet);
+oAudio.pickupPitch += .1;
 other.collected = true;
 with other instance_destroy();
 </string>

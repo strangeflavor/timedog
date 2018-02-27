@@ -30,6 +30,7 @@ newFormationID = getFormationID();
 
 with make(-32+xoffset,32,fChain) {
     formationID = other.newFormationID;
+    invul = true;
     
     space = _LEFTCOLUMN;
     size = 3;
@@ -50,6 +51,8 @@ with make(-32+xoffset,32,fChain) {
 
 with make(vw-32-(32*_size)+xoffset,-32,fChain) {
     formationID = other.newFormationID;
+    invul = true;
+
     wait = 15;
     space = _RIGHTCOLUMN;
     size = 3;
@@ -104,6 +107,7 @@ newFormationID = getFormationID();
 with make(vw/2-150+xoffset-(_size*16),32,fChain) {
     formationID = other.newFormationID;
     wait = other._wait;
+    invul = true;
 
     space = _LEFTCOLUMN;
     size = other._size;
@@ -129,6 +133,7 @@ with make(vw/2-150+xoffset-(_size*16),32,fChain) {
 with make(vw/2+150+xoffset+(_size*16),32,fChain) {
     formationID = other.newFormationID;
     wait = other._wait + 8;
+    invul = true;
 
     space = _RIGHTCOLUMN;
     size = other._size;

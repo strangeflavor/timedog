@@ -47,7 +47,7 @@ value = -1;
 image_speed = .2;
 
 HP = .5;
-invul = true;
+invul = false;
 
 image_xscale = scale*2;
 image_yscale = scale*2;

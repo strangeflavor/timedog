@@ -23,6 +23,7 @@ attack_state_entered = false;
 state_scripts[_WAIT] = -1;
 state_scripts[_APPROACH] = _state_APPROACH;
 state_scripts[_BACKANDFORTH_HORI] = _state_BACKANDFORTH_HORI;
+state_scripts[_SPIRAL] = -1; //_state_BACKANDFORTH_HORI;
 
 #define add_state_path
 state_path[state_path_size] = argument0;
@@ -95,6 +96,8 @@ stateNames[_WAIT] = 'WAIT';
 stateNames[_MOVEHORI] = 'MOVEHORI';
 stateNames[_MOVEVERT] = 'MOVEVERT';
 stateNames[_APPROACH] = 'APPROACH';
-stateNames[_BACKANDFORTH_HORI] = 'BANKANDFORTH_HORI';
+stateNames[_BACKANDFORTH_HORI] = 'BACKANDFORTH_HORI';
+stateNames[_SPIRAL] = 'SPIRAL';
+stateNames[_ATK_BEAMS] = '_ATK_BEAMS';
 
 return stateNames[argument0];

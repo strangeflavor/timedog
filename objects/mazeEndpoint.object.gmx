@@ -53,6 +53,7 @@
 }
 
 if y &gt; vh {
+    audio_stop_sound(sndMazePC);
     kill(myMaze);
     kill();
 }

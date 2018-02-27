@@ -4,16 +4,20 @@ formationIndex = 0; // index for formation array (used to keep track of instance
 switch argument0 {
     case rTitle:
         instance_create(-16,-16,oMenu);
-        lives = 3;
-        //musicPlaying = sound_loop(musicTitle);
+        music_loop(musicTitle);
     break;
     case rDeepSpace:
         // prepare waves, set up level
         createLevelManager();
         make(oHUD);
         make(oBG);
-        //instance_create(vw/2,vh/2,levelManager);
-        //musicPlaying = sound_loop(musicTrainJams);
+
+        music_loop(musicGame);
+    break;
+    case rLevelSelect:
+        if audio_get_name(oAudio.musicPlaying) != 'musicTitle' {
+            music_loop(musicTitle);
+        }
     break;
 }
 

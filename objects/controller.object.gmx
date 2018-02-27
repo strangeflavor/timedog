@@ -404,7 +404,7 @@ if view_wview[1] == vw {
         <arguments>
           <argument>
             <kind>6</kind>
-            <sound>musicTrainJams</sound>
+            <sound>-1</sound>
           </argument>
         </arguments>
       </action>

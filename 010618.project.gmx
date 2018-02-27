@@ -102,10 +102,15 @@
     <sound>sound\sndPlayerHit</sound>
     <sound>sound\sndDropBomb</sound>
     <sound>sound\sndDefeatEnemy</sound>
+    <sound>sound\sndRollover</sound>
+    <sound>sound\sound8_sfx_fall</sound>
     <sound>sound\sndDamageEnemy</sound>
+    <sound>sound\sndBomb</sound>
+    <sound>sound\sndMazePC</sound>
+    <sound>sound\sndLevelUnlock</sound>
     <sounds name="music">
+      <sound>sound\musicGame</sound>
       <sound>sound\musicTitle</sound>
-      <sound>sound\musicTrainJams</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -121,6 +126,7 @@
       <sprite>sprites\sOvalGrad</sprite>
       <sprite>sprites\sMenuSubtitle</sprite>
       <sprite>sprites\sSquareIrrid</sprite>
+      <sprite>sprites\sWarning</sprite>
     </sprites>
     <sprites name="player">
       <sprite>sprites\sPickupHitbox</sprite>
@@ -470,7 +476,7 @@
     <room>rooms\rMysteryPlanet</room>
     <room>rooms\roomTest</room>
   </rooms>
-  <constants number="41">
+  <constants number="42">
     <constant name="scale">global._scale</constant>
     <constant name="vw">global._vw</constant>
     <constant name="vh">global._vh</constant>
@@ -501,7 +507,8 @@
     <constant name="_MOVEVERT">3</constant>
     <constant name="_APPROACH">4</constant>
     <constant name="_BACKANDFORTH_HORI">5</constant>
-    <constant name="_ATK_BEAMS">0</constant>
+    <constant name="_SPIRAL">6</constant>
+    <constant name="_ATK_BEAMS">7</constant>
     <constant name="_WIN_TIME">0</constant>
     <constant name="_WIN_BOSS">1</constant>
     <constant name="_WIN_FORMATIONS_COMPLETE">2</constant>

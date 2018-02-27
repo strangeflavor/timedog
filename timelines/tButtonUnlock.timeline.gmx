@@ -47,7 +47,8 @@
             <kind>1</kind>
             <string>shake = false;
 buttonUnlockBurst();
-
+oAudio.pickupPitch += .2;
+pickupsfx(sndLevelUnlock);
 locked = false;
 </string>
           </argument>

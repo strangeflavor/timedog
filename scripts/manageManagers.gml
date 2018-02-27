@@ -12,7 +12,7 @@ managerArray[1] = levelMan001;
 managerArray[2] = levelManMidBoss_0;
 managerArray[3] = levelManProcGen_0;
 managerArray[4] = levelManMaze_0;
-//managerArray[5] = shop
+managerArray[5] = 999; // shop
 
 for (var i=100;i<200;i+=1) {
     managerArray[i] = levelManager;
@@ -76,10 +76,14 @@ switch irandom(3) {
 var success = false;
 var slot = irandom(8);
 var waveSpawned = false;
+
+newFormationID = getFormationID();
+
 switch slot {
     case 0:
         if occupySpace(_LEFTCOLUMN,90) {
             with instance_create(-32,32,fChain) {
+                formationID = other.newFormationID;
                 enemy = oMiniThex;
                 path = pLShape;
                 size = 8;
@@ -91,6 +95,7 @@ switch slot {
     case 1:
         if occupySpace(_RIGHTCOLUMN,90) {
             with instance_create(room_width-32,32,fChain) {
+                formationID = other.newFormationID;
                 enemy = oMiniThex;
                 path = pLShapeMirror;
                 size = 8;
@@ -101,6 +106,7 @@ switch slot {
     case 2:
         if occupySpace(_RIGHTCOLUMN,90) {
             with instance_create(room_width-64,32,fChain) {
+                formationID = other.newFormationID;
                 enemy = oMiniThex;
                 path = pSine;
                 endaction = path_action_continue;
@@ -160,6 +166,7 @@ switch slot {
     case 8:
         if occupySpace(_LEFTCOLUMN,400) {
             with make(64,-32,oMultiShot) {
+                formationID = other.newFormationID;
                 path = pCurvedApproachMirror;
                 path_speed = 6;
                 path_endtime = 45;

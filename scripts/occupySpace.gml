@@ -56,6 +56,7 @@ if formationID > -1 {
 #define getFormationID
 ///getFormationID()
 formationTracker.nextFormationID += 1;
+if formationTracker.nextFormationID > 127 formationTracker.nextFormationID = 0;
 return formationTracker.nextFormationID;
 
 #define addEnemyToFormationTracker

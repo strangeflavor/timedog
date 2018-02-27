@@ -40,7 +40,7 @@
           <argument>
             <kind>1</kind>
             <string>value = 10;
-HP = 200;
+HP = 300;
 flashing = 0;
 
 xdest = room_width/2;
@@ -65,8 +65,10 @@ makeTurret(2,0,sprite_height/2);
 setup_state_paths();
 add_state_path(_APPROACH,90);
 add_state_path(_BACKANDFORTH_HORI,390);
-add_state_path(_WAIT,180);
+add_state_path(_WAIT,120);
 add_state_path(_BACKANDFORTH_HORI,390);
+add_state_path(_SPIRAL,240);
+add_state_path(_WAIT,120);
 state_path_loop_position = 1;
 
 add_attack_state_path(_WAIT,180);
@@ -132,9 +134,27 @@ start_state_paths();
                 }
             }
             
-            if state_path_loops &gt;= 1 {
+            if state_path_loops &gt;= 0 {
                 if current_state_age &gt; 60 {
-                    shoot_spray(2,7);
+                    shoot_spray(2,7,choose(2,3,3,4));
+                }
+            }
+        break;
+        case _SPIRAL:
+            if current_state_age &lt; 120 {
+                with make(getTurretX(0),getTurretY(0),oBullet) {
+                    depth -= 1;
+                    direction = 360*sin(other.objectAge*.05);
+                    speed = 5;
+                    friction = .025;
+                }
+            } else {
+                with make(getTurretX(1),getTurretY(1),oBullet) {
+                    depth -= 1;
+                    direction = 360*sin(other.objectAge*.05);
+                    speed = 5;
+                    friction = .025;
+                    image_blend = c_aqua
                 }
             }
         break;
