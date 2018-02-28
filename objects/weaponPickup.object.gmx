@@ -28,9 +28,9 @@
             <string>image_speed = 0;
 
 textArray[0] = 'nothing';
-textArray[1] = 'BOMB';
+textArray[1] = 'RAPID';
 textArray[2] = '3-WAY';
-
+textArray[3] = 'BOMB';
 
 
 /// rope physics stuff

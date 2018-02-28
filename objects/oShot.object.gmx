@@ -29,7 +29,9 @@
 damage = 1;
 
 image_alpha = .777;
-vspeed = -20;
+vspeed = -40;
+dx = 0;
+dy = 0;
 
 image_xscale = scale;
 image_yscale = scale;
@@ -82,7 +84,8 @@ image_yscale = scale;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &lt; 24*scale instance_destroy();
+            <string>//y += dy;
+if y &lt; 24*scale instance_destroy();
 </string>
           </argument>
         </arguments>

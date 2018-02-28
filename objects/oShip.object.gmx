@@ -55,6 +55,8 @@ v=0;
 
 weapon = -1;
 active = true;
+attacking = false;
+canFire = 1;
 objectAge = 0;
 
 alarm[1] = 1;
@@ -191,35 +193,6 @@ if active {
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///fire constantly
-
-if active {
-    instance_create(x,y-16*scale,oShot);
-}
-
-alarm[0] = 4*scale;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -239,19 +212,21 @@ alarm[0] = 4*scale;
             <kind>1</kind>
             <string>if active  {
     objectAge += 1;
-    
+
     // move player
-    
+
     x += dx;
     y += dy;
-    
-    
+
     // check bounds
-    
+
     if x &gt; room_width x = room_width;
     if x &lt; 0 x = 0;
     if y &gt; room_height y = room_height;
     if y &lt; 0 y = 0;
+
+    // fire
+    doPlayerAttacks();
 }
 </string>
           </argument>
@@ -410,7 +385,7 @@ if active {
         cId.bombOriginX = mouse_x;
         cId.bombOriginY = mouse_y;
 
-        bigShotR = -80;
+        bigShotR = -40;
         
         sfx(sndDropBomb);
     } else {
@@ -425,7 +400,7 @@ if active {
 
     doMove = true;
 
-    alarm[0] = 1;
+    attacking = true;
     alarm[1] = -1;
 }
 </string>
@@ -462,11 +437,12 @@ if active {
     dx = xNext - xLast;
     dy = yNext - yLast;
     
+    with oShot dx = other.dx;
+    
     // prepare for next step
     
     xLast = xNext;
     yLast = yNext;
-
 }
 
 alarm[1] = -1;
