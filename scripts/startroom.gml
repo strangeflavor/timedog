@@ -7,14 +7,6 @@ switch argument0 {
         music_loop(musicTitle);
     break;
     case rDeepSpace:
-        // prepare waves, set up level
-        /*
-        createLevelManager();
-        make(oHUD);
-
-
-        music_loop(musicGame);
-        */
         make(oBG);
         make(oWeaponSelect);
     break;

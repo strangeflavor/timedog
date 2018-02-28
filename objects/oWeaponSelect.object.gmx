@@ -25,34 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with make(vw/4,vh/3,weaponDelivery) weapon = 1;
-with make(vw*.75,vh/2,weaponDelivery) weapon = 2;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>var buttonsize = 56;
-draw_set_halign(fa_middle);
-draw_set_valign(fa_middle);
-draw_text_ext(vw/2,vh/3,'EQUIP!',-1,-1);
+            <string>with make(vw/2-40,vh/3,weaponDelivery) weapon = 1;
+with make(vw/2+40,vh/3,weaponDelivery) weapon = 2;
+
+make(vw/2,vh*.1,equipSplash);
+
+kill();
 </string>
           </argument>
         </arguments>

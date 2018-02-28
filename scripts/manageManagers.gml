@@ -184,7 +184,7 @@ for (var i=0;i<32;i+=1) formationComplete[i] = false;
 checkForEndOfWave = false;
 
 #define createLevelManager
-var managerObject = managerArray[GAMEFLOW_currentLevel];
+var managerObject = controller.managerArray[GAMEFLOW_currentLevel];
 
 make(managerObject);
 make(formationTracker);

@@ -383,6 +383,7 @@
       <object>objects\levelManProcGen_0</object>
     </objects>
     <objects name="gameflow">
+      <object>objects\equipSplash</object>
       <object>objects\levelIntroSplashScreen</object>
       <object>objects\endLevel</object>
     </objects>

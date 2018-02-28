@@ -53,6 +53,7 @@ bigShotRMin = bigShotRMax*.8;
 invincible = true;
 v=0;
 
+weapon = -1;
 active = true;
 objectAge = 0;
 

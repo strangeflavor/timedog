@@ -37,7 +37,7 @@ textArray[2] = '3-WAY';
 angle_accelerration = 0;
 angle_velocity = 0;
 angle = 0;
-distance = 50;
+distance = 40;
 velocity_dampening = .95;
 
 anchor_x = 0;
@@ -87,19 +87,19 @@ anchor_y = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-
-///update rope physics 
+            <string>///update rope physics 
 if instance_exists(myUFO) {
     anchor_x = myUFO.x;
     anchor_y = myUFO.y;
+} else {
+    kill();
 }
 
 angle_accelerration = -.1 * dcos(angle);
-    
+
 angle_velocity += angle_accelerration;
 angle += angle_velocity;
-    
+
 angle_velocity *= velocity_dampening;
 
 var new_x = anchor_x + lengthdir_x(distance, angle);
@@ -132,7 +132,15 @@ y += vsp;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>kill();
+            <string>if oShip.weapon == -1 {
+    equipSplash.alarm[0] = 1;
+    oShip.weapon = weapon;
+    with make(oHUD) weapon = other.weapon;
+    with weaponDelivery flee = true;
+    createLevelManager();
+    music_loop(musicGame);
+    kill();
+}
 </string>
           </argument>
         </arguments>
@@ -163,7 +171,7 @@ draw_self();
 
 draw_set_halign(fa_middle);
 draw_set_valign(fa_top);
-draw_text(x+sprite_width/2,y+sprite_height+4,myText);
+draw_text(x,y+sprite_height/2,myText);
 </string>
           </argument>
         </arguments>
