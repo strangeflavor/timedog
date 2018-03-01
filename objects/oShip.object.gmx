@@ -57,6 +57,7 @@ weapon = -1;
 active = true;
 attacking = false;
 canFire = 1;
+canFireTriple = 1;
 objectAge = 0;
 
 alarm[1] = 1;
@@ -349,10 +350,11 @@ with other instance_destroy();
             <string>if active {
     dx = 0;
     dy = 0;
+    attacking = false;
     doMove = false;
     
     alarm[0] = -1;
-    alarm[1] = 1; // start charging big shot
+    if weapon == 3 alarm[1] = 1; // start charging big shot
 }
 </string>
           </argument>

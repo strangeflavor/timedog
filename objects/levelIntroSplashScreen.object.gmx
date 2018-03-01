@@ -2,7 +2,7 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>-1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -90,6 +90,7 @@ TweenSimpleMove(x,y,x,-200,40,EaseInCubic);
 
 if y &gt; vh + 128 or y &lt; -128 {
     if instance_exists(oHUD) oHUD.showHud = true;
+    oBG.starAlpha = .5;
     kill();
 }
 </string>

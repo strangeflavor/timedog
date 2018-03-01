@@ -5,15 +5,16 @@ if attacking {
     switch weapon {
         // rapid
         case 1:
-            normalShot(1,.7);
+            normalShot(1,1);
         break;
         // triple
         case 2:
-            normalShot(12,1);
+            normalShot(2,.6);
+            tripleShot(2,.4);
         break;
         // bomb
         case 3:
-            normalShot(6,1);
+            normalShot(2,1);
         break;
     }
 }
@@ -23,12 +24,36 @@ if attacking {
 var rate = argument0;
 var damage= argument1;
 
-var shotID;
+var shotID,yo;
+yo = frac(objectAge/2)*64;
 
 if canFire >= 1 {
-    shotID = make(x,y-16*scale,oShot);
+    shotID = make(x,y+yo,oShot);
     shotID.damage = damage;
     canFire = -rate*scale;
 } else {
     canFire += 1;
+}
+
+#define tripleShot
+///normalShot(rate,damage)
+var rate = argument0;
+var damage= argument1;
+
+var shotID;
+
+if canFireTriple >= 1 {
+    shotID = make(x-24,y+32*scale,oShot);
+    shotID.direction = 60;
+    shotID.image_angle = shotID.direction-90;
+    shotID.damage = damage;
+
+    shotID = make(x+24,y+32*scale,oShot);
+    shotID.damage = damage;
+    shotID.direction = 120;
+    shotID.image_angle = shotID.direction-90;
+
+    canFireTriple = -rate*scale;
+} else {
+    canFireTriple += 1;
 }

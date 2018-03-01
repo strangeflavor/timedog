@@ -29,6 +29,7 @@
 objectAge = 0;
 noisesurf = -1;
 starssurf = -1;
+
 /*
 shock_surf = -1;
 
@@ -55,6 +56,7 @@ var_shock_width = 0.1;
 //background_visible[1] = true;
 
 noisealpha = 1;
+starAlpha = .5;
 
 pos = 0;
 
@@ -214,7 +216,7 @@ if surface_exists(starssurf) {
     //make(surfaceTester); //7,9
     //draw_set_blend_mode_ext(surfaceTester.srcmode,surfaceTester.destmode);
 
-    draw_set_alpha(.5);
+    draw_set_alpha(starAlpha);
     draw_surface_stretched(starssurf, 0, 0, display_get_gui_width(), display_get_gui_height());
     draw_set_alpha(1);
 

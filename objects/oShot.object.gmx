@@ -29,7 +29,8 @@
 damage = 1;
 
 image_alpha = .777;
-vspeed = -40;
+direction = 90;
+speed = 50;
 dx = 0;
 dy = 0;
 

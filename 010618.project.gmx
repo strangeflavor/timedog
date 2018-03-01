@@ -169,6 +169,7 @@
     </sprites>
     <sprites name="maze">
       <sprite>sprites\sBlock</sprite>
+      <sprite>sprites\sCoralMaze</sprite>
       <sprite>sprites\sBlock2</sprite>
     </sprites>
     <sprites name="noisetest">
