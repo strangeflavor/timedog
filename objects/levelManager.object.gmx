@@ -57,13 +57,21 @@ winConditionValue = 30*60*60;
 bossDefeated = false;
 
 /////////////////////
+// dialog stuff
+/////////////////////
+
+dialogPanels = -1;
+addDialog(_NIGHTBIRD,"lorem ipsum!");
+
+
+/////////////////////
 // start the level!
 /////////////////////
 
 levelComplete = false;
-instance_create(vw/2,vh/2,levelIntroSplashScreen);
+//instance_create(vw/2,vh/2,levelIntroSplashScreen);
 
-alarm[0] = 1; // kicks off 
+//alarm[0] = 1; // kicks off 
 </string>
           </argument>
         </arguments>

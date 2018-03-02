@@ -164,6 +164,7 @@
       <sprite>sprites\sGotPickup</sprite>
     </sprites>
     <sprites name="dialog">
+      <sprite>sprites\sDialogBub</sprite>
       <sprite>sprites\sLevel1</sprite>
       <sprite>sprites\sLevel1B</sprite>
     </sprites>
@@ -215,7 +216,7 @@
       <script>scripts\setup.gml</script>
       <script>scripts\startroom.gml</script>
       <script>scripts\beginLevel.gml</script>
-      <script>scripts\prepDialog.gml</script>
+      <script>scripts\addDialog.gml</script>
       <script>scripts\manageManagers.gml</script>
       <script>scripts\drawTimeHUD.gml</script>
     </scripts>
@@ -463,6 +464,9 @@
       <object>objects\oButtonUnlockFX</object>
       <object>objects\oPickupCollectedFX</object>
     </objects>
+    <objects name="dialog">
+      <object>objects\oDialog</object>
+    </objects>
     <objects name="TweenGMS">
       <object>objects\obj_SharedTweener</object>
     </objects>
@@ -485,7 +489,7 @@
     <room>rooms\roomTest</room>
     <room>rooms\rWeaponSelect</room>
   </rooms>
-  <constants number="42">
+  <constants number="45">
     <constant name="scale">global._scale</constant>
     <constant name="vw">global._vw</constant>
     <constant name="vh">global._vh</constant>
@@ -528,6 +532,9 @@
     <constant name="_PHASE_CONDITION_TIME">2</constant>
     <constant name="_PHASE_CONDITION_HP">3</constant>
     <constant name="_PHASE_DELAY_WAIT">999999</constant>
+    <constant name="_TIMEDOG">0</constant>
+    <constant name="_NIGHTBIRD">1</constant>
+    <constant name="_THEPROF">2</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

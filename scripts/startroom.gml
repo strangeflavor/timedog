@@ -9,6 +9,7 @@ switch argument0 {
     case rDeepSpace:
         make(oBG);
         make(oWeaponSelect);
+        createLevelManager();
     break;
     case rLevelSelect:
         if audio_get_name(oAudio.musicPlaying) != 'musicTitle' {
@@ -16,6 +17,18 @@ switch argument0 {
         }
     break;
 }
+
+#define startDialog
+if levelManager.dialogPanels > -1 {
+    oHUD.showDialog = true;
+} else {
+    startGame();
+}
+
+#define startGame
+levelManager.alarm[0] = 1; // activate levelman!
+music_loop(musicGame);
+
 
 #define endroom
 /*

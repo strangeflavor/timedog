@@ -51,7 +51,7 @@ dSpeed = .005;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if showDialog dIndex = ceil(dIndex);
+            <string>//if showDialog dIndex = ceil(dIndex);
 </string>
           </argument>
         </arguments>
@@ -103,26 +103,8 @@ dSpeed = .005;
 }
 
 if active {
-    if showHud {
-        /*
-        l = 8*scale;
-        repeat lives {
-            //draw_sprite(sShip,0,(14*scale)+l,(24*scale));
-            draw_sprite_ext(sShip,0,(14*scale)+l,(24*scale),scale,scale,0,c_white,1);
-            l+=24*scale;
-        }
-        */
-        draw_set_alpha(1);
-        draw_sprite(sItemUI,0,38,vh - 40);
-        draw_sprite(sItemUI,weapon,38,vh - 40);
-        draw_set_halign(fa_left);
-        draw_set_valign(fa_bottom);
-        draw_set_color(c_dkgray);
-        draw_text(47+4,vh - 12,'EQ');
-        draw_set_color(make_color_rgb(20+76,20+150,255));
-        draw_text(49,vh - 10,'EQ');
-        if instance_exists(levelManager) if levelManager.winCondition == _WIN_TIME drawTimeHUD();
-    }
+    if showHud drawHUD();
+    if showDialog drawDialog();
 
     /*
     if showDialog {

@@ -137,8 +137,7 @@ y += vsp;
     oShip.weapon = weapon;
     with make(oHUD) weapon = other.weapon;
     with weaponDelivery flee = true;
-    createLevelManager();
-    music_loop(musicGame);
+    startDialog();
     kill();
 }
 </string>
