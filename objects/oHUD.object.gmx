@@ -29,6 +29,8 @@
 showHud = true;
 showDialog = false;
 dSpeed = .005;
+
+
 </string>
           </argument>
         </arguments>
@@ -104,7 +106,6 @@ dSpeed = .005;
 
 if active {
     if showHud drawHUD();
-    if showDialog drawDialog();
 
     /*
     if showDialog {

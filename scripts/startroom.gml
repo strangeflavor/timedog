@@ -20,12 +20,17 @@ switch argument0 {
 
 #define startDialog
 if levelManager.dialogPanels > -1 {
+    make(oDialog);
     oHUD.showDialog = true;
 } else {
     startGame();
 }
 
+#define endDialog
+startGame();
+
 #define startGame
+oHUD.showDialog = false;
 levelManager.alarm[0] = 1; // activate levelman!
 music_loop(musicGame);
 

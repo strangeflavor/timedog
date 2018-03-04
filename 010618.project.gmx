@@ -124,6 +124,7 @@
       <sprite>sprites\sDigitalDog</sprite>
       <sprite>sprites\sRectangleGrad</sprite>
       <sprite>sprites\sOvalGrad</sprite>
+      <sprite>sprites\sCircleGrad</sprite>
       <sprite>sprites\sMenuSubtitle</sprite>
       <sprite>sprites\sSquareIrrid</sprite>
       <sprite>sprites\sWarning</sprite>
@@ -164,7 +165,12 @@
       <sprite>sprites\sGotPickup</sprite>
     </sprites>
     <sprites name="dialog">
+      <sprite>sprites\sSpeakerNightbird</sprite>
+      <sprite>sprites\sSpeakerProf</sprite>
       <sprite>sprites\sDialogBub</sprite>
+      <sprite>sprites\sProjectionBG</sprite>
+      <sprite>sprites\sProjectionAlpha</sprite>
+      <sprite>sprites\sTopGradient</sprite>
       <sprite>sprites\sLevel1</sprite>
       <sprite>sprites\sLevel1B</sprite>
     </sprites>
@@ -466,6 +472,7 @@
     </objects>
     <objects name="dialog">
       <object>objects\oDialog</object>
+      <object>objects\oProjector</object>
     </objects>
     <objects name="TweenGMS">
       <object>objects\obj_SharedTweener</object>
@@ -532,9 +539,9 @@
     <constant name="_PHASE_CONDITION_TIME">2</constant>
     <constant name="_PHASE_CONDITION_HP">3</constant>
     <constant name="_PHASE_DELAY_WAIT">999999</constant>
-    <constant name="_TIMEDOG">0</constant>
-    <constant name="_NIGHTBIRD">1</constant>
-    <constant name="_THEPROF">2</constant>
+    <constant name="_TIMEDOG">1</constant>
+    <constant name="_NIGHTBIRD">2</constant>
+    <constant name="_THEPROF">3</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

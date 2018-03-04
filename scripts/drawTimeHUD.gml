@@ -47,7 +47,7 @@ draw_set_halign(fa_left);
 #define drawHUD
 // equipped weapon
 var xx;
-xx = vw - 40;
+xx = 60;
 draw_set_alpha(1);
 draw_sprite(sItemUI,0,xx-9,vh - 40);
 draw_sprite(sItemUI,weapon,xx-9,vh - 40);
@@ -62,8 +62,27 @@ if instance_exists(levelManager) if levelManager.winCondition == _WIN_TIME drawT
 
 #define drawDialog
 var xx = 8;
-var yy = vh-8;
-draw_set_halign(fa_left);
-draw_set_valign(fa_top);
-draw_sprite(sDialogBub,0,xx,yy);
-draw_text(xx+8,yy+8,'lorem isp');
+var yy = 8;
+
+gradientSlideIn += 1;
+draw_set_blend_mode_ext(0,3);
+draw_sprite_ext(sTopGradient,0,0,min(gradientSlideIn,-64),1,1,0,c_white,1);
+draw_set_blend_mode(bm_normal);
+
+if oDialog.name == 'NARRATOR' {
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+    draw_set_color(c_white);
+    draw_text(xx+8,min(yy,gradientSlideIn+128),oDialog.text);
+} else {
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+    if oDialog.speaker > -1 {
+        draw_sprite(oDialog.speaker,0,xx,yy);
+        draw_sprite(sDialogBub,0,xx,yy);
+    }
+    draw_set_color(c_blue);
+    draw_text(xx+90,yy,oDialog.name);
+    draw_set_color(c_white);
+    draw_text(xx+90,yy+16,oDialog.text);
+}

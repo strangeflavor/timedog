@@ -60,9 +60,20 @@ bossDefeated = false;
 // dialog stuff
 /////////////////////
 
-dialogPanels = -1;
-addDialog(_NIGHTBIRD,"lorem ipsum!");
+for (var i=0;i&lt;32;i+=1) {
+    dialog[i,0] = _NONE;
+    dialog[i,1] = 'unassigned text';
+    dialog[i,2] = false; // add projection
+    dialog[i,3] = false; // remove projection
+}
 
+dialogPanels = -1;
+addDialog(_NONE,"our story begins...");
+addDialog(_NIGHTBIRD,"this is nightbird, checking in!");
+addDialog(_THEPROF,"lorem ipsum!");
+addProjection();
+addDialog(_THEPROF,"tipsum bipsum!");
+removeProjection();
 
 /////////////////////
 // start the level!

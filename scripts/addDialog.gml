@@ -1,9 +1,13 @@
 #define addDialog
 ///addDialog(speaker,text);
-speaker = argument0;
-text = argument1;
+var _speaker = argument0;
+var _text = argument1;
 
 dialogPanels += 1;
+
+dialog[dialogPanels,0] = _speaker;
+dialog[dialogPanels,1] = _text;
+dialog[dialogPanels,2] = false;
 
 #define prepDialog
 // prepDialog: fills dialog arrays
@@ -34,3 +38,8 @@ switch argument0 {
         dTotal = 1;
     break;
 }
+#define addProjection
+dialog[dialogPanels,2] = true; 
+
+#define removeProjection
+dialog[dialogPanels,3] = true; 
