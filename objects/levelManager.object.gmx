@@ -68,12 +68,6 @@ for (var i=0;i&lt;32;i+=1) {
 }
 
 dialogPanels = -1;
-addDialog(_NONE,"our story begins...");
-addDialog(_NIGHTBIRD,"this is nightbird, checking in!");
-addDialog(_THEPROF,"lorem ipsum!");
-addProjection();
-addDialog(_THEPROF,"tipsum bipsum!");
-removeProjection();
 
 /////////////////////
 // start the level!

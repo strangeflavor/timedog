@@ -89,6 +89,8 @@ oBG.alarm[0] = 30;
 levelManager.timeline_speed = 0;
 levelManager.active = false;
 
+make(vw/2,-64,failedLevel);
+
 with make(oFX) {
     depth += 1;
     sprite_index = sBombLoop;
@@ -251,7 +253,8 @@ if active {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !invincible and other.dangerous kill(self);
+            <string>///shipHit();
+shipHit();
 </string>
           </argument>
         </arguments>
@@ -274,7 +277,8 @@ if active {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !invincible kill();
+            <string>///shipHit();
+shipHit();
 </string>
           </argument>
         </arguments>
@@ -297,7 +301,8 @@ if active {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !invincible kill(self);
+            <string>///shipHit();
+shipHit();
 </string>
           </argument>
         </arguments>

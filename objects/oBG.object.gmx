@@ -151,7 +151,7 @@ if !surface_exists(starssurf) starssurf = surface_create(view_wview[0], view_hvi
 ///////////////////////////////////
 // draw flat bg color cycle
 ///////////////////////////////////
-
+/*
 c1 = make_color_rgb(0,0,30);
 c2 = make_color_rgb(0,5,50);
 
@@ -163,17 +163,17 @@ if ded {
 bg_color = merge_color(c1,c2,abs(sin(objectAge*bg_color_rate)));
 draw_set_color(bg_color);
 draw_rectangle(0,0,vw,vh,false);
-
+*/
 ///////////////////////////////////
 // draw to and draw noise surface w/ blend mode
 ///////////////////////////////////
-
+/*
 draw_noisesurf();
 
 draw_set_alpha(.5)
 draw_rectangle_colour(0,0,vw,vh,c_black,c_black,c_black,c_black,false);
 draw_set_alpha(1)
-
+*/
 ///////////////////////////////////
 // draw starfields
 ///////////////////////////////////
@@ -213,21 +213,12 @@ if surface_exists(starssurf) {
 
     surface_reset_target();
 
-    //make(surfaceTester); //7,9
-    //draw_set_blend_mode_ext(surfaceTester.srcmode,surfaceTester.destmode);
 
     draw_set_alpha(starAlpha);
     draw_surface_stretched(starssurf, 0, 0, display_get_gui_width(), display_get_gui_height());
+    //draw_surface(starssurf,0,0);
     draw_set_alpha(1);
 
-    //make(surfaceTester); //7,9
-    //draw_set_blend_mode_ext(surfaceTester.srcmode,surfaceTester.destmode);
-    /*
-    draw_set_blend_mode_ext(1,2);
-    draw_rectangle_color(0,0,vw,vh,c_black,c_black,c_white,c_white,false);
-    draw_set_alpha(1);
-    draw_set_blend_mode(bm_normal);
-    */
 }
 
 ///////////////////////////////////
@@ -240,20 +231,54 @@ if instance_exists(oShip) draw_sprite(sGradientCircle,0,oShip.x+irandom(6)-3,oSh
 draw_set_alpha(1);
 draw_set_blend_mode(bm_normal);
 
+
+display_set_gui_size(room_width, room_height);
+//draw_surface(application_surface,0,0);
+
 ///////////////////////////////////
 // draw to scene fringe shader
 ///////////////////////////////////
 
-draw_SHADER_sceneFringe(1);
+//draw_SHADER_sceneFringe(1);
 
 //////////////////////////////////
 // draw shockwave
 //////////////////////////////////
-
+/*
 if instance_exists(oChargeShotExplode) {
     //draw_SHADER_shockwave(mouse_x,mouse_y);
     draw_SHADER_magnify(true,oChargeShotExplode.objectAge);
 }
+*/
+
+//////////////////////////////////
+// draw projection
+//////////////////////////////////
+/*
+if instance_exists(oProjector) {
+    with oProjector {
+        if !surface_exists(projectorSurface) projectorSurface = surface_create(200,200);
+        surface_set_target(projectorSurface);
+        draw_set_alpha(1);
+        draw_set_color(c_black);
+        draw_rectangle(0,0,surface_get_width(projectorSurface),surface_get_height(projectorSurface),false);
+        draw_set_alpha(1);
+        draw_columnB(100,c_red);
+        surface_reset_target();
+
+        draw_surface(projectorSurface,x-94,y-98);
+
+        //draw_columnB(100,c_red);
+        draw_set_color(c_white);
+        if frac(objectAge/2) == 0 {
+            draw_set_alpha(.5);
+            draw_rectangle(vw/2-96,vh/2-96,vw/2+96,vh/2+96,false);
+            draw_set_alpha(1);
+        }
+        draw_sprite(sProjectionBG,0,vw/2,vh/2);
+    }
+}
+*/
 </string>
           </argument>
         </arguments>

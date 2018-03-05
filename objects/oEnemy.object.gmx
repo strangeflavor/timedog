@@ -30,6 +30,7 @@ HP = 1;
 active = false;
 invul = false;
 invulTime = -1;
+dangerous = true;
 explosionType = sLargeExplosion;
 value = -1;
 recoil = 0;

@@ -30,10 +30,11 @@ if levelManager.dialogPanels > -1 {
 startGame();
 
 #define startGame
+oShip.invincible = false;
 oHUD.showDialog = false;
 levelManager.alarm[0] = 1; // activate levelman!
 music_loop(musicGame);
-
+music_slow(choose(.8,.85,.9,.95,1,1,1.1,1.2));
 
 #define endroom
 /*

@@ -53,7 +53,7 @@ HP = 99999;
 objectAge = 0;
 
 sfx(sndBomb);
-music_slow();
+music_slow(choose(.3,.4,.5,.6));
 </string>
           </argument>
         </arguments>

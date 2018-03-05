@@ -73,7 +73,8 @@ if oDialog.name == 'NARRATOR' {
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
     draw_set_color(c_white);
-    draw_text(xx+8,min(yy,gradientSlideIn+128),oDialog.text);
+    //draw_text(xx+8,min(yy,gradientSlideIn+128),oDialog.text);
+    draw_text_ext(xx+8,min(yy,gradientSlideIn+128),oDialog.text,-1,vw*.7);
 } else {
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
@@ -84,5 +85,5 @@ if oDialog.name == 'NARRATOR' {
     draw_set_color(c_blue);
     draw_text(xx+90,yy,oDialog.name);
     draw_set_color(c_white);
-    draw_text(xx+90,yy+16,oDialog.text);
+    draw_text_ext(xx+90,min(yy+16,gradientSlideIn+128),oDialog.text,-1,vw*.7);
 }

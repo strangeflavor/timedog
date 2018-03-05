@@ -8,6 +8,79 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>objectAge = 0;
+projectorSurface = surface_create(200,200);
+image_blend = c_lime;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///surface_free(projectorSurface);
+surface_free(projectorSurface);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///objectAge += 1;
+objectAge += 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,11 +98,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_alpha(.5);
-draw_rectangle(vw/2-96,vh/2-96,vw/2+96,vh/2+96,false);
-draw_set_alpha(1);
+            <string>surface_free(projectorSurface);
+if !surface_exists(projectorSurface) projectorSurface = surface_create(190,190);
+surface_set_target(projectorSurface);
+draw_set_color(c_black);
+draw_rectangle(0,0,surface_get_width(projectorSurface),surface_get_height(projectorSurface),false);
+draw_columnB(190,image_blend);
+surface_reset_target();
+
+draw_set_alpha(.5);
+draw_surface(projectorSurface,x-95,y-95);
+
+draw_set_color(c_white);
+if frac(objectAge/2) == 0 {
+    draw_set_alpha(.5);
+    draw_rectangle(vw/2-96,vh/2-96,vw/2+96,vh/2+96,false);
+    draw_set_alpha(1);
+}
 draw_sprite(sProjectionBG,0,vw/2,vh/2);
-//draw_sprite_ext(sProjectionAlpha,1,vw/2,vh/2,1,1,0,c_lime,1);
+draw_sprite_ext(sProjectionAlpha,1,vw/2,vh/2,1,1,0,image_blend,.5);
 </string>
           </argument>
         </arguments>

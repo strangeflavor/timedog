@@ -146,14 +146,14 @@ start_state_paths();
                     depth -= 1;
                     direction = 360*sin(other.objectAge*.05);
                     speed = 5;
-                    friction = .025;
+                    friction = .022;
                 }
             } else {
                 with make(getTurretX(1),getTurretY(1),oBullet) {
                     depth -= 1;
                     direction = 360*sin(other.objectAge*.05);
                     speed = 5;
-                    friction = .025;
+                    friction = .022;
                     image_blend = c_aqua
                 }
             }

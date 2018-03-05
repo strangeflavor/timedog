@@ -217,6 +217,7 @@
   <scripts name="scripts">
     <scripts name="player">
       <script>scripts\doPlayerAttacks.gml</script>
+      <script>scripts\shipHit.gml</script>
     </scripts>
     <scripts name="gameflow">
       <script>scripts\setup.gml</script>
@@ -364,6 +365,7 @@
     <script>scripts\x_axis_get.gml</script>
     <script>scripts\endTimeline.gml</script>
     <script>scripts\screenResize.gml</script>
+    <script>scripts\draw_columnB.gml</script>
     <script>scripts\draw_noisesurf.gml</script>
     <script>scripts\draw_SHADER_sceneFringe.gml</script>
     <script>scripts\draw_SHADER_glitter.gml</script>
@@ -397,6 +399,7 @@
       <object>objects\equipSplash</object>
       <object>objects\levelIntroSplashScreen</object>
       <object>objects\endLevel</object>
+      <object>objects\failedLevel</object>
     </objects>
     <objects name="menu">
       <object>objects\oMenu</object>

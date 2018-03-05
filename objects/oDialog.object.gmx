@@ -34,9 +34,19 @@ speakerImg[_TIMEDOG] = sSpeakerNightbird;
 speakerImg[_NIGHTBIRD] = sSpeakerNightbird;
 speakerImg[_THEPROF] = sSpeakerProf;
 
+speakerVoice[_NONE] = -1
+speakerVoice[_TIMEDOG] = -1;
+speakerVoice[_NIGHTBIRD] = -1;
+speakerVoice[_THEPROF] = -1;
+
 speaker = -1;
 name = -1;
+voice = -1
+
+type = 1;
+typerate = -1;
 text = 'dialog text not assigned';
+fulltext = '';
 
 dialogIndex = -1;
 dialogRate = 300;
@@ -44,6 +54,8 @@ dialogRate = 300;
 if levelManager.dialogPanels &gt; -1 alarm[0] = 1;
 
 gradientSlideIn = -200;
+
+textIndex = 0;
 </string>
           </argument>
         </arguments>
@@ -71,19 +83,21 @@ gradientSlideIn = -200;
 if dialogIndex &lt;= levelManager.dialogPanels {
     speaker = speakerImg[levelManager.dialog[dialogIndex,0]];
     name = speakerName[levelManager.dialog[dialogIndex,0]];
-    text = levelManager.dialog[dialogIndex,1];
+    voice = speakerVoice[levelManager.dialog[dialogIndex,0]];
+    fulltext = levelManager.dialog[dialogIndex,1];
+    text = '';
+    textPos = 0;
 
-    // make projeciton?
-    if levelManager.dialog[dialogIndex,2] {
-        make(vw/2,vh/2,oProjector);
-    }
+    // make projection
+    if levelManager.dialog[dialogIndex,2] make(vw/2,vh/2,oProjector);
 
-    if levelManager.dialog[dialogIndex,3] {
-        kill(oProjector);
-    }
+    // remove projection
+    if levelManager.dialog[dialogIndex,3] kill(oProjector);
 
     alarm[0] = dialogRate;
 } else {
+    fulltext = '';
+    text = '';
     endDialog();
     kill(oProjector);
     kill();
@@ -110,7 +124,16 @@ if dialogIndex &lt;= levelManager.dialogPanels {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>if type &gt; 0 {
+    type = typerate;
+    if string_length(text) &lt; string_length(fulltext) {
+        text = string_copy(fulltext,0,string_length(text)+1);
+        if voice &gt; -1 sfx(voice);
+    }
+} else {
+    type += 1;
+}
+</string>
           </argument>
         </arguments>
       </action>
@@ -132,7 +155,8 @@ if dialogIndex &lt;= levelManager.dialogPanels {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if alarm[0] &lt; dialogRate - 60 alarm[0] = 1;
+            <string>//if alarm[0] &lt; dialogRate - 15 alarm[0] = 1;
+if text != fulltext text = fulltext else alarm[0] = 1;
 </string>
           </argument>
         </arguments>

@@ -21,7 +21,8 @@ return soundID;
 #define music_stop
 audio_stop_all();
 #define music_slow
-audio_sound_pitch(oAudio.musicPlaying,.5);
+var _speed = argument0;
+audio_sound_pitch(oAudio.musicPlaying,_speed);
 
 #define music_normalSpeed
 audio_sound_pitch(oAudio.musicPlaying,1);

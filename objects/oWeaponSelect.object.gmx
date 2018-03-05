@@ -25,9 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with make(vw/2-120,vh/3,weaponDelivery) weapon = 1;
-with make(vw/2+0,vh/3,weaponDelivery) weapon = 2;
-with make(vw/2+120,vh/3,weaponDelivery) weapon = 3;
+            <string>with make(vw/2-180,vh/3,weaponDelivery) weapon = 1;
+with make(vw/2-60,vh/3,weaponDelivery) weapon = 2;
+with make(vw/2+60,vh/3,weaponDelivery) weapon = 3;
+with make(vw/2+180,vh/3,weaponDelivery) weapon = 4;
 
 make(vw/2,vh*.1,equipSplash);
 

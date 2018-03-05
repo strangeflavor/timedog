@@ -31,7 +31,7 @@ textArray[0] = 'nothing';
 textArray[1] = 'RAPID';
 textArray[2] = '3-WAY';
 textArray[3] = 'BOMB';
-
+textArray[4] = 'SHIELD';
 
 /// rope physics stuff
 angle_accelerration = 0;
