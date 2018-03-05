@@ -72,7 +72,7 @@ with make(vw-32-(32*_size)+xoffset,-32,fChain) {
 }
 
 #define form_boxChains_Descent
-///form_boxChains_Descent(xoffset,ystop,rate,path_speed,size,descentSpeed,wiggle,wait);
+///form_boxChains_Descent(xoffset,ystop,rate,path_speed,size,speed,direction,wait);
 trace('starting form boxchains_descent');
 
 var arg;
@@ -93,7 +93,8 @@ _rate = arg[2];
 _path_speed = arg[3];
 _size = arg[4];
 _descentSpeed = arg[5];
-_wait = arg[6];
+_direction = arg[6];
+_wait = arg[7];
 
 if xoffset == -1 xoffset = 0;
 if _ystop == -1 _ystop = vh/2 - choose(60,120,180); // choose(180,120,200,300,400);
@@ -101,6 +102,7 @@ if _rate == -1 rate = 4;
 if _path_speed == -1 _path_speed = 32;
 if _size == -1 _size = 3;
 if _wait == -1 _wait = 0;
+if _direction == -1 _direction = 270;
 
 newFormationID = getFormationID();
 
@@ -124,7 +126,7 @@ with make(vw/2-150+xoffset-(_size*16),32,fChain) {
         advancePhase_AbsoluteTime[0] = 120+other._wait;
     phaseDelay[1] = _PHASE_DELAY_WAIT;
     phase[1] = enemy_move;//_formation;
-    phaseArguments[1,0] = 270;
+    phaseArguments[1,0] = other._direction;
     phaseArguments[1,1] = 8;
     phaseArguments[1,2] = 8;
 }
@@ -132,7 +134,7 @@ with make(vw/2-150+xoffset-(_size*16),32,fChain) {
 //with make(46+vw-(32*_size)+xoffset,-32,fChain) {
 with make(vw/2+150+xoffset+(_size*16),32,fChain) {
     formationID = other.newFormationID;
-    wait = other._wait + 8;
+    if _direction == 270 wait = other._wait else wait = other._wait + 8;
     invul = true;
 
     space = _RIGHTCOLUMN;
@@ -150,7 +152,35 @@ with make(vw/2+150+xoffset+(_size*16),32,fChain) {
         advancePhase_AbsoluteTime[0] = 135+other._wait;
     phaseDelay[1] = _PHASE_DELAY_WAIT;
     phase[1] = enemy_move;
-    phaseArguments[1,0] = 270;
+    phaseArguments[1,0] = other._direction;
     phaseArguments[1,1] = 8;
     phaseArguments[1,2] = 8;
+}
+
+#define form_line
+var arg;
+for (var i = 0; i < 16; i += 1;) {
+    if argument_count > i
+       {
+       arg[i] = argument[i];
+       }
+    else
+       {
+       arg[i] = -1;
+       }
+}
+
+newFormationID = getFormationID();
+
+var xoffset = arg[0];
+_ystop = arg[1];
+_rate = arg[2];
+_direction = arg[3];
+_speed = arg[4];
+_size = arg[5];
+
+with make(vw/2+xoffset,32,fChain) {
+    direction = other._direction;
+    speed = other._speed;
+    rate = other._rate;
 }

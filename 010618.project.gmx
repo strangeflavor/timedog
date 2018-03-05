@@ -391,6 +391,7 @@
       <object>objects\levelManager</object>
       <object>objects\levelMan000</object>
       <object>objects\levelMan001</object>
+      <object>objects\levelMan006</object>
       <object>objects\levelManMaze_0</object>
       <object>objects\levelManMidBoss_0</object>
       <object>objects\levelManProcGen_0</object>
@@ -486,6 +487,7 @@
   <timelines name="timelines">
     <timeline>timelines\tLvl1</timeline>
     <timeline>timelines\tLvl2</timeline>
+    <timeline>timelines\tLvl6</timeline>
     <timeline>timelines\tBasicFwd</timeline>
     <timeline>timelines\tDeepSpace</timeline>
     <timeline>timelines\tButtonUnlock</timeline>
