@@ -25,8 +25,9 @@ for (var i=0;i<8;i+=1) {
     eID.phase[i] = phase[i]; // script to execute for this phase. enemies start in phase 0.
     eID.phaseDelay[i] = phaseDelay[i];
     eID.phaseCondition[i] = phaseCondition[i]; // condition to advance beyond this phase
+
     for (var j=0;j<4;j+=1) {
-        // NB, phase scripts only use 3 arguments at the moment
+        // NB, phase scripts only use 4 arguments at the moment
         eID.phaseArguments[i,j] = phaseArguments[i,j]; // passed to the script in phase[i], if any
         eID.phaseConditionArguments[i,j] = phaseConditionArguments[i,j]; // condition to advance beyond this phase
     }
@@ -55,11 +56,7 @@ switch phaseCondition[currentPhase] {
     break;
 }
 
-if met_condition {
-    currentPhase += 1;
-    currentPhaseDelay = phaseDelay[currentPhase];
-    currentPhaseAge = 0;
-}
+if met_condition advancePhase();
 
 #define enemy_RunPhase
 ///enemy_RunPhase(phase_index);
@@ -79,4 +76,8 @@ if currentPhaseDelay >= 0 {
     }
 }
 
-#define sobsolete2
+#define advancePhase
+///advancePhase()
+currentPhase += 1;
+currentPhaseDelay = phaseDelay[currentPhase];
+currentPhaseAge = 0;

@@ -34,6 +34,12 @@ direction = argument0 + _wiggleAmplitude*sin(objectAge*.1);
 speed = argument1;
 
 
+#define enemy_stop
+///enemy_stop()
+// to do: friction
+
+speed = 0;
+
 #define enemy_steering
 ///enemy_steering(destx,desty,max_speed);
 var _destx = argument0;

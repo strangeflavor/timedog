@@ -158,6 +158,7 @@ with make(vw/2+150+xoffset+(_size*16),32,fChain) {
 }
 
 #define form_line
+///form_line(xoffset,ystop,rate,size,direction,speed)
 var arg;
 for (var i = 0; i < 16; i += 1;) {
     if argument_count > i
@@ -173,14 +174,47 @@ for (var i = 0; i < 16; i += 1;) {
 newFormationID = getFormationID();
 
 var xoffset = arg[0];
-_ystop = arg[1];
+var yoffset = arg[1];
 _rate = arg[2];
-_direction = arg[3];
-_speed = arg[4];
-_size = arg[5];
+_size = arg[3];
+_direction = arg[4];
+_speed = arg[5];
 
-with make(vw/2+xoffset,32,fChain) {
+
+if _rate == -1 rate = 9;
+
+with make(vw/2+xoffset,yoffset,fChain) {
     direction = other._direction;
     speed = other._speed;
+
     rate = other._rate;
+    size = other._size;
+
+    enemy = oMiniThex;
+
+    // fly away before reaching bottom of screen
+
+        advancePhase_AbsoluteTime[0] = 30;
+    phaseDelay[0] = _PHASE_DELAY_WAIT;
+
+    phase[0] = enemy_move;
+    phaseArguments[0,0] = other._direction;
+    phaseArguments[0,1] = speed;
+
+    phaseCondition[0] = _PHASE_CONDITION_TIME
+    phaseConditionArguments[0,0] = _PHASE_DELAY_WAIT;
+
+        advancePhase_AbsoluteTime[1] = 15;
+    phaseDelay[1] = _PHASE_DELAY_WAIT;
+    phase[1] = enemy_stop;
+    phaseCondition[1] = _PHASE_CONDITION_TIME;
+    phaseConditionArguments[1,0] = _PHASE_DELAY_WAIT;
+
+    /*
+        advancePhase_AbsoluteTime[2] = 10;
+    phaseDelay[2] = _PHASE_DELAY_WAIT;
+    phase[2] = enemy_move;
+    phaseArguments[2,0] = other._direction;
+    phaseArguments[2,1] = -speed;
+    */
 }

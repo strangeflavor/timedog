@@ -85,8 +85,6 @@ if path &gt; -1 {
         yStop = other.yStop;
     }
 
-    formationTransferPhaseVars(eID);
-
     _path_scale += _path_scale_delta;
 } else {
     eID = make(x,y,enemy);
@@ -96,6 +94,7 @@ if path &gt; -1 {
     }
 }
 
+formationTransferPhaseVars(eID);
 formationTransferVars(eID);
 
 count += 1;
