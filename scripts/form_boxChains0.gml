@@ -134,7 +134,7 @@ with make(vw/2-150+xoffset-(_size*16),32,fChain) {
 //with make(46+vw-(32*_size)+xoffset,-32,fChain) {
 with make(vw/2+150+xoffset+(_size*16),32,fChain) {
     formationID = other.newFormationID;
-    if _direction == 270 wait = other._wait else wait = other._wait + 8;
+    if other._direction == 270 wait = other._wait else wait = other._wait + 8;
     invul = true;
 
     space = _RIGHTCOLUMN;

@@ -84,7 +84,13 @@ if active {
             for (var i=0;i&lt;64;i+=1) {
                 if myEnemies[i] &gt; -1 {
                     //if instance_exists(myEnemies[i]) myEnemies[i].currentPhaseDelay = 0;
-                    if instance_exists(myEnemies[i]) with myEnemies[i] advancePhase();
+                    if instance_exists(myEnemies[i]) {
+                        if myEnemies[i].currentPhaseDelay &gt; 0 {
+                            myEnemies[i].currentPhaseDelay = 0;
+                        } else {
+                            with myEnemies[i] advancePhase();
+                        }
+                    }
                 } else {
                     break;
                 }
