@@ -48,7 +48,7 @@ yStop = vh*2
 
 killWhenBelowScreen = true;
 killWhenOffscreen = true;
-offScreenTimer = 180;
+offScreenTimer = 36;
 
 phaseCreateVars();
 
@@ -231,15 +231,15 @@ if waitTime &lt; 0 {
     }
 
     if killWhenOffscreen {
-        if x &gt; room_width or x &lt; 0 or y &gt; room_height or y &lt; 0 {
+        if offscreen() {
             if offScreenTimer &lt;= 0 {
                 value = 0;
                 kill(self);
             }
             offScreenTimer -= 1;
+        } else {
+            offScreenTimer = 36;
         }
-    } else {
-        offScreenTimer = 360;
     }
 
     if invulTime &gt; 0 and invul {

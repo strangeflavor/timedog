@@ -41,7 +41,7 @@
             <kind>1</kind>
             <string>explosionType = sMedExplosion;
 killWhenOffscreen = true;
-offScreenTimer = 18;
+offScreenTimer = 36;
 value = -1;
 
 image_speed = .2;

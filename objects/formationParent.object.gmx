@@ -73,6 +73,8 @@ phaseCreateVars();
             <string>//wait -= 1;
 //if wait == -1 {
 if (wait &amp;&amp; !--wait) {
+    x = xstart;
+    y = ystart;
     active = true;
     alarm[0] = 1;
 }
@@ -80,15 +82,21 @@ if (wait &amp;&amp; !--wait) {
 if active {
     if advancePhase_AbsoluteTime[advancePhase_AbsoluteIndex] &gt; 0 {
         advancePhase_AbsoluteTime[advancePhase_AbsoluteIndex] -= 1;
+
+        trace('i:'+string(advancePhase_AbsoluteIndex));
+        trace('t:'+string(advancePhase_AbsoluteTime[advancePhase_AbsoluteIndex]));
+
         if advancePhase_AbsoluteTime[advancePhase_AbsoluteIndex] == 0 {
             for (var i=0;i&lt;64;i+=1) {
                 if myEnemies[i] &gt; -1 {
                     //if instance_exists(myEnemies[i]) myEnemies[i].currentPhaseDelay = 0;
                     if instance_exists(myEnemies[i]) {
                         if myEnemies[i].currentPhaseDelay &gt; 0 {
+                            //show('0ing delay');
                             myEnemies[i].currentPhaseDelay = 0;
                         } else {
                             with myEnemies[i] advancePhase();
+                            //show('advancing phase');
                         }
                     }
                 } else {

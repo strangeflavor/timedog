@@ -158,7 +158,7 @@ with make(vw/2+150+xoffset+(_size*16),32,fChain) {
 }
 
 #define form_line
-///form_line(xoffset,ystop,rate,size,direction,speed)
+///form_line(xoffset,yoffset,rate,size,direction,speed,wait)
 var arg;
 for (var i = 0; i < 16; i += 1;) {
     if argument_count > i
@@ -179,11 +179,15 @@ _rate = arg[2];
 _size = arg[3];
 _direction = arg[4];
 _speed = arg[5];
+_wait = arg[6];
 
-
+if _wait == -1 _wait = 1;
 if _rate == -1 rate = 9;
 
 with make(vw/2+xoffset,yoffset,fChain) {
+    active = false;
+    wait = other._wait;
+
     direction = other._direction;
     speed = other._speed;
 
@@ -192,29 +196,21 @@ with make(vw/2+xoffset,yoffset,fChain) {
 
     enemy = oMiniThex;
 
-    // fly away before reaching bottom of screen
-
-        advancePhase_AbsoluteTime[0] = 30;
     phaseDelay[0] = _PHASE_DELAY_WAIT;
-
+        advancePhase_AbsoluteTime[0] = 30;
     phase[0] = enemy_move;
     phaseArguments[0,0] = other._direction;
     phaseArguments[0,1] = speed;
-
     phaseCondition[0] = _PHASE_CONDITION_TIME
     phaseConditionArguments[0,0] = _PHASE_DELAY_WAIT;
+        advancePhase_AbsoluteTime[1] = 24;
 
-        advancePhase_AbsoluteTime[1] = 15;
-    phaseDelay[1] = _PHASE_DELAY_WAIT;
     phase[1] = enemy_stop;
     phaseCondition[1] = _PHASE_CONDITION_TIME;
     phaseConditionArguments[1,0] = _PHASE_DELAY_WAIT;
+        advancePhase_AbsoluteTime[2] = 45;
 
-    /*
-        advancePhase_AbsoluteTime[2] = 10;
-    phaseDelay[2] = _PHASE_DELAY_WAIT;
     phase[2] = enemy_move;
     phaseArguments[2,0] = other._direction;
     phaseArguments[2,1] = -speed;
-    */
 }

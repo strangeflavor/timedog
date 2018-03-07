@@ -11,3 +11,9 @@ return clamp(o,0,1);
 #define _get_timer
 _timer += 1/room_speed;//*.01;
 return _timer
+#define offscreen
+if x > room_width or x < 0 or y > room_height or y < 0 {
+    return true;
+} else {
+    return false;
+}
