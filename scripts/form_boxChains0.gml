@@ -203,7 +203,7 @@ with make(vw/2+xoffset,yoffset,fChain) {
     phaseArguments[0,1] = speed;
     phaseCondition[0] = _PHASE_CONDITION_TIME
     phaseConditionArguments[0,0] = _PHASE_DELAY_WAIT;
-        advancePhase_AbsoluteTime[1] = 24;
+        advancePhase_AbsoluteTime[1] = 6*size;
 
     phase[1] = enemy_stop;
     phaseCondition[1] = _PHASE_CONDITION_TIME;
