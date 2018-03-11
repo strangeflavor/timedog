@@ -44,6 +44,8 @@ killWhenOffscreen = true;
 offScreenTimer = 36;
 value = -1;
 
+fireAge = -1;
+
 image_speed = .2;
 
 HP = .5;
@@ -90,6 +92,15 @@ centerblend = choose(c_red,c_blue,c_yellow,c_lime);
           <argument>
             <kind>1</kind>
             <string>if currentPhase &gt; 0 invul = false;
+
+if objectAge == fireAge {
+    if instance_exists(oShip) {
+        with make(x,y,oBullet) {
+            direction = irandom(16)-8+point_direction(x,y,oShip.x,oShip.y);
+            speed = 6;
+        }
+    }
+}
 </string>
           </argument>
         </arguments>

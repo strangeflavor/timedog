@@ -158,7 +158,7 @@ with make(vw/2+150+xoffset+(_size*16),32,fChain) {
 }
 
 #define form_line
-///form_line(xoffset,yoffset,rate,size,direction,speed,wait)
+///form_line(xoffset,yoffset,rate,size,direction,speed,attacker,wait)
 var arg;
 for (var i = 0; i < 16; i += 1;) {
     if argument_count > i
@@ -173,18 +173,30 @@ for (var i = 0; i < 16; i += 1;) {
 
 newFormationID = getFormationID();
 
-var xoffset = arg[0];
+//var xoffset = arg[0];
+var side = arg[0];
 var yoffset = arg[1];
 _rate = arg[2];
 _size = arg[3];
 _direction = arg[4];
 _speed = arg[5];
-_wait = arg[6];
+_attacker = arg[6];
+_wait = arg[7];
 
 if _wait == -1 _wait = 1;
 if _rate == -1 rate = 9;
 
-with make(vw/2+xoffset,yoffset,fChain) {
+var xoffset;
+
+if side == 1 { // right
+    xoffset = vw + (_size-1) * _rate * _speed;
+} else { // left
+    xoffset = -(_size-1) * _rate * _speed;
+}
+
+stopTime = _size*6;//16;
+
+with make(xoffset,yoffset,fChain) {
     active = false;
     wait = other._wait;
 
@@ -195,20 +207,21 @@ with make(vw/2+xoffset,yoffset,fChain) {
     size = other._size;
 
     enemy = oMiniThex;
+    if other._attacker > -1 attacker[other._attacker] = 50; // fire rate of n enemy
 
     phaseDelay[0] = _PHASE_DELAY_WAIT;
-        advancePhase_AbsoluteTime[0] = 30;
+        advancePhase_AbsoluteTime[0] = rate*size;
     phase[0] = enemy_move;
     phaseArguments[0,0] = other._direction;
     phaseArguments[0,1] = speed;
     phaseCondition[0] = _PHASE_CONDITION_TIME
     phaseConditionArguments[0,0] = _PHASE_DELAY_WAIT;
-        advancePhase_AbsoluteTime[1] = 24;
+        advancePhase_AbsoluteTime[1] = other.stopTime;
 
     phase[1] = enemy_stop;
     phaseCondition[1] = _PHASE_CONDITION_TIME;
     phaseConditionArguments[1,0] = _PHASE_DELAY_WAIT;
-        advancePhase_AbsoluteTime[2] = 45;
+        advancePhase_AbsoluteTime[2] = 60;
 
     phase[2] = enemy_move;
     phaseArguments[2,0] = other._direction;

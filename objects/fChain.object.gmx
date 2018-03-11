@@ -2,7 +2,7 @@
 <object>
   <spriteName>sUFO</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>formationParent</parentName>
@@ -98,6 +98,7 @@ if path &gt; -1 {
 formationTransferPhaseVars(eID);
 formationTransferVars(eID);
 if offscreen() eID.offScreenTimer *= 4;
+eID.fireAge = attacker[count];
     
 count += 1;
 

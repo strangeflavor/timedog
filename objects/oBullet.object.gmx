@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>killWhenBelowScreen = true;
+            <string>dangerous = true;
+killWhenBelowScreen = true;
 
 if y &gt; (vh + 32) instance_destroy();
 

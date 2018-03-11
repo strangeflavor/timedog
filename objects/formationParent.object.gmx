@@ -41,6 +41,9 @@ _path_scale = 1;
 for (var i=0;i&lt;16;i+=1) {
     // advances the phase of the enemies' created by this formation based on time since the formation was created
     advancePhase_AbsoluteTime[i] = -1;
+
+    // this # enemy will fire at the player
+    attacker[i] = -1;
 }
 advancePhase_AbsoluteIndex = 0;
 
