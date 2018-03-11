@@ -207,7 +207,7 @@ with make(xoffset,yoffset,fChain) {
     size = other._size;
 
     enemy = oMiniThex;
-    if other._attacker > -1 attacker[other._attacker] = 50; // fire rate of n enemy
+    if other._attacker > -1 attacker[other._attacker] = 50; // fireAge of n enemy
 
     phaseDelay[0] = _PHASE_DELAY_WAIT;
         advancePhase_AbsoluteTime[0] = rate*size;

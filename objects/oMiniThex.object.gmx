@@ -43,6 +43,7 @@
 killWhenOffscreen = true;
 offScreenTimer = 36;
 value = -1;
+image_angle_tween = 0;
 
 fireAge = -1;
 
@@ -93,11 +94,39 @@ centerblend = choose(c_red,c_blue,c_yellow,c_lime);
             <kind>1</kind>
             <string>if currentPhase &gt; 0 invul = false;
 
+/*
+if objectAge == fireAge - 12 {
+    show('f');
+    image_angle_tween = TweenFire(id, "image_angle", EaseInExpo, TWEEN_MODE_ONCE, true, 0.0, .25, 0, 360);
+    //TweenFire(id, EaseInOutQuad, TWEEN_MODE_PATROL, true, 0.0, 2.0, "image_xscale", 0, 1, "image_yscale", 0, 1);
+}
+
+if objectAge &gt; fireAge - 12 {
+    image_angle = TweenCalc(image_angle_tween);
+}
+*/
+
+if TweenExists(image_angle_tween) {
+    image_speed = 0;
+    image_angle = TweenCalc(image_angle_tween);
+    image_xscale = 2 + (abs(image_angle)/360);
+    image_yscale = image_xscale;
+    image_blend = merge_color(image_blend,c_black,abs(image_angle)/360);
+    centerblend = merge_color(centerblend,c_red,abs(image_angle)/360);
+}
+
 if objectAge == fireAge {
-    if instance_exists(oShip) {
-        with make(x,y,oBullet) {
-            direction = irandom(16)-8+point_direction(x,y,oShip.x,oShip.y);
-            speed = 6;
+    if !TweenExists(image_angle_tween) {
+        image_angle_tween = TweenFire(id, "image_angle", EaseInOutElastic, TWEEN_MODE_BOUNCE, true, 0.0, .5, 0, 360);
+        fireAge += 16;
+    } else {
+        if instance_exists(oShip) {
+            with make(x,y,oBullet) {
+                direction = irandom(24)-12+point_direction(x,y,oShip.x,oShip.y);
+                speed = 5+choose(levelManager.difficulty,0);
+            }
+            fired += 1;
+            if levelManager.difficulty &gt;= 2 and fired &lt; 2 fireAge += 12;
         }
     }
 }

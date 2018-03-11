@@ -34,6 +34,7 @@ dangerous = true;
 explosionType = sLargeExplosion;
 value = -1;
 recoil = 0;
+fired = 0; // # of shots fired
 image_xscale = 2*scale
 image_yscale = 2*scale
 

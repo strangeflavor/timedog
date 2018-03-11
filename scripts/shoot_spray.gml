@@ -10,4 +10,5 @@ if objectAge mod argument1 == 0 {
         direction = other.bullet_direction;
         speed = other.shoot_spray_speed;
     }
+    fired += 1;
 }

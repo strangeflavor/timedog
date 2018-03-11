@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>active = false;
 objectAge = 0;
+difficulty = 0;
 
 ////////////////////
 // formations &amp; wave stuff
