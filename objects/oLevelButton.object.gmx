@@ -182,7 +182,7 @@ if shop {
         draw_set_valign(fa_top);
         draw_set_halign(fa_left);
         if rollOver draw_set_color(c_black) else draw_set_color(c_white);
-        draw_text(x+4,y+4,string(world+1)+'-'+string(levelID - (levelID div 100)*100+1));//+','+string(levelName));
+        draw_text(x+4+shakeOffset,y+4+shakeOffset,string(world+1)+'-'+string(levelID - (levelID div 100)*100+1));//+','+string(levelName));
     }
 }
 

@@ -56,6 +56,7 @@ alarm[0] = 30;
           <argument>
             <kind>1</kind>
             <string>with oLevelButton waitForUnlock = false;
+oEraSlider.waitForUnlock = false;
 /*
 with oLevelButton {
     waitForUnlock = true;

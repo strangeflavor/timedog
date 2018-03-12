@@ -49,7 +49,7 @@ var unlockTime = 1;
 
 if unlockLevel(buttonID_top,unlockTime) unlockTime += 24;
 if unlockLevel(buttonID_left,unlockTime) unlockTime += 18;
-if unlockLevel(buttonID_right,unlockTime) unlockTime += 10;
+if unlockLevel(buttonID_right,unlockTime) unlockTime += 12;
 if unlockLevel(buttonID_bottom,unlockTime) unlockTime += 6;
 oLevelMenu.alarm[1] = unlockTime + 30;
 

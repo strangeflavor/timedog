@@ -12,8 +12,9 @@ if attacking {
             normalShot(2,.6);
             tripleShot(2,.4);
         break;
-        // bomb
-        case 3:
+        case -1:        // de-shielded
+        case 3:        // bomb
+        case 4:         // shield
             normalShot(2,1);
         break;
     }

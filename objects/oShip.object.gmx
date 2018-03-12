@@ -60,7 +60,7 @@ canFire = 1;
 canFireTriple = 1;
 objectAge = 0;
 
-alarm[1] = 1;
+//alarm[1] = 1;
 </string>
           </argument>
         </arguments>
@@ -435,19 +435,19 @@ if active {
             <string>if doMove {
 
     // get position player has moved finger to
-    
+
     xNext = mouse_x;
     yNext = mouse_y;
-    
+
     // compare it to previous position
-    
+
     dx = xNext - xLast;
     dy = yNext - yLast;
-    
+
     with oShot dx = other.dx;
-    
+
     // prepare for next step
-    
+
     xLast = xNext;
     yLast = yNext;
 }

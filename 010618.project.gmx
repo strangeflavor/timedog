@@ -210,6 +210,8 @@
     <path>paths\pSine</path>
     <path>paths\pHalfCircleReversed</path>
     <path>paths\pHalfCircle</path>
+    <path>paths\pFigure8</path>
+    <path>paths\pCircle</path>
     <path>paths\pMoonShaped</path>
     <path>paths\pCurvedApproach</path>
     <path>paths\pCurvedApproachMirror</path>
@@ -392,6 +394,7 @@
       <object>objects\levelMan000</object>
       <object>objects\levelMan001</object>
       <object>objects\levelMan006</object>
+      <object>objects\levelMan007</object>
       <object>objects\levelManMaze_0</object>
       <object>objects\levelManMidBoss_0</object>
       <object>objects\levelManProcGen_0</object>
@@ -458,6 +461,7 @@
       <object>objects\oDrone</object>
       <object>objects\oMiniThex</object>
       <object>objects\oThexMed</object>
+      <object>objects\oThexLarge</object>
       <object>objects\oBeamCannon</object>
       <object>objects\oMultiShot</object>
       <object>objects\oMazeBlock</object>
@@ -488,6 +492,7 @@
     <timeline>timelines\tLvl1</timeline>
     <timeline>timelines\tLvl2</timeline>
     <timeline>timelines\tLvl6</timeline>
+    <timeline>timelines\tLvl7</timeline>
     <timeline>timelines\tBasicFwd</timeline>
     <timeline>timelines\tDeepSpace</timeline>
     <timeline>timelines\tButtonUnlock</timeline>

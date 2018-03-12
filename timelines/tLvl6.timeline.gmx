@@ -69,14 +69,17 @@ with make(72,-32,oBeamCannon) {
 }
 
 _wait += 30;
+_value = true;
 form_line(1,30,6,5,210,9,0,_wait);
 form_line(1,60,6,5,210,9,4,_wait);
-
+_value = false;
 difficulty += 1;
 
 _wait += 60;
+_value = true;
 form_line(-1,32,6,6,330,9,3,_wait);
 form_line(-1,64,6,6,330,9,1,_wait);
+_value = false;
 
 _wait += 30;
 form_line(1,64,6,6,180,9,1,_wait);
@@ -110,7 +113,7 @@ form_line(-1,128,6,6,0,9,3,_wait+6);
 _slower = true;
 _value = true;
 
-for (var i=2;i&lt;12;i+=1) {
+for (var i=2;i&lt;10;i+=1) {
     form_line(1,48*i,6,3,180,9,-1,i*2);
     form_line(-1,48*i,6,3,0,9,-1,12+i*2);
 }
