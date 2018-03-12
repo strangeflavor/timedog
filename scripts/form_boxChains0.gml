@@ -171,7 +171,7 @@ for (var i = 0; i < 16; i += 1;) {
        }
 }
 
-newFormationID = getFormationID();
+if _value newFormationID = getFormationID() else newFormationID = -1;
 
 //var xoffset = arg[0];
 var side = arg[0];
@@ -199,6 +199,7 @@ stopTime = _size*6;//16;
 with make(xoffset,yoffset,fChain) {
     active = false;
     wait = other._wait;
+    formationID = other.newFormationID;
 
     direction = other._direction;
     speed = other._speed;
@@ -221,7 +222,7 @@ with make(xoffset,yoffset,fChain) {
     phase[1] = enemy_stop;
     phaseCondition[1] = _PHASE_CONDITION_TIME;
     phaseConditionArguments[1,0] = _PHASE_DELAY_WAIT;
-        advancePhase_AbsoluteTime[2] = 60;
+    if other._slower advancePhase_AbsoluteTime[2] = 150 else advancePhase_AbsoluteTime[2] = 60;
 
     phase[2] = enemy_move;
     phaseArguments[2,0] = other._direction;

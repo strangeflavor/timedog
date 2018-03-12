@@ -43,6 +43,10 @@ formationCompleteGracePeriod = -600;
 
 for (var i=0;i&lt;16;i+=1) occupiedTimer[i] = 0;
 
+// these flags don't do any specific single function, they're used to tell formations to behave certain ways.. basically arguments but without the hassle of actually using arguments
+_slower = false;
+_value = false;
+
 ////////////////////
 // maze
 ////////////////////
