@@ -8,8 +8,8 @@ for (var i=0;i<8;i+=1) {
     phase[i] = -1; // script to execute for this phase. enemies start in phase 0.
     phaseCondition[i] = -1; // condition to advance beyond this phase
 
-    // NB, phase scripts only use 4 arguments at the moment
-    for (var j=0;j<4;j+=1) {
+    // NB, phase scripts only use 6 arguments at the moment
+    for (var j=0;j<6;j+=1) {
         phaseArguments[i,j] = -1; // passed to the script in phase[i], if any
         phaseConditionArguments[i,j] = -1; // condition to advance beyond this phase
     }
@@ -26,8 +26,8 @@ for (var i=0;i<8;i+=1) {
     eID.phaseDelay[i] = phaseDelay[i];
     eID.phaseCondition[i] = phaseCondition[i]; // condition to advance beyond this phase
 
-    for (var j=0;j<4;j+=1) {
-        // NB, phase scripts only use 4 arguments at the moment
+    for (var j=0;j<6;j+=1) {
+        // NB, phase scripts only use 6 arguments at the moment
         eID.phaseArguments[i,j] = phaseArguments[i,j]; // passed to the script in phase[i], if any
         eID.phaseConditionArguments[i,j] = phaseConditionArguments[i,j]; // condition to advance beyond this phase
     }
@@ -68,7 +68,7 @@ if currentPhaseDelay >= 0 {
     currentPhaseDelay -= 1;
 } else {
     if phase[phase_index] > -1 {
-        script_execute(phase[phase_index],phaseArguments[phase_index,0],phaseArguments[phase_index,1],phaseArguments[phase_index,2],phaseArguments[phase_index,3]);
+        script_execute(phase[phase_index],phaseArguments[phase_index,0],phaseArguments[phase_index,1],phaseArguments[phase_index,2],phaseArguments[phase_index,3],phaseArguments[phase_index,4],phaseArguments[phase_index,5]);
     }
 
     if currentPhase < 9 and phaseCondition[phase_index] > -1 {

@@ -23,20 +23,22 @@
 
 _wait = 6;
 
-for (i=0;i&lt;3;i+=1) {
-    with make(vw/2+i*64,64,fChain) {
-        enemy = oMiniThex;
-        path = pCircle;
-        _path_speed = 7+(other.i/2);
-        endaction = path_action_continue;
-        size = 12;
-        wait = 1+other.i*180;
+//form_orbit(0,-32,0);
 
-        phaseCondition[0] = _PHASE_CONDITION_TIME;
-        phaseConditionArguments[0,0] = 1;
+with make(vw/2-64,64,oThexLarge) {
+    phase[0] = enemy_orbit;
+    phaseArguments[0,0] = 64; // radius
+    phaseArguments[0,1] = 2; // speed
+    phaseArguments[0,2] = 1; // xbend
+    phaseArguments[0,3] = .5; // ybend
+}
 
-        phase[1] = enemy_move;
-    }
+with make(vw/2+64,64,oThexLarge) {
+    phase[0] = enemy_orbit;
+    phaseArguments[0,0] = 64; // radius
+    phaseArguments[0,1] = 2; // speed
+    phaseArguments[0,2] = 1; // xbend
+    phaseArguments[0,3] = .5; // ybend
 }
 </string>
           </argument>

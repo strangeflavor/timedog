@@ -46,7 +46,6 @@ value = -1;
 image_angle_tween = 0;
 
 
-
 image_speed = .2;
 
 HP = .5;

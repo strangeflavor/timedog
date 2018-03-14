@@ -228,3 +228,40 @@ with make(xoffset,yoffset,fChain) {
     phaseArguments[2,0] = other._direction;
     phaseArguments[2,1] = -speed;
 }
+#define form_orbit
+///form_orbit(wait,xoffset,yoffset)
+var xoffset = argument1;
+var yoffset = argument2;
+
+newFormationID = getFormationID();
+
+with make(vw/2+xoffset,32+yoffset,fChain) {
+    formationID = other.newFormationID;
+    enemy = oMiniThex;
+    invul = true;
+    //path = pCircle;
+    //_path_speed = 7+(other.i/2);
+    //endaction = path_action_continue;
+    size = 12;
+    wait = 1+argument0
+    rate = 4;
+
+    //phaseDelay[0] = _PHASE_DELAY_WAIT;
+        //advancePhase_AbsoluteTime[0] = 60;
+    phase[0] = enemy_orbit;
+    phaseArguments[0,0] = 24; // radius
+    phaseArguments[0,1] = 9; // speed
+
+    phaseCondition[0] = _PHASE_CONDITION_TIME
+    //phaseConditionArguments[0,0] = 120; // snake string
+    phaseConditionArguments[0,0] = _PHASE_DELAY_WAIT;
+        advancePhase_AbsoluteTime[0] = 180;
+
+    phase[1] = enemy_orbit;
+    phaseArguments[1,0] = 24; // radius
+    phaseArguments[1,1] = 9; // speed
+    phaseArguments[1,2] = 1; // xbend
+    phaseArguments[1,3] = 1; // ybend
+    phaseArguments[1,4] = 270; // direction
+    phaseArguments[1,5] = 12; // speed
+}

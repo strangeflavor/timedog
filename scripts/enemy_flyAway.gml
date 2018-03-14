@@ -28,11 +28,12 @@ image_angle = direction;
 #define enemy_move
 ///enemy_move(direction, speed, wiggleAmplitude)
 // moves in a direction at a speed
+
+if path_index != -1 path_end();
 var _wiggleAmplitude = argument2;
 
 direction = argument0 + _wiggleAmplitude*sin(objectAge*.1);
 speed = argument1;
-
 
 #define enemy_stop
 ///enemy_stop()
@@ -170,3 +171,39 @@ if phaseArguments[currentPhase,1] > 0 {
 }
 
 //phase[currentPhase] = -1;
+#define enemy_orbit
+///enemy_orbit(radius,speed,xbend,ybend,movedirection,movespeed)
+if cx == -1 {
+    Orbit = argument0; // Orbit distance
+    Angle = 0; // Current orbital angle
+    Speed = argument1; // Orbital speed
+    cx = x;
+    cy = y;
+}
+
+var vx,vy;
+var xbend = argument2;
+var ybend = argument3;
+
+if xbend == -1 xbend = 1;
+if ybend == -1 ybend = 1;
+
+var movedirection = argument4;
+var movespeed = argument5;
+
+// Orbital motion
+Angle += Speed;
+if(Angle >= 360) Angle -= 360;
+
+// Update position
+x = lengthdir_x(Orbit*xbend, Angle) + cx;
+y = lengthdir_y(Orbit*ybend, Angle) + cy;
+
+// move center point
+if movedirection != -1 {
+    vx = lengthdir_x(movespeed, movedirection);
+    vy = lengthdir_y(movespeed, movedirection);
+    
+    cx += vx;
+    cy += vy;
+}

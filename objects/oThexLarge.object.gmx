@@ -48,7 +48,7 @@ value=3;
 
 image_speed = 0;
 
-HP = 32;
+HP = 64;
 
 image_xscale = scale*6;
 image_yscale = scale*6;
