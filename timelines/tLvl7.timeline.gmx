@@ -25,15 +25,17 @@ _wait = 6;
 
 //form_orbit(0,-32,0);
 
-with make(vw/2-64,64,oThexLarge) {
+with make(vw/2-100,128,oThexLarge) {
     phase[0] = enemy_orbit;
     phaseArguments[0,0] = 64; // radius
-    phaseArguments[0,1] = 2; // speed
+    phaseArguments[0,1] = -2; // speed
     phaseArguments[0,2] = 1; // xbend
     phaseArguments[0,3] = .5; // ybend
+    
+    Angle = 180;
 }
 
-with make(vw/2+64,64,oThexLarge) {
+with make(vw/2+100,128,oThexLarge) {
     phase[0] = enemy_orbit;
     phaseArguments[0,0] = 64; // radius
     phaseArguments[0,1] = 2; // speed

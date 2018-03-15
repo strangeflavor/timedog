@@ -63,6 +63,8 @@ killWhenPathComplete = false;
 
 waitTime = -1;
 
+Angle = 0; // Current orbital angle
+
 ///////////////////////////
 // formation stuff
 ///////////////////////////

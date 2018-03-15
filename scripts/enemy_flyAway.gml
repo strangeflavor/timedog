@@ -175,8 +175,8 @@ if phaseArguments[currentPhase,1] > 0 {
 ///enemy_orbit(radius,speed,xbend,ybend,movedirection,movespeed)
 if cx == -1 {
     Orbit = argument0; // Orbit distance
-    Angle = 0; // Current orbital angle
     Speed = argument1; // Orbital speed
+
     cx = x;
     cy = y;
 }
@@ -193,7 +193,7 @@ var movespeed = argument5;
 
 // Orbital motion
 Angle += Speed;
-if(Angle >= 360) Angle -= 360;
+if(abs(Angle) >= 360) Angle = 0;
 
 // Update position
 x = lengthdir_x(Orbit*xbend, Angle) + cx;
