@@ -25,7 +25,11 @@ _wait = 6;
 
 //form_orbit(0,-32,0);
 
+holdTimelineID = getFormationID();
+
 with make(vw/2-100,128,oThexLarge) {
+    holdTimelineID = other.holdTimelineID;
+    addEnemyToFormationTracker(holdTimelineID);
     phase[0] = enemy_orbit;
     phaseArguments[0,0] = 64; // radius
     phaseArguments[0,1] = -2; // speed
@@ -36,12 +40,17 @@ with make(vw/2-100,128,oThexLarge) {
 }
 
 with make(vw/2+100,128,oThexLarge) {
+    holdTimelineID = other.holdTimelineID;
+    addEnemyToFormationTracker(holdTimelineID);
     phase[0] = enemy_orbit;
     phaseArguments[0,0] = 64; // radius
     phaseArguments[0,1] = 2; // speed
     phaseArguments[0,2] = 1; // xbend
     phaseArguments[0,3] = .5; // ybend
 }
+
+timeline_running = false;
+timeline_position += 1;
 </string>
           </argument>
         </arguments>

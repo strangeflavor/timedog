@@ -73,6 +73,7 @@ amLeader = false;
 hasLeader = false;
 
 formationID = -1;
+holdTimelineID = -1;
 
 space = _NONE;
 formationStartX = xstart;
@@ -115,6 +116,13 @@ alarm[0] = 1;
             if removeEnemyFromFormationTracker(formationID) &lt;= 0 value *= -1;
         }
 
+        if holdTimelineID &gt; -1 {
+            var holdFormationRemaining = removeEnemyFromFormationTracker(holdTimelineID);
+            if holdFormationRemaining &lt;= 0 { 
+                levelManager.timeline_running = true;
+            }
+        }
+        
         if value &gt; 0 {
             repeat value {
                 instance_create(x+irandom(32)-16,y+irandom(32)-16,oPickup);
@@ -228,7 +236,7 @@ if waitTime &lt; 0 {
     //////////////////////////
 
     objectAge += 1;
-    if HP &lt; 0 kill(self);
+    //if HP &lt; 0 kill(self);
     if killWhenBelowScreen {
        if y &gt; (vh + 64*scale) {
         value = 0;
@@ -248,9 +256,10 @@ if waitTime &lt; 0 {
         }
     }
 
-    if invulTime &gt; 0 and invul {
+    //if invulTime &gt; 0 and invul {
+    if invul {
         invulTime -= 1;
-        if invulTime == 0 invul = false;
+        if invulTime &lt; 0 invul = false;
     }
 
     if recoil &gt; 0 {
@@ -271,7 +280,7 @@ if waitTime &lt; 0 {
         if (path_endtime &gt; -1 and objectAge == path_endtime) {
             path = -1;
             path_end();
-            if killWhenPathComplete kill(self);
+            if killWhenPathComplete kill();
         }
     }
 
@@ -311,14 +320,15 @@ if waitTime &lt; 0 {
           <argument>
             <kind>1</kind>
             <string>if active and !invul {
-    HP -= other.damage;
     with other {
         HP -= 1;
         if HP &lt;= 0 {
-            instance_destroy();
+            kill();
             sfx(sndDamageEnemy)
         }
     }
+    HP -= other.damage;
+    if HP &lt; 0 kill();
 }
 </string>
           </argument>

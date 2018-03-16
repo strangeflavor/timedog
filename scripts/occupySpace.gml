@@ -53,6 +53,11 @@ if formationID > -1 {
     addEnemyToFormationTracker(formationID);
 }
 
+if holdTimelineID > -1 {
+    enemyID.holdTimelineID = holdTimelineID;
+    addEnemyToFormationTracker(holdTimelineID);
+}
+
 #define getFormationID
 ///getFormationID()
 formationTracker.nextFormationID += 1;

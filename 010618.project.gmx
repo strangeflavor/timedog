@@ -429,6 +429,7 @@
       <object>objects\fBehind</object>
       <object>objects\fThexSpitter</object>
       <object>objects\formationTracker</object>
+      <object>objects\enemyTracker</object>
       <object>objects\oTimelinePlayer</object>
       <object>objects\oTimelineLooper</object>
     </objects>
@@ -454,6 +455,7 @@
     </objects>
     <objects name="enemy">
       <object>objects\oEnemy</object>
+      <object>objects\oLargeEnemy</object>
       <object>objects\oSteering</object>
       <object>objects\oMidBoss</object>
       <object>objects\oFireAtPlayer</object>
