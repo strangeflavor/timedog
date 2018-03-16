@@ -24,6 +24,7 @@ state_scripts[_WAIT] = -1;
 state_scripts[_APPROACH] = _state_APPROACH;
 state_scripts[_BACKANDFORTH_HORI] = _state_BACKANDFORTH_HORI;
 state_scripts[_SPIRAL] = -1; //_state_BACKANDFORTH_HORI;
+state_scripts[_CIRCLE] = -1; //_state_BACKANDFORTH_HORI;
 
 #define add_state_path
 state_path[state_path_size] = argument0;
@@ -99,5 +100,6 @@ stateNames[_APPROACH] = 'APPROACH';
 stateNames[_BACKANDFORTH_HORI] = 'BACKANDFORTH_HORI';
 stateNames[_SPIRAL] = 'SPIRAL';
 stateNames[_ATK_BEAMS] = '_ATK_BEAMS';
+stateNames[_CIRCLE] = '_CIRCLE';
 
 return stateNames[argument0];

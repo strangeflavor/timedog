@@ -59,6 +59,16 @@ yStop = vh/4;
 r = 0;
 
 centerblend = choose(c_red,c_blue,c_yellow,c_lime);
+
+makeTurret(0,0,0);
+
+setup_state_paths();
+add_state_path(_WAIT,90);
+add_state_path(_CIRCLE,45);
+add_state_path(_WAIT,150);
+state_path_loop_position = 1;
+
+start_state_paths();
 </string>
           </argument>
         </arguments>
@@ -97,39 +107,50 @@ centerblend = choose(c_red,c_blue,c_yellow,c_lime);
             <kind>1</kind>
             <string>if currentPhase &gt; 0 invul = false;
 
-/*
-if objectAge == fireAge - 12 {
-    show('f');
-    image_angle_tween = TweenFire(id, "image_angle", EaseInExpo, TWEEN_MODE_ONCE, true, 0.0, .25, 0, 360);
-    //TweenFire(id, EaseInOutQuad, TWEEN_MODE_PATROL, true, 0.0, 2.0, "image_xscale", 0, 1, "image_yscale", 0, 1);
-}
-
-if objectAge &gt; fireAge - 12 {
-    image_angle = TweenCalc(image_angle_tween);
-}
-*/
-
-if TweenExists(image_angle_tween) {
-    image_speed = 0;
-    image_angle = TweenCalc(image_angle_tween);
-    image_xscale = 2 + (abs(image_angle)/360);
-    image_yscale = image_xscale;
-    image_blend = merge_color(image_blend,c_black,abs(image_angle)/360);
-    centerblend = merge_color(centerblend,c_red,abs(image_angle)/360);
-}
-
-if objectAge == fireAge {
-    if !TweenExists(image_angle_tween) {
-        image_angle_tween = TweenFire(id, "image_angle", EaseInOutElastic, TWEEN_MODE_BOUNCE, true, 0.0, .5, 0, 360);
-        fireAge += 16;
-    } else {
-        if instance_exists(oShip) {
-            with make(x,y,oBullet) {
-                direction = irandom(24)-12+point_direction(x,y,oShip.x,oShip.y);
-                speed = 5+choose(levelManager.difficulty,0);
+if active {
+    switch state {
+        case _CIRCLE:
+            if currentPhase &lt; 2 {
+                var eID = -1;
+                var eDir = 0;
+                var numShots = 24;
+    
+                //if frac(current_state_age / 60) == 0 {
+                if current_state_age == 1 {
+                    for (i=0;i&lt;numShots;i+=1) {
+                        eID = make(getTurretX(0),getTurretY(0),oBullet);
+                        eID.depth -= 1;
+                        eID.speed = 5;
+                        eID.direction = eDir;
+                        eDir += 360/numShots;
+                    }
+                }
             }
-            fired += 1;
-            if levelManager.difficulty &gt;= 2 and fired &lt; 2 fireAge += 12;
+        break;
+    }
+
+    if TweenExists(image_angle_tween) {
+        image_speed = 0;
+        image_angle = TweenCalc(image_angle_tween);
+        image_xscale = 2 + (abs(image_angle)/360);
+        image_yscale = image_xscale;
+        image_blend = merge_color(image_blend,c_black,abs(image_angle)/360);
+        centerblend = merge_color(centerblend,c_red,abs(image_angle)/360);
+    }
+
+    if objectAge == fireAge {
+        if !TweenExists(image_angle_tween) {
+            image_angle_tween = TweenFire(id, "image_angle", EaseInOutElastic, TWEEN_MODE_BOUNCE, true, 0.0, .5, 0, 360);
+            fireAge += 16;
+        } else {
+            if instance_exists(oShip) {
+                with make(x,y,oBullet) {
+                    direction = irandom(24)-12+point_direction(x,y,oShip.x,oShip.y);
+                    speed = 5+choose(levelManager.difficulty,0);
+                }
+                fired += 1;
+                if levelManager.difficulty &gt;= 2 and fired &lt; 2 fireAge += 12;
+            }
         }
     }
 }

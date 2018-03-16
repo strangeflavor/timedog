@@ -174,12 +174,15 @@ if phaseArguments[currentPhase,1] > 0 {
 #define enemy_orbit
 ///enemy_orbit(radius,speed,xbend,ybend,movedirection,movespeed)
 if cx == -1 {
-    Orbit = argument0; // Orbit distance
+    //Orbit = argument0; // Orbit distance
+    Orbit = 0;
     Speed = argument1; // Orbital speed
 
     cx = x;
     cy = y;
 }
+
+if Orbit < argument0 Orbit += 1;
 
 var vx,vy;
 var xbend = argument2;
@@ -203,7 +206,7 @@ y = lengthdir_y(Orbit*ybend, Angle) + cy;
 if movedirection != -1 {
     vx = lengthdir_x(movespeed, movedirection);
     vy = lengthdir_y(movespeed, movedirection);
-    
+
     cx += vx;
     cy += vy;
 }
