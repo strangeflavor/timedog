@@ -133,6 +133,7 @@
       <sprite>sprites\sPickupHitbox</sprite>
       <sprite>sprites\sShot</sprite>
       <sprite>sprites\sShip</sprite>
+      <sprite>sprites\sNightbird</sprite>
       <sprite>sprites\sThruster</sprite>
       <sprite>sprites\sPickupPink</sprite>
       <sprite>sprites\sPickupCrystal</sprite>

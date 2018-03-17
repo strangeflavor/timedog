@@ -125,6 +125,99 @@ with make(vw/2-120,-80,oThexLarge) {
     phaseArguments[0,0] = 270; // direction
     phaseArguments[0,1] = 6; // speed
     phaseCondition[0] = _PHASE_CONDITION_Y;
+    phaseConditionArguments[0,0] = 96;
+
+    phase[1] = enemy_orbit;
+    phaseArguments[1,0] = 64; // radius
+    phaseArguments[1,1] = -2; // speed
+    phaseArguments[1,2] = 1; // xbend
+    phaseArguments[1,3] = .5; // ybend
+    phaseCondition[1] = _PHASE_CONDITION_TIME;
+    phaseConditionArguments[1,0] = 480;
+
+    phase[2] = enemy_orbit;
+    phaseArguments[2,0] = 64; // radius
+    phaseArguments[2,1] = -2; // speed
+    phaseArguments[2,2] = 1; // xbend
+    phaseArguments[2,3] = .5; // ybend
+    phaseArguments[2,4] = 270;
+    phaseArguments[2,5] = 6;
+
+    Angle = 180;
+    current_state_duration += 60;
+}
+
+with make(vw/2+120,-80,oThexLarge) {
+    holdTimelineID = other.holdTimelineID;
+    addEnemyToFormationTracker(holdTimelineID);
+    phase[0] = enemy_move;
+    phaseArguments[0,0] = 270; // direction
+    phaseArguments[0,1] = 6; // speed
+    phaseCondition[0] = _PHASE_CONDITION_Y;
+    phaseConditionArguments[0,0] = 240;
+
+    phase[1] = enemy_orbit;
+    phaseArguments[1,0] = 64; // radius
+    phaseArguments[1,1] = -2; // speed
+    phaseArguments[1,2] = 1; // xbend
+    phaseArguments[1,3] = .5; // ybend
+    phaseCondition[1] = _PHASE_CONDITION_TIME;
+    phaseConditionArguments[1,0] = 480;
+
+    phase[2] = enemy_orbit;
+    phaseArguments[2,0] = 64; // radius
+    phaseArguments[2,1] = -2; // speed
+    phaseArguments[2,2] = 1; // xbend
+    phaseArguments[2,3] = .5; // ybend
+    phaseArguments[2,4] = 270;
+    phaseArguments[2,5] = 6;
+    
+    current_state_duration += 90;
+    Angle = 180;
+}
+
+timeline_running = false;
+timeline_position += 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </entry>
+  <entry>
+    <step>180</step>
+    <event>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>random_set_seed(4321);
+
+_wait = 6;
+
+//form_orbit(0,-32,0);
+
+holdTimelineID = getFormationID();
+
+with make(vw/2-120,-80,oThexLarge) {
+    holdTimelineID = other.holdTimelineID;
+    addEnemyToFormationTracker(holdTimelineID);
+    phase[0] = enemy_move;
+    phaseArguments[0,0] = 270; // direction
+    phaseArguments[0,1] = 6; // speed
+    phaseCondition[0] = _PHASE_CONDITION_Y;
     phaseConditionArguments[0,0] = 128;
 
     phase[1] = enemy_orbit;
