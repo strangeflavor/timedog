@@ -29,11 +29,16 @@ image_angle = direction;
 ///enemy_move(direction, speed, wiggleAmplitude)
 // moves in a direction at a speed
 
+var dir = argument0;
+var spd = argument1;
+if dir == -1 dir = 270;
+if spd == -1 spd = 8;
+
 if path_index != -1 path_end();
 var _wiggleAmplitude = argument2;
 
-direction = argument0 + _wiggleAmplitude*sin(objectAge*.1);
-speed = argument1;
+direction = dir + _wiggleAmplitude*sin(objectAge*.1);
+speed = spd;
 
 #define enemy_stop
 ///enemy_stop()

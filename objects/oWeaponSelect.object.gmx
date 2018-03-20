@@ -25,12 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with make(vw/2-180,vh/3,weaponDelivery) weapon = 1;
-with make(vw/2-60,vh/3,weaponDelivery) weapon = 2;
-with make(vw/2+60,vh/3,weaponDelivery) weapon = 3;
-with make(vw/2+180,vh/3,weaponDelivery) weapon = 4;
+            <string>for (i=1;i&lt;=4;i+=1) {
+    if getWeaponUnlock(i) {
+        with make(vw/2+(i-1)*60,vh/3,weaponDelivery) weapon = other.i;
+    }
+}
 
-make(vw/2,vh*.1,equipSplash);
+if instance_number(weaponDelivery) == 0 {
+    oShip.weapon = 0;
+    make(oHUD);
+    //with make(oHUD) weapon = other.weapon;
+    startDialog();
+} else {
+    make(vw/2,vh*.1,equipSplash);
+} 
 
 kill();
 </string>

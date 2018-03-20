@@ -42,7 +42,7 @@
             <string>explosionType = sMedExplosion;
 value=1;
 
-HP = 1.5;
+HP = 2;
 
 //image_xscale = scale*2;
 //image_yscale = scale*2;

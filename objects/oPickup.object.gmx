@@ -38,6 +38,8 @@ gravity = .2;
 
 objectAge = irandom(128);
 collected = false;
+
+autocollect = false;
 </string>
           </argument>
         </arguments>
@@ -117,10 +119,18 @@ if collected repeat 3 make(x+irandom(6)-3,y+irandom(6)-3,oPickupCollectedFX);
             <kind>1</kind>
             <string>if vspeed &gt; 3 vspeed = 3;
 
+if room != rLevelSelect and y &gt; room_height*.8 {
+    image_xscale = .5;
+    image_yscale = .5;
+    autocollect = true;
+}
+
+if autocollect image_angle += 1;
+
 // move twd player
 if instance_exists(oShip) {
     distance_denom = point_distance(x,y,oShip.x,oShip.y);
-    if distance_denom &lt; distance_denom_minim {
+    if distance_denom &lt; distance_denom_minim or autocollect{
         distance_denom_minim = 999;
         move_towards_point(oShip.x+irandom(6*scale)-3*scale,oShip.y+irandom(6*scale)-3*scale,pix_speed);
     

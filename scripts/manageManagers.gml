@@ -15,6 +15,7 @@ managerArray[4] = levelManMaze_0;
 managerArray[5] = 999; // shop
 managerArray[6] = levelMan006;
 managerArray[7] = levelMan007;
+managerArray[8] = levelMan008;
 
 for (var i=100;i<200;i+=1) {
     managerArray[i] = levelManager;

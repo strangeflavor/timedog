@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Swipe Control Variables
+            <string>//Swipe Control Variables
 MouseX = 0;
 MouseY = 0;
 MouseXStart = 0;

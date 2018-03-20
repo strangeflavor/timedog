@@ -47,7 +47,7 @@ TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,1,0,25);
 
 mazes = 3;
 timeBetweenMazes = 120;
-alarm[1] = 120;
+//alarm[1] = 120;
 </string>
           </argument>
         </arguments>

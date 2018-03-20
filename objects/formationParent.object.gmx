@@ -35,6 +35,8 @@ formationStartX = xstart;
 formationStartY = ystart;
 formationID = -1; // used in cases where individual enemies need to know about the state of their formation brothers
 
+holdTimelineID = -1;
+
 _path_speed = 1;
 _path_scale = 1;
 

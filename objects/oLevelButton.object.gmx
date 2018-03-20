@@ -109,9 +109,13 @@ timeline_running = true;
         }
 
         if mouse_check_button_released(mb_left) and !locked and abs(frac(view_xview[0]/vw)) &lt; .03 {
-            GAMEFLOW_currentLevel = levelID;
-            //GAMEFLOW_gemsCollectedInLevel = 0;
-            room_goto_next();
+            if shop {
+                room_goto(rShop);
+            } else {
+                GAMEFLOW_currentLevel = levelID;
+                //GAMEFLOW_gemsCollectedInLevel = 0;
+                room_goto(rDeepSpace);
+            }
         }
 
         if mouse_check_button_released(mb_right) { //and !locked {

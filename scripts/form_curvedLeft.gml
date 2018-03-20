@@ -38,6 +38,7 @@ for (var i=0;i<count;i+=1) {
     tId.invulTime = 6;
     tId.path = pMoonShaped;
     tId.path_speed = _speed;
+    tId.path_endaction = path_action_reverse;
 }
 
 #define form_curvedRight

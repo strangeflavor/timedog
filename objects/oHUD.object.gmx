@@ -30,7 +30,7 @@ showHud = true;
 showDialog = false;
 dSpeed = .005;
 
-
+weapon = 0;
 </string>
           </argument>
         </arguments>

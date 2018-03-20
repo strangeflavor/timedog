@@ -51,7 +51,10 @@ for (var i=0;i&lt;2;i+=1) {
           <argument>
             <kind>1</kind>
             <string>for (i=0;i&lt;2;i+=1) {
+    newFormationID = getFormationID();
+
     with make(room_width-80,-32,fChain) {
+        formationID = other.newFormationID;
         enemy = oMiniThex;
         path = pSine;
         _path_speed = 7;
@@ -59,10 +62,10 @@ for (var i=0;i&lt;2;i+=1) {
         size = 3;
         wait = 1+other.i*120;
 
-        phaseCondition[0] = _PHASE_CONDITION_TIME;
-        phaseConditionArguments[0,0] = 1;
+        //phaseCondition[0] = _PHASE_CONDITION_TIME;
+        //phaseConditionArguments[0,0] = 1;
 
-        phase[1] = enemy_move;
+        //phase[1] = enemy_move;
     }
 }
 </string>
@@ -99,10 +102,12 @@ for (var i=0;i&lt;2;i+=1) {
         size = 12;
         wait = 1+other.i*180;
 
+        /*
         phaseCondition[0] = _PHASE_CONDITION_TIME;
         phaseConditionArguments[0,0] = 1;
 
         phase[1] = enemy_move;
+        */
     }
 
     with make(vw/2-48,-96,fChain) {
@@ -113,10 +118,12 @@ for (var i=0;i&lt;2;i+=1) {
         size = 12;
         wait = 120+other.i*180;
 
+        /*
         phaseCondition[0] = _PHASE_CONDITION_TIME;
         phaseConditionArguments[0,0] = 1;
 
         phase[1] = enemy_move;
+        */
     }
 }
 </string>

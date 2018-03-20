@@ -305,7 +305,7 @@ timeline_position += 1;
     </event>
   </entry>
   <entry>
-    <step>900</step>
+    <step>240</step>
     <event>
       <action>
         <libid>1</libid>

@@ -3,7 +3,6 @@
 // screen stuff
 ///////////////////////////////////////////////
 
-//globalvar scale,vw,vh,screen_w,screen_h,developer,debug,debugTimelineStartPos,base_w,base_h;
 debug = 0;
 scale = 1;
 developer = true;
@@ -36,6 +35,12 @@ createLevelData();
 GAMEFLOW_completedLevel = false;
 GAMEFLOW_currentLevel = -1;
 GAMEFLOW_gemsCollectedInLevel = 0;
+
+WEAPON_rapid = false;
+WEAPON_tribeam = false;
+WEAPON_bomb = false;
+WEAPON_shield = false;
+
 
 ///////////////////////////////////////////////
 // system objects

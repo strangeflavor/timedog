@@ -102,30 +102,39 @@ alarm[0] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if active {
+            <string>// gotta check this even if inactive bc timeline needs to advance
+if holdTimelineID &gt; -1 {
+    var holdFormationRemaining = removeEnemyFromFormationTracker(holdTimelineID);
+    if holdFormationRemaining &lt;= 0 { 
+        levelManager.timeline_running = true;
+    }
+}
+
+if active {
     if y &lt; vh + 32*scale {
         sfx(sndDefeatEnemy);
 
+        /*
         fxId = make(oFX);
-    
+
         fxId.sprite_index = explosionType;
         fxId.image_xscale = image_xscale/2;
         fxId.image_yscale = image_yscale/2;
+        */
+        
+        make(oExplo);
 
         if formationID &gt; -1 {
             if removeEnemyFromFormationTracker(formationID) &lt;= 0 value *= -1;
         }
 
-        if holdTimelineID &gt; -1 {
-            var holdFormationRemaining = removeEnemyFromFormationTracker(holdTimelineID);
-            if holdFormationRemaining &lt;= 0 { 
-                levelManager.timeline_running = true;
-            }
-        }
-        
         if value &gt; 0 {
-            repeat value {
-                instance_create(x+irandom(32)-16,y+irandom(32)-16,oPickup);
+            if value == 1 {
+                make(x,y,oPickup);
+            } else {
+                repeat value {
+                    make(x+irandom(48)-24,y+irandom(48)-24,oPickup);
+                }
             }
         }
     }
