@@ -30,6 +30,9 @@ objectAge = 0;
 noisesurf = -1;
 starssurf = -1;
 
+playerDestroyed_x = -1;
+playerDestroyed_y = -1;
+
 /*
 shock_surf = -1;
 
@@ -93,9 +96,19 @@ ded = false;
             <kind>1</kind>
             <string>/// player died
 
-oBG.ded = true;
-oBG.bg_color_rate = .05;
+room_speed = 60;
+cursor_sprite = sCursorBig;
+with oEnemy kill();
+with oFX kill();
+with Smoke kill();
+make(vw/2,-64,failedLevel);
 
+with make(playerDestroyed_x,playerDestroyed_y,oFX) {
+    sprite_index = sPlayerExplosion;
+    image_xscale = 4;
+    image_yscale = 4;
+    image_speed = .25;
+}
 </string>
           </argument>
         </arguments>
@@ -170,7 +183,7 @@ draw_rectangle(0,0,vw,vh,false);
 
 draw_noisesurf();
 
-draw_set_alpha(.5)
+if !ded draw_set_alpha(.5)
 draw_rectangle_colour(0,0,vw,vh,c_black,c_black,c_black,c_black,false);
 draw_set_alpha(1)
 
@@ -214,11 +227,11 @@ if surface_exists(starssurf) {
     surface_reset_target();
 
 
-    draw_set_alpha(starAlpha);
-    draw_surface_stretched(starssurf, 0, 0, display_get_gui_width(), display_get_gui_height());
-    //draw_surface(starssurf,0,0);
-    draw_set_alpha(1);
-
+    if !ded {
+        draw_set_alpha(starAlpha);
+        draw_surface_stretched(starssurf, 0, 0, display_get_gui_width(), display_get_gui_height());
+        draw_set_alpha(1);
+    }
 }
 
 ///////////////////////////////////

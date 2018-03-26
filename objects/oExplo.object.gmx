@@ -26,9 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0.1;
-image_xscale = 0.25;
-image_yscale = 0.25;
+image_xscale = 0.1;
+image_yscale = 0.1;
 
+objectAge = 0;
+done = irandom(8)+8;
 </string>
           </argument>
         </arguments>
@@ -53,6 +55,13 @@ image_yscale = 0.25;
             <kind>1</kind>
             <string>image_xscale += 0.05
 image_yscale += 0.05
+
+if objectAge &gt; done {
+    repeat(5) with instance_create(x,y,Smoke) motion_add(random(360),1+random(2))
+    kill();
+} else {
+    objectAge += 1;
+}
 </string>
           </argument>
         </arguments>
@@ -75,10 +84,7 @@ image_yscale += 0.05
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>repeat(5) {
-    //with instance_create(x,y,Smoke) motion_add(random(360),1+random(2))
-}
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>

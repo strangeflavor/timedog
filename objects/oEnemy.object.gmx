@@ -328,7 +328,7 @@ if waitTime &lt; 0 {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if active and !invul {
+            <string>if active and !invul and y &gt; 0 {
     with other {
         HP -= 1;
         if HP &lt;= 0 {

@@ -133,6 +133,7 @@
       <sprite>sprites\sPickupHitbox</sprite>
       <sprite>sprites\sShot</sprite>
       <sprite>sprites\sShip</sprite>
+      <sprite>sprites\sMuzzleFlash</sprite>
       <sprite>sprites\sNightbird</sprite>
       <sprite>sprites\sNightbirdWings</sprite>
       <sprite>sprites\sThruster</sprite>
@@ -161,13 +162,16 @@
       <sprite>sprites\sCube</sprite>
     </sprites>
     <sprites name="fx">
+      <sprite>sprites\sprSmoke</sprite>
       <sprite>sprites\sPlayerExplosion</sprite>
+      <sprite>sprites\_sPlayerExplosion</sprite>
       <sprite>sprites\sLargeExplosion</sprite>
       <sprite>sprites\sMedExplosion</sprite>
       <sprite>sprites\sTinyExplosion</sprite>
       <sprite>sprites\sBombLoop</sprite>
       <sprite>sprites\sBombLoopCenter</sprite>
       <sprite>sprites\sGotPickup</sprite>
+      <sprite>sprites\sForcefield</sprite>
       <sprite>sprites\sExplo</sprite>
     </sprites>
     <sprites name="dialog">
@@ -194,6 +198,7 @@
       <sprite>sprites\sBrak</sprite>
     </sprites>
     <sprites name="UI">
+      <sprite>sprites\sCursorBig</sprite>
       <sprite>sprites\sShopButtonUI</sprite>
       <sprite>sprites\sBack</sprite>
       <sprite>sprites\sConfirm</sprite>
@@ -377,6 +382,7 @@
       <script>scripts\show.gml</script>
       <script>scripts\tune.gml</script>
       <script>scripts\trace.gml</script>
+      <script>scripts\makeBlendTester.gml</script>
     </scripts>
     <scripts name="data">
       <script>scripts\getWeaponName.gml</script>
@@ -457,7 +463,7 @@
     </objects>
     <objects name="debug">
       <object>objects\oTuner</object>
-      <object>objects\surfaceTester</object>
+      <object>objects\blendTester</object>
       <object>objects\oConsole</object>
     </objects>
     <objects name="system">
@@ -515,6 +521,7 @@
     </objects>
     <object>objects\obj_vignette_noise</object>
     <object>objects\o_shader_start</object>
+    <object>objects\Smoke</object>
   </objects>
   <timelines name="timelines">
     <timeline>timelines\tLvl1</timeline>

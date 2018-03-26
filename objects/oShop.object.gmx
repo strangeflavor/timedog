@@ -57,7 +57,7 @@ var ypos = vh/3 - 64;
 
 with make(vw/2-dist,ypos,oShopButton) image_index = 1;
 with make(vw/2,ypos,oShopButton) image_index = 2;
-with make(vw/2+dist,ypos,oShopButton) image_index = 3;
+with make(vw/2+dist,ypos,oShopButton) image_index = 4;
 with make(64,vh-80,oShopButton) {
     sprite_index = sBack;
     buttonSize = 90;
@@ -201,7 +201,9 @@ draw_text(pickupHUD_x+view_xview[0]+16,40,'x'+string(gems));
           <argument>
             <kind>1</kind>
             <string>///gems += 20;
-gems += 20;
+gems += 10;
+gems *= 1.5;
+gems = floor(gems);
 </string>
           </argument>
         </arguments>

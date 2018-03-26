@@ -24,13 +24,13 @@ if attacking {
 #define normalShot
 ///normalShot(rate,damage)
 var rate = argument0;
-var damage= argument1;
+var damage = argument1;
 
 var shotID,yo;
-yo = frac(objectAge/2)*64;
+yo = frac(objectAge/3)*32;
 
 if canFire >= 1 {
-    shotID = make(x,y+yo,oShot);
+    shotID = make(x,y-yo,oShot);
     shotID.damage = damage;
     canFire = -rate*scale;
 } else {

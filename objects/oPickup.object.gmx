@@ -119,7 +119,7 @@ if collected repeat 3 make(x+irandom(6)-3,y+irandom(6)-3,oPickupCollectedFX);
             <kind>1</kind>
             <string>if vspeed &gt; 3 vspeed = 3;
 
-if room != rLevelSelect and y &gt; room_height*.8 {
+if room != rLevelSelect and y &gt; room_height*.95 {
     image_xscale = .5;
     image_yscale = .5;
     autocollect = true;

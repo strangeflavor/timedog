@@ -140,12 +140,7 @@ if dialogIndex &lt;= oShop.dialogPanels {
     //oShop.showShop = true;
     oFader.fadeIn = true;
     oPickup.visible = true;
-    with oShopButton {
-        if sprite_index != sBack {
-            TweenSimpleMove(x,y,x+vw,y,60,EaseInOutElastic);
-        }
-        active = true;
-    }
+    with oShopButton alarm[1] = 1;
     kill();
 }
 </string>

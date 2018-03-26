@@ -28,9 +28,10 @@
             <string>HP = 0;
 damage = 1;
 
-image_alpha = .777;
+//image_alpha = .777;
+image_alpha = 1;
 direction = 90;
-speed = 50;
+speed = 40;
 dx = 0;
 dy = 0;
 
@@ -86,7 +87,8 @@ image_yscale = scale;
           <argument>
             <kind>1</kind>
             <string>//y += dy;
-if y &lt; 24*scale instance_destroy();
+visible = !visible;
+if y &lt; 6*scale instance_destroy();
 </string>
           </argument>
         </arguments>

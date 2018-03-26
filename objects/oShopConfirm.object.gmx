@@ -32,19 +32,28 @@ with oShopButton active = false;
 
 var dist = 64;
 var yy = y + 24;
-with make(vw/2-dist,yy,oShopButton) {
+
+confirmButton = make(vw/2-dist,yy+vh,oShopButton);
+with confirmButton {
     depth = other.depth - 1;
     sprite_index = sConfirm;
     image_index = 0;
+    TweenSimpleMove(x,y,x,y-vh,30,EaseOutExpo);
 }
 
-with make(vw/2+dist,yy,oShopButton) {
+cancelButton = make(vw/2+dist,yy+vh,oShopButton);
+with cancelButton {
     depth = other.depth - 1;
     sprite_index = sConfirm;
     image_index = 1;
+    TweenSimpleMove(x,y,x,y-vh,30,EaseOutExpo);
 }
 
 cannotAfford = false;
+canceled = false;
+slidingOff = false;
+y += vh;
+TweenSimpleMove(x,y,x,ystart,30,EaseOutExpo);
 </string>
           </argument>
         </arguments>
@@ -93,12 +102,16 @@ cannotAfford = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>kill(oShopConfirm);
+            <string>/*
+kill(oShopConfirm);
 with oShopButton {
     active = true;
     alarm[0] = 1;
 }
 kill();
+*/
+
+canceled = true;
 </string>
           </argument>
         </arguments>
@@ -123,11 +136,16 @@ kill();
             <kind>1</kind>
             <string>objectAge += 1;
 
-if mouse_check_button_pressed(mb_left) {
-    if mouse_y &lt; y - hh {
-        kill();
+if mouse_check_button_pressed(mb_left) or canceled {
+    if (canceled or mouse_y &lt; y - hh) and !slidingOff {
+        slidingOff = true;
+        with confirmButton if sprite_index != sBack kill();
+        with cancelButton if sprite_index != sBack kill()
+        TweenSimpleMove(x,y,x,y+vh,12,EaseInExpo);
     }
 }
+
+if slidingOff and y &gt; vh kill();
 </string>
           </argument>
         </arguments>

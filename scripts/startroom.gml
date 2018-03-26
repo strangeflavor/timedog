@@ -1,5 +1,6 @@
 #define startroom
 formationIndex = 0; // index for formation array (used to keep track of instance ids so formation leader can spawn pickups if its allies are dead)
+cursor_sprite = sCursorBig;
 
 switch argument0 {
     case rTitle:
