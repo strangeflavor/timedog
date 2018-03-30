@@ -1,10 +1,11 @@
 #define manageManagers
 ///manageManagers()
-
+//called from controller
 
 // world 1
 for (var i=0;i<100;i+=1) {
     managerArray[i] = levelManager;
+    timelineArray[i] = -1;
 }
 
 managerArray[0] = levelMan000;
@@ -16,37 +17,47 @@ managerArray[5] = 999; // shop
 managerArray[6] = levelMan006;
 managerArray[7] = levelMan007;
 managerArray[8] = levelMan008;
+managerArray[9] = -9;
+    timelineArray[9] = tLvl9;
 
 for (var i=100;i<200;i+=1) {
     managerArray[i] = levelManager;
+    timelineArray[i] = -1;
 }
 
 for (var i=300;i<400;i+=1) {
     managerArray[i] = levelManager;
+    timelineArray[i] = -1;
 }
 
 for (var i=400;i<500;i+=1) {
     managerArray[i] = levelManager;
+    timelineArray[i] = -1;
 }
 
 for (var i=500;i<600;i+=1) {
     managerArray[i] = levelManager;
+    timelineArray[i] = -1;
 }
 
 for (var i=600;i<700;i+=1) {
     managerArray[i] = levelManager;
+    timelineArray[i] = -1;
 }
 
 for (var i=700;i<800;i+=1) {
     managerArray[i] = levelManager;
+    timelineArray[i] = -1;
 }
 
 for (var i=800;i<900;i+=1) {
     managerArray[i] = levelManager;
+    timelineArray[i] = -1;
 }
 
 for (var i=900;i<1000;i+=1) {
     managerArray[i] = levelManager;
+    timelineArray[i] = -1;
 }
 
 #define pickWave
@@ -187,7 +198,17 @@ for (var i=0;i<32;i+=1) formationComplete[i] = false;
 checkForEndOfWave = false;
 
 #define createLevelManager
+///createLevelManager()
+// called from startroom() in controller
 var managerObject = controller.managerArray[GAMEFLOW_currentLevel];
 
-make(managerObject);
+if managerObject >= 0 {
+    make(managerObject);
+} else {
+    // if -1, we use a regular level manager and asign a timeline to it automatically
+    var lID = make(levelManager);
+    lID.winCondition = _WIN_TIMELINE_END;
+    lID.winConditionValue = timelineArray[abs(managerObject)];
+}
+
 make(formationTracker);
