@@ -39,6 +39,8 @@ fired = 0; // # of shots fired
 image_xscale = 2*scale
 image_yscale = 2*scale
 
+explosion_blend = choose(c_yellow,c_red,c_blue,c_white);
+
 ///////////////////////////
 // behavior/phase stuff
 ///////////////////////////
@@ -122,7 +124,7 @@ if active {
         fxId.image_yscale = image_yscale/2;
         */
         
-        make(oExplo);
+        with make(oExplo) image_blend = other.explosion_blend;
 
         if formationID &gt; -1 {
             if removeEnemyFromFormationTracker(formationID) &lt;= 0 value *= -1;

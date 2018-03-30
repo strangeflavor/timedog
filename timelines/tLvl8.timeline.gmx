@@ -85,12 +85,18 @@ form_orbit(60,-120,64,300);
           <argument>
             <kind>1</kind>
             <string>difficulty = 2;
-form_line(-1,vh/3,6,3,0,9,1,_wait);
+//form_line(-1,vh/3,6,3,0,9,1,_wait);
+
+make(80,-32,oMox);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
+  </entry>
+  <entry>
+    <step>150</step>
+    <event/>
   </entry>
   <entry>
     <step>900</step>

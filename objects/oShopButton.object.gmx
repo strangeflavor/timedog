@@ -138,7 +138,7 @@ active = true;
                 room_goto(rLevelSelect);
             } else {
                 if sprite_index == sConfirm {
-                    //with oShopButton if sprite_index == sConfirm kill();
+                    with oShopButton if sprite_index == sConfirm kill();
                     //oShopConfirm.alarm[0] = 1;
                     if image_index == 1 oShopConfirm.canceled = true;
 
@@ -149,7 +149,8 @@ active = true;
                         } else {
                             gems -= getWeaponCost(oShopConfirm.item);
                             setWeaponUnlock(oShopConfirm.item);
-                            //oShopConfirm.alarm[0] = 1;
+                            with oShopButton alarm[0] = 1;
+                            oShopConfirm.alarm[0] = 3;
                         }
                     }
                 } else {
@@ -209,7 +210,7 @@ if sprite_index == sBack {
 
             draw_text(x,y-64,getWeaponName(image_index));
             draw_sprite_ext(sShopButtonUI,0,x,y,2,2,0,color,1);
-            draw_sprite_ext(sItemUI,image_index,x,y,2,2,0,c_white,1);
+            draw_sprite_ext(sItemUI,image_index,x,y,1,1,0,c_white,1);
 
             draw_set_valign(fa_top);
             //draw_text(x,y+80,string(getWeaponCost(image_index)));

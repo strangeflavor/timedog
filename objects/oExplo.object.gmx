@@ -56,8 +56,10 @@ done = irandom(8)+8;
             <string>image_xscale += 0.05
 image_yscale += 0.05
 
+image_blend = merge_color(image_blend,c_white,objectAge*.04);
+
 if objectAge &gt; done {
-    repeat(5) with instance_create(x,y,Smoke) motion_add(random(360),1+random(2))
+    repeat(3) with instance_create(x,y,Smoke) motion_add(random(360),1+random(2))
     kill();
 } else {
     objectAge += 1;

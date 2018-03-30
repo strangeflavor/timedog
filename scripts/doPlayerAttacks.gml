@@ -27,12 +27,18 @@ var rate = argument0;
 var damage = argument1;
 
 var shotID,yo;
-yo = frac(objectAge/3)*32;
+yo = 40;
 
 if canFire >= 1 {
     shotID = make(x,y-yo,oShot);
     shotID.damage = damage;
     canFire = -rate*scale;
+
+    if weapon == 1 { // rapid
+        shotID = make(x,y,oShot);
+        shotID.damage = damage;
+        canFire = -rate*scale;
+    }
 } else {
     canFire += 1;
 }
@@ -40,7 +46,7 @@ if canFire >= 1 {
 #define tripleShot
 ///normalShot(rate,damage)
 var rate = argument0;
-var damage= argument1;
+var damage = argument1;
 
 var shotID;
 

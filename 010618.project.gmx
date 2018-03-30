@@ -150,6 +150,9 @@
     </sprites>
     <sprites name="bullets">
       <sprite>sprites\sShot0</sprite>
+      <sprite>sprites\sShot1</sprite>
+      <sprite>sprites\sShot2</sprite>
+      <sprite>sprites\sShot3</sprite>
     </sprites>
     <sprites name="enemy">
       <sprite>sprites\sprMidboss0</sprite>
@@ -160,6 +163,7 @@
       <sprite>sprites\sThexbotCenter</sprite>
       <sprite>sprites\sPopo</sprite>
       <sprite>sprites\sCube</sprite>
+      <sprite>sprites\sMox</sprite>
     </sprites>
     <sprites name="fx">
       <sprite>sprites\sprSmoke</sprite>
@@ -390,6 +394,7 @@
     <script>scripts\x_axis_get.gml</script>
     <script>scripts\endTimeline.gml</script>
     <script>scripts\screenResize.gml</script>
+    <script>scripts\draw_sprite_skew_ext.gml</script>
     <script>scripts\draw_columnB.gml</script>
     <script>scripts\draw_noisesurf.gml</script>
     <script>scripts\draw_SHADER_sceneFringe.gml</script>
@@ -430,6 +435,15 @@
       <object>objects\failedLevel</object>
     </objects>
     <objects name="menu">
+      <objects name="shop">
+        <object>objects\oFader</object>
+        <object>objects\oShop</object>
+        <object>objects\oShopButton</object>
+        <object>objects\oShopConfirm</object>
+        <object>objects\oWeaponSelect</object>
+        <object>objects\weaponPickup</object>
+        <object>objects\weaponDelivery</object>
+      </objects>
       <object>objects\oMenu</object>
       <object>objects\oLevelMenu</object>
       <object>objects\oEraSlider</object>
@@ -439,13 +453,6 @@
       <object>objects\gemFeeder</object>
       <object>objects\levelUnlocker</object>
       <object>objects\columnB</object>
-      <object>objects\oWeaponSelect</object>
-      <object>objects\oShop</object>
-      <object>objects\oShopButton</object>
-      <object>objects\oShopConfirm</object>
-      <object>objects\weaponDelivery</object>
-      <object>objects\weaponPickup</object>
-      <object>objects\oFader</object>
     </objects>
     <objects name="formations">
       <object>objects\formationParent</object>
@@ -489,6 +496,7 @@
       <object>objects\oMidBoss</object>
       <object>objects\oFireAtPlayer</object>
       <object>objects\oPopo</object>
+      <object>objects\oMox</object>
       <object>objects\oAimAtPlayer</object>
       <object>objects\oDrone</object>
       <object>objects\oMiniThex</object>
