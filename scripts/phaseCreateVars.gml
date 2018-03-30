@@ -81,3 +81,9 @@ if currentPhaseDelay >= 0 {
 currentPhase += 1;
 currentPhaseDelay = phaseDelay[currentPhase];
 currentPhaseAge = 0;
+
+// loop
+if phase[currentPhase] == -999 {
+    currentPhase = 0;
+    currentPhaseDelay = phaseDelay[currentPhase];
+}

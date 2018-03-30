@@ -58,7 +58,21 @@ makeTurret(0,0,9);
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="10">
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -75,10 +89,12 @@ makeTurret(0,0,9);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///stop event
-
-fire('triple');
-resumeMotion(45);
+            <string>if currentPhase == 1 and fired == 0 {
+    make(shot_pattern);
+    fired += 1;    
+} else {
+    if currentPhase == 0 fired = 0;
+}
 </string>
           </argument>
         </arguments>

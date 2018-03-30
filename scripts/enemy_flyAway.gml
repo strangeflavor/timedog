@@ -138,44 +138,45 @@ if phaseArguments[currentPhase,1] > 0 {
 #define enemy_FireInDirection
 ///enemy_FireInDirection()
 // fires in the direction the enemy is facing
-var _turret = argument0;
+var arg;
+for (var i = 0; i < 16; i += 1;) {
+    if argument_count > i
+       {
+       arg[i] = argument[i];
+       }
+    else
+       {
+       arg[i] = -1;
+       }
+}
+
+var _turret = arg[0];
+//var _rounds = arg[1];
+var _direction = arg[2];
+if _direction == -1 _direction = direction;
 
 if phaseArguments[currentPhase,1] > 0 {
-    /*
-    if object_is_ancestor(object_index,oSteering) {
+    var numShots = 3;
+    with make(getTurretX(_turret),getTurretY(_turret),oBullet) {
+        direction = _direction;
+        speed = 5;
+    }
+
+    if numShots == 3 {
         with make(getTurretX(_turret),getTurretY(_turret),oBullet) {
-            direction = vect_direction(other.steering);
+            direction = _direction-30;
             speed = 5;
         }
-    } else {
+
         with make(getTurretX(_turret),getTurretY(_turret),oBullet) {
-            direction = other.direction;
+            direction = _direction+30;
             speed = 5;
         }
     }
-    */
-        var numShots = 3;
-        with make(getTurretX(_turret),getTurretY(_turret),oBullet) {
-            direction = other.direction;
-            speed = 5;
-        }
-
-        if numShots == 3 {
-            with make(getTurretX(_turret),getTurretY(_turret),oBullet) {
-                direction = other.direction-30;
-                speed = 5;
-            }
-
-            with make(getTurretX(_turret),getTurretY(_turret),oBullet) {
-                direction = other.direction+30;
-                speed = 5;
-            }
-        }
 
     phaseArguments[currentPhase,1] -= 1;
 }
 
-//phase[currentPhase] = -1;
 #define enemy_orbit
 ///enemy_orbit(radius,speed,xbend,ybend,movedirection,movespeed)
 if cx == -1 {
@@ -215,3 +216,20 @@ if movedirection != -1 {
     cx += vx;
     cy += vy;
 }
+#define enemy_move_patrol
+///enemy_move(direction, speed, wiggleAmplitude)
+// moves in a direction at a speed
+
+var dir = argument0;
+var spd = argument1;
+if dir == -1 dir = 270;
+if spd == -1 spd = 8;
+
+if path_index != -1 path_end();
+var _wiggleAmplitude = argument2;
+
+if x > vw speed_sign = -1;
+if x < 0 speed_sign = 1;
+
+direction = dir + _wiggleAmplitude*sin(objectAge*.1);
+speed = spd*speed_sign;

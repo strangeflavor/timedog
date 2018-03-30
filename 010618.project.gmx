@@ -381,6 +381,7 @@
       <script>scripts\collision_circle_list.gml</script>
     </scripts>
     <scripts name="debug and util">
+      <script>scripts\get_pico8_color.gml</script>
       <script>scripts\make.gml</script>
       <script>scripts\scrDrawConsole.gml</script>
       <script>scripts\show.gml</script>
@@ -502,6 +503,7 @@
       <object>objects\oDrone</object>
       <object>objects\oMiniThex</object>
       <object>objects\oThexMed</object>
+      <object>objects\oThexPatrolSpitter</object>
       <object>objects\oThexLarge</object>
       <object>objects\oBeamCannon</object>
       <object>objects\oMultiShot</object>
@@ -511,6 +513,7 @@
       <object>objects\oCube</object>
     </objects>
     <objects name="shots">
+      <object>objects\shot_pattern</object>
       <object>objects\oBullet</object>
       <object>objects\oBeam</object>
     </objects>
