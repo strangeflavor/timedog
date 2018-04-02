@@ -190,7 +190,7 @@ if cx == -1 {
 
 if Orbit < argument0 Orbit += 1;
 
-var vx,vy;
+//var vx,vy;
 var xbend = argument2;
 var ybend = argument3;
 
@@ -216,6 +216,7 @@ if movedirection != -1 {
     cx += vx;
     cy += vy;
 }
+
 #define enemy_move_patrol
 ///enemy_move(direction, speed, wiggleAmplitude)
 // moves in a direction at a speed

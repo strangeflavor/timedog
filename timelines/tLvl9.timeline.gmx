@@ -19,7 +19,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>make(vw/2,vh/3+30,oMerchant);
+            <string>make(vw/2,vh/4+20,oMerchant);
 
 /*
 with make(vw/2,32,oCrab) {

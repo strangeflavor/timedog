@@ -535,6 +535,7 @@
       <object>objects\shot_lineFollower</object>
       <object>objects\shot_fork</object>
       <object>objects\oBullet</object>
+      <object>objects\oMissile</object>
       <object>objects\oBeam</object>
     </objects>
     <objects name="fx">
