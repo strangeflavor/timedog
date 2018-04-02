@@ -87,6 +87,7 @@ objectAge = 0;
             <kind>1</kind>
             <string>sfx(sndPlayerHit);
 
+with oMegaThruster kill();
 with oPickup kill();
 with oEnemy {
     active = false;

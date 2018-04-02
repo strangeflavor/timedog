@@ -155,14 +155,20 @@
       <sprite>sprites\sShot1</sprite>
       <sprite>sprites\sShot2</sprite>
       <sprite>sprites\sShot3</sprite>
+      <sprite>sprites\sShot4</sprite>
     </sprites>
     <sprites name="enemy">
       <sprite>sprites\sprMidboss0</sprite>
+      <sprite>sprites\sMerchantTop</sprite>
+      <sprite>sprites\sMerchantBottom</sprite>
+      <sprite>sprites\sMerchant</sprite>
+      <sprite>sprites\sJellyMan</sprite>
       <sprite>sprites\sFireAtPlayer</sprite>
       <sprite>sprites\spr_drone</sprite>
       <sprite>sprites\sSpring</sprite>
       <sprite>sprites\sThexbot</sprite>
       <sprite>sprites\sThexbotCenter</sprite>
+      <sprite>sprites\sSatellite</sprite>
       <sprite>sprites\sPopo</sprite>
       <sprite>sprites\sCube</sprite>
       <sprite>sprites\sMox</sprite>
@@ -502,11 +508,14 @@
       <object>objects\oEnemy</object>
       <object>objects\oLargeEnemy</object>
       <object>objects\oSteering</object>
+      <object>objects\oMerchant</object>
+      <object>objects\oMerchantPilot</object>
       <object>objects\oMidBoss</object>
       <object>objects\oFireAtPlayer</object>
       <object>objects\oPopo</object>
       <object>objects\oMox</object>
       <object>objects\oCrab</object>
+      <object>objects\oSatellite</object>
       <object>objects\oAimAtPlayer</object>
       <object>objects\oDrone</object>
       <object>objects\oMiniThex</object>

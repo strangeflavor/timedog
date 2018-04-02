@@ -228,8 +228,8 @@ if spd == -1 spd = 8;
 if path_index != -1 path_end();
 var _wiggleAmplitude = argument2;
 
-if x > vw speed_sign = -1;
-if x < 0 speed_sign = 1;
+if x + sprite_width/2 > vw speed_sign = -1;
+if x - sprite_width/2 < 0 speed_sign = 1;
 
 direction = dir + _wiggleAmplitude*sin(objectAge*.1);
 speed = spd*speed_sign;

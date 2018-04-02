@@ -19,11 +19,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with make(vw/2,32,oCrab) {
+            <string>make(vw/2,vh/3+30,oMerchant);
+
+/*
+with make(vw/2,32,oCrab) {
     direction = 270 + irandom(60)-30;
     speed = 5;
 }
-
+*/
 //make(vw/2,-150,fMeteors);
 
 /*
