@@ -25,68 +25,48 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>active = false;
+            <string>if !instance_exists(oShip) kill();
+oShip.drawThruster = false;
+
+state = 0;
 objectAge = 0;
-difficulty = 0;
-
-////////////////////
-// formations &amp; wave stuff
-////////////////////
-
-for (var i=0;i&lt;32;i+=1) formationComplete[i] = false;
-
-wave = -1;
-waveID = -1;
-waveComplete = false;
-checkForEndOfWave = false;
-formationCompleteGracePeriod = -600;
-
-for (var i=0;i&lt;16;i+=1) occupiedTimer[i] = 0;
-
-// these flags don't do any specific single function, they're used to tell formations to behave certain ways.. basically arguments but without the hassle of actually using arguments
-_slower = false;
-_value = false;
-
-////////////////////
-// maze
-////////////////////
-
-mazeSpeed = 5;
-
-////////////////////
-// win condition stuff
-////////////////////
-
-winCondition = _WIN_TIME;
-winConditionValue = 30*60*60;
-bossDefeated = false;
-
-/////////////////////
-// dialog stuff
-/////////////////////
-
-for (var i=0;i&lt;32;i+=1) {
-    dialog[i,0] = _NONE;
-    dialog[i,1] = 'unassigned text';
-    dialog[i,2] = false; // add projection
-    dialog[i,3] = false; // remove projection
-}
-
-dialogPanels = -1;
-
-/////////////////////
-// start the level!
-/////////////////////
-
-levelComplete = false;
-
-background_vspeed[0] = 200;
-background_vspeed[1] = 100;
-
-make(oMegaThruster);
 
 
-alarm[1] = 90;
+thrusterColor[0] = make_color_rgb(34,49,249);
+thrusterColor[1] = make_color_rgb(198,42,252);
+thrusterColor[2] = make_color_rgb(50,210,252);
+thrusterColor[3] = make_color_rgb(205,205,252);
+thrusterColor[4] = make_color_rgb(133,203,254);
+thrusterColor[5] = make_color_rgb(133,47,254);
+thrusterColor[6] = make_color_rgb(81,125,255);
+thrusterColor[7] = make_color_rgb(231,117,251);
+
+thrusterColorSize = 7;
+
+alarm[1] = 30;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if instance_exists(oShip) oShip.drawThruster = true;
 </string>
           </argument>
         </arguments>
@@ -109,14 +89,17 @@ alarm[1] = 90;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// slow down, cut mega thruster
-if instance_exists(oMegaThruster) {
-    oMegaThruster.state = 1;
-    oMegaThruster.alarm[0] = 90;
-}
-TweenBackgroundSpeedV(0,EaseOutExpo,TWEEN_MODE_ONCE,false,1,120,0,background_vspeed[0],2);
-TweenBackgroundSpeedV(0,EaseOutExpo,TWEEN_MODE_ONCE,false,1,120,1,background_vspeed[1],1);
+            <string>repeat(6) {
+    with instance_create(x,y+140,Smoke) {
+        motion_add(270+random(40)-20,6+random(3));
 
+        image_speed *= .5;
+        image_xscale = choose(1,2,2);
+        image_yscale = image_xscale;
+    }
+}
+
+if state == 0 alarm[1] = choose(8,10,12);
 </string>
           </argument>
         </arguments>
@@ -139,8 +122,8 @@ TweenBackgroundSpeedV(0,EaseOutExpo,TWEEN_MODE_ONCE,false,1,120,1,background_vsp
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// beginlevel();
-beginLevel();
+            <string>if instance_exists(oShip) oShip.drawThruster = true;
+kill();
 </string>
           </argument>
         </arguments>
@@ -163,34 +146,11 @@ beginLevel();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///catchEndLevel();
-if active {
-    objectAge += 1;
-    catchEndLevel();
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>unoccupyTimers();
+            <string>///objectAge += 1;
+objectAge += 1;
+
+x = oShip.x;
+y = oShip.y;
 </string>
           </argument>
         </arguments>
@@ -213,37 +173,21 @@ if active {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if debug {
-    draw_set_color(c_white);
-    draw_set_halign(fa_middle);
-    draw_set_valign(fa_middle);
-    draw_set_alpha(1);
-    draw_text(vw/2,32,timeline_position);
+            <string>image_xscale = 2;
+image_yscale = 2;
+
+var yo = 32;
+
+if state == 0 {
+    var thrusterXO = irandom(4)-2;
+    var thrusterYO = irandom(2)-1;
+
+    if frac(objectAge/2) == 0 draw_sprite_ext(sMegaThruster,0,x+thrusterXO,y+yo+thrusterYO,image_xscale,image_yscale,0,thrusterColor[irandom(thrusterColorSize)],1);
+} else {
+    if state == 1 {
+        if frac(objectAge/2) == 0 draw_sprite_ext(sMegaThrusterOff,objectAge*.5,x,y+yo,image_xscale,image_yscale,0,thrusterColor[irandom(thrusterColorSize)],1);
+    }
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="81">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///endWave();
-endWave();
 </string>
           </argument>
         </arguments>

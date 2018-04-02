@@ -45,6 +45,7 @@ thrusterColor[6] = make_color_rgb(81,125,255);
 thrusterColor[7] = make_color_rgb(231,117,251);
 
 thrusterColorSize = 7;
+drawThruster = true;
 
 bigShotR = -12;
 
@@ -536,11 +537,29 @@ alarm[1] = -1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sThruster,image_index,x,y,image_xscale,image_yscale,0,thrusterColor[irandom(thrusterColorSize)],.777);
+            <string>///////////////////
+////// thrusters
+///////////////////
+
+var yo = 32;
+if drawThruster draw_sprite_ext(sThruster,objectAge*.25,x,y+yo,image_xscale,image_yscale,0,thrusterColor[irandom(thrusterColorSize)],.7);
+
 draw_self();
 
-if recentDx &gt; 10 wingspeed = .7 else wingspeed = .1;
+///////////////////
+////// wingz
+///////////////////
+
+if !drawThruster {
+    wingspeed = 1;
+} else {
+    if recentDx &gt; 10 wingspeed = .7 else wingspeed = .1;
+}
 draw_sprite_ext(sNightbirdWings,objectAge*wingspeed,x,y,image_xscale,image_yscale,0,c_white,1);
+
+///////////////////
+////// weapons
+///////////////////
 
 if attacking draw_sprite(sMuzzleFlash,objectAge,x+irandom(4)-2,y+irandom(2)-1);
 

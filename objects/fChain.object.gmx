@@ -99,7 +99,7 @@ formationTransferPhaseVars(eID);
 formationTransferVars(eID);
 if offscreen() eID.offScreenTimer *= 4;
 eID.fireAge = attacker[count];
-    
+
 count += 1;
 
 if count &lt; size {

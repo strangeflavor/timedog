@@ -60,11 +60,13 @@ removeProjection();
 addDialog(_NIGHTBIRD,"ya");
 
 // other
+//TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,0,2,50);
+//TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,1,0,25);
 
-TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,0,2,50);
-TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,1,0,25);
-
-alarm[1] = 180;
+background_vspeed[0] = 2;
+background_vspeed[1] = 1;
+alarm[1] = -1;
+kill(oMegaThruster);
 </string>
           </argument>
         </arguments>

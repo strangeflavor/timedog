@@ -42,7 +42,15 @@ switch phaseCondition[currentPhase] {
     break;
     case _PHASE_CONDITION_Y:
         var yStop = phaseConditionArguments[currentPhase,0];
-        if y > yStop {
+        var exceededYStop = false;
+
+        if sign(yStop) == 1 {
+            if y >= yStop exceededYStop = true;
+        } else {
+            if y <= yStop exceededYStop = true;
+        }
+        
+        if exceededYStop {
             y = yStop;
             timeline_running = false;
             path_end();

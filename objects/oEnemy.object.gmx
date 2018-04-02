@@ -117,14 +117,6 @@ if active {
     if y &lt; vh + 32*scale {
         sfx(sndDefeatEnemy);
 
-        /*
-        fxId = make(oFX);
-
-        fxId.sprite_index = explosionType;
-        fxId.image_xscale = image_xscale/2;
-        fxId.image_yscale = image_yscale/2;
-        */
-        
         with make(oExplo) image_blend = other.explosion_blend;
 
         if formationID &gt; -1 {
@@ -141,6 +133,10 @@ if active {
             }
         }
     }
+}
+
+with shot_pattern {
+    if creatorID == other.id kill();
 }
 </string>
           </argument>

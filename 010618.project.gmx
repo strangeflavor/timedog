@@ -137,6 +137,8 @@
       <sprite>sprites\sNightbird</sprite>
       <sprite>sprites\sNightbirdWings</sprite>
       <sprite>sprites\sThruster</sprite>
+      <sprite>sprites\sMegaThrusterOff</sprite>
+      <sprite>sprites\sMegaThruster</sprite>
       <sprite>sprites\sPickupPink</sprite>
       <sprite>sprites\sPickupCrystal</sprite>
       <sprite>sprites\sPickupTop</sprite>
@@ -164,6 +166,8 @@
       <sprite>sprites\sPopo</sprite>
       <sprite>sprites\sCube</sprite>
       <sprite>sprites\sMox</sprite>
+      <sprite>sprites\sCrab</sprite>
+      <sprite>sprites\sTrashWorm</sprite>
     </sprites>
     <sprites name="fx">
       <sprite>sprites\sprSmoke</sprite>
@@ -189,7 +193,8 @@
       <sprite>sprites\sLevel1</sprite>
       <sprite>sprites\sLevel1B</sprite>
     </sprites>
-    <sprites name="maze">
+    <sprites name="obstacles">
+      <sprite>sprites\sMeteor</sprite>
       <sprite>sprites\sBlock</sprite>
       <sprite>sprites\sCoralMaze</sprite>
       <sprite>sprites\sBlock2</sprite>
@@ -463,6 +468,7 @@
       <object>objects\fMaze</object>
       <object>objects\fLogisticSpawner</object>
       <object>objects\fChain</object>
+      <object>objects\fMeteors</object>
       <object>objects\fBehind</object>
       <object>objects\fThexSpitter</object>
       <object>objects\formationTracker</object>
@@ -485,6 +491,7 @@
     </objects>
     <objects name="player">
       <object>objects\oShip</object>
+      <object>objects\oMegaThruster</object>
       <object>objects\oShot</object>
       <object>objects\oChargeShot</object>
       <object>objects\oChargeShotExplode</object>
@@ -499,6 +506,7 @@
       <object>objects\oFireAtPlayer</object>
       <object>objects\oPopo</object>
       <object>objects\oMox</object>
+      <object>objects\oCrab</object>
       <object>objects\oAimAtPlayer</object>
       <object>objects\oDrone</object>
       <object>objects\oMiniThex</object>
@@ -514,6 +522,9 @@
     </objects>
     <objects name="shots">
       <object>objects\shot_pattern</object>
+      <object>objects\shot_spiller</object>
+      <object>objects\shot_lineFollower</object>
+      <object>objects\shot_fork</object>
       <object>objects\oBullet</object>
       <object>objects\oBeam</object>
     </objects>
@@ -531,6 +542,7 @@
     <objects name="TweenGMS">
       <object>objects\obj_SharedTweener</object>
     </objects>
+    <object>objects\oMeteor</object>
     <object>objects\obj_vignette_noise</object>
     <object>objects\o_shader_start</object>
     <object>objects\Smoke</object>
