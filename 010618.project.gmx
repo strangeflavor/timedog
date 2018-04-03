@@ -164,6 +164,7 @@
       <sprite>sprites\sMerchantTurret</sprite>
       <sprite>sprites\sMerchant</sprite>
       <sprite>sprites\sJellyMan</sprite>
+      <sprite>sprites\sJellyShrimp</sprite>
       <sprite>sprites\sFireAtPlayer</sprite>
       <sprite>sprites\spr_drone</sprite>
       <sprite>sprites\sSpring</sprite>
