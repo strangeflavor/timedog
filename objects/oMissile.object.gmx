@@ -11,6 +11,20 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -53,6 +67,20 @@ with make(oExplo) {
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -74,6 +102,19 @@ with make(oExplo) {
 if direction_to_angle image_angle = direction;
 
 image_blend = merge_color(image_blend,c_white,.05);
+
+if objectAge mod 6 == 0 {
+    repeat(2) {
+        with instance_create(x+nrandom(4),y+nrandom(4),Smoke) {
+            friction = 0;
+            motion_add(other.direction+nrandom(10),1+nrandom(4));
+
+            image_speed *= .5;
+            image_xscale = choose(.5,1);
+            image_yscale = image_xscale;
+        }
+    }
+}
 </string>
           </argument>
         </arguments>

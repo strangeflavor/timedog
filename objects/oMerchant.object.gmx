@@ -41,14 +41,16 @@
             <kind>1</kind>
             <string>bottomID = make(oLargeEnemy);
 with bottomID {
+    value = 0;
     sprite_index = sMerchantBottom;
     HP = 150;
 }
 
 turretID = make(oLargeEnemy);
 with turretID {
+    value = 0;
     sprite_index = sMerchantTurret;
-    HP = 180;
+    HP = 120;
 }
 
 pilotID = make(oMerchantPilot);
@@ -231,27 +233,16 @@ if active and instance_exists(oShip) {
     switch state {
         case _WAIT:
             if objectAge &gt; 60 {
-                if instance_exists(bottomID) {
-                    if objectAge mod 24 == 0 {
+                if instance_exists(turretID) {
+                    var freq = 36;
+                    if (objectAge &gt; 240 and objectAge &lt; 480) or objectAge &gt; 800 freq = 24;
+                    
+                    if objectAge mod freq == 0 {
                         // center
-                        var yo = 120;
-                        if oShip.x &gt; vw/2 {
-                            bID = make(x+nrandom(60),y+yo,oMissile);
-                            bID.direction = 270 + 30 
-                        } else {
-                            bID = make(x-nrandom(60),y+yo,oMissile);
-                            bID.direction = 270 - 30;
-                        }
+                        var yo = 100;
 
-                        bID.sprite_index = sShot4;
-                        bID.speed = 3+nrandom(2);
-                        bID.friction = .075;
-                        bID.gravity_direction = point_direction(x,y+yo,oShip.x,oShip.y);
-                        bID.gravity = .5;
-                        bID.direction_to_angle = true;
-
-
-                        if (objectAge &gt; 240 and objectAge &lt; 480) or objectAge &gt; 800 {
+                        if (objectAge &gt; 480) {
+                            var s = 3;
                             // left
                             if oShip.x &gt; vw/2 {
                                 bID = make(x-40+nrandom(60),y+yo,oMissile);
@@ -262,14 +253,14 @@ if active and instance_exists(oShip) {
                                 bID.direction = 270 + 30 + 50;
                                 bID.gravity_direction = point_direction(x,y+yo,oShip.x-40,oShip.y);
                             }
-        
+
                             bID.sprite_index = sShot4;
-                            bID.speed = 2+nrandom(2);
+                            bID.speed = s-1+nrandom(2);
                             bID.friction = .075;
                             bID.gravity = .4;
                             bID.direction_to_angle = true;
-        
-        
+
+
                             // right
                             if oShip.x &gt; vw/2 {
                                 bID = make(x+40+nrandom(60),y+yo,oMissile);
@@ -280,26 +271,58 @@ if active and instance_exists(oShip) {
                                 bID.direction = 270 - 30 - 50;
                                 bID.gravity_direction = point_direction(x,y+yo,oShip.x+40,oShip.y);
                             }
-        
+
                             bID.sprite_index = sShot4;
-                            bID.speed = 2+nrandom(2);
+                            bID.speed = s-1+nrandom(2);
                             bID.friction = .075;
                             bID.gravity = .4;
                             bID.direction_to_angle = true;
+                        } else {
+                            var s = 2;
                         }
+
+                        if oShip.x &gt; vw/2 {
+                            bID = make(x+nrandom(60),y+yo,oMissile);
+                            bID.direction = 270 + 30 
+                        } else {
+                            bID = make(x-nrandom(60),y+yo,oMissile);
+                            bID.direction = 270 - 30;
+                        }
+
+                        bID.sprite_index = sShot4;
+                        bID.speed = s+nrandom(2);
+                        bID.friction = .075;
+                        bID.gravity_direction = point_direction(x,y+yo,oShip.x,oShip.y);
+                        bID.gravity = .5;
+                        bID.direction_to_angle = true;
                     }
                 } else {
                     state = _BACKANDFORTH_HORI;
+                    objectAge = 0;
                 }
             }
         break;
         case _BACKANDFORTH_HORI:
             enemy_move_patrol(0,2,0);
+
+            var freq = 50;
+            if objectAge &gt; 240 freq = 40;
+            if objectAge &gt; 480 freq = 50;
+
+            if objectAge &gt; 90 {
+                if objectAge mod freq = 0 {
+                    with make(shot_fork) {
+                        sprite_index = sShot1;
+                    }
+                }
+            }
+
+            if !instance_exists(bottomID) {
+                state = -1;
+            }
         break;
     }
 }
-
-
 </string>
           </argument>
         </arguments>

@@ -104,7 +104,11 @@ TweenSimpleMove(x,y,x,vh/2,210,EaseOutBounce);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>objectAge += 1;
+            <string>if mouse_check_button_pressed(mb_left) {
+    if alarm[1] &gt; 12 and alarm[1] &lt; 240 alarm[1] = 12;
+}
+
+objectAge += 1;
 </string>
           </argument>
         </arguments>

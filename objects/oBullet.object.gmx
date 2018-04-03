@@ -35,6 +35,8 @@ image_xscale = scale * 2;
 image_yscale = scale * 2;
 image_speed = choose(.1,.25,-.2);
 image_index = choose(0,1);
+
+objectAge = 0;
 </string>
           </argument>
         </arguments>
@@ -62,6 +64,8 @@ image_index = choose(0,1);
 }
 
 if direction_to_angle image_angle = direction;
+
+objectAge += 1;
 </string>
           </argument>
         </arguments>

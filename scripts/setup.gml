@@ -8,6 +8,7 @@ scale = 1;
 developer = true;
 debugTimelineStartPos = -1;
 
+XP = 0;
 gems = 0;
 
 base_w = 480;
@@ -26,7 +27,6 @@ room_set_view(rMysteryPlanet,0,true,0,0,vw,vh,0,0,vw,vh,0,0,0,0,-1)
 // gameplay
 ///////////////////////////////////////////////
 
-//globalvar numLevels,numWorlds;
 numLevels = 16; // levels per world
 numWorlds = 10; // worlds total
 

@@ -446,8 +446,9 @@
     <objects name="gameflow">
       <object>objects\equipSplash</object>
       <object>objects\levelIntroSplashScreen</object>
-      <object>objects\endLevel</object>
       <object>objects\failedLevel</object>
+      <object>objects\endLevel</object>
+      <object>objects\XPcounter</object>
     </objects>
     <objects name="menu">
       <objects name="shop">
@@ -580,7 +581,7 @@
     <room>rooms\roomTest</room>
     <room>rooms\rWeaponSelect</room>
   </rooms>
-  <constants number="51">
+  <constants number="52">
     <constant name="scale">global._scale</constant>
     <constant name="vw">global._vw</constant>
     <constant name="vh">global._vh</constant>
@@ -632,6 +633,7 @@
     <constant name="WEAPON_tribeam">global._WEAPON_tribeam</constant>
     <constant name="WEAPON_bomb">global._WEAPON_bomb</constant>
     <constant name="WEAPON_shield">global._WEAPON_shield</constant>
+    <constant name="XP">global._XP</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
