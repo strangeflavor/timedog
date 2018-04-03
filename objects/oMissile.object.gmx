@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-10</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>oBullet</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -38,10 +38,13 @@ image_yscale = scale * 2;
 image_speed = choose(.1,.25,-.2);
 image_index = choose(0,1);
 
-HP = 3;
+HP = 6;
 
 make(Smoke);
-with make(oExplo) depth -= 1;
+with make(oExplo) {
+    depth -= 1;
+    image_blend = c_red;
+}
 </string>
           </argument>
         </arguments>

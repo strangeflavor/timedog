@@ -42,8 +42,15 @@
             <string>bottomID = make(oLargeEnemy);
 with bottomID {
     sprite_index = sMerchantBottom;
-    HP = 120;
+    HP = 150;
 }
+
+turretID = make(oLargeEnemy);
+with turretID {
+    sprite_index = sMerchantTurret;
+    HP = 180;
+}
+
 
 pilotID = make(oMerchantPilot);
 //with pilotID {
@@ -171,10 +178,17 @@ if instance_exists(bottomID) {
     bottomID.image_angle = image_angle;
 }
 
+if instance_exists(turretID) {
+    turretID.x = x;
+    turretID.y = y;
+    turretID.image_angle = image_angle;
+}
+
 if instance_exists(pilotID) {
     pilotID.x = xprevious;
     pilotID.y = y - 80;
 }
+
 </string>
           </argument>
         </arguments>
@@ -217,24 +231,66 @@ if active {
     switch state {
         case _WAIT:
             if objectAge &gt; 90 {
-                if objectAge mod 40 == 0 {
+                if objectAge mod 24 == 0 {
                     if instance_exists(oShip) and instance_exists(bottomID) {
+                        // center
                         var yo = 120;
-                        bID = make(x+nrandom(80),y+yo,oMissile);
+                        if oShip.x &gt; vw/2 {
+                            bID = make(x+nrandom(60),y+yo,oMissile);
+                            bID.direction = 270 + 30 
+                        } else {
+                            bID = make(x-nrandom(60),y+yo,oMissile);
+                            bID.direction = 270 - 30;
+                        }
+
                         bID.sprite_index = sShot4;
-                        //bID.direction = point_direction(x,y+yo,oShip.x,oShip.y);
-                        bID.direction = 270;
-                        bID.speed = 7+nrandom(3);
-                        bID.friction = .025;
-                        //bID.gravity_direction = 90;
+                        bID.speed = 3+nrandom(2);
+                        bID.friction = .075;
                         bID.gravity_direction = point_direction(x,y+yo,oShip.x,oShip.y);
-                        bID.gravity = .12;
+                        bID.gravity = .5;
+                        bID.direction_to_angle = true;
+
+
+                        // left
+                        if oShip.x &gt; vw/2 {
+                            bID = make(x-40+nrandom(60),y+yo,oMissile);
+                            bID.direction = 270 + 30 - 50 
+                            bID.gravity_direction = point_direction(x,y+yo,oShip.x-40,oShip.y);
+                        } else {
+                            bID = make(x-40-nrandom(60),y+yo,oMissile);
+                            bID.direction = 270 + 30 + 50;
+                            bID.gravity_direction = point_direction(x,y+yo,oShip.x-40,oShip.y);
+                        }
+
+                        bID.sprite_index = sShot4;
+                        bID.speed = 2+nrandom(2);
+                        bID.friction = .075;
+                        bID.gravity = .4;
+                        bID.direction_to_angle = true;
+
+
+                        // right
+                        if oShip.x &gt; vw/2 {
+                            bID = make(x+40+nrandom(60),y+yo,oMissile);
+                            bID.direction = 270 + 30 + 50
+                            bID.gravity_direction = point_direction(x,y+yo,oShip.x+40,oShip.y);
+                        } else {
+                            bID = make(x+40-nrandom(60),y+yo,oMissile);
+                            bID.direction = 270 - 30 - 50;
+                            bID.gravity_direction = point_direction(x,y+yo,oShip.x+40,oShip.y);
+                        }
+
+                        bID.sprite_index = sShot4;
+                        bID.speed = 2+nrandom(2);
+                        bID.friction = .075;
+                        bID.gravity = .4;
                         bID.direction_to_angle = true;
                     }
                 }
             }
 
-            if objectAge == 90 {
+            if objectAge == 800 or !instance_exists(turretID) {
+                state = _BACKANDFORTH_HORI;
             }
         break;
         case _BACKANDFORTH_HORI:

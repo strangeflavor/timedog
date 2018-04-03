@@ -161,6 +161,7 @@
       <sprite>sprites\sprMidboss0</sprite>
       <sprite>sprites\sMerchantTop</sprite>
       <sprite>sprites\sMerchantBottom</sprite>
+      <sprite>sprites\sMerchantTurret</sprite>
       <sprite>sprites\sMerchant</sprite>
       <sprite>sprites\sJellyMan</sprite>
       <sprite>sprites\sFireAtPlayer</sprite>
