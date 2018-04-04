@@ -32,6 +32,27 @@ percent = GAMEFLOW_gemsCollectedInLevel/thresh;
 if percent &gt; 100 percent = 100;
 
 displayPercent = 0;
+
+var dur = 2;
+if GAMEFLOW_gemsCollectedInLevel &gt; 500 dur = 3;
+if GAMEFLOW_gemsCollectedInLevel &gt; 1000 dur = 4;
+if GAMEFLOW_gemsCollectedInLevel &gt; 2000 dur = 5;
+
+displayPercent_tween = TweenFire(id, "", EaseInExpo, TWEEN_MODE_ONCE, true, 0.0, dur, 0, percent);
+
+
+with make(48+16,vh-vh/3-40,oPickup) {
+    vspeed = 0;
+    gravity = 0;
+    depth -= 1;
+
+    //angleTween = TweenSimpleRotate(0,359,
+    /*
+    var moveTween;
+    moveTween = TweenSimpleMove(x,y,oEraSlider.pickupHUD_x,oEraSlider.pickupHUD_y,other.feedRate*2,EaseInQuad);
+    TweenAddCallback(moveTween,TWEEN_EV_FINISH,id,gemFeederComplete)
+    */
+}
 </string>
           </argument>
         </arguments>
@@ -55,7 +76,7 @@ displayPercent = 0;
           <argument>
             <kind>1</kind>
             <string>draw_set_color(c_white);
-draw_text(48,vh-vh/3-24,'PROGRESS');
+draw_text(48+32,vh-vh/3-24-6,string(floor(XP+(GAMEFLOW_gemsCollectedInLevel*displayPercent)))+'/'+string(getCurrentXP_threshold()));
 
 
 var x1 = 48;
@@ -66,9 +87,15 @@ var y2 = vh-vh/3+16;
 var barWidth = x2 - x1 - 4;
 
 draw_roundrect(x1,y1,x2,y2,true);
-if percent &gt; 0 draw_roundrect(x1+2,y1+2,x1+barWidth*displayPercent,y2-2,false);
+draw_set_halign(fa_left);
+draw_set_color(c_red)
 
-if displayPercent &lt; percent displayPercent += .001;
+if TweenExists(displayPercent_tween) displayPercent = TweenCalc(displayPercent_tween);
+//TweenCalc(displayPercent_tween);
+//if percent &gt; 0 draw_roundrect(x1+2,y1+2,x1+barWidth*displayPercent,y2-2,false);
+draw_roundrect(x1+2,y1+2,x1+barWidth*displayPercent,y2-2,false);
+trace(displayPercent_tween);
+//if displayPercent &lt; percent displayPercent += .001;
 </string>
           </argument>
         </arguments>
