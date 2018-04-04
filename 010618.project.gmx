@@ -253,12 +253,13 @@
     <path>paths\pCurvedApproachMirror</path>
   </paths>
   <scripts name="scripts">
+    <script>scripts\setup.gml</script>
     <scripts name="player">
       <script>scripts\doPlayerAttacks.gml</script>
       <script>scripts\shipHit.gml</script>
+      <script>scripts\getCurrentXP_threshold.gml</script>
     </scripts>
     <scripts name="gameflow">
-      <script>scripts\setup.gml</script>
       <script>scripts\startroom.gml</script>
       <script>scripts\beginLevel.gml</script>
       <script>scripts\addDialog.gml</script>
@@ -581,7 +582,7 @@
     <room>rooms\roomTest</room>
     <room>rooms\rWeaponSelect</room>
   </rooms>
-  <constants number="52">
+  <constants number="53">
     <constant name="scale">global._scale</constant>
     <constant name="vw">global._vw</constant>
     <constant name="vh">global._vh</constant>
@@ -634,6 +635,7 @@
     <constant name="WEAPON_bomb">global._WEAPON_bomb</constant>
     <constant name="WEAPON_shield">global._WEAPON_shield</constant>
     <constant name="XP">global._XP</constant>
+    <constant name="XP_lvl">global._XP_lvl</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

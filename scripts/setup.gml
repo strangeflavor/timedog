@@ -8,9 +8,6 @@ scale = 1;
 developer = true;
 debugTimelineStartPos = -1;
 
-XP = 0;
-gems = 0;
-
 base_w = 480;
 base_h = 640;
 vw = base_w*scale;
@@ -31,6 +28,12 @@ numLevels = 16; // levels per world
 numWorlds = 10; // worlds total
 
 createLevelData();
+
+XP = 0;
+XP_lvl[0] = 100;
+XP_lvl[1] = 500;
+XP_lvl[2] = 1000;
+gems = 0;
 
 GAMEFLOW_completedLevel = false;
 GAMEFLOW_currentLevel = -1;

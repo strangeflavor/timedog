@@ -11,5 +11,9 @@ if weapon == 4 {
     }
     kill(other);
 } else {
-    if !invincible and other.dangerous kill(self);
+    if !invincible and other.dangerous {
+        //kill(self);
+        active = false;
+        visible = false;
+    }
 }

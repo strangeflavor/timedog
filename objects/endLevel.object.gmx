@@ -31,7 +31,7 @@ objectAge = 0;
 tweening = false;
 
 alarm[0] = 1;
-alarm[1] = 180;
+alarm[1] = 60;
 
 make(oMegaThruster);
 </string>
@@ -82,8 +82,9 @@ make(XPcounter);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>tweening = true;
-TweenSimpleMove(x,y,x,vh/2,120,EaseOutBounce);
+            <string>///TweenSimpleMove(x,y,x,vh/3,120,EaseOutBounce);
+tweening = true;
+TweenSimpleMove(x,y,x,vh/3,120,EaseOutBounce);
 </string>
           </argument>
         </arguments>
