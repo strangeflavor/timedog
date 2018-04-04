@@ -33,7 +33,11 @@ tweening = false;
 alarm[0] = 1;
 alarm[1] = 60;
 
-make(oMegaThruster);
+kill(oMegaThruster);
+make(oMegaThrusterEOL);
+oShip.invul = true;
+oShip.active = false;
+oShip.doMove = false;
 </string>
           </argument>
         </arguments>
@@ -56,9 +60,7 @@ make(oMegaThruster);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///room_goto(rLevelSelect);
-//room_goto(rLevelSelect);
-
+            <string>///make(XPcounter);
 make(XPcounter);
 </string>
           </argument>

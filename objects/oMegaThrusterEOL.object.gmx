@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,39 +25,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = 0;
+            <string>if !instance_exists(oShip) kill();
+oShip.drawThruster = false;
+
+state = 0;
 objectAge = 0;
 
-//GAMEFLOW_gemsCollectedInLevel = getCurrentXP_threshold()/2;
 
-var thresh = getCurrentXP_threshold();
-percent = (XP + GAMEFLOW_gemsCollectedInLevel)/thresh;
-if percent &gt; 100 percent = 100;
+thrusterColor[0] = make_color_rgb(34,49,249);
+thrusterColor[1] = make_color_rgb(198,42,252);
+thrusterColor[2] = make_color_rgb(50,210,252);
+thrusterColor[3] = make_color_rgb(205,205,252);
+thrusterColor[4] = make_color_rgb(133,203,254);
+thrusterColor[5] = make_color_rgb(133,47,254);
+thrusterColor[6] = make_color_rgb(81,125,255);
+thrusterColor[7] = make_color_rgb(231,117,251);
 
-displayPercent = 0;
+thrusterColorSize = 7;
 
-var dur = 2;
-if GAMEFLOW_gemsCollectedInLevel &gt; 500 dur = 2;
-if GAMEFLOW_gemsCollectedInLevel &gt; 1000 dur = 3;
-if GAMEFLOW_gemsCollectedInLevel &gt; 2000 dur = 4;
-
-//displayPercent_tween = TweenFire(id, "", EaseInExpo, TWEEN_MODE_ONCE, true, 0.0, dur, 0, percent);
-XP_banked_tween = TweenFire(id, "", EaseInExpo, TWEEN_MODE_ONCE, true, 0.0, dur, XP, XP + GAMEFLOW_gemsCollectedInLevel);
-XP_banked = 0;
-
-with make(48+16,vh-vh/3-40,oPickup) {
-    vspeed = 0;
-    gravity = 0;
-    depth -= 1;
-}
-
-XP += GAMEFLOW_gemsCollectedInLevel;
+alarm[1] = 30;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
+    <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -74,14 +66,23 @@ XP += GAMEFLOW_gemsCollectedInLevel;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///room_goto(rLevelSelect);
-room_goto(rLevelSelect);
+            <string>repeat(6) {
+    with instance_create(x,y+140,Smoke) {
+        motion_add(270+random(40)-20,6+random(3));
+
+        image_speed *= .5;
+        image_xscale = choose(1,2,2);
+        image_yscale = image_xscale;
+    }
+}
+
+if state == 0 alarm[1] = choose(8,10,12);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -98,13 +99,15 @@ room_goto(rLevelSelect);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if XP_banked &gt;= XP + GAMEFLOW_gemsCollectedInLevel + 1 and alarm[1] == -1 {
-    alarm[0] = 60;
-}
+            <string>///objectAge += 1;
+objectAge += 1;
 
-if mouse_check_button_pressed(mb_left) {
+x = oShip.x;
+y = oShip.y;
 
-}
+oShip.speed = 0;
+oShip.gravity_direction = 90;
+oShip.gravity = 1;
 </string>
           </argument>
         </arguments>
@@ -127,33 +130,17 @@ if mouse_check_button_pressed(mb_left) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if TweenExists(XP_banked_tween) XP_banked = TweenCalc(XP_banked_tween);
+            <string>image_xscale = 2;
+image_yscale = 2;
 
-if image_alpha &lt; 1 image_alpha = lerp(image_alpha,1,.01);
-draw_set_alpha(image_alpha);
-draw_set_color(c_white);
-draw_set_halign(fa_left);
-//draw_text(48+32,vh-vh/3-24-6,string(floor(XP+(GAMEFLOW_gemsCollectedInLevel*displayPercent)))+'/'+string(getCurrentXP_threshold()));
-draw_text(48+32,vh-vh/3-24-6,string(ceil(XP_banked))+'/'+string(getCurrentXP_threshold()));
+var yo = 32;
 
+if state == 0 {
+    var thrusterXO = irandom(4)-2;
+    var thrusterYO = irandom(2)-1;
 
-var x1 = 48;
-var y1 = vh-vh/3-16;
-var x2 = vw-48
-var y2 = vh-vh/3+16;
-
-var barWidth = x2 - x1 - 4;
-
-draw_roundrect(x1,y1,x2,y2,true);
-
-//TweenCalc(displayPercent_tween);
-//if percent &gt; 0 draw_roundrect(x1+2,y1+2,x1+barWidth*displayPercent,y2-2,false);
-//draw_roundrect(x1+2,y1+2,x1+barWidth*displayPercent,y2-2,false);
-if percent &gt; 0 draw_sprite_stretched(sSquareIrrid,objectAge*.25,x1+2,y1+2,barWidth*displayPercent,y2-y1-4);
-objectAge += 1;
-
-//trace(percent);
-//if displayPercent &lt; percent displayPercent += .001;
+    if frac(objectAge/2) == 0 draw_sprite_ext(sMegaThruster,0,x+thrusterXO,y+yo+thrusterYO,image_xscale,image_yscale,0,thrusterColor[irandom(thrusterColorSize)],1);
+}
 </string>
           </argument>
         </arguments>

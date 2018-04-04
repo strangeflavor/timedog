@@ -502,6 +502,7 @@
     <objects name="player">
       <object>objects\oShip</object>
       <object>objects\oMegaThruster</object>
+      <object>objects\oMegaThrusterEOL</object>
       <object>objects\oShot</object>
       <object>objects\oChargeShot</object>
       <object>objects\oChargeShotExplode</object>
