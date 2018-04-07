@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>if !instance_exists(oShip) kill();
 oShip.drawThruster = false;
+oShip.speed = 0;
+oShip.gravity_direction = 90;
+oShip.gravity = .2;
 
 state = 0;
 objectAge = 0;
@@ -105,9 +108,7 @@ objectAge += 1;
 x = oShip.x;
 y = oShip.y;
 
-oShip.speed = 0;
-oShip.gravity_direction = 90;
-oShip.gravity = 1;
+
 </string>
           </argument>
         </arguments>

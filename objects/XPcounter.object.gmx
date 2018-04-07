@@ -28,22 +28,40 @@
             <string>image_alpha = 0;
 objectAge = 0;
 
+XP_initial = XP;
+XP += GAMEFLOW_gemsCollectedInLevel;
+
 //GAMEFLOW_gemsCollectedInLevel = getCurrentXP_threshold()/2;
 
 var thresh = getCurrentXP_threshold();
 percent = (XP + GAMEFLOW_gemsCollectedInLevel)/thresh;
 if percent &gt; 100 percent = 100;
 
-displayPercent = 0;
+displayPercent = XP/thresh;
 
 var dur = 2;
-if GAMEFLOW_gemsCollectedInLevel &gt; 500 dur = 2;
-if GAMEFLOW_gemsCollectedInLevel &gt; 1000 dur = 3;
-if GAMEFLOW_gemsCollectedInLevel &gt; 2000 dur = 4;
+if GAMEFLOW_gemsCollectedInLevel &gt; 250 dur = 3;
+if GAMEFLOW_gemsCollectedInLevel &gt; 500 dur = 4;
+if GAMEFLOW_gemsCollectedInLevel &gt; 1000 dur = 5;
 
-//displayPercent_tween = TweenFire(id, "", EaseInExpo, TWEEN_MODE_ONCE, true, 0.0, dur, 0, percent);
-XP_banked_tween = TweenFire(id, "", EaseInExpo, TWEEN_MODE_ONCE, true, 0.0, dur, XP, XP + GAMEFLOW_gemsCollectedInLevel);
+//XP_banked_tween = TweenFire(id, "", EaseInExpo, TWEEN_MODE_ONCE, true, 0.0, dur, 0, 1); //TweenFire(id, "", EaseInExpo, TWEEN_MODE_ONCE, true, 0.0, dur, XP, XP + GAMEFLOW_gemsCollectedInLevel);
+XP_banked_tween = TweenFire(id, "", EaseInExpo, TWEEN_MODE_ONCE, false, 0.0, dur*45, XP_initial, XP);
 XP_banked = 0;
+
+trace('init: '+string(XP_initial));
+trace('final: '+string(XP));
+
+x1 = 48;
+y1 = vh-vh/3-16;
+x2 = vw-48
+y2 = vh-vh/3+16;
+
+var barWidth_max = x2 - x1 - 4;
+var barWidth_initial = barWidth_max*(XP_initial/getCurrentXP_threshold());
+var barWidth_final = min(1,XP/getCurrentXP_threshold())*barWidth_max;
+
+barWidth_tween = TweenFire(id, "", EaseInExpo, TWEEN_MODE_ONCE, true, 0.0, dur, barWidth_initial, barWidth_final); //TweenFire(id, "", EaseInExpo, TWEEN_MODE_ONCE, true, 0.0, dur, XP, XP + GAMEFLOW_gemsCollectedInLevel);
+barWidth = 0;
 
 with make(48+16,vh-vh/3-40,oPickup) {
     vspeed = 0;
@@ -51,7 +69,7 @@ with make(48+16,vh-vh/3-40,oPickup) {
     depth -= 1;
 }
 
-XP += GAMEFLOW_gemsCollectedInLevel;
+
 </string>
           </argument>
         </arguments>
@@ -127,33 +145,29 @@ if mouse_check_button_pressed(mb_left) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if TweenExists(XP_banked_tween) XP_banked = TweenCalc(XP_banked_tween);
+            <string>if TweenExists(XP_banked_tween) XP_banked = TweenCalc(XP_banked_tween) else XP_banked = XP;
+if TweenExists(barWidth_tween) barWidth = TweenCalc(barWidth_tween);
 
 if image_alpha &lt; 1 image_alpha = lerp(image_alpha,1,.01);
 draw_set_alpha(image_alpha);
 draw_set_color(c_white);
 draw_set_halign(fa_left);
-//draw_text(48+32,vh-vh/3-24-6,string(floor(XP+(GAMEFLOW_gemsCollectedInLevel*displayPercent)))+'/'+string(getCurrentXP_threshold()));
-draw_text(48+32,vh-vh/3-24-6,string(ceil(XP_banked))+'/'+string(getCurrentXP_threshold()));
 
-
-var x1 = 48;
-var y1 = vh-vh/3-16;
-var x2 = vw-48
-var y2 = vh-vh/3+16;
-
-var barWidth = x2 - x1 - 4;
+//draw_text(48+32,vh-vh/3-24-6,string(ceil(XP_initial+(XP_banked*GAMEFLOW_gemsCollectedInLevel)))+'/'+string(getCurrentXP_threshold()));
+draw_text(48+32,vh-vh/3-24-6,string(round(XP_banked))+'/'+string(getCurrentXP_threshold()));
 
 draw_roundrect(x1,y1,x2,y2,true);
 
-//TweenCalc(displayPercent_tween);
-//if percent &gt; 0 draw_roundrect(x1+2,y1+2,x1+barWidth*displayPercent,y2-2,false);
-//draw_roundrect(x1+2,y1+2,x1+barWidth*displayPercent,y2-2,false);
-if percent &gt; 0 draw_sprite_stretched(sSquareIrrid,objectAge*.25,x1+2,y1+2,barWidth*displayPercent,y2-y1-4);
-objectAge += 1;
+//var barWidth_initial = barWidth*(GAMEFLOW_gemsCollectedInLevel/XP_initial);
+//var barWidth_banked = barWidth*XP_banked - barWidth_initial;
+//var barWidth_final = barWidth*getCurrentXP_threshold();
 
-//trace(percent);
-//if displayPercent &lt; percent displayPercent += .001;
+//trace(string(barWidth_initial));
+
+
+displayPercent = 0;//XP_banked;
+if percent &gt; 0 draw_sprite_stretched(sSquareIrrid,objectAge*.25,x1+2,y1+2,barWidth,y2-y1-4);
+objectAge += 1;
 </string>
           </argument>
         </arguments>

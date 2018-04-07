@@ -40,6 +40,8 @@ objectAge = irandom(128);
 collected = false;
 
 autocollect = false;
+
+value = 1;
 </string>
           </argument>
         </arguments>
@@ -123,6 +125,7 @@ if room != rLevelSelect and y &gt; room_height*.95 {
     image_xscale = .5;
     image_yscale = .5;
     autocollect = true;
+    value = .5;
 }
 
 if autocollect image_angle += 1;
@@ -133,13 +136,12 @@ if instance_exists(oShip) {
     if distance_denom &lt; distance_denom_minim or autocollect{
         distance_denom_minim = 999;
         move_towards_point(oShip.x+irandom(6*scale)-3*scale,oShip.y+irandom(6*scale)-3*scale,pix_speed);
-    
+
         if pix_speed &lt; 20*scale pix_speed += .5*scale else pix_speed = 20*scale;
     }
 }
 
 if y &gt; (room_height + 32) instance_destroy();
-
 </string>
           </argument>
         </arguments>

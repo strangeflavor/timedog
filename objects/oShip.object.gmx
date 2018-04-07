@@ -388,7 +388,7 @@ shipHit();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if debug GAMEFLOW_gemsCollectedInLevel += 10 else GAMEFLOW_gemsCollectedInLevel += 1;
+            <string>GAMEFLOW_gemsCollectedInLevel += other.value
 pickupsfx(sndGet);
 oAudio.pickupPitch += .1;
 other.collected = true;

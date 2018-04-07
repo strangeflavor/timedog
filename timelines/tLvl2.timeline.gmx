@@ -26,7 +26,7 @@ for (var i=0;i&lt;2;i+=1) {
     form_curvedLeft(-180+i*30,-160+i*10,5,12,i*120);
 }
 
-timeline_position = 1519;
+timeline_position = 1300;
 </string>
           </argument>
         </arguments>
