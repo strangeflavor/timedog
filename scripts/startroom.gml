@@ -31,6 +31,7 @@ if levelManager.dialogPanels > -1 {
 startGame();
 
 #define startGame
+GAMEFLOW_gemsCollectedInLevel = 0;
 oShip.invincible = false;
 oHUD.showDialog = false;
 levelManager.alarm[0] = 1; // activate levelman!

@@ -57,7 +57,7 @@ alarm[2] = 60;
           <argument>
             <kind>1</kind>
             <string>kill(oMegaThruster);
-make(oMegaThrusterEOL);
+make(oShip.x,oShip.y,oMegaThrusterEOL);
 oShip.invul = true;
 oShip.active = false;
 oShip.doMove = false;

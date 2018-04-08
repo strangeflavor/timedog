@@ -449,6 +449,7 @@
       <object>objects\levelIntroSplashScreen</object>
       <object>objects\failedLevel</object>
       <object>objects\endLevel</object>
+      <object>objects\endLevelButton</object>
       <object>objects\XPcounter</object>
     </objects>
     <objects name="menu">

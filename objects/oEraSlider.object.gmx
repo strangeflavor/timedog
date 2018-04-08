@@ -279,6 +279,7 @@ objectAge += 1;
             <string>var sliderWidth = room_width - 128;
 var sliderHeight = 32;
 draw_set_color(c_white);
+draw_set_alpha(1);
 draw_rectangle(x-sliderWidth,y-sliderHeight,x+sliderWidth,y+sliderHeight,false);
 
 draw_set_color(background_color);
