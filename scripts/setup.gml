@@ -1,4 +1,6 @@
 #define setup
+setupFiles();
+
 ///////////////////////////////////////////////
 // screen stuff
 ///////////////////////////////////////////////
@@ -55,5 +57,15 @@ make(oAudio);
 
 room_goto_next();
 
-#define switchtest
-show('testing '+string(argument0));
+#define setupFiles
+ini_open('settings.ini');
+currentWorld = floor(ini_read_real("preferences", "world", 0));
+ini_close();
+// gems
+
+// XP
+
+#define saveFiles
+ini_open('settings.ini');
+ini_write_real("preferences", "world", floor(currentWorld));
+ini_close();

@@ -19,7 +19,7 @@ for (var r=0;r<numWorlds*view_wview[0];r+=view_wview[0]) {
             instanceID.levelID = levelID + world*100;
             instanceID.world = (r div view_wview[0]);
             prepareButton(instanceID);
-            
+
             //if instanceID.levelID == 5 instanceID.shop = true;
             if controller.managerArray[instanceID.levelID] == 999 instanceID.shop = true;
             if controller.managerArray[instanceID.levelID] == levelManMidBoss_0 instanceID.boss = true;

@@ -112,8 +112,8 @@ timeline_running = true;
             if shop {
                 room_goto(rShop);
             } else {
+                
                 GAMEFLOW_currentLevel = levelID;
-                //GAMEFLOW_gemsCollectedInLevel = 0;
                 room_goto(rDeepSpace);
             }
         }

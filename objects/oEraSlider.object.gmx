@@ -49,12 +49,15 @@ ufoX = -1;
 slider_position_xx = 0;
 
 dx = 0;
+
+view_xview[0] = currentWorld*view_wview[0];
+
 view_xview_previous = view_xview[0];
 view_xpos_normalized = 0;
 dir=-1
 
 objectAge = 0;
-currentWorld = 0;
+//currentWorld = 0;
 
 waitForUnlock = false;
 
@@ -176,6 +179,7 @@ if !dragging and vx - view_wview[0]/2 &gt; 0 and vx + view_wview[0]/2 &lt; numWo
     }
 
     currentWorld = i;
+    saveFiles();
 }
 
 if !dragging {

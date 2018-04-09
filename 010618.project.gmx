@@ -163,6 +163,8 @@
         <sprite>sprites\sJellyShrimp</sprite>
       </sprites>
       <sprites name="skull">
+        <sprite>sprites\sSkullKing</sprite>
+        <sprite>sprites\sSkullKingAlpha</sprite>
         <sprite>sprites\sSkullBorder</sprite>
       </sprites>
       <sprites name="trash">
@@ -453,6 +455,7 @@
       </objects>
       <objects name="skull">
         <object>objects\skullLevel000</object>
+        <object>objects\skullBoss000</object>
       </objects>
       <object>objects\levelManager</object>
       <object>objects\levelMan119</object>
@@ -526,8 +529,9 @@
     </objects>
     <objects name="enemy">
       <object>objects\oEnemy</object>
-      <object>objects\oLargeEnemy</object>
       <object>objects\oSteering</object>
+      <object>objects\oLargeEnemy</object>
+      <object>objects\oSkullKing</object>
       <object>objects\oMerchant</object>
       <object>objects\oMerchantPilot</object>
       <object>objects\oMidBoss</object>
@@ -600,7 +604,7 @@
     <room>rooms\roomTest</room>
     <room>rooms\rWeaponSelect</room>
   </rooms>
-  <constants number="54">
+  <constants number="55">
     <constant name="scale">global._scale</constant>
     <constant name="vw">global._vw</constant>
     <constant name="vh">global._vh</constant>
@@ -655,6 +659,7 @@
     <constant name="WEAPON_shield">global._WEAPON_shield</constant>
     <constant name="XP">global._XP</constant>
     <constant name="XP_lvl">global._XP_lvl</constant>
+    <constant name="currentWorld">global._currentWorld</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

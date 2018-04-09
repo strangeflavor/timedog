@@ -128,6 +128,32 @@ if irandom(12) == 1 worms = true else worms = false;
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="oBullet">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with other kill();
+
+HP -= 1;
+if HP &lt; 0 kill();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="oMeteor">
       <action>
         <libid>1</libid>
@@ -152,32 +178,6 @@ if irandom(12) == 1 worms = true else worms = false;
 if y &gt; other.y {
     y += 1;
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="oBullet">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>with other kill();
-
-HP -= 1;
-if HP &lt; 0 kill();
 </string>
           </argument>
         </arguments>

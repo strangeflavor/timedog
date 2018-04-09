@@ -51,6 +51,7 @@ for (var i=500;i<600;i+=1) {
 }
 
 managerArray[500] = skullLevel000;
+managerArray[515] = skullBoss000;
 
 // world 7: flashback
 for (var i=600;i<700;i+=1) {
