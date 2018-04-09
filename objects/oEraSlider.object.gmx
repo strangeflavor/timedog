@@ -308,9 +308,9 @@ if ufoX == -1 {
 
 var flipUFO = -dir;
 draw_sprite_ext(sUFO,0,view_xview[0]+ufoX,y,flipUFO,1,8*sin(objectAge*.05),c_white,1);
-
+draw_set_font(fStapler);
 draw_set_color(c_white);
-draw_text(view_xview[0]+16,40,'WORLD '+string(currentWorld+1));
+draw_text(view_xview[0]+16,48,'WORLD '+string(currentWorld+1)+'#'+worldNames[currentWorld]);
 pickupHUD.x = pickupHUD_x + view_xview[0];
 pickupHUD.y = pickupHUD_y;
 draw_text(pickupHUD_x+view_xview[0]+16,40,'x'+string(gems));

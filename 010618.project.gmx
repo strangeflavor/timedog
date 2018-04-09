@@ -158,13 +158,21 @@
       <sprite>sprites\sShot4</sprite>
     </sprites>
     <sprites name="enemy">
+      <sprites name="ocean">
+        <sprite>sprites\sJellyMan</sprite>
+        <sprite>sprites\sJellyShrimp</sprite>
+      </sprites>
+      <sprites name="skull">
+        <sprite>sprites\sSkullBorder</sprite>
+      </sprites>
+      <sprites name="trash">
+        <sprite>sprites\sTrashWorm</sprite>
+      </sprites>
       <sprite>sprites\sprMidboss0</sprite>
       <sprite>sprites\sMerchantTop</sprite>
       <sprite>sprites\sMerchantBottom</sprite>
       <sprite>sprites\sMerchantTurret</sprite>
       <sprite>sprites\sMerchant</sprite>
-      <sprite>sprites\sJellyMan</sprite>
-      <sprite>sprites\sJellyShrimp</sprite>
       <sprite>sprites\sFireAtPlayer</sprite>
       <sprite>sprites\spr_drone</sprite>
       <sprite>sprites\sSpring</sprite>
@@ -175,7 +183,6 @@
       <sprite>sprites\sCube</sprite>
       <sprite>sprites\sMox</sprite>
       <sprite>sprites\sCrab</sprite>
-      <sprite>sprites\sTrashWorm</sprite>
     </sprites>
     <sprites name="fx">
       <sprite>sprites\sprSmoke</sprite>
@@ -428,21 +435,27 @@
     <shader type="GLSLES">shaders\sh_saturation.shader</shader>
   </shaders>
   <fonts name="fonts">
+    <font>fonts\fStapler</font>
     <font>fonts\fArial</font>
     <font>fonts\fFont</font>
   </fonts>
   <objects name="objects">
     <objects name="level mans">
+      <objects name="dogstar">
+        <object>objects\levelMan000</object>
+        <object>objects\levelMan001</object>
+        <object>objects\levelMan006</object>
+        <object>objects\levelMan007</object>
+        <object>objects\levelMan008</object>
+        <object>objects\levelManMaze_0</object>
+        <object>objects\levelManMidBoss_0</object>
+        <object>objects\levelManProcGen_0</object>
+      </objects>
+      <objects name="skull">
+        <object>objects\skullLevel000</object>
+      </objects>
       <object>objects\levelManager</object>
-      <object>objects\levelMan000</object>
-      <object>objects\levelMan001</object>
-      <object>objects\levelMan006</object>
-      <object>objects\levelMan007</object>
-      <object>objects\levelMan008</object>
       <object>objects\levelMan119</object>
-      <object>objects\levelManMaze_0</object>
-      <object>objects\levelManMidBoss_0</object>
-      <object>objects\levelManProcGen_0</object>
     </objects>
     <objects name="gameflow">
       <object>objects\equipSplash</object>
@@ -479,6 +492,7 @@
       <object>objects\fMaze</object>
       <object>objects\fLogisticSpawner</object>
       <object>objects\fChain</object>
+      <object>objects\fSkullBorder</object>
       <object>objects\fMeteors</object>
       <object>objects\fBehind</object>
       <object>objects\fThexSpitter</object>
@@ -521,6 +535,8 @@
       <object>objects\oPopo</object>
       <object>objects\oMox</object>
       <object>objects\oCrab</object>
+      <object>objects\oMeteor</object>
+      <object>objects\oSkull</object>
       <object>objects\oSatellite</object>
       <object>objects\oAimAtPlayer</object>
       <object>objects\oDrone</object>
@@ -558,7 +574,6 @@
     <objects name="TweenGMS">
       <object>objects\obj_SharedTweener</object>
     </objects>
-    <object>objects\oMeteor</object>
     <object>objects\obj_vignette_noise</object>
     <object>objects\o_shader_start</object>
     <object>objects\Smoke</object>
@@ -570,6 +585,7 @@
     <timeline>timelines\tLvl7</timeline>
     <timeline>timelines\tLvl8</timeline>
     <timeline>timelines\tLvl9</timeline>
+    <timeline>timelines\tLvl_skull0</timeline>
     <timeline>timelines\tBasicFwd</timeline>
     <timeline>timelines\tDeepSpace</timeline>
     <timeline>timelines\tButtonUnlock</timeline>
@@ -584,7 +600,7 @@
     <room>rooms\roomTest</room>
     <room>rooms\rWeaponSelect</room>
   </rooms>
-  <constants number="53">
+  <constants number="54">
     <constant name="scale">global._scale</constant>
     <constant name="vw">global._vw</constant>
     <constant name="vh">global._vh</constant>
@@ -598,6 +614,7 @@
     <constant name="debugTimelineStartPos">global._debugTimelineStartPos</constant>
     <constant name="numLevels">global._numLevels</constant>
     <constant name="numWorlds">global._numWorlds</constant>
+    <constant name="worldNames">global._worldNames</constant>
     <constant name="GAMEFLOW_completedLevel">global._GAMEFLOW_completedLevel</constant>
     <constant name="GAMEFLOW_currentLevel">global._GAMEFLOW_currentLevel</constant>
     <constant name="GAMEFLOW_gemsCollectedInLevel">global._GAMEFLOW_gemsCollectedInLevel</constant>

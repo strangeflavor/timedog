@@ -2,7 +2,7 @@
 ///manageManagers()
 //called from controller
 
-// world 1
+// world 1: dog star
 for (var i=0;i<100;i+=1) {
     managerArray[i] = levelManager;
     timelineArray[i] = -1;
@@ -20,42 +20,46 @@ managerArray[8] = levelMan008;
 managerArray[9] = -9;
     timelineArray[9] = tLvl9;
 
+// world 2: trash world
 for (var i=100;i<200;i+=1) {
     managerArray[i] = levelManager;
     timelineArray[i] = -1;
 }
 
+// world 3: underwater
+for (var i=200;i<300;i+=1) {
+    managerArray[i] = levelManager;
+    timelineArray[i] = -1;
+}
+
+// world 4: planet FM
 for (var i=300;i<400;i+=1) {
     managerArray[i] = levelManager;
     timelineArray[i] = -1;
 }
 
+// world 5: cloud
 for (var i=400;i<500;i+=1) {
     managerArray[i] = levelManager;
     timelineArray[i] = -1;
 }
 
+// world 6: skull planet
 for (var i=500;i<600;i+=1) {
     managerArray[i] = levelManager;
     timelineArray[i] = -1;
 }
 
+managerArray[500] = skullLevel000;
+
+// world 7: flashback
 for (var i=600;i<700;i+=1) {
     managerArray[i] = levelManager;
     timelineArray[i] = -1;
 }
 
+// world 8: temple
 for (var i=700;i<800;i+=1) {
-    managerArray[i] = levelManager;
-    timelineArray[i] = -1;
-}
-
-for (var i=800;i<900;i+=1) {
-    managerArray[i] = levelManager;
-    timelineArray[i] = -1;
-}
-
-for (var i=900;i<1000;i+=1) {
     managerArray[i] = levelManager;
     timelineArray[i] = -1;
 }

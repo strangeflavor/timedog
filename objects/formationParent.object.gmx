@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>trace('created '+object_get_name(object_index));
 
+objectAge = 0;
 value = 1;
 wait = 1;
 active = true;
@@ -75,7 +76,8 @@ phaseCreateVars();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//wait -= 1;
+            <string>objectAge += 1;
+//wait -= 1;
 //if wait == -1 {
 if (wait &amp;&amp; !--wait) {
     x = xstart;
