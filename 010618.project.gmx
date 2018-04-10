@@ -240,6 +240,7 @@
     <background>background\bgTest</background>
     <background>background\bgStarfield</background>
     <background>background\bgStarfieldTop</background>
+    <background>background\bgKirbyStarfield</background>
     <background>background\b0</background>
     <background>background\b1</background>
     <background>background\b2</background>
@@ -514,6 +515,7 @@
       <object>objects\oFX</object>
       <object>objects\oAudio</object>
       <object>objects\oBG</object>
+      <object>objects\oKirBG</object>
       <object>objects\oHUD</object>
       <object>objects\timedogFM</object>
     </objects>

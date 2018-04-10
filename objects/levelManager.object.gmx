@@ -114,8 +114,8 @@ if instance_exists(oMegaThruster) {
     oMegaThruster.state = 1;
     oMegaThruster.alarm[0] = 90;
 }
-TweenBackgroundSpeedV(0,EaseOutExpo,TWEEN_MODE_ONCE,false,1,120,0,background_vspeed[0],2);
-TweenBackgroundSpeedV(0,EaseOutExpo,TWEEN_MODE_ONCE,false,1,120,1,background_vspeed[1],1);
+//TweenBackgroundSpeedV(0,EaseOutExpo,TWEEN_MODE_ONCE,false,1,120,0,background_vspeed[0],2);
+//TweenBackgroundSpeedV(0,EaseOutExpo,TWEEN_MODE_ONCE,false,1,120,1,background_vspeed[1],1);
 
 </string>
           </argument>

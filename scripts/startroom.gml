@@ -8,7 +8,8 @@ switch argument0 {
         music_loop(musicTitle);
     break;
     case rDeepSpace:
-        make(oBG);
+        //make(oBG);
+        make(oKirBG);
         createLevelManager();
         make(oWeaponSelect);
     break;
