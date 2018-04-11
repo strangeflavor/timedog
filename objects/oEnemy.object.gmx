@@ -82,6 +82,9 @@ space = _NONE;
 formationStartX = xstart;
 formationStartY = ystart;
 
+spawn_at_player_x = false;
+spawn_at_player_y = false;
+
 alarm[0] = 1;
 </string>
           </argument>
@@ -189,6 +192,10 @@ direction = pDirection;
             <string>///active = true;
 if waitTime &lt; 0 {
     active = true;
+    if spawn_at_player_x {
+        x = oShip.x;
+    }
+    if spawn_at_player_y y = oShip.y;
 }
 </string>
           </argument>
@@ -299,10 +306,13 @@ if waitTime &lt; 0 {
     enemy_RunPhase(currentPhase);
 
 } else {
-    if waitTime &gt; 0 {
+    if waitTime &gt;= 0 {
         waitTime -= 1;
     } else {
-        active = true;
+        if alarm[0] == -1 {
+            alarm[0] = 1;
+        }
+        //active = true;
     }
 }
 </string>

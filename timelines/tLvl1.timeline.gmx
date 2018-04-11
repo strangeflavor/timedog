@@ -21,6 +21,7 @@
             <kind>1</kind>
             <string>random_set_seed(1234);
 
+//timeline_position = 170;
 </string>
           </argument>
         </arguments>
@@ -74,7 +75,7 @@ form_boxChains0(-64,vw/2,8);
           <argument>
             <kind>1</kind>
             <string>///form_boxChains0(0,vh/2,6);
-form_boxChains0(200,vh/4,4);
+form_boxChains0(100,vh/4,4);
 
 </string>
           </argument>
@@ -210,6 +211,7 @@ form_boxChains0(90,vw/2,8);
           <argument>
             <kind>1</kind>
             <string>///with make(room_width-64,-32,oBeamCannon) {
+
 with make(room_width-64,-32,oBeamCannon) {
     path = pCurvedApproach;
     path_speed = 6;
@@ -218,11 +220,12 @@ with make(room_width-64,-32,oBeamCannon) {
 }
 
 with make(64,-32,oBeamCannon) {
-    waitTime = 240;
-    path = pCurvedApproachMirror;
+    path = pSine;
     path_speed = 6;
-    path_endtime = 45;
+    path_endtime = 24;
+    waitTime = 240;
     endaction = path_action_stop;
+    spawn_at_player_x = true;
 }
 </string>
           </argument>

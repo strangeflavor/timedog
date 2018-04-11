@@ -79,21 +79,27 @@ rollOver = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>rollOver = false;
+            <string>var skip = false;
+
+rollOver = false;
 if mouse_x &gt; x-buttonSize/2 and mouse_x &lt; x+buttonSize/2 and mouse_y &gt; y - buttonSize/2 and mouse_y &lt; y + buttonSize/2 {
     rollOver = true;
 }
 
 if rollOver {
     image_index = 1 
-    if mouse_check_button_pressed(mb_left) {
-        if instance_exists(oDialog) {
-            oDialog.dialogIndex = levelManager.dialogPanels + 1;
-            oDialog.alarm[0] = 1;
-        }
-    }
+    if mouse_check_button_pressed(mb_left) skip = true;
 } else {
     image_index = 0;
+}
+
+if keyboard_check_pressed(ord('Q')) skip = true;
+
+if skip {
+    if instance_exists(oDialog) {
+        oDialog.dialogIndex = levelManager.dialogPanels + 1;
+        oDialog.alarm[0] = 1;
+    }
 }
 </string>
           </argument>

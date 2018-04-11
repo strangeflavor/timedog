@@ -267,7 +267,7 @@
     <scripts name="player">
       <script>scripts\doPlayerAttacks.gml</script>
       <script>scripts\shipHit.gml</script>
-      <script>scripts\getCurrentXP_threshold.gml</script>
+      <script>scripts\getNextXP_threshold.gml</script>
     </scripts>
     <scripts name="gameflow">
       <script>scripts\startroom.gml</script>
