@@ -45,7 +45,7 @@ thrusterColor[6] = make_color_rgb(81,125,255);
 thrusterColor[7] = make_color_rgb(231,117,251);
 
 thrusterColorSize = 7;
-drawThruster = true;
+drawThruster = false;
 
 bigShotR = -12;
 
@@ -61,6 +61,9 @@ attacking = false;
 canFire = 1;
 canFireTriple = 1;
 objectAge = 0;
+
+xLast = xstart;
+yLast = ystart;
 
 //alarm[1] = 1;
 </string>
@@ -308,7 +311,7 @@ with other instance_destroy();
     dx = 0;
     dy = 0;
     attacking = false;
-    doMove = false;
+    //doMove = false;
     
     alarm[0] = -1;
     if weapon == 3 alarm[1] = 1; // start charging big shot
@@ -351,13 +354,14 @@ if active {
         bigShotR = -12;
     }
 
+    /*
     originX = mouse_x;
     originY = mouse_y;
 
     xLast = originX;
     yLast = originY;
-
-    doMove = true;
+    */
+    //doMove = true;
 
     attacking = true;
     alarm[1] = -1;
@@ -384,7 +388,7 @@ if active {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if doMove {
+            <string>if controller.doMove {
 
     // get position player has moved finger to
 
@@ -393,15 +397,15 @@ if active {
 
     // compare it to previous position
 
-    dx = xNext - xLast;
-    dy = yNext - yLast;
+    dx = xNext - controller.xLast;
+    dy = yNext - controller.yLast;
 
     with oShot dx = other.dx;
 
     // prepare for next step
 
-    xLast = xNext;
-    yLast = yNext;
+    controller.xLast = xNext;
+    controller.yLast = yNext;
 }
 
 alarm[1] = -1;

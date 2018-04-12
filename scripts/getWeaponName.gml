@@ -38,6 +38,9 @@ switch argument0 {
     case 4:
         return WEAPON_shield;
     break;
+    case 5:
+        return WEAPON_warp;
+    break;
 }
 
 #define setWeaponUnlock

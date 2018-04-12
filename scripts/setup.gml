@@ -45,6 +45,7 @@ WEAPON_rapid = false;
 WEAPON_tribeam = false;
 WEAPON_bomb = false;
 WEAPON_shield = false;
+WEAPON_warp = false;
 
 
 ///////////////////////////////////////////////

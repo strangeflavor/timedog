@@ -156,6 +156,9 @@
       <sprite>sprites\sShot2</sprite>
       <sprite>sprites\sShot3</sprite>
       <sprite>sprites\sShot4</sprite>
+      <sprite>sprites\sShot5</sprite>
+      <sprite>sprites\sShot6</sprite>
+      <sprite>sprites\sMissile</sprite>
     </sprites>
     <sprites name="enemy">
       <sprites name="ocean">
@@ -184,6 +187,7 @@
       <sprite>sprites\sPopo</sprite>
       <sprite>sprites\sCube</sprite>
       <sprite>sprites\sMox</sprite>
+      <sprite>sprites\sGridShip</sprite>
       <sprite>sprites\sCrab</sprite>
     </sprites>
     <sprites name="fx">
@@ -521,6 +525,7 @@
     </objects>
     <objects name="player">
       <object>objects\oShip</object>
+      <object>objects\oShipIntro</object>
       <object>objects\oMegaThruster</object>
       <object>objects\oMegaThrusterEOL</object>
       <object>objects\oShot</object>
@@ -550,6 +555,7 @@
       <object>objects\oThexMed</object>
       <object>objects\oThexPatrolSpitter</object>
       <object>objects\oThexLarge</object>
+      <object>objects\oGridShip</object>
       <object>objects\oBeamCannon</object>
       <object>objects\oMultiShot</object>
       <object>objects\oMazeBlock</object>
@@ -561,9 +567,11 @@
       <object>objects\shot_pattern</object>
       <object>objects\shot_spiller</object>
       <object>objects\shot_lineFollower</object>
+      <object>objects\shot_missileFlurry</object>
       <object>objects\shot_fork</object>
       <object>objects\oBullet</object>
       <object>objects\oMissile</object>
+      <object>objects\oGundam</object>
       <object>objects\oBeam</object>
     </objects>
     <objects name="fx">
@@ -606,7 +614,7 @@
     <room>rooms\roomTest</room>
     <room>rooms\rWeaponSelect</room>
   </rooms>
-  <constants number="55">
+  <constants number="56">
     <constant name="scale">global._scale</constant>
     <constant name="vw">global._vw</constant>
     <constant name="vh">global._vh</constant>
@@ -659,6 +667,7 @@
     <constant name="WEAPON_tribeam">global._WEAPON_tribeam</constant>
     <constant name="WEAPON_bomb">global._WEAPON_bomb</constant>
     <constant name="WEAPON_shield">global._WEAPON_shield</constant>
+    <constant name="WEAPON_warp">global._WEAPON_warp</constant>
     <constant name="XP">global._XP</constant>
     <constant name="XP_lvl">global._XP_lvl</constant>
     <constant name="currentWorld">global._currentWorld</constant>

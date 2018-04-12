@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>if !surface_exists(noisesurf) noisesurf = surface_create(view_wview[0], view_hview[0]);
 if !surface_exists(starssurf) starssurf = surface_create(view_wview[0], view_hview[0]);
-//if !surface_exists(shock_surf) shock_surf = surface_create(view_wview[0], view_hview[0]);
 
 ///////////////////////////////////
 // draw flat bg color cycle
@@ -49,36 +48,38 @@ draw_rectangle(0,0,vw,vh,false);
 // draw to and draw noise surface w/ blend mode
 ///////////////////////////////////
 
-draw_noisesurf();
-
+draw_kirbynoisesurf();
+/*
 if !ded draw_set_alpha(.5)
 draw_rectangle_colour(0,0,vw,vh,c_black,c_black,c_black,c_black,false);
 draw_set_alpha(1)
+*/
 
 ///////////////////////////////////
 // draw starfields
 ///////////////////////////////////
+var starfieldColor = merge_color(c_gray,c_blue,abs(sin(objectAge*.002)));
+draw_background_tiled_ext(bgKirbyStarfield,0,background_y[0],2,2,starfieldColor,1);
 
+/*
 if surface_exists(starssurf) {
     surface_set_target(starssurf);
     draw_clear_alpha(c_white,0)
+    
+    var starfieldColor = merge_color(c_gray,c_blue,abs(sin(objectAge*.002)));
+    
+    draw_background_tiled_ext(bgKirbyStarfield,0,background_y[0],2,2,starfieldColor,1);
+    surface_reset_target();
 
     var starfieldAlpha = 1;
 
-    for (var i=0;i&lt;background_vspeed[0]/8;i+=1) {
-        //draw_background_tiled_ext(bgStarfield,0,background_y[0]+i*2,2,2,c_blue,starfieldAlpha);
-        draw_background_tiled_ext(bgKirbyStarfield,0,background_y[0]+i*3,2,2,c_white,starfieldAlpha);
-    }
-
-    draw_background_tiled_ext(bgKirbyStarfield,0,background_y[0],2,2,merge_color(c_white,c_blue,abs(sin(objectAge*.002))),1);
-    surface_reset_target();
-
     if !ded {
-        draw_set_alpha(starAlpha);
+        draw_set_alpha(starfieldAlpha);
         draw_surface_stretched(starssurf, 0, 0, display_get_gui_width(), display_get_gui_height());
         draw_set_alpha(1);
     }
 }
+*/
 
 ///////////////////////////////////
 // draw aura around player ship

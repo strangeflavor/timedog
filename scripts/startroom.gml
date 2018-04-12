@@ -8,10 +8,10 @@ switch argument0 {
         music_loop(musicTitle);
     break;
     case rDeepSpace:
-        //make(oBG);
-        make(oKirBG);
+        make(oBG);
+        //make(oKirBG);
         createLevelManager();
-        make(oWeaponSelect);
+        make(oShipIntro);
     break;
     case rLevelSelect:
         if audio_get_name(oAudio.musicPlaying) != 'musicTitle' {

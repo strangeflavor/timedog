@@ -83,9 +83,6 @@ levelComplete = false;
 background_vspeed[0] = 200;
 background_vspeed[1] = 100;
 
-make(oMegaThruster);
-
-
 alarm[1] = 90;
 </string>
           </argument>
