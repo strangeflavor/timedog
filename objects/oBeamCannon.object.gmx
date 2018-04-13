@@ -46,6 +46,8 @@ image_speed = .2;
 HP = 12;
 
 explosionType = sLargeExplosion;
+
+aimAtPlayer = false;
 </string>
           </argument>
         </arguments>
@@ -82,14 +84,22 @@ explosionType = sLargeExplosion;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if objectAge == 60 {
-    with make(oBeam) {
-        xo = 0;
-        yo = 8;
-        owner = other.id;
-        duration = 120;
+            <string>if aimAtPlayer and objectAge &lt; 180 {
+    image_angle = lerp(image_angle,90+point_direction(x,y,oShip.x,oShip.y),.02);
+}
+
+if objectAge &lt; 60 {
+    if aimAtPlayer image_angle = lerp(image_angle,90+point_direction(x,y,oShip.x,oShip.y),.5);
+} else {
+    if objectAge == 60 {
+        with make(oBeam) {
+            xo = 0;
+            yo = 8;
+            owner = other.id;
+            if other.aimAtPlayer duration = 90 else duration = 120;
+        }
+        addRecoil(60);
     }
-    addRecoil(60);
 }
 
 if objectAge == 210 {

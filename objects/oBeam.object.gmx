@@ -108,6 +108,10 @@ if objectAge &gt; 36 {
     if frac(objectAge/3) == 0 image_blend = merge_color(c_dkgray,image_blend,.25)
 }
 
+
+if instance_exists(owner) {
+    if owner.aimAtPlayer image_angle = owner.image_angle;
+}
 </string>
           </argument>
         </arguments>
@@ -131,11 +135,11 @@ if objectAge &gt; 36 {
           <argument>
             <kind>1</kind>
             <string>for (var i=0;i&lt;image_xscale*3;i+=1) {
-    draw_sprite_ext(sprite_index,0,x+irandom(image_xscale*12)-image_xscale*6,y,image_xscale,image_yscale,0,choose(c_white,c_red,c_blue,c_lime),1);
+    draw_sprite_ext(sprite_index,0,x+irandom(image_xscale*12)-image_xscale*6,y,image_xscale,image_yscale,image_angle,choose(c_white,c_red,c_blue,c_lime),1);
 }
 
 //draw_sprite_ext(sprite_index,0,x,y,image_xscale,image_yscale,0,image_blend,1);
-draw_sprite_ext(sprite_index,0,x,y,image_xscale+(irandom(6)-3)*.05,image_yscale,0,c_white,1);
+draw_sprite_ext(sprite_index,0,x,y,image_xscale+(irandom(6)-3)*.05,image_yscale,image_angle,c_white,1);
 </string>
           </argument>
         </arguments>

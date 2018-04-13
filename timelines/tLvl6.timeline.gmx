@@ -22,7 +22,7 @@
             <string>random_set_seed(4321);
 
 _wait = 6;
-
+/*
 form_line(1,64,6,3,180,9,1,_wait);
 form_line(-1,64,6,3,0,9,1,_wait+3);
 _wait += 30;
@@ -49,13 +49,14 @@ form_line(1,40,6,3,180,9,-1,_wait);
 form_line(1,72,6,3,180,9,-1,_wait);
 form_line(-1,40,6,3,0,9,-1,_wait);
 form_line(-1,72,6,3,0,9,-1,_wait);
-
+*/
 with make(vw/2+12,-32,oBeamCannon) {
     waitTime = other._wait;
     path = pSine;
     path_speed = 6;
     path_endtime = 19;
     endaction = path_action_stop;
+    aimAtPlayer = true;
 }
 
 _wait += 120;
