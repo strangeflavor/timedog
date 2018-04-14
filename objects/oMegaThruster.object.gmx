@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !instance_exists(oShip) and !instance_exists(oShipIntro) kill();
+            <string>image_speed = 1;
 
+if !instance_exists(oShip) and !instance_exists(oShipIntro) kill();
 if instance_exists(oShip) oShip.drawThruster = false;
 if instance_exists(oShipIntro) oShipIntro.drawThruster = false;
 
@@ -124,7 +125,7 @@ if state == 0 alarm[1] = choose(8,10,12);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(oShip) oShip.drawThruster = true;
+            <string>/// called from oShipIntro
 kill();
 </string>
           </argument>
@@ -191,10 +192,10 @@ if state == 0 {
     var thrusterXO = irandom(4)-2;
     var thrusterYO = irandom(2)-1;
 
-    if frac(objectAge/2) == 0 draw_sprite_ext(sMegaThruster,0,x+thrusterXO,y+yo+thrusterYO,image_xscale,image_yscale,0,thrusterColor[irandom(thrusterColorSize)],1);
+    if frac(objectAge/2) == 0 draw_sprite_ext(sMegaThruster,objectAge*image_speed,x+thrusterXO,y+yo+thrusterYO,image_xscale,image_yscale,0,thrusterColor[irandom(thrusterColorSize)],1);
 } else {
     if state == 1 {
-        if frac(objectAge/2) == 0 draw_sprite_ext(sMegaThrusterOff,objectAge*.5,x,y+yo,image_xscale,image_yscale,0,thrusterColor[irandom(thrusterColorSize)],1);
+        if frac(objectAge/2) == 0 draw_sprite_ext(sMegaThrusterOff,objectAge,x,y+yo,image_xscale,image_yscale,0,thrusterColor[irandom(thrusterColorSize)],1);
     }
 }
 </string>

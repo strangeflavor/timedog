@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>rounds = 11; // how many to fire
+            <string>rounds = 5; // how many to fire
 rate = 4; // how frequently to fire
 fired = 0; // how many fired so far
 shot_speed = 1.5;
@@ -62,11 +62,15 @@ followCreator = true;
           <argument>
             <kind>1</kind>
             <string>if objectAge == fireAge {
-    var bID = make(x+nrandom(shot_xpos_jitter),y,oGundam);
+    creatorID.image_angle += choose(-12,12);
+    creatorID.image_speed = .2;
+    creatorID.image_index = 0;
+
+    var bID = make(x+16+nrandom(shot_xpos_jitter),y-20,oGundam);
     bID.sprite_index = sprite_index;
     bID.depth -= 1;
-    bID.direction = 45;
-    bID.speed = 7;
+    bID.direction = 45+nrandom(8);
+    bID.speed = 5+nrandom(2);
 
     bID.targetX = oShip.x;
     bID.targetY = oShip.y;
@@ -76,11 +80,11 @@ followCreator = true;
 
     fireAge += rate;
 
-    var bID = make(x+nrandom(shot_xpos_jitter),y,oGundam);
+    var bID = make(x-16+nrandom(shot_xpos_jitter),y-20,oGundam);
     bID.sprite_index = sprite_index;
     bID.depth -= 1;
-    bID.direction = 90+45;
-    bID.speed = 7;
+    bID.direction = 90+45+nrandom(8);;
+    bID.speed = 5+nrandom(2);
 
     bID.targetX = oShip.x;
     bID.targetY = oShip.y;

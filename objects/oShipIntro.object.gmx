@@ -93,6 +93,10 @@ alarm[0] = 45;
           <argument>
             <kind>1</kind>
             <string>///make(x,y,oShip);
+if instance_exists(oMegaThruster) {
+    oMegaThruster.image_speed = .25;
+    oMegaThruster.alarm[0] = 60;
+}
 make(x,y,oShip);
 make(oWeaponSelect);
 kill();

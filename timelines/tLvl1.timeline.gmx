@@ -21,6 +21,7 @@
             <kind>1</kind>
             <string>random_set_seed(1234);
 
+/*
 with make(vw/2+100,-80,oGridShip) {
     phase[0] = enemy_move;
     phaseArguments[0,0] = 270; // direction
@@ -42,6 +43,7 @@ with make(vw/2+100,-80,oGridShip) {
 }
 
 timeline_position = 1081;
+*/
 </string>
           </argument>
         </arguments>

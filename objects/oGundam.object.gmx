@@ -112,7 +112,7 @@ if objectAge mod 6 == 0 {
     }
 }
 
-if objectAge &gt; 12 and objectAge &lt; 42 {
+if objectAge &gt; 6 and objectAge &lt; 52 {
     var a = point_direction(x, y, oShip.x, oShip.y);
     direction += sign(dsin(a - direction)) * 6;
     if speed &lt; 8 speed += .2;

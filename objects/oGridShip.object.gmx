@@ -42,7 +42,7 @@
             <string>explosionType = sLargeExplosion;
 value=4;
 
-image_speed = .2;
+image_speed = 0;
 
 HP = 18;
 
@@ -94,6 +94,32 @@ makeTurret(0,0,9);
 } else {
     if currentPhase == 0 fired = 0;
 }
+
+image_angle = lerp(image_angle,0,.1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>image_speed = 0;
+image_index = 4;
 </string>
           </argument>
         </arguments>

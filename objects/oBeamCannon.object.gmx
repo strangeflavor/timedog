@@ -103,6 +103,7 @@ if objectAge &lt; 60 {
 }
 
 if objectAge == 210 {
+    image_angle = 0;
     path_start(pSine,6,path_action_continue,false);
 }
 </string>
