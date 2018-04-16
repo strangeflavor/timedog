@@ -36,13 +36,15 @@ lookz = 0;
 //extra vars for detecting mouse movement
 wd = window_get_width()/2;
 hd = window_get_height()/2;
-window_mouse_set(wd,hd);
+//window_mouse_set(wd,hd);
 
 //start 3d mode
 d3d_start();
 d3d_set_lighting(false);
 d3d_set_culling(true);
 d3d_set_fog(true,c_black,global.fog_near,global.fog_far);
+
+deepseasurf = -1;
 </string>
           </argument>
         </arguments>
@@ -69,7 +71,7 @@ d3d_set_fog(true,c_black,global.fog_near,global.fog_far);
 var xdif,ydif;
 xdif = (window_mouse_get_x() - wd);
 ydif = (window_mouse_get_y() - hd);
-window_mouse_set(wd,hd);
+//window_mouse_set(wd,hd);
 dir = (dir - xdif / 4) mod 360;
 zdir = clamp(zdir-(ydif / 4),-85,85);
     
@@ -99,7 +101,9 @@ looky = lengthdir_y(1-(abs(lookz)),dir);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//draw the camera view
+            <string>if !surface_exists(deepseasurf) deepseasurf = surface_create(view_wview[0], view_hview[0]);
+
+//draw the camera view
 d3d_set_projection_ext(x,y,z,x+lookx,y+looky,z+lookz,0,0,1,80,16/9,.1,2000);
 </string>
           </argument>

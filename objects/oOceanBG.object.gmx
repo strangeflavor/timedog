@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>levelManager</parentName>
+  <parentName>oBG</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -23,6 +23,8 @@
         <relative>0</relative>
         <isnot>0</isnot>
       </action>
+    </event>
+    <event eventtype="8" enumb="72">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -39,36 +41,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/////////////////////
-// win condition stuff
-/////////////////////
+            <string>var xx = 0;
+var yy = 0;
 
-winCondition = _WIN_TIMELINE_END;
-winConditionValue = tLvl1;
+if instance_exists(oShip) {
+    xx = (((vw - oShip.x)/vw)-.5) * 64;
+    yy = (((vh - oShip.y)/vh)-.5) * 24;
+}
 
-/////////////////////
-// dialog stuff
-/////////////////////
-
-addDialog(_NONE,"our story begins...");
-addDialog(_NIGHTBIRD,"this is nightbird, checking in!");
-addDialog(_THEPROF,"lorem ipsum!");
-addProjection();
-addDialog(_THEPROF,"tipsum bipsum!");
-addDialog(_THEPROF,"it the bit sit");
-removeProjection();
-addDialog(_NIGHTBIRD,"ya");
-
-////////////////////
-// background
-////////////////////
-
-//make(oBG);
-kill(oBG);
-make(oOceanBG);
-
-alarm[1] = -1;
-kill(oMegaThruster);
+draw_circle_colour(vw/2+xx,vh/2+yy+floor(objectAge*.1),wave(base_h,base_h*.7,180,0),c_black,c_blue,false);
 </string>
           </argument>
         </arguments>

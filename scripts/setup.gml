@@ -56,6 +56,8 @@ make(oConsole);
 make(controller);
 make(oAudio);
 
+window_mouse_set(vw/2,vh/2);
+
 room_goto_next();
 
 #define setupFiles
