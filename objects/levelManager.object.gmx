@@ -30,6 +30,12 @@ objectAge = 0;
 difficulty = 0;
 
 ////////////////////
+// background
+////////////////////
+
+make(oBG);
+
+////////////////////
 // formations &amp; wave stuff
 ////////////////////
 
@@ -79,9 +85,6 @@ dialogPanels = -1;
 /////////////////////
 
 levelComplete = false;
-
-background_vspeed[0] = 200;
-background_vspeed[1] = 100;
 
 alarm[1] = 90;
 </string>

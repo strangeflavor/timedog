@@ -1,3 +1,4 @@
+#define draw_sprite_skew_ext
 /// draw_sprite_skew_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha, image_xskew, image_yskew);
 
 var sprite   = argument0; 
@@ -48,3 +49,29 @@ draw_vertex_texture_color(xx + tempX * cosAngle - tempY * sinAngle, yy + tempX *
 // Finish drawing primitive
 draw_primitive_end();
 
+
+#define draw_sprite_tiled_horizontal
+///draw_sprite_tiled_horizontal(sprite,subimg,x,y)
+
+    var left, right, step;    
+    step = sprite_get_width(argument0);
+    left = view_xview+((argument2-view_xview) mod step)-step;
+    right = view_xview+view_wview+step;
+    while (left < right)
+    {
+        draw_sprite(argument0, argument1, left, argument3);
+        left += step;
+    }
+
+#define draw_sprite_tiled_vertical
+///draw_sprite_tiled_vertical(sprite,subimg,x,y)
+
+    var left, right, step;    
+    step = sprite_get_height(argument0);
+    top = view_yview+((argument3-view_yview) mod step)-step;
+    bottom = view_yview+view_hview+step;
+    while (top < bottom)
+    {
+        draw_sprite(argument0, argument1, argument2, top);
+        top += step;
+    }

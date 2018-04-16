@@ -5,24 +5,10 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>levelManager</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -39,34 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/////////////////////
-// win condition stuff
-/////////////////////
+            <string>//turn on anti-aliasing for prettiness
+//display_reset(8,true);
 
-winCondition = _WIN_TIMELINE_END;
-winConditionValue = tLvl1;
+//make some global vars so we don't get any missing var errors/problems
+global.fog_near = 0;
+global.fog_far = 100;
 
-/////////////////////
-// dialog stuff
-/////////////////////
+//create camera and star objects
+instance_create(0,0,obj_camera);
+instance_create(x,y,obj_stars);
 
-addDialog(_NONE,"our story begins...");
-addDialog(_NIGHTBIRD,"this is nightbird, checking in!");
-addDialog(_THEPROF,"lorem ipsum!");
-addProjection();
-addDialog(_THEPROF,"tipsum bipsum!");
-addDialog(_THEPROF,"it the bit sit");
-removeProjection();
-addDialog(_NIGHTBIRD,"ya");
-
-////////////////////
-// background
-////////////////////
-
-make(oBG);
-
-alarm[1] = -1;
-kill(oMegaThruster);
+//hide the cursor
+//window_set_cursor(cr_none);
 </string>
           </argument>
         </arguments>

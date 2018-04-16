@@ -237,8 +237,18 @@
       <sprite>sprites\sSkip</sprite>
       <sprite>sprites\sItemUI</sprite>
     </sprites>
+    <sprites name="levels">
+      <sprite>sprites\sCloudLeft</sprite>
+      <sprite>sprites\sCloudRight</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
+    <backgrounds name="cloudworld">
+      <background>background\bgCloud0</background>
+      <background>background\bgCloud1</background>
+      <background>background\bgCloud2</background>
+      <background>background\bgCloud3</background>
+    </backgrounds>
     <background>background\smp_bokeh</background>
     <background>background\smp_spherize</background>
     <background>background\bgTest</background>
@@ -246,6 +256,11 @@
     <background>background\bgStarfieldTop</background>
     <background>background\bgKirbyStarfield</background>
     <background>background\bgPedroStarfield</background>
+    <background>background\bgTechnoid</background>
+    <background>background\bgSkyhawk</background>
+    <background>background\bgPurpleStars</background>
+    <background>background\bgCloudsOuter</background>
+    <background>background\bgCloudsInner</background>
     <background>background\b0</background>
     <background>background\b1</background>
     <background>background\b2</background>
@@ -411,9 +426,9 @@
     </scripts>
     <scripts name="debug and util">
       <script>scripts\get_pico8_color.gml</script>
+      <script>scripts\show.gml</script>
       <script>scripts\make.gml</script>
       <script>scripts\scrDrawConsole.gml</script>
-      <script>scripts\show.gml</script>
       <script>scripts\tune.gml</script>
       <script>scripts\trace.gml</script>
       <script>scripts\makeBlendTester.gml</script>
@@ -421,6 +436,7 @@
     <scripts name="data">
       <script>scripts\getWeaponName.gml</script>
     </scripts>
+    <script>scripts\create_starfield.gml</script>
     <script>scripts\x_axis_get.gml</script>
     <script>scripts\endTimeline.gml</script>
     <script>scripts\screenResize.gml</script>
@@ -521,6 +537,8 @@
       <object>objects\oAudio</object>
       <object>objects\oBG</object>
       <object>objects\oKirBG</object>
+      <object>objects\oPedroBG</object>
+      <object>objects\oCloudsBG</object>
       <object>objects\oHUD</object>
       <object>objects\timedogFM</object>
     </objects>
@@ -588,6 +606,11 @@
     </objects>
     <objects name="TweenGMS">
       <object>objects\obj_SharedTweener</object>
+    </objects>
+    <objects name="ocean">
+      <object>objects\obj_stars</object>
+      <object>objects\obj_camera</object>
+      <object>objects\obj_worldspawn</object>
     </objects>
     <object>objects\obj_vignette_noise</object>
     <object>objects\o_shader_start</object>

@@ -42,9 +42,6 @@
             <string>winCondition = _WIN_TIMELINE_END;
 winConditionValue = tLvl2;
 
-//TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,0,2,50);
-//TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,1,0,25);
-
 alarm[1] = 180;
 </string>
           </argument>

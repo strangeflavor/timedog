@@ -8,8 +8,9 @@ switch argument0 {
         music_loop(musicTitle);
     break;
     case rDeepSpace:
-        make(oBG);
+        //make(oBG);
         //make(oKirBG);
+        //make(oCloudsBG);
         createLevelManager();
         make(oShipIntro);
     break;

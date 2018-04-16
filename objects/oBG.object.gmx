@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_number(oBG) &gt; 1 kill(self);
+            <string>if instance_number(oBG) &gt; 1 {
+    kill();
+}
+
 objectAge = 0;
 noisesurf = -1;
 starssurf = -1;
@@ -72,6 +75,12 @@ for (var i=0;i&lt;3;i+=1) {
 
 bg_color_rate = .008;
 ded = false;
+
+background_vspeed[0] = 200;
+background_vspeed[1] = 100;
+
+doBGTween = true;
+startBGtween = false;
 </string>
           </argument>
         </arguments>
@@ -132,6 +141,13 @@ with make(playerDestroyed_x,playerDestroyed_y,oFX) {
           <argument>
             <kind>1</kind>
             <string>objectAge += 1;
+
+if startBGtween {
+    TweenBackgroundSpeedV(id,EaseOutQuart,TWEEN_MODE_ONCE,false,1,90,0,background_vspeed[0],2);
+    TweenBackgroundSpeedV(id,EaseOutQuart,TWEEN_MODE_ONCE,false,1,90,1,background_vspeed[1],1);
+
+    startBGtween = false;
+}
 
 background_y[0] += background_vspeed[0];
 background_y[1] += background_vspeed[1];
