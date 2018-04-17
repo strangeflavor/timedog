@@ -457,6 +457,7 @@
     <shader type="GLSLES">shaders\shader_magnify.shader</shader>
     <shader type="GLSLES">shaders\shd_shockwave.shader</shader>
     <shader type="GLSLES">shaders\sh_saturation.shader</shader>
+    <shader type="GLSLES">shaders\shader_blur.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fStapler</font>
@@ -618,6 +619,7 @@
     <object>objects\obj_vignette_noise</object>
     <object>objects\o_shader_start</object>
     <object>objects\Smoke</object>
+    <object>objects\oWaters</object>
   </objects>
   <timelines name="timelines">
     <timeline>timelines\tLvl1</timeline>
