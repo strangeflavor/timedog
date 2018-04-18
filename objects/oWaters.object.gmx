@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>10</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -27,21 +27,16 @@
             <kind>1</kind>
             <string>surfy = -1;
 
-
-
-globalvar vw;
-vw = room_width;
-globalvar vh;
-vh = room_height;
-
-numStars = 512;
+numStars = 32;
 MAX_DEPTH = 32;
 
 for( var i = 0; i &lt; numStars; i++ ) {
       star_x[i] = irandom(50) - 25;
       star_y[i] = irandom(50) - 25;
-      star_z[i] = irandom(MAX_DEPTH);
+      //star_z[i] = irandom(MAX_DEPTH);
 }
+
+star_z = 0;
 </string>
           </argument>
         </arguments>
@@ -71,7 +66,7 @@ var halfHeight = vh / 2;
 if !surface_exists(surfy) surfy = surface_create(room_width,room_height);
 
 surface_set_target(surfy);
-draw_clear_alpha(c_black, 1);
+draw_clear_alpha(c_black, 0);
 
 
 // shader
@@ -90,7 +85,7 @@ if os_type == os_android
 var shader      = shader_blur;
 var u_vRatio    = shader_get_uniform(shader, "u_vRatio");
 var u_threshold = shader_get_uniform(shader, "u_threshold");
-var radius = 0.005;
+//var radius = 0.005;
 
 for( var i = 0; i &lt; numStars; i++ ) {
 /*
@@ -103,7 +98,7 @@ for( var i = 0; i &lt; numStars; i++ ) {
   }
 */
 
-  star_x[i] -= 0.05;
+ // star_x[i] -= 0.05;
 
   if( star_x[i] &lt;= -25 ) {
     star_x[i] = irandom(50)-25;
@@ -112,13 +107,16 @@ for( var i = 0; i &lt; numStars; i++ ) {
 
 
 
-  var k  = 128.0 / star_z[i];
+ // var k  = 128.0 / star_z[i];
+  var k  = 128.0 / star_z;
   var px = star_x[i] * k + halfWidth;
   var py = star_y[i] * k + halfHeight;
 
   if( px &gt;= 0 &amp;&amp; px &lt;= vw &amp;&amp; py &gt;= 0 &amp;&amp; py &lt;= vh ) {
-        var size = (1 - star_z[i] / 32.0) * 5;
-        draw_set_color(merge_color(c_white,c_black,star_z[i]/MAX_DEPTH));
+        //var size = (1 - star_z[i] / 32.0) * 5;
+        //draw_set_color(merge_color(c_white,c_black,star_z[i]/MAX_DEPTH));
+        var size = (1 - star_z / 32.0) * 2;
+        draw_set_color(merge_color(c_white,c_black,star_z/MAX_DEPTH));
         draw_circle(px,py,size,false);
   }
 }
@@ -128,73 +126,10 @@ surface_reset_target();
 shader_set(shader);
 shader_set_uniform_f(u_vRatio, vRatio);
 shader_set_uniform_f(u_threshold, radius * oscillatorValue);
-draw_surface(surfy,0,0)
+draw_surface_stretched(surfy, 0, 0, display_get_gui_width(), display_get_gui_height());
+display_set_gui_size(room_width, room_height);
 shader_reset();
 
-
-
-
-
-
-/*
-
-var halfWidth  = vw / 2;
-var halfHeight = vh / 2;
-
-//fillStyle = make_color_rgb(255,255,255);
-//fillRect(0,0,vw,vh);
-
-
-var shader      = shader_blur;
-var u_vRatio    = shader_get_uniform(shader, "u_vRatio");
-var u_threshold = shader_get_uniform(shader, "u_threshold");
-var oscillatorValue = 1;
-var oscillatorValueAbs = 1;
-
-var radius = 0.005;
-
-if os_type == os_android
-{     
-    vRatio = display_get_gui_width() / display_get_gui_height(); //distort the sampler uvs according to the screen ratio in the mobile devices...
-}else{
-    vRatio = 1.0;
-}
-
-surface_set_target(starfsurf);
-//shader_set(shader);
-
-for( var i = 0; i &lt; numStars; i++ ) {
-  star_z[i] -= 0.05;
-
-  if( star_z[i] &lt;= 0 ) {
-    star_x[i] = irandom(50)-25;
-    star_y[i] = irandom(50)-25;
-    star_z[i] = MAX_DEPTH;
-  }
-
-  var k  = 128.0 / star_z[i];
-  var px = star_x[i] * k + halfWidth;
-  var py = star_y[i] * k + halfHeight;
-
-  if( px &gt;= 0 &amp;&amp; px &lt;= vw &amp;&amp; py &gt;= 0 &amp;&amp; py &lt;= vh ) {
-        //shader_set_uniform_f(u_vRatio, vRatio);
-        //shader_set_uniform_f(u_threshold, radius * oscillatorValue);
-        //draw_surface(application_surface,0,0);
-
-        var size = (1 - star_z[i] / 32.0) * 5;
-        //var shade = parseInt((1 - star_z[i] / 32.0) * 255);
-        //ctx.fillStyle = "rgb(" + shade + "," + shade + "," + shade + ")";
-        //ctx.fillRect(px,py,size,size);
-        draw_set_color(merge_color(c_white,c_black,star_z[i]/MAX_DEPTH));
-        draw_circle(px,py,size,false);
-  }
-}
-
-//shader_reset();
-surface_reset_target();
-
-//if surface_exists(starfsurf) draw_surface(starfsurf,0,0)
-*/
 </string>
           </argument>
         </arguments>

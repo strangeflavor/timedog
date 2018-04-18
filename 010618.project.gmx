@@ -609,6 +609,7 @@
         <object>objects\obj_stars</object>
         <object>objects\obj_camera</object>
         <object>objects\obj_worldspawn</object>
+        <object>objects\oWaters</object>
       </objects>
       <object>objects\oBG</object>
       <object>objects\oKirBG</object>
@@ -619,7 +620,6 @@
     <object>objects\obj_vignette_noise</object>
     <object>objects\o_shader_start</object>
     <object>objects\Smoke</object>
-    <object>objects\oWaters</object>
   </objects>
   <timelines name="timelines">
     <timeline>timelines\tLvl1</timeline>
