@@ -606,14 +606,14 @@
     </objects>
     <objects name="BG">
       <objects name="ocean">
+        <object>objects\oOceanBG</object>
+        <object>objects\oWaters</object>
         <object>objects\obj_stars</object>
         <object>objects\obj_camera</object>
         <object>objects\obj_worldspawn</object>
-        <object>objects\oWaters</object>
       </objects>
       <object>objects\oBG</object>
       <object>objects\oKirBG</object>
-      <object>objects\oOceanBG</object>
       <object>objects\oCloudsBG</object>
       <object>objects\oPedroBG</object>
     </objects>

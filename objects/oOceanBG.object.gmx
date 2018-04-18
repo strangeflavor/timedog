@@ -41,20 +41,25 @@
             <kind>1</kind>
             <string>background_color = c_blue;
 with make(oWaters) {
-    star_z = 5;
+    star_z_layer = 5;
     radius = 0;
+    oscillatorValue = .2;
 }
 
 with make(oWaters) {
-    star_z = 10;
+    star_z_layer = 10;
     radius = 0.002;
+    oscillatorValue = .5;
 }
 
 with make(oWaters) {
-    star_z = 20;
+    star_z_layer = 18;
     radius = 0.005;
+    oscillatorValue = .7;
 }
 
+center_x = vw/2;
+center_y = vh/2;
 </string>
           </argument>
         </arguments>
@@ -77,15 +82,13 @@ with make(oWaters) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var xx = 0;
-var yy = 0;
-
-if instance_exists(oShip) {
-    xx = (((vw - oShip.x)/vw)-.5) * 64;
-    yy = (((vh - oShip.y)/vh)-.5) * 24;
+            <string>if instance_exists(oShip) {
+    center_x = lerp(center_x,(((vw - oShip.x)/vw)-.5) * 64,.1);
+    center_y = lerp(center_y,(((vh - oShip.y)/vh)-.5) * 24,.1);
 }
-
-draw_circle_colour(vw/2+xx,vh/2+yy+floor(objectAge*.1),wave(base_h,base_h*.7,180,0),c_black,c_blue,false);
+var c1 = make_color_rgb(16,32,128);
+var c2 = make_color_rgb(16,32,255);
+draw_circle_colour(vw/2+xx,vh/2+yy+floor(objectAge*.1),wave(base_h*1.5,base_h*.7,180,0),c1,c2,false);
 </string>
           </argument>
         </arguments>

@@ -93,7 +93,11 @@ if rollOver {
     image_index = 0;
 }
 
-if keyboard_check_pressed(ord('Q')) skip = true;
+if keyboard_check_pressed(ord('Q')) {
+    draw_set_alpha(1);
+    draw_set_blend_mode(bm_normal);
+    skip = true;
+}
 
 if skip {
     if instance_exists(oDialog) {

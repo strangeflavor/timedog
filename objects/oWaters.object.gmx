@@ -27,16 +27,19 @@
             <kind>1</kind>
             <string>surfy = -1;
 
-numStars = 32;
+numStars = 8;
 MAX_DEPTH = 32;
 
 for( var i = 0; i &lt; numStars; i++ ) {
       star_x[i] = irandom(50) - 25;
       star_y[i] = irandom(50) - 25;
       //star_z[i] = irandom(MAX_DEPTH);
+      star_z[i] = 0;
 }
 
-star_z = 0;
+star_z_layer = 0;
+
+objectAge = irandom(360);
 </string>
           </argument>
         </arguments>
@@ -72,8 +75,8 @@ draw_clear_alpha(c_black, 0);
 // shader
 var timeMult = 0.0025; //make the animation slower or faster...
 var time = current_time * timeMult;
-var oscillatorValue = sin(time);
-var oscillatorValueAbs = abs(sin(time));
+//var oscillatorValue = sin(time);
+//var oscillatorValueAbs = abs(sin(time));
 
 if os_type == os_android
 {     
@@ -81,13 +84,16 @@ if os_type == os_android
 }else{
     vRatio = 1.0;
 }
-    
+
 var shader      = shader_blur;
 var u_vRatio    = shader_get_uniform(shader, "u_vRatio");
 var u_threshold = shader_get_uniform(shader, "u_threshold");
 //var radius = 0.005;
 
+//star_z += .005*sin(objectAge*.0005);
+
 for( var i = 0; i &lt; numStars; i++ ) {
+
 /*
   star_z[i] -= 0.05;
 
@@ -99,7 +105,15 @@ for( var i = 0; i &lt; numStars; i++ ) {
 */
 
  // star_x[i] -= 0.05;
-
+ star_y[i] += .005;
+ if( star_y[i] &gt;= 25 ) {
+    star_x[i] = irandom(50)-25;
+    star_y[i] = -25;//irandom(50)-25;
+ }
+  
+  //star_z[i] = star_z_layer;
+ star_z[i] = star_z_layer + .1*sin((star_y[i]+objectAge)*.1); //star_z_layer + choose(.2,.1,.1,0,0,0,-.1,-.1,.2);
+ 
   if( star_x[i] &lt;= -25 ) {
     star_x[i] = irandom(50)-25;
     star_y[i] = irandom(50)-25;
@@ -107,17 +121,16 @@ for( var i = 0; i &lt; numStars; i++ ) {
 
 
 
- // var k  = 128.0 / star_z[i];
-  var k  = 128.0 / star_z;
+  var k  = 128.0 / star_z[i];
   var px = star_x[i] * k + halfWidth;
   var py = star_y[i] * k + halfHeight;
 
   if( px &gt;= 0 &amp;&amp; px &lt;= vw &amp;&amp; py &gt;= 0 &amp;&amp; py &lt;= vh ) {
         //var size = (1 - star_z[i] / 32.0) * 5;
         //draw_set_color(merge_color(c_white,c_black,star_z[i]/MAX_DEPTH));
-        var size = (1 - star_z / 32.0) * 2;
-        draw_set_color(merge_color(c_white,c_black,star_z/MAX_DEPTH));
-        draw_circle(px,py,size,false);
+        var size = (1 - star_z[i] / 32.0) * 4;
+        draw_set_color(merge_color(c_white,c_black,star_z[i]/MAX_DEPTH));
+        draw_circle(px,py,size,true);
   }
 }
 
@@ -130,6 +143,19 @@ draw_surface_stretched(surfy, 0, 0, display_get_gui_width(), display_get_gui_hei
 display_set_gui_size(room_width, room_height);
 shader_reset();
 
+var xx = 0;
+var yy = 0;
+if instance_exists(oShip) {
+    xx = (((vw - oShip.x)/vw)-.5) * 48;
+    yy = (((vh - oShip.y)/vh)-.5) * 16;
+}
+/*
+draw_set_alpha(.5);
+draw_circle_colour(vw/2+xx,vh/2+yy,wave(base_h,base_h*.5,120,0),c_black,c_aqua,false);
+draw_set_alpha(1);
+*/
+
+objectAge += 1;
 </string>
           </argument>
         </arguments>
