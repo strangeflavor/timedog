@@ -39,23 +39,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>background_color = c_blue;
+            <string>background_color = c_red;
 with make(oWaters) {
     star_z_layer = 5;
     radius = 0;
-    oscillatorValue = .2;
+    oscillatorValue = .1;
 }
 
 with make(oWaters) {
     star_z_layer = 10;
-    radius = 0.002;
-    oscillatorValue = .5;
+    radius = 0.001;
+    oscillatorValue = .25;
 }
 
 with make(oWaters) {
     star_z_layer = 18;
-    radius = 0.005;
-    oscillatorValue = .7;
+    radius = 0.0025;
+    oscillatorValue = .35;
 }
 
 center_x = vw/2;
@@ -83,12 +83,18 @@ center_y = vh/2;
           <argument>
             <kind>1</kind>
             <string>if instance_exists(oShip) {
-    center_x = lerp(center_x,(((vw - oShip.x)/vw)-.5) * 64,.1);
-    center_y = lerp(center_y,(((vh - oShip.y)/vh)-.5) * 24,.1);
+   // center_x = lerp(center_x,(((vw - oShip.x)/vw)-.5) * 64,1);
+   // center_y = lerp(center_y,(((vh - oShip.y)/vh)-.5) * 24,1);
+   center_x = lerp(center_x,vw/2+(((oShip.x-vw)/vw ) + .5)*vw/1,.005);
+   center_y = lerp(center_y,vh/2+(((oShip.y-vh)/vh ) + .5)*vh/1,.01);
+
 }
-var c1 = make_color_rgb(16,32,128);
-var c2 = make_color_rgb(16,32,255);
-draw_circle_colour(vw/2+xx,vh/2+yy+floor(objectAge*.1),wave(base_h*1.5,base_h*.7,180,0),c1,c2,false);
+
+var c1 = make_color_rgb(16,32,90);
+//var c2 = make_color_rgb(16,32,180);
+//var c1 = c_white;
+var c2 = c_black;
+draw_circle_colour(center_x,center_y,wave(base_h*1.5,base_h,180,0),c1,c2,false);
 </string>
           </argument>
         </arguments>
