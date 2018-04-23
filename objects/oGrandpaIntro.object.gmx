@@ -3,26 +3,12 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>2</depth>
   <persistent>0</persistent>
-  <parentName>levelManager</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -39,38 +25,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/////////////////////
-// win condition stuff
-/////////////////////
-
-winCondition = _WIN_TIMELINE_END;
-winConditionValue = tLvl1;
+            <string>make(oGrandpaBG);
 
 /////////////////////
 // dialog stuff
 /////////////////////
 
-addDialog(_NONE,"our story begins...");
-addDialog(_NIGHTBIRD,"this is nightbird, checking in!");
-addDialog(_THEPROF,"lorem ipsum!");
-addProjection();
-addDialog(_THEPROF,"tipsum bipsum!");
-addDialog(_THEPROF,"it the bit sit");
-removeProjection();
-addDialog(_NIGHTBIRD,"ya");
+for (var i=0;i&lt;32;i+=1) {
+    dialog[i,0] = _NONE;
+    dialog[i,1] = 'unassigned text';
+    dialog[i,2] = false; // add projection
+    dialog[i,3] = false; // remove projection
+}
 
-////////////////////
-// background
-////////////////////
+dialogPanels = -1;
+addDialog(_NONE,"Long ago, and very far away...");
+addDialog(_NONE,"When the moon and the sun were new...");
+addDialog(_NONE,"Wait, not this again!");
 
-//make(oBG);
-kill(oBG);
-//make(oTrenchBG);
-//make(oMoonBG);
-make(oOceanBG);
+rectAlpha = 1;
 
-alarm[1] = -1;
-kill(oMegaThruster);
+make(oFader);
+oFader.fadeIn = true;
+with make(oDialog) {
+    alarm[1] = 30;
+    gradientSlideIn = 128;
+}
 </string>
           </argument>
         </arguments>

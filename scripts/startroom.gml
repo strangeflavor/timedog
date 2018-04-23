@@ -3,6 +3,10 @@ formationIndex = 0; // index for formation array (used to keep track of instance
 cursor_sprite = sCursorBig;
 
 switch argument0 {
+    case rGrandpa:
+        make(oGrandpaIntro);
+        music_loop(musicTitle);
+    break;
     case rTitle:
         instance_create(-16,-16,oMenu);
         music_loop(musicTitle);

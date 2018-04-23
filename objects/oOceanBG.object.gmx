@@ -41,25 +41,60 @@
             <kind>1</kind>
             <string>background_color = c_red;
 with make(oWaters) {
-    star_z_layer = 5;
+    star_z_layer = 6;
     radius = 0;
     oscillatorValue = .1;
 }
 
 with make(oWaters) {
-    star_z_layer = 10;
+    star_z_layer = 12;
     radius = 0.001;
-    oscillatorValue = .25;
+    oscillatorValue = .3;
 }
 
 with make(oWaters) {
     star_z_layer = 18;
     radius = 0.0025;
-    oscillatorValue = .35;
+    oscillatorValue = .6;
 }
 
 center_x = vw/2;
 center_y = vh/2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if instance_exists(oShip) {
+    if objectAge mod 4 == 0 {
+        if abs(oShip.recentDx) &gt; 20 {
+            with make(oShip.x+nrandom(16),oShip.y+nrandom(32),oBubble) {
+                finalScale = choose(1,1.5);
+                initScale = finalScale*.1;
+                TweenSimpleScale(initScale,initScale,finalScale,finalScale,30,EaseOutBack);
+                sprite_index = sBubble;
+                vspeed = choose(.5,1);
+            }
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -94,7 +129,7 @@ var c1 = make_color_rgb(16,32,90);
 //var c2 = make_color_rgb(16,32,180);
 //var c1 = c_white;
 var c2 = c_black;
-draw_circle_colour(center_x,center_y,wave(base_h*1.5,base_h,180,0),c1,c2,false);
+draw_circle_colour(center_x,center_y,wave(base_h*1.5,base_h*2,180,0),c1,c2,false);
 </string>
           </argument>
         </arguments>

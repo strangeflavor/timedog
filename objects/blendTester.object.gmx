@@ -79,25 +79,25 @@ modeString[10] = "bm_src_alpha_sat";
     if keyboard_check_pressed(vk_up) {
         srcmode += 1;
         if srcmode &gt; 10 srcmode = 0;
-        trace('srcmode: '+string(srcmode));
+        trace('srcmode: '+string(srcmode)+', destmode: '+string(destmode));
     }
 
     if keyboard_check_pressed(vk_down) {
         srcmode -= 1;
         if srcmode &lt; 0 srcmode = 10;
-        trace('srcmode: '+string(srcmode));
+        trace('srcmode: '+string(srcmode)+', destmode: '+string(destmode));
     }
 
     if keyboard_check_pressed(vk_right) {
         destmode += 1;
         if destmode &gt; 10 destmode = 0;
-        trace('destmode: '+string(destmode));
+        trace('srcmode: '+string(srcmode)+', destmode: '+string(destmode));
     }
 
     if keyboard_check_pressed(vk_left) {
         destmode -= 1;
         if destmode &lt; 0 destmode = 10;
-        trace('destmode: '+string(destmode));
+        trace('srcmode: '+string(srcmode)+', destmode: '+string(destmode));
     }
 }
 </string>

@@ -160,24 +160,13 @@ if active {
     objectAge += 1;
 
     // move player
-
     x += dx;
     y += dy;
-
-    // 
     recentDx *= .5;
     recentDx += abs(dx);
-   // image_speed = .2
-    //if recentDx &gt; 40 image_speed = .4 else image_speed = .2;
-    //image_speed = max(.2,recentDx*.1);
-    //image_speed = max(.5,recentDx*.1); //max(.2,min(.5,recentDx*.1));
-    //image_speed = 1;
-    //trace('s:'+string(image_speed)+','+string(image_index));
-    //trace(recentDx);
-    
+
 
     // check bounds
-
     if x &gt; room_width x = room_width;
     if x &lt; 0 x = 0;
     if y &gt; room_height y = room_height;

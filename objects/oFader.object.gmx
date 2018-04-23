@@ -50,7 +50,7 @@ fadeIn = false;
           <argument>
             <kind>1</kind>
             <string>if image_alpha &gt; 0 {
-    if fadeIn image_alpha -= .1;
+    if fadeIn image_alpha -= .05;
     draw_set_alpha(image_alpha);
     draw_rectangle_colour(0,0,vw,vh,c_black,c_black,c_black,c_black,false);
     draw_set_alpha(1);

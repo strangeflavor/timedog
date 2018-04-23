@@ -27,8 +27,8 @@
             <kind>1</kind>
             <string>surfy = -1;
 
-numStars = 8;
-MAX_DEPTH = 32;
+numStars = 6;
+MAX_DEPTH = 18;//32;
 
 for( var i = 0; i &lt; numStars; i++ ) {
       star_x[i] = irandom(50) - 25;
@@ -116,7 +116,7 @@ for( var i = 0; i &lt; numStars; i++ ) {
  }
 */
   //star_z[i] = star_z_layer;
- star_z[i] = star_z_layer + .15*sin((star_y[i]+objectAge)*.025); //star_z_layer + choose(.2,.1,.1,0,0,0,-.1,-.1,.2);
+ star_z[i] = star_z_layer + .2*sin((star_y[i]+objectAge+star_x[i])*.025); //star_z_layer + choose(.2,.1,.1,0,0,0,-.1,-.1,.2);
  /*
   if( star_x[i] &lt;= -25 ) {
     star_x[i] = irandom(50)-25;
@@ -131,14 +131,14 @@ for( var i = 0; i &lt; numStars; i++ ) {
 
   if py &gt; vh {
     star_x[i] = irandom(50)-25;
-    star_y[i] = -25;//irandom(50)-25;
+    star_y[i] = -30*(star_z[i]/12);// * k;// + halfHeight
   }
-  
+
   if( px &gt;= 0 &amp;&amp; px &lt;= vw &amp;&amp; py &gt;= 0 &amp;&amp; py &lt;= vh ) {
         //var size = (1 - star_z[i] / 32.0) * 5;
         //draw_set_color(merge_color(c_white,c_black,star_z[i]/MAX_DEPTH));
         var size = (1 - star_z[i] / 32.0) * 4;
-        draw_set_color(merge_color(c_white,c_black,star_z[i]/MAX_DEPTH));
+        draw_set_color(merge_color(c_white,c_aqua,star_z[i]/MAX_DEPTH));
         draw_circle(px,py,size,true);
   }
 }
@@ -152,6 +152,8 @@ if radius &gt; 0 {
     draw_surface_stretched(surfy, 0, 0, display_get_gui_width(), display_get_gui_height());
     display_set_gui_size(room_width, room_height);
     shader_reset();
+} else {
+    radius += .01;
 }
 
 var xx = 0;

@@ -202,6 +202,7 @@
       <sprite>sprites\sGotPickup</sprite>
       <sprite>sprites\sForcefield</sprite>
       <sprite>sprites\sExplo</sprite>
+      <sprite>sprites\sBubble</sprite>
     </sprites>
     <sprites name="dialog">
       <sprite>sprites\sSpeakerNightbird</sprite>
@@ -225,6 +226,7 @@
       <sprite>sprites\sObsolet</sprite>
       <sprite>sprites\sFilmGrain</sprite>
       <sprite>sprites\sGradientCircle</sprite>
+      <sprite>sprites\sAlphaGradientCircle</sprite>
       <sprite>sprites\sBrak</sprite>
     </sprites>
     <sprites name="UI">
@@ -238,6 +240,7 @@
       <sprite>sprites\sItemUI</sprite>
     </sprites>
     <sprites name="levels">
+      <sprite>sprites\sTrench</sprite>
       <sprite>sprites\sCloudLeft</sprite>
       <sprite>sprites\sCloudRight</sprite>
     </sprites>
@@ -260,6 +263,7 @@
     <background>background\bgSkyhawk</background>
     <background>background\bgPurpleStars</background>
     <background>background\bgMoon</background>
+    <background>background\bgBricks</background>
     <background>background\bgCloudsOuter</background>
     <background>background\bgCloudsInner</background>
     <background>background\b0</background>
@@ -592,6 +596,7 @@
       <object>objects\oBeam</object>
     </objects>
     <objects name="fx">
+      <object>objects\oBubble</object>
       <object>objects\oExplo</object>
       <object>objects\oFXFlare</object>
       <object>objects\oButtonUnlockFX</object>
@@ -605,7 +610,7 @@
     <objects name="TweenGMS">
       <object>objects\obj_SharedTweener</object>
     </objects>
-    <objects name="BG">
+    <objects name="level">
       <objects name="ocean">
         <object>objects\oOceanBG</object>
         <object>objects\oWaters</object>
@@ -613,10 +618,14 @@
         <object>objects\obj_camera</object>
         <object>objects\obj_worldspawn</object>
       </objects>
+      <object>objects\oGrandpaIntro</object>
       <object>objects\oBG</object>
       <object>objects\oKirBG</object>
+      <object>objects\oMoonBG</object>
       <object>objects\oCloudsBG</object>
+      <object>objects\oTrenchBG</object>
       <object>objects\oPedroBG</object>
+      <object>objects\oGrandpaBG</object>
     </objects>
     <object>objects\obj_vignette_noise</object>
     <object>objects\o_shader_start</object>
@@ -636,6 +645,7 @@
   </timelines>
   <rooms name="rooms">
     <room>rooms\rSetup</room>
+    <room>rooms\rGrandpa</room>
     <room>rooms\rTitle</room>
     <room>rooms\rLevelSelect</room>
     <room>rooms\rShop</room>

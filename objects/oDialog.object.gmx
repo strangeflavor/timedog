@@ -112,14 +112,18 @@ with oSkipDialogButton kill();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// shop dialog
+            <string>/// shop and intro dialog
 dialogIndex += 1;
 
-if dialogIndex &lt;= oShop.dialogPanels {
-    speaker = speakerImg[oShop.dialog[dialogIndex,0]];
-    name = speakerName[oShop.dialog[dialogIndex,0]];
-    voice = speakerVoice[oShop.dialog[dialogIndex,0]];
-    fulltext = oShop.dialog[dialogIndex,1];
+var dialogObject = noone;
+if instance_exists(oShop) dialogObject = oShop;
+if instance_exists(oGrandpaIntro) dialogObject = oGrandpaIntro;
+
+if dialogIndex &lt;= dialogObject.dialogPanels {
+    speaker = speakerImg[dialogObject.dialog[dialogIndex,0]];
+    name = speakerName[dialogObject.dialog[dialogIndex,0]];
+    voice = speakerVoice[dialogObject.dialog[dialogIndex,0]];
+    fulltext = dialogObject.dialog[dialogIndex,1];
     text = '';
     textPos = 0;
 
@@ -138,9 +142,15 @@ if dialogIndex &lt;= oShop.dialogPanels {
     //endDialog();
     //kill(oProjector);
     //oShop.showShop = true;
-    oFader.fadeIn = true;
-    oPickup.visible = true;
-    with oShopButton alarm[1] = 1;
+     if room == rShop {
+        oFader.fadeIn = true;
+        oPickup.visible = true;
+        with oShopButton alarm[1] = 1;
+    }
+    
+    if room == rGrandpa {
+        room_goto_next();
+    }
     kill();
 }
 </string>
@@ -245,7 +255,7 @@ if dialogIndex &lt;= levelManager.dialogPanels {
             <string>if text != fulltext {
     text = fulltext;
 } else {
-    if room == rShop {
+    if room == rShop or room == rGrandpa {
         alarm[1] = 1;
     } else {
         alarm[0] = 1;
