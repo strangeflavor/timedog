@@ -66,6 +66,7 @@ mazeSpeed = 5;
 winCondition = _WIN_TIME;
 winConditionValue = 30*60*60;
 bossDefeated = false;
+gracePeriod = 120; // time after the end of level and the tally screen appears
 
 /////////////////////
 // dialog stuff

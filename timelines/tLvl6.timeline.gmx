@@ -22,34 +22,8 @@
             <string>random_set_seed(4321);
 
 _wait = 6;
+
 /*
-form_line(1,64,6,3,180,9,1,_wait);
-form_line(-1,64,6,3,0,9,1,_wait+3);
-_wait += 30;
-form_line(-1,100,6,5,330,9,4,_wait);
-_wait += 40;
-form_line(-1,160,6,3,0,9,-1,_wait);
-form_line(1,40,6,5,210,9,2,_wait+10);
-
-_wait += 40;
-
-difficulty += 2;
-
-form_line(1,64,6,3,180,9,0,_wait);
-form_line(-1,64,6,3,0,9,1,_wait+6);
-_wait += 30;
-form_line(1,150,6,3,180,9,1,_wait);
-_wait += 40;
-form_line(-1,190,6,3,0,9,0,_wait);
-form_line(1,40,6,5,210,9,2,_wait+10);
-
-_wait += 60;
-
-form_line(1,40,6,3,180,9,-1,_wait);
-form_line(1,72,6,3,180,9,-1,_wait);
-form_line(-1,40,6,3,0,9,-1,_wait);
-form_line(-1,72,6,3,0,9,-1,_wait);
-*/
 with make(vw/2+12,-32,oBeamCannon) {
     waitTime = other._wait;
     path = pSine;
@@ -68,7 +42,7 @@ with make(72,-32,oBeamCannon) {
     path_endtime = 60;
     endaction = path_action_stop;
 }
-
+*/
 _wait += 30;
 _value = true;
 form_line(1,30,6,5,210,9,0,_wait);

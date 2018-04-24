@@ -41,9 +41,6 @@
             <kind>1</kind>
             <string>winCondition = _WIN_TIMELINE_END;
 winConditionValue = tLvl8;
-
-TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,0,2,50);
-TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,1,0,25);
 </string>
           </argument>
         </arguments>

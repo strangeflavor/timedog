@@ -42,10 +42,18 @@
             <string>winCondition = _WIN_TIME;
 winConditionValue = 60*60*1;
 
-TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,0,2,50);
-TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,1,0,25);
+//
 
 waveRate = 120;
+
+////////////////////
+// background
+////////////////////
+
+make(oBG);
+
+alarm[1] = -1;
+kill(oMegaThruster);
 </string>
           </argument>
         </arguments>

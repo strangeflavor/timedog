@@ -49,7 +49,7 @@ image_angle_tween = 0;
 image_speed = .2;
 
 HP = .5;
-invul = false;
+invul = true;
 
 image_xscale = scale*2;
 image_yscale = scale*2;

@@ -478,6 +478,7 @@
         <object>objects\levelMan006</object>
         <object>objects\levelMan007</object>
         <object>objects\levelMan008</object>
+        <object>objects\levelMan014</object>
         <object>objects\levelManMaze_0</object>
         <object>objects\levelManMidBoss_0</object>
         <object>objects\levelManProcGen_0</object>
@@ -639,6 +640,7 @@
     <timeline>timelines\tLvl7</timeline>
     <timeline>timelines\tLvl8</timeline>
     <timeline>timelines\tLvl9</timeline>
+    <timeline>timelines\tLvl14</timeline>
     <timeline>timelines\tLvl_skull0</timeline>
     <timeline>timelines\tBasicFwd</timeline>
     <timeline>timelines\tDeepSpace</timeline>

@@ -49,12 +49,18 @@ switch winCondition {
 if keyboard_check_pressed(vk_f9) caughtEndLevel = true;
 
 if caughtEndLevel {
-    levelManager.active = false;
-    GAMEFLOW_completedLevel = true;
+    gracePeriod -= 1;
     oShip.invincible = true;
-    make(vw/2,vh+64,endLevel);
-    active = false;
+
+    if gracePeriod <= 0 {
+        //levelManager.active = false;
+        GAMEFLOW_completedLevel = true;
+        make(vw/2,vh+64,endLevel);
+        active = false;
+    }
 }
+
+
 
 #define setupTimeline
 trace('setting timeline for spawner '+string(object_index));

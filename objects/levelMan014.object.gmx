@@ -40,8 +40,9 @@
           <argument>
             <kind>1</kind>
             <string>winCondition = _WIN_TIMELINE_END;
-winConditionValue = tLvl7;
+winConditionValue = tLvl2;
 
+alarm[1] = 180;
 </string>
           </argument>
         </arguments>

@@ -40,6 +40,7 @@ if occupiedTimer[_CENTER] > 0 occupiedTimer[_CENTER] -= 1;
 
 var enemyID = argument0;
 
+enemyID.invul = invul;
 enemyID.space = space;
 enemyID.formationStartX = x;
 enemyID.formationStartY = y;

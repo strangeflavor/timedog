@@ -30,6 +30,7 @@
 objectAge = 0;
 value = 1;
 wait = 1;
+invul = false;
 active = true;
 space = _NONE;
 formationStartX = xstart;
