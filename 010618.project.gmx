@@ -217,6 +217,7 @@
     </sprites>
     <sprites name="obstacles">
       <sprite>sprites\sMeteor</sprite>
+      <sprite>sprites\sLargeMeteor</sprite>
       <sprite>sprites\sBlock</sprite>
       <sprite>sprites\sCoralMaze</sprite>
       <sprite>sprites\sBlock2</sprite>

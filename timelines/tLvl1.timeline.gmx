@@ -35,7 +35,7 @@ with make(vw/2+100,-80,oGridShip) {
     phaseArguments[1,2] = 1; // xbend
     phaseArguments[1,3] = .5; // ybend
     phaseCondition[1] = _PHASE_CONDITION_TIME;
-    phaseConditionArguments[1,0] = 480;
+    phaseConditionArguments[1,0] = 420;
 
     phase[2] = enemy_move;
     phaseArguments[2,0] = 90; // direction

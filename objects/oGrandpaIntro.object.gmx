@@ -48,7 +48,7 @@ rectAlpha = 1;
 make(oFader);
 oFader.fadeIn = true;
 with make(oDialog) {
-    alarm[1] = 30;
+    alarm[1] = 60;
     gradientSlideIn = 128;
 }
 </string>
