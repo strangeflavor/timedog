@@ -39,12 +39,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>winCondition = _WIN_TIME;
+            <string>///levelman procgen create
+winCondition = _WIN_TIME;
 winConditionValue = 60*60*1;
 
-//
+// procgen stuff
 
-waveRate = 120;
+for (var i=0;i&lt;128;i+=1) pg_formationArray[i] = -1;
+pg_count = -1;
+pg_index = 0;
+
+waveRate = 90;
 
 ////////////////////
 // background

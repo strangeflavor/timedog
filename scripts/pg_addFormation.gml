@@ -1,0 +1,40 @@
+#define pg_addFormation
+///pg_addFormation()
+
+var arg;
+for (var i = 0; i < 16; i += 1;) {
+    if argument_count > i
+       {
+       arg[i] = argument[i];
+       }
+    else
+       {
+       arg[i] = -1;
+       }
+}
+
+pg_count += 1;
+pg_formationArray[pg_count,0] = arg[0]; // space
+pg_formationArray[pg_count,1] = arg[1]; // duration
+pg_formationArray[pg_count,2] = arg[2]; // script
+pg_formationArray[pg_count,3] = arg[3]; // arg1
+pg_formationArray[pg_count,4] = arg[4]; // arg2
+pg_formationArray[pg_count,5] = arg[5]; // arg3
+pg_formationArray[pg_count,6] = arg[6]; // arg4
+
+
+/*
+formationIndex+=1;
+
+// fill array with junk to prevent the game from thinking we've destroyed the entire formation before all the enemies have spawned
+for (i=0;i<50;i+=1) {
+    formationArray[formationIndex,i] = 1;
+}
+*/
+
+
+#define pg_getFormation
+///pg_getFormation()
+
+return irandom(pg_count);
+

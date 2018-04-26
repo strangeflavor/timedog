@@ -312,6 +312,7 @@
     <scripts name="formations">
       <script>scripts\occupySpace.gml</script>
       <script>scripts\form_boxChains0.gml</script>
+      <script>scripts\form_gridMissile.gml</script>
       <script>scripts\form_curvedLeft.gml</script>
     </scripts>
     <scripts name="ai">
@@ -445,6 +446,9 @@
     </scripts>
     <scripts name="level">
       <script>scripts\draw_noisesurf.gml</script>
+    </scripts>
+    <scripts name="procgen">
+      <script>scripts\pg_addFormation.gml</script>
     </scripts>
     <script>scripts\create_starfield.gml</script>
     <script>scripts\x_axis_get.gml</script>

@@ -66,6 +66,7 @@ for (var i=700;i<800;i+=1) {
 }
 
 #define pickWave
+///pickWave()
 // clear out formationComplete array, this keeps track of when formations are done spawning so we can start to check for the end of wave
 for (var i=0;i<32;i+=1) formationComplete[i] = false;
 
@@ -92,13 +93,28 @@ switch irandom(3) {
 }
 */
 
+
+pg_addFormation(_LEFTCOLUMN,90,form_boxChains0,-64,vw/2,8);
+pg_addFormation(_RIGHTCOLUMN,90,form_boxChains0,100,vh/4,4);
+pg_addFormation(_CENTER,90,form_boxChains0,0,vw/2+100,4);
+
 var success = false;
-var slot = irandom(8);
+var form = pg_getFormation();
 var waveSpawned = false;
 
 newFormationID = getFormationID();
 
-switch slot {
+var _formScript = pg_formationArray[form,0];
+var _formOccupyDuration = pg_formationArray[form,1];
+if occupySpace(_formScript,_formOccupyDuration) {
+    script_execute(_formScript,pg_formationArray[form,2],pg_formationArray[form,3],pg_formationArray[form,4],pg_formationArray[form,5],pg_formationArray[form,6]);
+    waveSpawned = true;
+}
+
+return waveSpawned;
+
+/*
+switch form {
     case 0:
         if occupySpace(_LEFTCOLUMN,90) {
             with instance_create(-32,32,fChain) {
@@ -152,14 +168,6 @@ switch slot {
             waveSpawned = true;
         }
     break;
-    case 5:
-        /*
-        if occupySpace(_TOP,-1) {
-            instance_create(room_width/2,-150,oMidBoss);
-            waveSpawned = true;
-        }
-        */
-    break;
     case 6:
         if occupySpace(_RIGHTCOLUMN,400) {
             with make(room_width-64,-32,oBeamCannon) {
@@ -197,6 +205,7 @@ switch slot {
 }
 
 return waveSpawned;
+*/
 
 #define endWave
 for (var i=0;i<32;i+=1) formationComplete[i] = false;
