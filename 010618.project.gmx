@@ -178,6 +178,7 @@
       <sprite>sprites\sMerchantBottom</sprite>
       <sprite>sprites\sMerchantTurret</sprite>
       <sprite>sprites\sMerchant</sprite>
+      <sprite>sprites\sEnergyOrb</sprite>
       <sprite>sprites\sFireAtPlayer</sprite>
       <sprite>sprites\spr_drone</sprite>
       <sprite>sprites\sSpring</sprite>
@@ -442,13 +443,15 @@
     <scripts name="data">
       <script>scripts\getWeaponName.gml</script>
     </scripts>
+    <scripts name="level">
+      <script>scripts\draw_noisesurf.gml</script>
+    </scripts>
     <script>scripts\create_starfield.gml</script>
     <script>scripts\x_axis_get.gml</script>
     <script>scripts\endTimeline.gml</script>
     <script>scripts\screenResize.gml</script>
     <script>scripts\draw_sprite_skew_ext.gml</script>
     <script>scripts\draw_columnB.gml</script>
-    <script>scripts\draw_noisesurf.gml</script>
     <script>scripts\draw_SHADER_sceneFringe.gml</script>
     <script>scripts\draw_SHADER_glitter.gml</script>
     <script>scripts\draw_SHADER_bokeh.gml</script>
@@ -565,6 +568,7 @@
       <object>objects\oMerchant</object>
       <object>objects\oMerchantPilot</object>
       <object>objects\oMidBoss</object>
+      <object>objects\oEnergyOrb</object>
       <object>objects\oFireAtPlayer</object>
       <object>objects\oPopo</object>
       <object>objects\oMox</object>
@@ -621,13 +625,13 @@
         <object>objects\obj_worldspawn</object>
       </objects>
       <object>objects\oGrandpaIntro</object>
+      <object>objects\oGrandpaBG</object>
       <object>objects\oBG</object>
       <object>objects\oKirBG</object>
       <object>objects\oMoonBG</object>
       <object>objects\oCloudsBG</object>
       <object>objects\oTrenchBG</object>
       <object>objects\oPedroBG</object>
-      <object>objects\oGrandpaBG</object>
     </objects>
     <object>objects\obj_vignette_noise</object>
     <object>objects\o_shader_start</object>
