@@ -34,8 +34,10 @@ switch winCondition {
         if wave > 16 caughtEndLevel = true;
     break;
     case _WIN_TIME:
-        if oHUD.showHud winConditionValue -= 1;
-        if winConditionValue <= 0 caughtEndLevel = true;
+        if winConditionValue > -2 {
+            if oHUD.showHud winConditionValue -= 1;
+            if winConditionValue <= 0 caughtEndLevel = true;
+        }
     break;
     /*
     case _WIN_TIME:

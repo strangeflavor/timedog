@@ -178,6 +178,7 @@
       <sprite>sprites\sMerchantBottom</sprite>
       <sprite>sprites\sMerchantTurret</sprite>
       <sprite>sprites\sMerchant</sprite>
+      <sprite>sprites\sTaxi</sprite>
       <sprite>sprites\sEnergyOrb</sprite>
       <sprite>sprites\sFireAtPlayer</sprite>
       <sprite>sprites\spr_drone</sprite>
@@ -314,6 +315,9 @@
       <script>scripts\form_boxChains0.gml</script>
       <script>scripts\form_gridMissile.gml</script>
       <script>scripts\form_curvedLeft.gml</script>
+      <scripts name="procgen">
+        <script>scripts\pg_addFormation.gml</script>
+      </scripts>
     </scripts>
     <scripts name="ai">
       <script>scripts\doEvent.gml</script>
@@ -447,9 +451,6 @@
     <scripts name="level">
       <script>scripts\draw_noisesurf.gml</script>
     </scripts>
-    <scripts name="procgen">
-      <script>scripts\pg_addFormation.gml</script>
-    </scripts>
     <script>scripts\create_starfield.gml</script>
     <script>scripts\x_axis_get.gml</script>
     <script>scripts\endTimeline.gml</script>
@@ -495,6 +496,7 @@
         <object>objects\skullBoss000</object>
       </objects>
       <object>objects\levelManager</object>
+      <object>objects\levelManDebug</object>
       <object>objects\levelMan119</object>
     </objects>
     <objects name="gameflow">

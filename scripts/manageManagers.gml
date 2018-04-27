@@ -93,21 +93,18 @@ switch irandom(3) {
 }
 */
 
-
-pg_addFormation(_LEFTCOLUMN,90,form_boxChains0,-64,vw/2,8);
-pg_addFormation(_RIGHTCOLUMN,90,form_boxChains0,100,vh/4,4);
-pg_addFormation(_CENTER,90,form_boxChains0,0,vw/2+100,4);
-
 var success = false;
 var form = pg_getFormation();
 var waveSpawned = false;
 
 newFormationID = getFormationID();
 
-var _formScript = pg_formationArray[form,0];
+var _formSlot = pg_formationArray[form,0];
 var _formOccupyDuration = pg_formationArray[form,1];
-if occupySpace(_formScript,_formOccupyDuration) {
-    script_execute(_formScript,pg_formationArray[form,2],pg_formationArray[form,3],pg_formationArray[form,4],pg_formationArray[form,5],pg_formationArray[form,6]);
+var _formScript = pg_formationArray[form,2];
+
+if occupySpace(_formSlot,_formOccupyDuration) {
+    script_execute(_formScript,pg_formationArray[form,3],pg_formationArray[form,4],pg_formationArray[form,5],pg_formationArray[form,6],pg_formationArray[form,7]);
     waveSpawned = true;
 }
 
@@ -214,7 +211,14 @@ checkForEndOfWave = false;
 #define createLevelManager
 ///createLevelManager()
 // called from startroom() in controller
-var managerObject = controller.managerArray[GAMEFLOW_currentLevel];
+var managerObject = levelManager;
+
+// if -1, we're starting in debug mode and should go to debug room
+if GAMEFLOW_currentLevel == -1 {
+    managerObject = levelManDebug;
+} else {
+    managerObject = controller.managerArray[GAMEFLOW_currentLevel];
+}
 
 if managerObject >= 0 {
     make(managerObject);

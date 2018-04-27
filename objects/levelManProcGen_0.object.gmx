@@ -51,6 +51,12 @@ pg_index = 0;
 
 waveRate = 90;
 
+// procgen formations
+
+pg_addFormation(_LEFTCOLUMN,90,form_boxChains0,-64,vw/2,8);
+pg_addFormation(_RIGHTCOLUMN,90,form_boxChains0,100,vh/4,4);
+pg_addFormation(_CENTER,90,form_boxChains0,0,vw/2+100,4);
+
 ////////////////////
 // background
 ////////////////////
