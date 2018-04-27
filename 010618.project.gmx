@@ -145,6 +145,7 @@
       <sprite>sprites\sPickupFlash</sprite>
       <sprite>sprites\sPickupBits</sprite>
       <sprite>sprites\sEmptyPickup</sprite>
+      <sprite>sprites\sBigPickup</sprite>
       <sprite>sprites\sPickupIrrid</sprite>
     </sprites>
     <sprites name="beams">
