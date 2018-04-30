@@ -83,3 +83,28 @@ for (var i=0;i<count;i+=1) {
     tId.path_position = 1;
     tId.path_endaction = path_action_reverse;
 }
+#define form_simplesine
+/// form_meteors(size,rate);
+trace('starting form simplesine');
+
+var arg;
+for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
+
+var _xoffset = arg[0];
+if _xoffset == 1 _xoffset = 0;
+
+with make(vw/2+_xoffset,-96,fChain) {
+    enemy = oMiniThex;
+    path = pSine;
+    _path_speed = 7+(other.i/2);
+    endaction = path_action_continue;
+    size = 12;
+    wait = 120+other.i*180;
+
+    /*
+    phaseCondition[0] = _PHASE_CONDITION_TIME;
+    phaseConditionArguments[0,0] = 1;
+
+    phase[1] = enemy_move;
+    */
+}

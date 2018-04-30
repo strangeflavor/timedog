@@ -58,5 +58,13 @@ f+=1;
 formScriptArray[f] = form_curvedRight;
 f+=1;
 formScriptArray[f] = form_beamCannon;
+f+=1;
+formScriptArray[f] = form_simplesine;
+f+=1;
+formScriptArray[f] = form_fireAtPlayer;
+f+=1;
+formScriptArray[f] = form_multiShot;
+f+=1;
+formScriptArray[f] = form_crab;
 
 return f;

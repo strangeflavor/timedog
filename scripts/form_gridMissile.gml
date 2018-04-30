@@ -38,3 +38,51 @@ with make(room_width/2+xoffset,-32,oBeamCannon) {
     path_endtime = 45;
     endaction = path_action_stop;
 }
+#define form_fireAtPlayer
+///form_fireAtPlayer()
+trace('starting form fireAtPlayer');
+
+var arg;
+for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
+
+var xpos = arg[0];
+if xpos == -1 xpos = 0;
+
+var ypos = arg[1];
+if ypos == -1 ypos = 0;
+
+make(xpos,ypos,oFireAtPlayer);
+
+#define form_multiShot
+/// form_multiShot();
+trace('starting form multiShot');
+
+var arg;
+for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
+
+var _xoffset = arg[0];
+if _xoffset == -1 _xoffset = 0;
+
+with make(vw/2+_xoffset,-32,oMultiShot) {
+    formationID = other.newFormationID;
+    path = pCurvedApproachMirror;
+    path_speed = 6;
+    path_endtime = 45;
+    endaction = path_action_stop;
+}
+
+
+#define form_crab
+/// form_crab(xoffset);
+trace('starting form crab');
+
+var arg;
+for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
+
+var _xoffset = arg[0];
+if _xoffset == -1 _xoffset = 0;
+
+with make(vw/2+_xoffset,32,oCrab) {
+    direction = 270 + irandom(60)-30;
+    speed = 5;
+}
