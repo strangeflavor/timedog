@@ -40,8 +40,10 @@
           <argument>
             <kind>1</kind>
             <string>///levelman procgen create
+randomize();
+
 winCondition = _WIN_TIME;
-winConditionValue = 60*60*1;
+winConditionValue = 60*60*.1;
 
 // procgen stuff
 
@@ -53,9 +55,10 @@ waveRate = 90;
 
 // procgen formations
 
-pg_addFormation(_LEFTCOLUMN,90,form_boxChains0,-64,vw/2,8);
-pg_addFormation(_RIGHTCOLUMN,90,form_boxChains0,100,vh/4,4);
-pg_addFormation(_CENTER,90,form_boxChains0,0,vw/2+100,4);
+pg_addFormation(_LEFTCOLUMN,360,form_boxChains0,-64,vw/2,8);
+pg_addFormation(_RIGHTCOLUMN,360,form_boxChains0,100,vh/4,4);
+//pg_addFormation(_CENTER,90,form_boxChains0,0,vw/2+100,4);
+pg_addFormation(_CENTER,360,form_meteors,12,20,1.25);
 
 ////////////////////
 // background

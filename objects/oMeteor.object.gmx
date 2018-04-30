@@ -39,11 +39,24 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>HP = 20;
+            <string>
+
+value = -1;
 r = choose(-1,1)*choose(.2,.3,.5);
 
 image_xscale = choose(.75,1,1,1.5);
 image_yscale = image_xscale;
+switch image_xscale {
+    case .75:
+        HP = 20;
+    break;
+    case 1:
+        HP = 30;
+    break;
+    case 1.5:
+        HP = 36;
+    break;
+}
 
 if irandom(12) == 1 image_blend = c_gray;
 if irandom(12) == 1 worms = true else worms = false;
@@ -173,11 +186,15 @@ if HP &lt; 0 kill();
             <kind>1</kind>
             <string>if x &gt; other.x {
     x += 1;
+    image_angle -= choose(8,16,24);
+} else {
+    image_angle += choose(8,16,24);
 }
 
 if y &gt; other.y {
     y += 1;
 }
+
 </string>
           </argument>
         </arguments>
@@ -200,7 +217,8 @@ if y &gt; other.y {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with other kill();
+            <string>if flashing == 0 flashing = -4;
+with other kill();
 
 HP -= 1;
 if HP &lt; 0 kill();

@@ -22,7 +22,7 @@ _size = arg[4];
 
 if xoffset == -1 xoffset = -64;
 if _ystop == -1 _ystop = vh/2 - choose(60,120,180,240); // choose(180,120,200,300,400);
-if _path_speed == -1 _path_speed = choose(8,12,16,24,32);
+if _path_speed == -1 _path_speed = choose(16,24,32);
 if _rate == -1 rate = 4;
 if _size == -1 _size = 3;
 

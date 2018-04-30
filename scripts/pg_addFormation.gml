@@ -1,5 +1,5 @@
 #define pg_addFormation
-///pg_addFormation()
+///pg_addFormation(space,duration,script,arg1,arg2,arg3,arg4,arg5)
 
 var arg;
 for (var i = 0; i < 16; i += 1;) {
@@ -21,7 +21,7 @@ pg_formationArray[pg_count,3] = arg[3]; // arg1
 pg_formationArray[pg_count,4] = arg[4]; // arg2
 pg_formationArray[pg_count,5] = arg[5]; // arg3
 pg_formationArray[pg_count,6] = arg[6]; // arg4
-pg_formationArray[pg_count,7] = arg[7]; // arg4
+pg_formationArray[pg_count,7] = arg[7]; // arg5
 
 /*
 formationIndex+=1;
@@ -41,6 +41,8 @@ return irandom(pg_count);
 #define pg_makeFormationScriptArray
 var f = 0;
 
+formScriptArray[f] = form_meteors;
+f+=1;
 formScriptArray[f] = form_boxChains0;
 f+=1;
 formScriptArray[f] = form_boxChains_Descent;
@@ -54,6 +56,7 @@ f+=1;
 formScriptArray[f] = form_curvedLeft;
 f+=1;
 formScriptArray[f] = form_curvedRight;
-
+f+=1;
+formScriptArray[f] = form_beamCannon;
 
 return f;

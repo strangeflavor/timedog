@@ -45,6 +45,7 @@ _path_scale = 1;
 _path_scale_delta = 0;
 endaction = path_action_stop;
 rate = 9;
+rateDelta = 1;
 size = 8;
 count = 0;
 
@@ -101,6 +102,7 @@ if offscreen() eID.offScreenTimer *= 4;
 eID.fireAge = attacker[count];
 
 count += 1;
+rate *= rateDelta;
 if size == 999 and count &gt;= 16 count = 0; // size = 999 means we're spawning forever, so reset the count after 16
 
 if count &lt; size {

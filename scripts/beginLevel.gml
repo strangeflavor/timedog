@@ -35,8 +35,11 @@ switch winCondition {
     break;
     case _WIN_TIME:
         if winConditionValue > -2 {
-            if oHUD.showHud winConditionValue -= 1;
-            if winConditionValue <= 0 caughtEndLevel = true;
+            if oHUD.showHud winConditionValue = max(-1,winConditionValue - 1);
+            if winConditionValue <= 0 {
+                caughtEndLevel = true;
+                oHUD.showHud = false;
+            }
         }
     break;
     /*
@@ -51,10 +54,12 @@ switch winCondition {
 if keyboard_check_pressed(vk_f9) caughtEndLevel = true;
 
 if caughtEndLevel {
+    kill(fChain);
+
     gracePeriod -= 1;
     oShip.invincible = true;
 
-    if gracePeriod <= 0 {
+    if gracePeriod <= 0 and instance_number(oEnemy) <= 0 {
         //levelManager.active = false;
         GAMEFLOW_completedLevel = true;
         make(vw/2,vh+64,endLevel);
