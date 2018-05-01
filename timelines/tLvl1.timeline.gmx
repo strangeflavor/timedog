@@ -276,7 +276,7 @@ with make(64,-32,oBeamCannon) {
             <kind>1</kind>
             <string>///form_boxChains_Descent(vw-240,vh/4,8);
 
-var _wait = 1;
+_wait = 1;
 
 form_boxChains_Descent(120,vh/4,8,-1,3,8,270,_wait);
 _wait += 60;

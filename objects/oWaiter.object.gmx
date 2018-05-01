@@ -5,24 +5,10 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>levelManager</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -39,38 +25,38 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/////////////////////
-// win condition stuff
-/////////////////////
+            <string>changeInto = noone;
+objectAge = 0;
+changeAge = 60;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if objectAge == changeAge {
+    if changeInto != noone {
+        instance_change(changeInto,true);
+    }
+}
 
-winCondition = _WIN_TIMELINE_END;
-winConditionValue = tLvl1;
-
-/////////////////////
-// dialog stuff
-/////////////////////
-
-addDialog(_NONE,"our story begins...");
-addDialog(_NIGHTBIRD,"this is nightbird, checking in!");
-addDialog(_THEPROF,"lorem ipsum!");
-addProjection();
-addDialog(_THEPROF,"tipsum bipsum!");
-addDialog(_THEPROF,"it the bit sit");
-removeProjection();
-addDialog(_NIGHTBIRD,"ya");
-
-////////////////////
-// background
-////////////////////
-
-make(oBG);
-//kill(oBG);
-//make(oTrenchBG);
-//make(oMoonBG);
-//make(oOceanBG);
-
-alarm[1] = -1;
-kill(oMegaThruster);
+objectAge += 1;
 </string>
           </argument>
         </arguments>

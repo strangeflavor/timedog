@@ -184,6 +184,7 @@
       <sprite>sprites\sFireAtPlayer</sprite>
       <sprite>sprites\spr_drone</sprite>
       <sprite>sprites\sSpring</sprite>
+      <sprite>sprites\sSpringAims</sprite>
       <sprite>sprites\sThexbot</sprite>
       <sprite>sprites\sThexbotCenter</sprite>
       <sprite>sprites\sSatellite</sprite>
@@ -572,6 +573,7 @@
     </objects>
     <objects name="enemy">
       <object>objects\oEnemy</object>
+      <object>objects\oWaiter</object>
       <object>objects\oSteering</object>
       <object>objects\oLargeEnemy</object>
       <object>objects\oSkullKing</object>
@@ -589,6 +591,7 @@
       <object>objects\oSatellite</object>
       <object>objects\oAimAtPlayer</object>
       <object>objects\oDrone</object>
+      <object>objects\oMassFireAtPlayer</object>
       <object>objects\oMiniThex</object>
       <object>objects\oThexMed</object>
       <object>objects\oThexPatrolSpitter</object>
