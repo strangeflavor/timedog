@@ -58,8 +58,8 @@ next_attack_state = _ATK_BEAMS;
 
 attack_started = false;
 
-makeTurret(0,sprite_width/3 + 16,32);
-makeTurret(1,-sprite_width/3 - 16,32);
+makeTurret(0,-153,56);
+makeTurret(1,153,56);
 makeTurret(2,0,sprite_height/2);
 
 setup_state_paths();
@@ -174,27 +174,30 @@ levelManager.bossDefeated = true;
             
             if state_path_loops &gt;= 0 {
                 if current_state_age &gt; 60 {
-                    shoot_spray(2,12,choose(2,3,3,4),sShot3);
+                    shoot_spray(2,24,choose(2,3,3,4),sShot3);
                 }
             }
         break;
         case _SPIRAL:
-            if current_state_age &lt; 120 {
-                with make(getTurretX(0),getTurretY(0),oBullet) {
-                    sprite_index = sShot3;
-                    depth -= 1;
-                    direction = 360*sin(other.objectAge*.05);
-                    speed = 5;
-                    friction = .02;
-                }
-            } else {
-                with make(getTurretX(1),getTurretY(1),oBullet) {
-                    sprite_index = sShot3;
-                    depth -= 1;
-                    direction = 360*sin(other.objectAge*.05);
-                    speed = 5;
-                    friction = .02;
-                    image_blend = c_aqua
+            if frac(objectAge/2) == 0 {
+                if current_state_age &lt; 120 {
+                    with make(getTurretX(0),getTurretY(0),oBullet) {
+                        sprite_index = sShot1;
+                        depth -= 1;
+                        direction = 360*sin(other.objectAge*.04);
+                        speed = 5;
+                        friction = .02;
+                        image_blend = c_yellow;
+                    }
+                } else {
+                    with make(getTurretX(1),getTurretY(1),oBullet) {
+                        sprite_index = sShot1;
+                        depth -= 1;
+                        direction = 360*sin(other.objectAge*.03);
+                        speed = 5;
+                        friction = .02;
+                        image_blend = c_yellow;
+                    }
                 }
             }
         break;
