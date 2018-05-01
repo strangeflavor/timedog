@@ -174,13 +174,14 @@ levelManager.bossDefeated = true;
             
             if state_path_loops &gt;= 0 {
                 if current_state_age &gt; 60 {
-                    shoot_spray(2,12,choose(2,3,3,4));
+                    shoot_spray(2,12,choose(2,3,3,4),sShot3);
                 }
             }
         break;
         case _SPIRAL:
             if current_state_age &lt; 120 {
                 with make(getTurretX(0),getTurretY(0),oBullet) {
+                    sprite_index = sShot3;
                     depth -= 1;
                     direction = 360*sin(other.objectAge*.05);
                     speed = 5;
@@ -188,6 +189,7 @@ levelManager.bossDefeated = true;
                 }
             } else {
                 with make(getTurretX(1),getTurretY(1),oBullet) {
+                    sprite_index = sShot3;
                     depth -= 1;
                     direction = 360*sin(other.objectAge*.05);
                     speed = 5;

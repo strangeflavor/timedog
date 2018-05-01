@@ -584,6 +584,7 @@
       <object>objects\oMox</object>
       <object>objects\oCrab</object>
       <object>objects\oMeteor</object>
+      <object>objects\oWorm</object>
       <object>objects\oSkull</object>
       <object>objects\oSatellite</object>
       <object>objects\oAimAtPlayer</object>

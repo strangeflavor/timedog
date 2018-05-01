@@ -59,7 +59,14 @@ switch image_xscale {
 }
 
 if irandom(12) == 1 image_blend = c_gray;
-if irandom(12) == 1 worms = true else worms = false;
+if irandom(12) == 1 {
+    worms = true;
+    sprite_index = sWormMeteor;
+    image_speed = choose(.2,.3,.4,.5);
+    image_index = choose(0,1);
+} else {
+    worms = false;
+}
 </string>
           </argument>
         </arguments>
@@ -97,7 +104,9 @@ if irandom(12) == 1 worms = true else worms = false;
           <argument>
             <kind>1</kind>
             <string>if worms {
-    //repeat 6 make(worm)
+    make(x+4+irandom(4),y-4-irandom(4),oWorm)
+    make(x-4-irandom(4),y-4-irandom(4),oWorm)
+    make(x,y+4+irandom(4),oWorm);
 }
 </string>
           </argument>
