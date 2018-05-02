@@ -92,21 +92,21 @@ flee_vspeed = -vspeed;
             <string>if !offscreen() {
     //enemy_move_rotate(oShip.x,oShip.y,0,0);
 
-    friction = .1;
-
     if objectAge == 45 {
-        speedBoost = 4;
+        speedBoost = 7;
         image_angle = point_direction(x,y,oShip.x,oShip.y);
         repeat 7 {
-            shoot_spray(0,objectAge,5+speedBoost,sShot1,true);
-            if speedBoost &gt;= 0 speedBoost -= .5;
+            shoot_spray(0,objectAge,2+speedBoost,sShot1,true);
+            if speedBoost &gt;= 0 speedBoost -= 1;
         }
     }
 
-    if objectAge == 120 {
+    if objectAge &gt;= 120 {
         hspeed = flee_hspeed;
         vspeed = flee_vspeed;
         friction = 0;
+    } else {
+        friction = .1;
     }
 }
 </string>
