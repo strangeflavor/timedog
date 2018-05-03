@@ -97,7 +97,7 @@ timeBetweenMazes = 120;
           <argument>
             <kind>1</kind>
             <string>if mazes &gt; 0 {
-    levelManager.mazeSpeed += 3;
+    levelManager.mazeSpeed += 2;
     make(vw/2,vh/2,fMaze);
     mazes -= 1;
 } else {

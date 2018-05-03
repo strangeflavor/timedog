@@ -11,6 +11,20 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -26,7 +40,8 @@
           <argument>
             <kind>1</kind>
             <string>rate = 2;
-blocksize = 32;
+mazeScale = 2;
+blocksize = 16*mazeScale;
 mm = -blocksize*2;
 mazeSize = 1280;
 mazeSpeed = levelManager.mazeSpeed;
@@ -35,20 +50,6 @@ alarm[0] = 30;
 </string>
           </argument>
         </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="1" enumb="0">
@@ -94,7 +95,9 @@ alarm[0] = 30;
             <string>sfx(sndMazePC);
 
 for (var i=0;i&lt;room_width;i+=blocksize) {
-    make(i+blocksize/2,mm,oMazeBlock);
+    with make(i+blocksize/2,mm,oMazeBlock) {
+        image_scale(other.mazeScale);
+    }
 }
 
 mm -= blocksize;
