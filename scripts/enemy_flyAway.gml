@@ -178,27 +178,32 @@ if phaseArguments[currentPhase,1] > 0 {
 }
 
 #define enemy_orbit
-///enemy_orbit(radius,speed,xbend,ybend,movedirection,movespeed)
+///enemy_orbit(radius,speed,xbend,ybend,movedirection,movespeed,radiusDelta)
+
+var arg;
+for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
+
 if cx == -1 {
-    //Orbit = argument0; // Orbit distance
     Orbit = 0;
-    Speed = argument1; // Orbital speed
+    Speed = arg[1]; // Orbital speed
 
     cx = x;
     cy = y;
 }
 
-if Orbit < argument0 Orbit += 1;
-
 //var vx,vy;
-var xbend = argument2;
-var ybend = argument3;
+var xbend = arg[2];
+var ybend = arg[3];
 
 if xbend == -1 xbend = 1;
 if ybend == -1 ybend = 1;
 
-var movedirection = argument4;
-var movespeed = argument5;
+var movedirection = arg[4];
+var movespeed = arg[5];
+var radiusDelta = arg[6];
+if radiusDelta == -1 radiusDelta = 1;
+
+if Orbit < arg[0] Orbit += radiusDelta;
 
 // Orbital motion
 Angle += Speed;

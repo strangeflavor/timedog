@@ -113,14 +113,35 @@ if active {
             if currentPhase &lt; 2 {
                 var eID = -1;
                 var eDir = 0;
-                var numShots = 24;
-    
+                var numShots = 32;
+
                 //if frac(current_state_age / 60) == 0 {
                 if current_state_age == 1 {
                     for (i=0;i&lt;numShots;i+=1) {
                         eID = make(getTurretX(0),getTurretY(0),oBullet);
                         eID.depth -= 1;
                         eID.speed = 5;
+                        eID.direction = eDir;
+                        eDir += 360/numShots;
+                    }
+
+                    numShots = 12;
+                    for (i=0;i&lt;numShots;i+=1) {
+                        eID = make(getTurretX(0),getTurretY(0),oBullet);
+                        eID.sprite_index = sShot3;
+                        eID.depth -= 1;
+                        eID.speed = 4;
+                        eID.direction = eDir;
+                        eDir += 360/numShots;
+                    }
+
+                    numShots = 8;
+                    for (i=0;i&lt;numShots;i+=1) {
+                        eID = make(getTurretX(0),getTurretY(0),oBullet);
+                        with eID image_scale(3);
+                        eID.sprite_index = sShot1;
+                        eID.depth -= 1;
+                        eID.speed = 2;
                         eID.direction = eDir;
                         eDir += 360/numShots;
                     }

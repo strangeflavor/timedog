@@ -488,13 +488,13 @@
       <objects name="dogstar">
         <object>objects\levelMan000</object>
         <object>objects\levelMan001</object>
+        <object>objects\levelManProcGen_0</object>
+        <object>objects\levelManMaze_0</object>
         <object>objects\levelMan006</object>
         <object>objects\levelMan007</object>
         <object>objects\levelMan008</object>
         <object>objects\levelMan014</object>
-        <object>objects\levelManMaze_0</object>
         <object>objects\levelManMidBoss_0</object>
-        <object>objects\levelManProcGen_0</object>
       </objects>
       <objects name="skull">
         <object>objects\skullLevel000</object>
@@ -579,6 +579,7 @@
       <object>objects\oSkullKing</object>
       <object>objects\oMerchant</object>
       <object>objects\oMerchantPilot</object>
+      <object>objects\oSatellite</object>
       <object>objects\oMidBoss</object>
       <object>objects\oEnergyOrb</object>
       <object>objects\oFireAtPlayer</object>
@@ -588,7 +589,6 @@
       <object>objects\oMeteor</object>
       <object>objects\oWorm</object>
       <object>objects\oSkull</object>
-      <object>objects\oSatellite</object>
       <object>objects\oAimAtPlayer</object>
       <object>objects\oDrone</object>
       <object>objects\oMassFireAtPlayer</object>
@@ -603,6 +603,7 @@
       <object>objects\mazeEater</object>
       <object>objects\mazeEndpoint</object>
       <object>objects\oCube</object>
+      <object>objects\object132</object>
     </objects>
     <objects name="shots">
       <object>objects\shot_pattern</object>

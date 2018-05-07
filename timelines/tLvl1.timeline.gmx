@@ -27,7 +27,7 @@
     </event>
   </entry>
   <entry>
-    <step>120</step>
+    <step>60</step>
     <event>
       <action>
         <libid>1</libid>
@@ -54,7 +54,7 @@ form_boxChains0(-64,vw/2,8);
     </event>
   </entry>
   <entry>
-    <step>210</step>
+    <step>150</step>
     <event>
       <action>
         <libid>1</libid>
@@ -82,7 +82,7 @@ form_boxChains0(100,vh/4,4);
     </event>
   </entry>
   <entry>
-    <step>300</step>
+    <step>240</step>
     <event>
       <action>
         <libid>1</libid>
@@ -109,34 +109,7 @@ form_boxChains0(0,vw/2+100,4);
     </event>
   </entry>
   <entry>
-    <step>390</step>
-    <event>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///form_curvedLeft(-160,0,12);
-form_curvedLeft(-160,-160,12);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-  </entry>
-  <entry>
-    <step>490</step>
+    <step>330</step>
     <event>
       <action>
         <libid>1</libid>
@@ -155,7 +128,7 @@ form_curvedLeft(-160,-160,12);
           <argument>
             <kind>1</kind>
             <string>///form_curvedRight(-240,0,12);
-form_curvedRight(-180,-160,12);
+//form_curvedRight(-180,-160,12);
 </string>
           </argument>
         </arguments>
@@ -163,7 +136,7 @@ form_curvedRight(-180,-160,12);
     </event>
   </entry>
   <entry>
-    <step>570</step>
+    <step>410</step>
     <event>
       <action>
         <libid>1</libid>
@@ -190,7 +163,7 @@ form_boxChains0(90,vw/2,8);
     </event>
   </entry>
   <entry>
-    <step>650</step>
+    <step>490</step>
     <event>
       <action>
         <libid>1</libid>
@@ -211,20 +184,14 @@ form_boxChains0(90,vw/2,8);
             <string>///with make(room_width-64,-32,oBeamCannon) {
 
 with make(room_width-64,-32,oBeamCannon) {
-    path = pCurvedApproach;
+    path = pSine;//pCurvedApproach;
     path_speed = 6;
-    path_endtime = 45;
-    endaction = path_action_stop;
-}
-
-with make(64,-32,oBeamCannon) {
-    path = pSine;
-    path_speed = 6;
-    path_endtime = 24;
-    waitTime = 240;
+    path_endtime = 18;
     endaction = path_action_stop;
     spawn_at_player_x = true;
 }
+
+
 </string>
           </argument>
         </arguments>
@@ -232,7 +199,54 @@ with make(64,-32,oBeamCannon) {
     </event>
   </entry>
   <entry>
-    <step>1080</step>
+    <step>730</step>
+    <event>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with make(vw-80,-32,oBeamCannon) {
+    path = pCurvedApproach;//pSine;
+    path_speed = 7;
+    path_endtime = 20;
+    //waitTime = 240;
+    endaction = path_action_stop;
+}
+
+///form_curvedLeft(-160,0,12);
+//form_curvedLeft(-160,-160,12);
+
+_wait = 1;
+_slower = true;
+_value = true;
+
+for (var i=2;i&lt;8;i+=1) {
+    form_line(-1,48*i,6,3,0,9,-1,i*2);
+    //form_line(-1,48*i,6,3,0,9,-1,12+i*2);
+}
+
+_slower = false;
+_value = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </entry>
+  <entry>
+    <step>950</step>
     <event>
       <action>
         <libid>1</libid>
@@ -297,7 +311,7 @@ with instance_create(-64,room_height/4,fChain) {
     </event>
   </entry>
   <entry>
-    <step>1680</step>
+    <step>1490</step>
     <event>
       <action>
         <libid>1</libid>

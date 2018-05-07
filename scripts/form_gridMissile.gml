@@ -100,4 +100,3 @@ with make(vw/2+_xoffset,-64,oWaiter) {
     changeInto = oMassFireAtPlayer;
     changeAge = other._wait;
 }
-

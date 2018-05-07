@@ -50,7 +50,7 @@ _enemy_direction = 270;
 
 yStop = -1;
 
-xstart = 24+irandom(vw/12)*12;
+xstart = 24+irandom(vw/12)*11;
 ystart = -128;
 x = xstart;
 y = ystart;
@@ -94,7 +94,7 @@ alarm[0] = rate;
           <argument>
             <kind>1</kind>
             <string>_enemy_speed = choose(2,3,4,6);
-x = 24+irandom(vw/12)*12;
+x = 24+irandom(vw/12)*11;
 </string>
           </argument>
         </arguments>

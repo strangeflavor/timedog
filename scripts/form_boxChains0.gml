@@ -271,4 +271,50 @@ with make(vw/2+xoffset,32+yoffset,fChain) {
     phaseArguments[1,3] = 1; // ybend
     phaseArguments[1,4] = other._direction; // direction
     phaseArguments[1,5] = 12; // speed
+    phaseArguments[1,6] = 1; // radius delta
+}
+
+#define form_orbit_expanding
+///form_orbit_expanding(wait,xoffset,yoffset,direction,moveDelay)
+var xoffset = argument1;
+var yoffset = argument2;
+_direction = argument3;
+if _direction == -1 _direction = 270;
+var moveDelay = argument4;
+if moveDelay == -1 moveDelay = 120;
+
+newFormationID = getFormationID();
+
+with make(vw/2+xoffset,32+yoffset,fChain) {
+    formationID = other.newFormationID;
+    enemy = oMiniThex;
+    invul = true;
+    //path = pCircle;
+    //_path_speed = 7+(other.i/2);
+    //endaction = path_action_continue;
+    size = 12;
+    wait = 1+argument0;
+    rate = 4;
+    speedSign = choose(-1,1);
+
+    //phaseDelay[0] = _PHASE_DELAY_WAIT;
+        //advancePhase_AbsoluteTime[0] = 60;
+    phase[0] = enemy_orbit;
+    phaseArguments[0,0] = 60; // radius
+    phaseArguments[0,1] = speedSign*5; // speed
+    phaseArguments[0,6] = 1; // radius delta
+
+    phaseCondition[0] = _PHASE_CONDITION_TIME
+    //phaseConditionArguments[0,0] = 120; // snake string
+    phaseConditionArguments[0,0] = _PHASE_DELAY_WAIT;
+        advancePhase_AbsoluteTime[0] = moveDelay;
+
+    phase[1] = enemy_orbit;
+    phaseArguments[1,0] = 240; // radius
+    phaseArguments[1,1] = speedSign*5; // speed
+    phaseArguments[1,2] = 1; // xbend
+    phaseArguments[1,3] = 1; // ybend
+    phaseArguments[1,4] = other._direction; // direction
+    phaseArguments[1,5] = 3; // speed
+    phaseArguments[1,6] = 1; // radius delta
 }

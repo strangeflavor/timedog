@@ -39,8 +39,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>value = 10;
-HP = 300;
+            <string>pilotID = make(oMerchantPilot);
+
+value = 10;
+HP = 360;
 flashing = 0;
 
 xdest = room_width/2;
@@ -112,13 +114,40 @@ start_state_paths();
           <argument>
             <kind>1</kind>
             <string>///levelManager.bossDefeated = true;
+if instance_exists(pilotID) pilotID.flee = true;
 levelManager.bossDefeated = true;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="1">
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if instance_exists(pilotID) {
+    pilotID.x = xprevious;
+    pilotID.y = y+30;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>604</id>
@@ -172,7 +201,7 @@ levelManager.bossDefeated = true;
                 }
             }
             
-            if state_path_loops &gt;= 0 {
+            if state_path_position &gt; 1 or state_path_loops &gt; 0 {
                 if current_state_age &gt; 60 {
                     shoot_spray(2,24,choose(2,3,3,4),sShot3);
                 }
@@ -187,7 +216,7 @@ levelManager.bossDefeated = true;
                         direction = 360*sin(other.objectAge*.04);
                         speed = 5;
                         friction = .02;
-                        image_blend = c_yellow;
+                        image_blend = c_lime;
                     }
                 } else {
                     with make(getTurretX(1),getTurretY(1),oBullet) {
@@ -196,7 +225,7 @@ levelManager.bossDefeated = true;
                         direction = 360*sin(other.objectAge*.03);
                         speed = 5;
                         friction = .02;
-                        image_blend = c_yellow;
+                        image_blend = c_lime;
                     }
                 }
             }

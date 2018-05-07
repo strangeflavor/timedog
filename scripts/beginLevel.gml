@@ -5,6 +5,7 @@ switch winCondition {
         timeline_running = true;
         timeline_loop = false;
         if debugTimelineStartPos > -1 timeline_position = debugTimelineStartPos;
+        trace('starting timeline '+timeline_get_name(timeline_index));
     break;
     case _WIN_FORMATIONS_COMPLETE:
     case _WIN_TIME:

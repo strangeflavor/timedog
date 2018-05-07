@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gems += GAMEFLOW_gemsCollectedInLevel;
+            <string>gems += floor(GAMEFLOW_gemsCollectedInLevel);
 
 image_alpha = 0;
 objectAge = 0;

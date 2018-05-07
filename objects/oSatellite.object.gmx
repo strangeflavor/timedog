@@ -39,8 +39,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>HP = 40;
+            <string>make(oFXFlare);
+//make(oExplo);
+HP = 40;
 image_speed = .25;
+killWhenOffscreen = false;
+
+//y -= 200;
+//TweenSimpleMove(x,y,x,ystart,choose(60,90)+nrandom(16),EaseOutQuint);
 </string>
           </argument>
         </arguments>

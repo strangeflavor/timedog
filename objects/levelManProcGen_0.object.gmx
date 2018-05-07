@@ -43,7 +43,7 @@
 randomize();
 
 winCondition = _WIN_TIME;
-winConditionValue = 60*60*.1;
+winConditionValue = 60*60*1;
 
 // procgen stuff
 

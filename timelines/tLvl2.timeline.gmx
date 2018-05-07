@@ -61,11 +61,6 @@ form_largeAimer(-80)
         endaction = path_action_continue;
         size = 3;
         wait = 1+other.i*120;
-
-        //phaseCondition[0] = _PHASE_CONDITION_TIME;
-        //phaseConditionArguments[0,0] = 1;
-
-        //phase[1] = enemy_move;
     }
 }
 </string>
@@ -133,7 +128,7 @@ form_largeAimer(-80)
     </event>
   </entry>
   <entry>
-    <step>600</step>
+    <step>700</step>
     <event>
       <action>
         <libid>1</libid>
@@ -151,35 +146,8 @@ form_largeAimer(-80)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///make(vw+64,vh/3,oFireAtPlayer);
-make(vw+32,vh/3,oFireAtPlayer);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-  </entry>
-  <entry>
-    <step>720</step>
-    <event>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///make(-64,vh/4,oFireAtPlayer);
-make(-32,vh/4,oFireAtPlayer);
+            <string>_wait = 0;
+form_largeAimer(150)
 </string>
           </argument>
         </arguments>
@@ -231,8 +199,8 @@ make(-32,vh/4,oFireAtPlayer);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>make(-32,0,oFireAtPlayer);
-make(vw+32,vh/5,oFireAtPlayer);
+            <string>///form_curvedLeft(-160,0,12);
+form_curvedLeft(-160,-160,12);
 </string>
           </argument>
         </arguments>
@@ -240,7 +208,7 @@ make(vw+32,vh/5,oFireAtPlayer);
     </event>
   </entry>
   <entry>
-    <step>1100</step>
+    <step>1140</step>
     <event>
       <action>
         <libid>1</libid>
@@ -258,8 +226,8 @@ make(vw+32,vh/5,oFireAtPlayer);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///make(vw/2,0,oFireAtPlayer);
-make(vw/2,-16,oFireAtPlayer);
+            <string>///form_curvedRight(-240,0,12);
+form_curvedRight(-180,-160,12);
 </string>
           </argument>
         </arguments>
@@ -267,7 +235,7 @@ make(vw/2,-16,oFireAtPlayer);
     </event>
   </entry>
   <entry>
-    <step>1220</step>
+    <step>1260</step>
     <event>
       <action>
         <libid>1</libid>
@@ -285,9 +253,8 @@ make(vw/2,-16,oFireAtPlayer);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///make(vw+32,vh-80,oFireAtPlayer);
-make(vw+32,vh-80,oFireAtPlayer);
-make(-32,vh-120,oFireAtPlayer);
+            <string>///form_curvedLeft(-160,0,12);
+form_curvedLeft(-160,-80,12);
 </string>
           </argument>
         </arguments>
@@ -295,7 +262,7 @@ make(-32,vh-120,oFireAtPlayer);
     </event>
   </entry>
   <entry>
-    <step>1280</step>
+    <step>1320</step>
     <event>
       <action>
         <libid>1</libid>
@@ -313,7 +280,8 @@ make(-32,vh-120,oFireAtPlayer);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>make(vw/2,16,oCube);
+            <string>///make(vw/2,16,oCube);
+make(vw/2,16,oCube);
 </string>
           </argument>
         </arguments>
@@ -321,7 +289,7 @@ make(-32,vh-120,oFireAtPlayer);
     </event>
   </entry>
   <entry>
-    <step>1520</step>
+    <step>1560</step>
     <event>
       <action>
         <libid>1</libid>

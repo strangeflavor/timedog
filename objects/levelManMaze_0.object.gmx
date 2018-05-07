@@ -101,7 +101,7 @@ timeBetweenMazes = 120;
     make(vw/2,vh/2,fMaze);
     mazes -= 1;
 } else {
-    alarm[2] = timeBetweenMazes;
+    alarm[2] = 60;//timeBetweenMazes;
 }
 </string>
           </argument>

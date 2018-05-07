@@ -3,7 +3,7 @@
   <spriteName>sMeteor</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>1</depth>
   <persistent>0</persistent>
   <parentName>oLargeEnemy</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -39,9 +39,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-
-value = -1;
+            <string>value = -1;
 r = choose(-1,1)*choose(.2,.3,.5);
 
 image_xscale = choose(.75,1,1,1.5);
@@ -62,7 +60,7 @@ if irandom(12) == 1 image_blend = c_gray;
 if irandom(12) == 1 {
     worms = true;
     sprite_index = sWormMeteor;
-    image_speed = choose(.2,.3,.4,.5);
+    image_speed = .1;
     image_index = choose(0,1);
 } else {
     worms = false;
@@ -195,9 +193,9 @@ if HP &lt; 0 kill();
             <kind>1</kind>
             <string>if x &gt; other.x {
     x += 1;
-    image_angle -= choose(8,16,24);
+    image_angle -= choose(4,8,12);
 } else {
-    image_angle += choose(8,16,24);
+    image_angle += choose(4,8,12);
 }
 
 if y &gt; other.y {

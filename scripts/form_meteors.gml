@@ -1,4 +1,4 @@
-/// form_meteors(size,rate);
+/// form_meteors(size,rate,rateDelta);
 trace('starting form meteors');
 
 var arg;
