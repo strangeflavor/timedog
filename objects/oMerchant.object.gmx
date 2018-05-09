@@ -59,7 +59,7 @@ with turretID {
     killWhenOffscreen = false;
     value = 0;
     sprite_index = sMerchantTurret;
-    HP = 240;
+    HP = 18;
 }
 
 pilotID = make(oMerchantPilot);
@@ -241,7 +241,11 @@ if instance_exists(pilotID) {
 if active and instance_exists(oShip) {
     switch state {
         case _WAIT:
-            if objectAge &gt; 30 {
+            //if objectAge &gt; 10 image_angle = lerp(image_angle,0,.99);
+            if objectAge &gt; 30 and instance_exists(turretID) {
+                state = _BACKANDFORTH_HORI;
+                objectAge = 0;
+
                     /*
                     y += .3*sin(objectAge*.02);
     
@@ -259,41 +263,55 @@ if active and instance_exists(oShip) {
                     }
                 }
                 */
-                state = _BACKANDFORTH_HORI;
-                objectAge = 0;
             }
         break;
         case _BACKANDFORTH_HORI:
             enemy_move_patrol(0,2,0);
 
             if instance_exists(turretID) {
-                var freq = 120;
+                var freq = 150;
                 //if objectAge &gt; 360 freq = 90;
     
                 if objectAge &gt; 90 {
                     if objectAge mod freq = 0 {
                         with make(x,turretID.y+100,shot_fork) {
                             sprite_index = sShot1;
+                            rate = 12;
                         }
                     }
                     
-                    if objectAge mod (freq + 20) = 0 {
+                    if (objectAge + 40) mod freq = 0 {
                         with make(x,turretID.y+100,shot_fork) {
                             sprite_index = sShot1;
+                            rate = 9;
                         }
                     }
                 }
 
-                if objectAge &gt; 420 {
+                if objectAge &gt; 360 {
                     if objectAge mod (freq*2+30) = 0 {
                         with make(shot_missileFlurry) {
                             creatorID = other.id;
-                            rounds = 2;
+                            rounds = floor(other.objectAge/360);
                             rate = 9;
                         }
                     }
                 }
             } else {
+                //if shot_last_hit_x &lt; x {
+                if x &lt; vw/2 {
+                    x -= 30;
+                    image_angle = 30;
+                } else {
+                    x += 30;
+                    image_angle = -30;
+                }
+
+                y -= 12;
+                state = _WAIT;
+                objectAge = 0;
+                TweenSimpleRotate(image_angle,0,20,EaseInOutBack);
+                TweenSimpleMove(x,y,vw/2,ystart,60,EaseInOutBack);
                 // destroyed turret
             }
 

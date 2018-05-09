@@ -57,6 +57,8 @@ change_attack_state = 70;
 next_attack_state = _ATK_BEAMS;
 
 attack_started = false;
+
+shot_last_hit_x = -1;
 </string>
           </argument>
         </arguments>
@@ -94,6 +96,7 @@ attack_started = false;
           <argument>
             <kind>1</kind>
             <string>if flashing == 0 flashing = -9;
+shot_last_hit_x = other.x;
 </string>
           </argument>
         </arguments>
