@@ -39,8 +39,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>explosionType = sMedExplosion;
-killWhenOffscreen = true;
+            <string>killWhenOffscreen = true;
 offScreenTimer = 36;
 value = -1;
 image_angle_tween = 0;

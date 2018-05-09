@@ -8,7 +8,7 @@ switch argument0 {
         music_loop(musicTitle);
     break;
     case rTitle:
-        instance_create(-16,-16,oMenu);
+        instance_create(-16,-16,oMenuBird);
         music_loop(musicTitle);
     break;
     case rDeepSpace:

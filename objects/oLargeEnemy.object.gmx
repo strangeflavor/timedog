@@ -41,6 +41,8 @@
             <kind>1</kind>
             <string>value = 10;
 HP = 300;
+explosionType = _LARGE;
+
 flashing = 0;
 
 xdest = room_width/2;

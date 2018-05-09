@@ -31,7 +31,7 @@ active = false;
 invul = false;
 invulTime = -1;
 dangerous = true;
-explosionType = sLargeExplosion;
+explosionType = _SMALL;
 value = -1;
 recoil = 0;
 aimAtPlayer = false;
@@ -49,8 +49,12 @@ explosion_blend = choose(c_yellow,c_red,c_blue,c_white);
 state = _NONE;
 use_state_path = false;
 
-cx = -1;
-cy = -1;
+cx = -1; // center point for orbital movement
+cy = -1; // to do: change this name lol
+
+cx_offset = 0; // offset to add to x/y to get the 'true' center point of the enemy
+cy_offset = 0; // used to correct for cases where 
+
 yStop = vh*2
 
 killWhenBelowScreen = true;
@@ -121,7 +125,27 @@ if active {
     if y &lt; vh + 32*scale {
         sfx(sndDefeatEnemy);
 
-        with make(oExplo) image_blend = other.explosion_blend;
+        switch explosionType {
+            case _SMALL:
+                with make(oExplo) image_blend = other.explosion_blend;
+            break;
+            case _MED:
+                with make(oExplo) image_blend = other.explosion_blend;
+            break;
+            case _LARGE:
+                with make(x+cx_offset,y+cy_offset,oExploChain) {
+                    size = 5;
+                    rate = 5;
+                    xrandom = 150;
+                    yrandom = 40;
+                    explosion = oLargeExplo;
+                    explosion_scale = 3;
+                    explosion_sprite_index = sLargeExplosion;
+                    explosion_image_blend = -1;//other.explosion_blend;
+                }
+                repeat 3 make(x+cx_offset,y+cy_offset,Smoke);
+            break;
+        }
 
         if formationID &gt; -1 {
             if removeEnemyFromFormationTracker(formationID) &lt;= 0 value *= -1;

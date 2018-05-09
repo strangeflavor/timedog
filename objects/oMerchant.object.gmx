@@ -60,6 +60,8 @@ with turretID {
     value = 0;
     sprite_index = sMerchantTurret;
     HP = 18;
+    cy_offset = 133 - 75;
+    
 }
 
 pilotID = make(oMerchantPilot);
@@ -242,7 +244,7 @@ if active and instance_exists(oShip) {
     switch state {
         case _WAIT:
             //if objectAge &gt; 10 image_angle = lerp(image_angle,0,.99);
-            if objectAge &gt; 30 and instance_exists(turretID) {
+            if objectAge &gt; 50 and instance_exists(turretID) {
                 state = _BACKANDFORTH_HORI;
                 objectAge = 0;
 
@@ -310,8 +312,8 @@ if active and instance_exists(oShip) {
                 y -= 12;
                 state = _WAIT;
                 objectAge = 0;
-                TweenSimpleRotate(image_angle,0,20,EaseInOutBack);
-                TweenSimpleMove(x,y,vw/2,ystart,60,EaseInOutBack);
+                TweenSimpleRotate(image_angle,0,30,EaseInOutBack);
+                TweenSimpleMove(x,y,vw/2,ystart,70,EaseInOutBack);
                 // destroyed turret
             }
 

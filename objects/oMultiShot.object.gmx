@@ -45,7 +45,7 @@ image_speed = .2;
 
 HP = 15;
 
-explosionType = sLargeExplosion;
+explosionType = _MED;
 
 makeTurret(0,0,9);
 </string>

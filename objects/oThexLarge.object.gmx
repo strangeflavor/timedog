@@ -39,11 +39,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>explosionType = sMedExplosion;
+            <string>explosionType = _LARGE;
 killWhenOffscreen = true;
 offScreenTimer = 36;
 image_angle_tween = 0;
-explosionType = sLargeExplosion;
 value=3;
 
 image_speed = .2;

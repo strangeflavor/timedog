@@ -251,6 +251,7 @@
       <sprite>sprites\sCloudLeft</sprite>
       <sprite>sprites\sCloudRight</sprite>
     </sprites>
+    <sprite>sprites\sOwlFlies</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="cloudworld">
@@ -523,10 +524,12 @@
         <object>objects\weaponDelivery</object>
       </objects>
       <object>objects\oMenu</object>
+      <object>objects\oMenuBird</object>
       <object>objects\oLevelMenu</object>
       <object>objects\oEraSlider</object>
       <object>objects\oButton</object>
       <object>objects\oLevelButton</object>
+      <object>objects\oTitleBird</object>
       <object>objects\oTitleDog</object>
       <object>objects\gemFeeder</object>
       <object>objects\levelUnlocker</object>
@@ -619,6 +622,8 @@
     <objects name="fx">
       <object>objects\oBubble</object>
       <object>objects\oExplo</object>
+      <object>objects\oLargeExplo</object>
+      <object>objects\oExploChain</object>
       <object>objects\oFXFlare</object>
       <object>objects\oButtonUnlockFX</object>
       <object>objects\oPickupCollectedFX</object>
@@ -677,7 +682,7 @@
     <room>rooms\roomTest</room>
     <room>rooms\rWeaponSelect</room>
   </rooms>
-  <constants number="56">
+  <constants number="59">
     <constant name="scale">global._scale</constant>
     <constant name="vw">global._vw</constant>
     <constant name="vh">global._vh</constant>
@@ -734,6 +739,9 @@
     <constant name="XP">global._XP</constant>
     <constant name="XP_lvl">global._XP_lvl</constant>
     <constant name="currentWorld">global._currentWorld</constant>
+    <constant name="_SMALL">1</constant>
+    <constant name="_MED">2</constant>
+    <constant name="_LARGE">3</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

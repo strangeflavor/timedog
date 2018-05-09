@@ -28,6 +28,7 @@
             <string>image_speed = 0.1;
 image_xscale = 0.1;
 image_yscale = 0.1;
+scale_delta = 0.05;
 
 objectAge = 0;
 done = irandom(8)+8;
@@ -53,8 +54,8 @@ done = irandom(8)+8;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_xscale += 0.05
-image_yscale += 0.05
+            <string>image_xscale += scale_delta;
+image_yscale += scale_delta;
 
 image_blend = merge_color(image_blend,c_white,objectAge*.04);
 
