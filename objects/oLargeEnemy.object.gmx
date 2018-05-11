@@ -128,8 +128,9 @@ shot_last_hit_x = other.x;
     if flashing &gt; 0 flashing -= 1;
 }
 
-if flashing &gt;= 0 {
-    draw_self();
+draw_self();
+if flashing &lt; 0 {
+    draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,0,c_red,.7);
 }
 
 if debug &gt;= 1 {

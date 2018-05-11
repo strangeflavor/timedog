@@ -39,7 +39,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = irandom(image_number);
+            <string>HP = 4;
+image_index = irandom(image_number);
 image_speed = choose(.2,.3,.4);
 r = choose(.1,.15,.2)*choose(1,-1);
 </string>

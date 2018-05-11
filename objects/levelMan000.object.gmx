@@ -63,11 +63,12 @@ addDialog(_NIGHTBIRD,"ya");
 // background
 ////////////////////
 
-make(oBG);
-//kill(oBG);
+//make(oBG);
+kill(oBG);
 //make(oTrenchBG);
 //make(oMoonBG);
 //make(oOceanBG);
+make(oAuroraBG);
 
 alarm[1] = -1;
 kill(oMegaThruster);

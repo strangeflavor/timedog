@@ -40,10 +40,16 @@ cycleDuration = 60*4;
 
 //make(vw/2,vh/2,columnB);
 //make(vw/2+vw/5,vh-vh/4+20,oTitleDog);
-make(vw/2+vw/5,vh-vh/4+20,oTitleBird);
+//make(vw/2,vh/2,oTitleBird);
 
 noisesurf = -1;
 starssurf = -1;
+noiseblendsurf = 4;
+noiseblenddest = 2;
+
+objectAge = 0;
+
+//alarm[11] = choose(60,120,150);
 </string>
           </argument>
         </arguments>
@@ -69,6 +75,71 @@ starssurf = -1;
             <string>///surface_free(noisesurf);
 surface_free(noisesurf);
 surface_free(starssurf);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>switch irandom(3) {
+    case 0:
+        noiseblendsurf = 4;
+        noiseblenddest = 2;
+    break;
+    case 1:
+        noiseblendsurf = 2;
+        noiseblenddest = 2;
+    break;
+    case 2:
+        noiseblendsurf = 3;
+        noiseblenddest = 2;
+    break;
+    case 3:
+        noiseblendsurf = 7;
+        noiseblenddest = 4;
+    break;
+}
+
+alarm[11] = choose(120,150,180);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>objectAge += 1;
 </string>
           </argument>
         </arguments>
@@ -134,10 +205,15 @@ if objectAge == cycleDuration {
 draw_rectangle_colour(0,0,vw,vh,background_color,background_color,c_black,c_black,false);
 bg_color = background_color;
 
+draw_set_blend_mode(bm_normal);
+
+background_hspeed[0] = -2;
+background_hspeed[1] = -1;
 
 ///////////////////////////////////
 // draw starfields
 ///////////////////////////////////
+
 
 if surface_exists(starssurf) {
     surface_set_target(starssurf);
@@ -145,56 +221,80 @@ if surface_exists(starssurf) {
 
     var starfieldAlpha = 1;
 
-    for (var i=0;i&lt;background_vspeed[0]/8;i+=1) {
-        draw_background_tiled_ext(bgStarfield,0,background_y[0]+i*2,2,2,c_blue,starfieldAlpha);
-        draw_background_tiled_ext(bgStarfieldTop,0,background_y[1]+i*3,2,2,c_white,starfieldAlpha);
-    }
-
-    draw_background_tiled_ext(bgStarfield,0,background_y[0],2,2,merge_color(c_white,c_blue,abs(sin(objectAge*.002))),1);
-
-    // draw twinkle blocker circles
-    for (var i=0;i&lt;3;i+=1) {
-        draw_set_blend_mode_ext(9,1);
-        draw_circle(twinkleSpotX[i],twinkleSpotY[i],32,false);
-        draw_set_blend_mode(bm_normal);
-
-        twinkleSpotX[i] += tXVel[i];
-        twinkleSpotY[i] += tYVel[i];
-        if twinkleSpotX[i] &gt;= vw or twinkleSpotX[i] &lt;= 0 {
-            tXVel[i] = -sign(tXVel[i])*choose(1,2,.5);
-        }
-
-        if twinkleSpotY[i] &gt;= vh or twinkleSpotY[i] &lt;= 0 {
-            tYVel[i] = -sign(tYVel[i])*choose(1,2,.5);
-        }
-    }
-
+    draw_background_tiled_ext(bgStarfield,background_x[0],0,2,2,c_blue,starfieldAlpha);
+    draw_background_tiled_ext(bgStarfieldTop,background_x[1],0,2,2,c_red,starfieldAlpha);
     surface_reset_target();
-
-
-    if !ded {
-        draw_set_alpha(starAlpha);
-        draw_surface_stretched(starssurf, 0, 0, display_get_gui_width(), display_get_gui_height());
-        draw_set_alpha(1);
-    }
 }
 
-//draw_noisesurf();
-/*
-draw_set_blend_mode_ext(5,3);
-draw_sprite_ext(sGridBGTall,0,vw/2,vh/2+80,scale,scale,0,merge_color(image_blend,c_white,.5),.5);
 
-draw_set_blend_mode_ext(9,2);
-draw_sprite_ext(sOvalGrad,0,vw/2,120,2,2,0,c_white,.5);
-*/
-/*
-draw_set_blend_mode_ext(6,3);
-draw_sprite_ext(sTitleText,0,vw/2,120,scale,scale,0,c_white,1);
-draw_set_blend_mode_ext(3,7);
-draw_sprite_ext(sRectangleGrad,0,vw/2,vh/2-40,1,1+(irandom(10)-5)*.01,0,c_white,1);
+
+// bird
+image_speed = .2
+//var _c1 = make_color_rgb(255,128,64);
+//var _c2 = make_color_rgb(64,128,255);
+var _c1 = make_color_rgb(0,32,180);
+var _c2 = make_color_rgb(0,0,128);
+//draw_sprite_ext(sOwlFlies,image_index,vw/2,vh/2,2,2,image_angle,merge_color(_c1,_c2,abs(sin(objectAge*.001))),1);
+
+
+
+// draw noise
+
+draw_set_blend_mode_ext(4,2);
+
+if surface_exists(noisesurf) {
+    // draw new noise every n frames
+    surface_set_target(noisesurf);
+    if frac(objectAge/30) == 0 {
+        switch irandom(1) {
+            case 0:
+                //draw_sprite_ext(sBrak,0,vw/2+irandom(256)-128,vh/2+irandom(256)-128,1,1,1,c_white,.5);
+                draw_sprite_ext(sFilmGrain,irandom(2),vw/2+irandom(128)-64,vh/2+irandom(128)-64,choose(1,-1,2,-2),choose(1,-1,2,-2),1,c_white,.2);
+            break;
+            case 1:
+                draw_sprite_ext(sPaper,0,vw/2+irandom(128)-64,vh/2+irandom(128)-64,choose(1,-1,2,-2),choose(1,-1,2,-2),1,c_white,.5);
+            break;
+        }
+    } else {
+        // fade
+        draw_set_alpha(.01);
+        var c_fade = merge_color(bg_color,c_black,0);
+        draw_rectangle_colour(0,0,vw,vh,c_fade,c_fade,c_fade,c_fade,false);
+        draw_set_alpha(1);
+
+        if irandom(400) == 1 {
+            draw_clear_alpha(c2,.01);
+            draw_set_alpha(1);
+            draw_rectangle_color(0,0,vw,vh,c_black,c_black,c_black,c_black,false);
+        }
+    }
+    surface_reset_target();
+
+    //draw_surface_stretched_ext(noisesurf,0,0,display_get_gui_width(), display_get_gui_height(),merge_color(_c1,_c2,abs(sin(objectAge*.001))),1);
+}
+
+
 draw_set_blend_mode(bm_normal);
-draw_sprite_ext(sMenuSubtitle,0,vw/2,vh/2-45,1,1,0,c_white,1);
-*/
+draw_sprite_ext(sOwlFlies,image_index,vw/2,vh/2,2,2,image_angle,c_white,1);//merge_color(_c1,_c2,abs(sin(objectAge*.001))),1);
+draw_set_blend_mode(bm_normal);
+
+starAlpha = .5;
+draw_set_alpha(starAlpha);
+draw_surface_stretched(starssurf, 0, 0, display_get_gui_width(), display_get_gui_height());
+draw_set_alpha(1);
+
+draw_set_blend_mode_ext(4,10);
+draw_surface_stretched_ext(noisesurf,0,0,display_get_gui_width(), display_get_gui_height(),c_white,1)//merge_color(_c1,_c2,abs(sin(objectAge*.001))),.1);
+//makeBlendTester();
+draw_set_blend_mode_ext(5,2);
+//draw_set_blend_mode_ext(0,6);
+draw_sprite_ext(sOwlFlies,image_index,vw/2+nrandom(4),vh/2+nrandom(2),1.7,1.7,image_angle,merge_color(c_gray,c_blue,abs(sin(objectAge*.001))),1);
+
+draw_set_blend_mode(bm_normal);
+
+display_set_gui_size(room_width, room_height);
+
+
 </string>
           </argument>
         </arguments>

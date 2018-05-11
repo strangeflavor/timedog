@@ -247,6 +247,8 @@
       <sprite>sprites\sItemUI</sprite>
     </sprites>
     <sprites name="levels">
+      <sprite>sprites\sAurora</sprite>
+      <sprite>sprites\sAurora2</sprite>
       <sprite>sprites\sTrench</sprite>
       <sprite>sprites\sCloudLeft</sprite>
       <sprite>sprites\sCloudRight</sprite>
@@ -478,6 +480,7 @@
     <shader type="GLSLES">shaders\shd_shockwave.shader</shader>
     <shader type="GLSLES">shaders\sh_saturation.shader</shader>
     <shader type="GLSLES">shaders\shader_blur.shader</shader>
+    <shader type="GLSLES">shaders\sh_wavy.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fStapler</font>
@@ -504,6 +507,24 @@
       <object>objects\levelManager</object>
       <object>objects\levelManDebug</object>
       <object>objects\levelMan119</object>
+    </objects>
+    <objects name="level">
+      <objects name="ocean">
+        <object>objects\oOceanBG</object>
+        <object>objects\oWaters</object>
+        <object>objects\obj_stars</object>
+        <object>objects\obj_camera</object>
+        <object>objects\obj_worldspawn</object>
+      </objects>
+      <object>objects\oGrandpaIntro</object>
+      <object>objects\oGrandpaBG</object>
+      <object>objects\oBG</object>
+      <object>objects\oKirBG</object>
+      <object>objects\oMoonBG</object>
+      <object>objects\oAuroraBG</object>
+      <object>objects\oCloudsBG</object>
+      <object>objects\oTrenchBG</object>
+      <object>objects\oPedroBG</object>
     </objects>
     <objects name="gameflow">
       <object>objects\equipSplash</object>
@@ -636,23 +657,6 @@
     <objects name="TweenGMS">
       <object>objects\obj_SharedTweener</object>
     </objects>
-    <objects name="level">
-      <objects name="ocean">
-        <object>objects\oOceanBG</object>
-        <object>objects\oWaters</object>
-        <object>objects\obj_stars</object>
-        <object>objects\obj_camera</object>
-        <object>objects\obj_worldspawn</object>
-      </objects>
-      <object>objects\oGrandpaIntro</object>
-      <object>objects\oGrandpaBG</object>
-      <object>objects\oBG</object>
-      <object>objects\oKirBG</object>
-      <object>objects\oMoonBG</object>
-      <object>objects\oCloudsBG</object>
-      <object>objects\oTrenchBG</object>
-      <object>objects\oPedroBG</object>
-    </objects>
     <object>objects\obj_vignette_noise</object>
     <object>objects\o_shader_start</object>
     <object>objects\Smoke</object>
@@ -673,8 +677,8 @@
   </timelines>
   <rooms name="rooms">
     <room>rooms\rSetup</room>
-    <room>rooms\rGrandpa</room>
     <room>rooms\rTitle</room>
+    <room>rooms\rGrandpa</room>
     <room>rooms\rLevelSelect</room>
     <room>rooms\rShop</room>
     <room>rooms\rDeepSpace</room>

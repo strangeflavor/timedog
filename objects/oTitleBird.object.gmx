@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = .1;
+            <string>image_speed = .2;
 image_index = 0;
+image_scale(2);
 objectAge = 0;
 </string>
           </argument>
@@ -79,7 +80,7 @@ objectAge += 1;
             <string>//draw_sprite(sprite_index,0,x,y);
 var c1 = make_color_rgb(255,128,64);
 var c2 = make_color_rgb(64,128,255);
-draw_sprite_ext(sprite_index,image_index,x,y,1,1,image_angle,merge_color(c_black,c2,abs(sin(objectAge*.001))),1);
+draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,merge_color(c_black,c2,abs(sin(objectAge*.001))),1);
 //draw_sprite_ext(sprite_index,2,x,y,1,1,image_angle,merge_color(c_white,c_black,abs(sin(objectAge*.001))),1);
 </string>
           </argument>
