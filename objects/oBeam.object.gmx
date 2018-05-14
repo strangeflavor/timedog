@@ -28,12 +28,18 @@
             <string>image_blend = c_aqua;
 duration = 60*5;
 dangerous = false;
+followOwner = true;
 objectAge = 0;
+appearDuration = .2; // seconds
+startDisappear = false;
+disappearing = false;
+destroyAge = -1;
 
 xo = 0;
 yo = 0;
 
 image_xscale = 0;
+image_xscale_dest = 1;
 image_yscale = 1;
 </string>
           </argument>
@@ -57,14 +63,24 @@ image_yscale = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(owner) {
-    x = owner.x + xo;
-} else {
-    kill(self);
+            <string>// start disappearing if the owner is killed or if duration is reached
+if !disappearing {
+    if !instance_exists(owner) or (duration &gt; -1 and objectAge &gt; duration) {
+        appearDuration *= .75;
+        startDisappear = true;
+        disappearing = true;
+        destroyAge = objectAge + appearDuration*60 - 4;
+
+        dangerous = false;
+    } else {
+        if followOwner {
+            x = owner.x + xo;
+            y = owner.y;
+        }
+    }
 }
 
-if  (duration &gt; -1 and objectAge &gt; duration) kill(self);
-
+if destroyAge &gt; -1 and objectAge &gt; destroyAge kill(self);
 objectAge += 1;
 </string>
           </argument>
@@ -90,28 +106,30 @@ objectAge += 1;
             <kind>1</kind>
             <string>if objectAge == 1 make(x,y,oFXFlare);
 
+// start laser appears tween
 if objectAge == 3 {
-    image_xscale_tween = TweenFire(id, "", EaseInExpo, TWEEN_MODE_ONCE, true, 0.0, .5, .1, 1);
+    image_xscale_tween = TweenFire(id, "", EaseInOutBounce, TWEEN_MODE_ONCE, true, 0.0, appearDuration, .025, image_xscale_dest);
     image_xscale = TweenCalc(image_xscale_tween);
 }
 
-if objectAge &gt; 9 {
-    if TweenExists(image_xscale_tween) {
-        image_xscale = TweenCalc(image_xscale_tween);
-    }
+// start laser disappears tween
+if startDisappear {
+    image_xscale_tween = TweenFire(id, "", EaseInOutBounce, TWEEN_MODE_ONCE, true, 0.0, appearDuration, image_xscale_dest, 0);
+    startDisappear = false;
 }
 
-if objectAge &gt; 36 {
+// do either of the above tweens, if they exist
+if objectAge &gt; 9 {
+    if TweenExists(image_xscale_tween) image_xscale = TweenCalc(image_xscale_tween);
+}
+
+if objectAge &gt; (appearDuration*60) - 3 {
     dangerous = true;
-    //image_blend = make_color_rgb(64,128+irandom(64),128+irandom(128));
     image_blend = c_aqua;
     if frac(objectAge/3) == 0 image_blend = merge_color(c_dkgray,image_blend,.25)
 }
 
-
-if instance_exists(owner) {
-    if owner.aimAtPlayer image_angle = owner.image_angle;
-}
+if instance_exists(owner) if owner.aimAtPlayer image_angle = owner.image_angle;
 </string>
           </argument>
         </arguments>
@@ -134,12 +152,16 @@ if instance_exists(owner) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for (var i=0;i&lt;image_xscale*3;i+=1) {
-    draw_sprite_ext(sprite_index,0,x+irandom(image_xscale*12)-image_xscale*6,y,image_xscale,image_yscale,image_angle,choose(c_white,c_red,c_blue,c_lime),1);
+            <string>if !disappearing {
+    for (var i=0;i&lt;image_xscale*3;i+=1) {
+        //image_blend = merge_colour(c_red,c_yellow,wave(0,1,.2,0));
+        image_blend = merge_colour($FF0000,$0000FF,wave(0,1,.5,0));
+        draw_sprite_ext(sprite_index,0,x+nrandom(image_xscale/6),y,image_xscale,image_yscale,image_angle,image_blend,1);
+    }
 }
 
-//draw_sprite_ext(sprite_index,0,x,y,image_xscale,image_yscale,0,image_blend,1);
-draw_sprite_ext(sprite_index,0,x,y,image_xscale+(irandom(6)-3)*.05,image_yscale,image_angle,c_white,1);
+//draw_sprite_ext(sprite_index,0,x,y,image_xscale+(irandom(6)-3)*.05,image_yscale,image_angle,c_white,1);
+draw_sprite_ext(sprite_index,0,x,y,image_xscale+wave(image_xscale_dest/4,-image_xscale_dest/4,30,0),image_yscale,image_angle,c_white,1);
 </string>
           </argument>
         </arguments>

@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_blend = choose(c_yellow,c_red,c_blue,c_white);
+            <string>image_blend = choose(c_yellow,c_red,c_blue,c_white,c_white);
 image_speed = 0.35;
 scale_delta = choose(0,.05,.1);;
 

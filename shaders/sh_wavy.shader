@@ -22,9 +22,12 @@ varying vec2 pos;
 uniform vec4 texuvs;
 uniform float time;
 
+uniform float xamp;
+uniform float yamp;
+
 void main()
 {
-    float _x = v_vTexcoord.x + sin(time + pos.y * 0.05 + pos.x * 0.1) * texuvs.z * 0.01 * (1.0-(v_vTexcoord.y - texuvs.y) * texuvs.w);
+    float _x = v_vTexcoord.x + sin(time + pos.y * yamp + pos.x * 0.1) * texuvs.z * xamp * (1.0-(v_vTexcoord.y - texuvs.y) * texuvs.w);
     _x = clamp(_x ,texuvs.x, texuvs.x + texuvs.z);  //keep _x inside of sprite
     gl_FragColor = v_vColour * texture2D( gm_BaseTexture, vec2(_x,v_vTexcoord.y) );
 }

@@ -25,8 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_number(oBG) &gt; 1 {
+            <string>/*
+if instance_number(oBG) &gt; 1 {
     kill();
+}
+*/
+
+if object_is_ancestor(object_index,oBG) {
+    with oBG if id != other.id kill();
 }
 
 objectAge = 0;

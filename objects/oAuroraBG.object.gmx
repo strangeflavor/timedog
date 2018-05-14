@@ -43,6 +43,9 @@
 
 sh_time = shader_get_uniform(sh_wavy, "time");
 sh_texuvs = shader_get_uniform(sh_wavy, "texuvs");
+
+sh_yamp = shader_get_uniform(sh_wavy, "yamp");
+sh_xamp = shader_get_uniform(sh_wavy, "xamp");
 var _uvs = sprite_get_uvs(wavy_sprite,0);
 tex_x = _uvs[0];
 tex_y = _uvs[1];
@@ -87,36 +90,32 @@ if ded {
 }
 
 bg_color = merge_color(c1,c2,abs(sin(objectAge*bg_color_rate)));
-draw_set_color(bg_color);
-draw_rectangle(0,0,vw,vh,false);
+//draw_rectangle_colour(0,0,vw,vh,c_black,c_black,bg_color,bg_color,false);
 
 ///////////////////////////////////
 // draw starfields
 ///////////////////////////////////
 
+//makeBlendTester();
 
-///////////////////////////////////
-// draw starfields
-///////////////////////////////////
+draw_rectangle_colour(0,0,vw,vh,c_black,c_black,bg_color,bg_color,false);
+draw_set_blend_mode_ext(2,0);
 
 if surface_exists(starssurf) {
     surface_set_target(starssurf);
     draw_clear_alpha(c_white,0)
 
-    var starfieldAlpha = 1;
+    var starfieldAlpha = .25;
 
     for (var i=0;i&lt;background_vspeed[0]/8;i+=1) {
-        draw_background_tiled_ext(bgStarfield,0,background_y[0]+i*2,2,2,c_blue,starfieldAlpha);
+        draw_background_tiled_ext(bgStarfield,0,background_y[0]+i*2,2,2,c_lime,starfieldAlpha);
         draw_background_tiled_ext(bgStarfieldTop,0,background_y[1]+i*3,2,2,c_white,starfieldAlpha);
     }
 
-    draw_background_tiled_ext(bgStarfield,0,background_y[0],2,2,merge_color(c_white,c_blue,abs(sin(objectAge*.002))),1);
+    //draw_background_tiled_ext(bgPurpleStars,0,background_y[0],2,2,merge_color(c_white,c_blue,abs(sin(objectAge*.002))),1);
 
     // draw twinkle blocker circles
     for (var i=0;i&lt;3;i+=1) {
-        //draw_set_color(c_black);
-        //make(surfaceTester); //7,9
-        //draw_set_blend_mode_ext(surfaceTester.srcmode,surfaceTester.destmode);
         draw_set_blend_mode_ext(9,1);
         draw_circle(twinkleSpotX[i],twinkleSpotY[i],32,false);
         draw_set_blend_mode(bm_normal);
@@ -142,33 +141,30 @@ if surface_exists(starssurf) {
     }
 }
 
-
 var starfieldColor = merge_color(c_gray,make_color_rgb(16,32,98),abs(sin(objectAge*.002)));
 //makeBlendTester();
-//draw_background_tiled_ext(bgMoon,0,background_y[0],2,2,starfieldColor,1);
-//draw_sprite_skew_ext(sAurora,0,vw/2,0,1.1,1.1,0,c_white,1,0,5*sin(objectAge*.1))
-//draw_sprite_ext(sAurora,0,vw/2,0,1,1,0,c_white,1);
 
-shader_set(sh_seaweed);
+draw_set_blend_mode_ext(3,5);
+
+shader_set(sh_wavy);
 shader_set_uniform_f(sh_time, time);
 shader_set_uniform_f(sh_texuvs, tex_x, tex_y, tex_w, tex_h);
-draw_sprite_ext(wavy_sprite,0,0,0,1,1,0,c_white,1);
+shader_set_uniform_f(sh_xamp, wave(0.05,0.01,9,0));
+shader_set_uniform_f(sh_yamp, 0.02);
+draw_sprite_ext(wavy_sprite,0,vw/2,wave(50,-50,12,0),1,1,0,c_white,1);
 shader_reset();
-time += 0.2;
-
-
+time += 0.1;
 
 ///////////////////////////////////
 // draw to and draw noise surface w/ blend mode
 ///////////////////////////////////
-//draw_moonnoisesurf();
-
 
 // dark edges
 //makeBlendTester();
 draw_set_blend_mode_ext(9,5);
 draw_circle_colour(vw/2+nrandom(32),vh/2+nrandom(32),vh*2,c_white,c_black,false);
 draw_set_blend_mode(bm_normal);
+
 ///////////////////////////////////
 // draw aura around player ship
 ///////////////////////////////////

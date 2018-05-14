@@ -132,8 +132,25 @@ if instance_exists(pilotID) pilotID.flee = true;
           <argument>
             <kind>1</kind>
             <string>//s0 = make(x,y-170,oSatellite);
-s1 = make(x-150,y-140,oSatellite);
-s2 = make(x+150,y-140,oSatellite);
+//s1 = make(x-150,y-140,oSatellite);
+//s2 = make(x+150,y-140,oSatellite);
+
+//s0 = make(x - 80,y+8,oSatellite);
+//s1 = make(x - 0,y+8,oSatellite);
+//s2 = make(x + 80,y+8,oSatellite);
+
+with make(x,y+8,oSatellite) {
+    if x &lt; vw/2 direction = 0 else direction = 180;
+    speed = 5;
+
+    //var xd = 0;
+    //if x &lt; vw/2 xd = 120 else xd = -120;
+    //TweenSimpleMove(x,y,x+xd,y,.5,EaseInOutElastic)
+}
+
+madeSatellite += 1;
+
+if madeSatellite &lt;= 6 alarm[1] = 12;
 </string>
           </argument>
         </arguments>
@@ -244,27 +261,39 @@ if active and instance_exists(oShip) {
     switch state {
         case _WAIT:
             //if objectAge &gt; 10 image_angle = lerp(image_angle,0,.99);
-            if objectAge &gt; 50 and instance_exists(turretID) {
-                state = _BACKANDFORTH_HORI;
-                objectAge = 0;
-
-                    /*
-                    y += .3*sin(objectAge*.02);
-    
-                    if objectAge &gt; 90 and midDistance &lt; 50 midDistance += 1;
-    
-    
-    
-                    if instance_exists(turretID) {
-                        var freq = 36;
-                        if (objectAge &gt; 240 and objectAge &lt; 480) or objectAge &gt; 800 freq = 24;
-    
-                    } else {
-                        state = _BACKANDFORTH_HORI;
+            if objectAge &gt; 50 {
+                if instance_exists(turretID) {
+                    state = _BACKANDFORTH_HORI;
+                    objectAge = 0;
+                } else {
+                    if instance_exists(bottomID) {
+                        direction = 0;
+                        speed = 0;
+                        state = _MOVEVERT;
                         objectAge = 0;
                     }
                 }
-                */
+            }
+        break;
+        case _MOVEVERT:
+            y += .3*sin(objectAge*.02);
+
+            if objectAge &gt; 30 and midDistance &lt; 50 midDistance = lerp(midDistance,52,.2)
+            if objectAge == 32 {
+                madeSatellite = 0;
+                alarm[1] = 30;
+            }
+
+            if objectAge &gt; 150 {
+                if y &gt; -200 y -= 1 + objectAge/40;;
+            }
+
+            if instance_exists(bottomID) {
+                var freq = 36;
+                if (objectAge &gt; 240 and objectAge &lt; 480) or objectAge &gt; 800 freq = 24;
+            } else {
+                state = _BACKANDFORTH_HORI;
+                objectAge = 0;
             }
         break;
         case _BACKANDFORTH_HORI:
@@ -313,7 +342,10 @@ if active and instance_exists(oShip) {
                 state = _WAIT;
                 objectAge = 0;
                 TweenSimpleRotate(image_angle,0,30,EaseInOutBack);
-                TweenSimpleMove(x,y,vw/2,ystart,70,EaseInOutBack);
+
+                var _xdest;
+                if x &lt; vw/2 _xdest = vw/3 else _xdest = vw - vw/3;
+                TweenSimpleMove(x,y,_xdest,ystart-40,70,EaseInOutBack);
                 // destroyed turret
             }
 

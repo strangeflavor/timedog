@@ -86,6 +86,21 @@ with make(vw/2+_xoffset,32,oCrab) {
     direction = 270 + irandom(60)-30;
     speed = 5;
 }
+#define form_laserCrab
+/// form_lasercrab(xoffset);
+trace('starting form lasercrab');
+
+var arg;
+for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
+
+var _xoffset = arg[0];
+if _xoffset == -1 _xoffset = 0;
+
+with make(vw/2+_xoffset,32,oLaserCrab) {
+    direction = 270 + irandom(60)-30;
+    speed = 24;
+}
+
 #define form_largeAimer
 /// form_largeAimer(xoffset);
 trace('starting form_largeAimer');
