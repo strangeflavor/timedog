@@ -571,6 +571,7 @@
       <object>objects\enemyTracker</object>
       <object>objects\oTimelinePlayer</object>
       <object>objects\oTimelineLooper</object>
+      <object>objects\oBezier</object>
     </objects>
     <objects name="debug">
       <object>objects\oTuner</object>
@@ -628,7 +629,6 @@
       <object>objects\mazeEater</object>
       <object>objects\mazeEndpoint</object>
       <object>objects\oCube</object>
-      <object>objects\object132</object>
     </objects>
     <objects name="shots">
       <object>objects\shot_pattern</object>
@@ -660,6 +660,7 @@
     </objects>
     <object>objects\obj_vignette_noise</object>
     <object>objects\o_shader_start</object>
+    <object>objects\controlPoint</object>
     <object>objects\Smoke</object>
   </objects>
   <timelines name="timelines">

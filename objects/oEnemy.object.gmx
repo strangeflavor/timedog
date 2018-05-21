@@ -49,29 +49,39 @@ explosion_blend = choose(c_yellow,c_red,c_blue,c_white);
 state = _NONE;
 use_state_path = false;
 
-cx = -1; // center point for orbital movement
-cy = -1; // to do: change this name lol
-
-cx_offset = 0; // offset to add to x/y to get the 'true' center point of the enemy
-cy_offset = 0; // used to correct for cases where 
-
 yStop = vh*2
 
 killWhenBelowScreen = true;
 killWhenOffscreen = true;
 offScreenTimer = 36;
+waitTime = -1;
+
+cx_offset = 0; // offset to add to x/y to get the 'true' center point of the enemy
+cy_offset = 0; // NB, change the name, this is too similar to cx and cy but unrelated
+
 
 phaseCreateVars();
+
+// path stuff
 
 path = -1;
 path_endtime = -1;
 path_endaction = path_action_continue;
 killWhenPathComplete = false;
 
-waitTime = -1;
+// orbital stuff
 
 Angle = 0; // Current orbital angle
 speed_sign = 1;
+
+cx = -1; // center point for orbital movement
+cy = -1; // to do: change this name lol
+
+// bezier curve stuff
+
+followBezier = false;
+bezierID = -1;
+bezierPos = 0;
 
 ///////////////////////////
 // formation stuff
@@ -296,7 +306,6 @@ if waitTime &lt; 0 {
         }
     }
 
-    //if invulTime &gt; 0 and invul {
     if invul and invulTime &gt; -1 {
         invulTime -= 1;
         if invulTime &lt; 0 invul = false;
@@ -323,7 +332,27 @@ if waitTime &lt; 0 {
             if killWhenPathComplete kill();
         }
     }
+    
+    //////////////////////////
+    // handle bezier curve
+    //////////////////////////
 
+    if followBezier {
+        var bp;
+
+        if objectAge == 1 {
+            bp = Bezier_Point_Find(0,bezierID.cp0.x,bezierID.cp0.y,bezierID.cp1.x,bezierID.cp1.y,bezierID.cp2.x,bezierID.cp2.y,bezierID.cp3.x,bezierID.cp3.y);
+            x = bp[0];
+            y = bp[1];
+        } else {
+            bp = Bezier_Point_Find(bezierPos,bezierID.cp0.x,bezierID.cp0.y,bezierID.cp1.x,bezierID.cp1.y,bezierID.cp2.x,bezierID.cp2.y,bezierID.cp3.x,bezierID.cp3.y);
+            bezierPos += .01;
+            if bezierPos &gt; 1 bezierPos = 0;
+            direction = point_direction(x,y,bp[0],bp[1]);
+            speed = 10;
+        }
+    }
+    
     //////////////////////////
     // run phase
     //////////////////////////

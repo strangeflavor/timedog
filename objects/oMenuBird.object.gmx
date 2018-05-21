@@ -230,13 +230,8 @@ if surface_exists(starssurf) {
 
 // bird
 image_speed = .2
-//var _c1 = make_color_rgb(255,128,64);
-//var _c2 = make_color_rgb(64,128,255);
 var _c1 = make_color_rgb(0,32,180);
 var _c2 = make_color_rgb(0,0,128);
-//draw_sprite_ext(sOwlFlies,image_index,vw/2,vh/2,2,2,image_angle,merge_color(_c1,_c2,abs(sin(objectAge*.001))),1);
-
-
 
 // draw noise
 
@@ -287,14 +282,38 @@ draw_set_blend_mode_ext(4,10);
 draw_surface_stretched_ext(noisesurf,0,0,display_get_gui_width(), display_get_gui_height(),c_white,1)//merge_color(_c1,_c2,abs(sin(objectAge*.001))),.1);
 //makeBlendTester();
 draw_set_blend_mode_ext(5,2);
-//draw_set_blend_mode_ext(0,6);
 draw_sprite_ext(sOwlFlies,image_index,vw/2+nrandom(4),vh/2+nrandom(2),1.7,1.7,image_angle,merge_color(c_gray,c_blue,abs(sin(objectAge*.001))),1);
 
 draw_set_blend_mode(bm_normal);
 
 display_set_gui_size(room_width, room_height);
 
+/*
+if !instance_exists(controlPoint) {
+    with make(oMiniThex) followBezier = true;
+    cp0 = make(vw/2-64,vh/2,controlPoint);
+    cp1 = make(vw/2-16,vh/2,controlPoint);
+    cp2 = make(vw/2+16,vh/2,controlPoint);
+    cp3 = make(vw/2+64,vh/2,controlPoint);
+}
+*/
+if !instance_exists(controlPoint) {
+    bID = make(oBezier);
+    with make(oMiniThex) {
+        depth = -6;
+        followBezier = true;
+        bezierID = other.bID;
+    }
+}
+/*
+var ww = 20;
 
+for (i=0;i&lt;ww;i+=1) {
+    a = Bezier_Point_Find(i*.05,cp0.x,cp0.y,cp1.x,cp1.y,cp2.x,cp2.y,cp3.x,cp3.y);
+    draw_set_color(c_red);
+    draw_circle(a[0],a[1],4,false);
+}
+*/
 </string>
           </argument>
         </arguments>
