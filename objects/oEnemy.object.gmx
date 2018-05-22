@@ -82,6 +82,8 @@ cy = -1; // to do: change this name lol
 followBezier = false;
 bezierID = -1;
 bezierPos = 0;
+bezierSpeed = 7;
+bezierSpeedSign = 1;
 
 ///////////////////////////
 // formation stuff
@@ -339,18 +341,71 @@ if waitTime &lt; 0 {
 
     if followBezier {
         var bp;
+        bp = Bezier_Point_Find(bezierPos,bezierID.cp0.x,bezierID.cp0.y,bezierID.cp1.x,bezierID.cp1.y,bezierID.cp2.x,bezierID.cp2.y,bezierID.cp3.x,bezierID.cp3.y);
+
+        var speed_per_tick = bezierSpeedSign*bezierSpeed; //constant speed you want the object to move at
 
         if objectAge == 1 {
-            bp = Bezier_Point_Find(0,bezierID.cp0.x,bezierID.cp0.y,bezierID.cp1.x,bezierID.cp1.y,bezierID.cp2.x,bezierID.cp2.y,bezierID.cp3.x,bezierID.cp3.y);
             x = bp[0];
             y = bp[1];
         } else {
-            bp = Bezier_Point_Find(bezierPos,bezierID.cp0.x,bezierID.cp0.y,bezierID.cp1.x,bezierID.cp1.y,bezierID.cp2.x,bezierID.cp2.y,bezierID.cp3.x,bezierID.cp3.y);
-            bezierPos += .01;
-            if bezierPos &gt; 1 bezierPos = 0;
-            direction = point_direction(x,y,bp[0],bp[1]);
-            speed = 10;
+            x_goal = bp[0];
+            y_goal = bp[1];
+
+            if bezierSpeedSign &gt; 0 {
+                delta_x = x_goal - x;
+                delta_y = y_goal - y;
+            } else {
+                delta_x = x - x_goal;
+                delta_y = y - y_goal;
+            }
+            //trace('delta x:'+string(delta_x));
+
+            goal_dist = sqrt( (delta_x * delta_x) + (delta_y * delta_y) )
+            //trace('goal dist: '+string(goal_dist)+','+string(speed_per_tick));
+
+            if (abs(goal_dist) &gt; abs(speed_per_tick)) {
+                // move twd goal
+                ratio = speed_per_tick / goal_dist
+                x_move = ratio * delta_x  
+                y_move = ratio * delta_y
+                x = x_move + x;
+                y = y_move + y;
+            } else {
+                // reached goal, advance position
+                //trace('*** reached goal position');
+                x = x_goal;
+                y = y_goal;
+
+                // if at the end of the path..
+
+                if bezierPos &gt; 1 or bezierPos &lt; 0 {
+                    //trace('*** reached end of path');
+                    bp = Bezier_Point_Find(bezierPos,bezierID.cp0.x,bezierID.cp0.y,bezierID.cp1.x,bezierID.cp1.y,bezierID.cp2.x,bezierID.cp2.y,bezierID.cp3.x,bezierID.cp3.y);
+                    bezierSpeedSign *= -1;
+
+                    /*
+                    bezierPos = 0;
+                    bp = Bezier_Point_Find(bezierPos,bezierID.cp0.x,bezierID.cp0.y,bezierID.cp1.x,bezierID.cp1.y,bezierID.cp2.x,bezierID.cp2.y,bezierID.cp3.x,bezierID.cp3.y);
+                    x = bp[0];
+                    y = bp[1];
+                    */
+                }
+
+                bezierPos += bezierSpeedSign*.1;
+            }
+
+
         }
+        /*
+        bp = Bezier_Point_Find(bezierPos,bezierID.cp0.x,bezierID.cp0.y,bezierID.cp1.x,bezierID.cp1.y,bezierID.cp2.x,bezierID.cp2.y,bezierID.cp3.x,bezierID.cp3.y);
+        x = bp[0];
+        y = bp[1];
+        bezierPos += .01;
+        if bezierPos &gt; 1 bezierPos = 0;
+        //direction = point_direction(x,y,bp[0],bp[1]);
+        //speed = 6;
+        */
     }
     
     //////////////////////////
