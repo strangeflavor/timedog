@@ -347,6 +347,7 @@
     </scripts>
     <scripts name="bullets">
       <script>scripts\shoot_spray.gml</script>
+      <script>scripts\shoot_circle.gml</script>
     </scripts>
     <scripts name="TweenGMS">
       <scripts name="Core">

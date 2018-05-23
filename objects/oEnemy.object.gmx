@@ -345,6 +345,8 @@ if waitTime &lt; 0 {
 
         var speed_per_tick = bezierSpeedSign*bezierSpeed; //constant speed you want the object to move at
 
+        trace(bezierPos);
+        
         if objectAge == 1 {
             x = bp[0];
             y = bp[1];
@@ -379,7 +381,7 @@ if waitTime &lt; 0 {
 
                 // if at the end of the path..
 
-                if bezierPos &gt; 1 or bezierPos &lt; 0 {
+                if (bezierPos &gt;= 1 and bezierSpeedSign &gt; 0) or (bezierPos &lt;= 0 and bezierSpeedSign &lt; 0) {
                     //trace('*** reached end of path');
                     bp = Bezier_Point_Find(bezierPos,bezierID.cp0.x,bezierID.cp0.y,bezierID.cp1.x,bezierID.cp1.y,bezierID.cp2.x,bezierID.cp2.y,bezierID.cp3.x,bezierID.cp3.y);
                     bezierSpeedSign *= -1;
@@ -394,7 +396,6 @@ if waitTime &lt; 0 {
 
                 bezierPos += bezierSpeedSign*.1;
             }
-
 
         }
         /*
