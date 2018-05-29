@@ -192,6 +192,7 @@
       <sprite>sprites\sCube</sprite>
       <sprite>sprites\sMox</sprite>
       <sprite>sprites\sGridShip</sprite>
+      <sprite>sprites\sCircles</sprite>
       <sprite>sprites\sCrab</sprite>
     </sprites>
     <sprites name="fx">
@@ -611,6 +612,7 @@
       <object>objects\oFireAtPlayer</object>
       <object>objects\oPopo</object>
       <object>objects\oMox</object>
+      <object>objects\oCircles</object>
       <object>objects\oCrab</object>
       <object>objects\oLaserCrab</object>
       <object>objects\oMeteor</object>

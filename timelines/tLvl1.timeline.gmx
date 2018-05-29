@@ -46,7 +46,28 @@
           <argument>
             <kind>1</kind>
             <string>///form_boxChains0(-64,vw/2,8);
-form_boxChains0(-64,vw/2,8);
+//form_boxChains0(-64,vw/2,8);
+
+/*
+with make(vw/2,-64,oCircles) {
+    phase[0] = enemy_move;
+    phaseArguments[0,0] = 270;
+    phaseArguments[0,1] = 5; // speed
+    phaseCondition[0] = _PHASE_CONDITION_Y;
+    phaseConditionArguments[0,0] = 100;
+
+    phase[1] = enemy_stop;
+    phaseCondition[1] = _PHASE_CONDITION_TIME;
+    phaseConditionArguments[1,0] = 120;
+
+    phase[2] = enemy_move;
+    phaseArguments[2,0] = 90;
+    phaseArguments[2,1] = 6; // speed
+    phaseCondition[2] = _PHASE_CONDITION_Y;
+    phaseConditionArguments[2,0] = -100;
+}
+*/
+form_circles(-1,-1,-1,80,-1,30);
 </string>
           </argument>
         </arguments>

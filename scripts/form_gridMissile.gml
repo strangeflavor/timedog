@@ -115,3 +115,26 @@ with make(vw/2+_xoffset,-64,oWaiter) {
     changeInto = oMassFireAtPlayer;
     changeAge = other._wait;
 }
+#define form_circles
+/// form_circles(xoffset,ystart,xdest,ydest,wait,moveduration);
+trace('starting form circles');
+
+var arg;
+for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
+
+var _xoffset = arg[0];
+var _ystart = arg[1];
+if _xoffset == -1 _xoffset = 0;
+if _ystart == -1 _ystart = -64;
+
+var _xoffsetDest = arg[2];
+var _ydest = arg[3];
+var _wait = arg[4];
+if _wait < 1 _wait = 1;
+var _moveduration = arg[5];
+
+var eID = make(vw/2+_xoffset,_ystart,oCircles);
+eID._xoffsetDest = _xoffsetDest;
+eID.ydest = _ydest;
+eID.moveduration = _moveduration;
+eID.alarm[11] = _wait;
