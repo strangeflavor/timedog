@@ -25,10 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>cp0 = make(vw/2-80,vh/2,controlPoint);
+            <string>/*
+cp0 = make(vw/2-80,vh/2,controlPoint);
 cp1 = make(vw/2-20,vh/2+30,controlPoint);
 cp2 = make(vw/2+20,vh/2,controlPoint);
 cp3 = make(vw/2+80,vh/2+30,controlPoint);
+*/
 </string>
           </argument>
         </arguments>

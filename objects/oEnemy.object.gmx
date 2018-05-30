@@ -288,7 +288,7 @@ if waitTime &lt; 0 {
     //////////////////////////
 
     objectAge += 1;
-    //if HP &lt; 0 kill(self);
+
     if killWhenBelowScreen {
        if y &gt; (vh + 64*scale) {
         value = 0;
@@ -383,10 +383,23 @@ if waitTime &lt; 0 {
 
                 if (bezierPos &gt;= 1 and bezierSpeedSign &gt; 0) or (bezierPos &lt;= 0 and bezierSpeedSign &lt; 0) {
                     //trace('*** reached end of path');
-                    bp = Bezier_Point_Find(bezierPos,bezierID.cp0.x,bezierID.cp0.y,bezierID.cp1.x,bezierID.cp1.y,bezierID.cp2.x,bezierID.cp2.y,bezierID.cp3.x,bezierID.cp3.y);
-                    bezierSpeedSign *= -1;
+                    // new path!
+                    kill(bezierID);
+                    with make(oBezier) {
+                        cp0 = make(vw/2-80,vh/2,controlPoint);
+                        cp1 = make(vw/2-20,vh/2+30,controlPoint);
+                        cp2 = make(vw/2+20,vh/2,controlPoint);
+                        cp3 = make(vw/2+80,vh/2+30,controlPoint);
+                    }
 
                     /*
+                    // reverse speed
+                    bp = Bezier_Point_Find(bezierPos,bezierID.cp0.x,bezierID.cp0.y,bezierID.cp1.x,bezierID.cp1.y,bezierID.cp2.x,bezierID.cp2.y,bezierID.cp3.x,bezierID.cp3.y);
+                    bezierSpeedSign *= -1;
+                    */
+
+                    /*
+                    // reset to start
                     bezierPos = 0;
                     bp = Bezier_Point_Find(bezierPos,bezierID.cp0.x,bezierID.cp0.y,bezierID.cp1.x,bezierID.cp1.y,bezierID.cp2.x,bezierID.cp2.y,bezierID.cp3.x,bezierID.cp3.y);
                     x = bp[0];

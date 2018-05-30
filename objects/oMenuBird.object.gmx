@@ -297,6 +297,8 @@ if !instance_exists(controlPoint) {
     cp3 = make(vw/2+64,vh/2,controlPoint);
 }
 */
+
+/*
 if !instance_exists(controlPoint) {
     bID = make(oBezier);
     with make(oMiniThex) {
@@ -305,6 +307,7 @@ if !instance_exists(controlPoint) {
         bezierID = other.bID;
     }
 }
+*/
 /*
 var ww = 20;
 

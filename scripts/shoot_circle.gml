@@ -115,4 +115,3 @@ for (bulletloop = 0; bulletloop < numbullets; bulletloop += 1)
     if numbullets > 1
         arcstart += arc / (numbullets - 1)
     }
-

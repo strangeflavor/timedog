@@ -123,9 +123,9 @@ if y &gt;= ydest - 1 and fired == 0 {
     rTween = TweenFire(id,"",EaseInOutBounce,TWEEN_MODE_ONCE,true,0.0,.2,16,.5);
     TweenSimpleRotate(image_angle,image_angle+359,90,EaseOutCirc);
 
-    shoot_circle2(9,x,y-16,32,oBullet,6,sShot0,false);
-    shoot_circle2(16,x+24,y+16,32,oBullet,3,sShot3,false);
-    shoot_circle2(16,x-24,y+16,32,oBullet,2,sShot3,false);
+    shoot_circle2(16,x,y-16,32,oBullet,5,sShot0,false);
+    shoot_circle2(24,x+24,y+16,32,oBullet,3,sShot3,false);
+    shoot_circle2(24,x-24,y+16,32,oBullet,2,sShot3,false);
 }
 
 

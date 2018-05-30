@@ -67,7 +67,21 @@ with make(vw/2,-64,oCircles) {
     phaseConditionArguments[2,0] = -100;
 }
 */
-form_circles(-1,-1,-1,80,-1,30);
+//form_circles(-1,-1,-1,80,-1,30);
+
+bID = make(oBezier);
+with bID {
+    cp0 = make(vw/2-80,vh/2,controlPoint);
+    cp1 = make(vw/2-20,vh/2+30,controlPoint);
+    cp2 = make(vw/2+20,vh/2,controlPoint);
+    cp3 = make(vw/2+80,vh/2+30,controlPoint);
+}
+
+with make(oMiniThex) {
+    depth = -6;
+    followBezier = true;
+    bezierID = other.bID;
+}
 </string>
           </argument>
         </arguments>
