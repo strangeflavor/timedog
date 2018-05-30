@@ -75,6 +75,8 @@ with bID {
     cp1 = make(vw/2-20,vh/2+30,controlPoint);
     cp2 = make(vw/2+20,vh/2,controlPoint);
     cp3 = make(vw/2+80,vh/2+30,controlPoint);
+
+    event_perform(ev_user0,0);
 }
 
 with make(oMiniThex) {

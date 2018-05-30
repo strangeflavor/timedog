@@ -66,5 +66,7 @@ f+=1;
 formScriptArray[f] = form_multiShot;
 f+=1;
 formScriptArray[f] = form_crab;
+f+=1;
+formScriptArray[f] = form_circles;
 
 return f;
