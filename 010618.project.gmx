@@ -324,6 +324,9 @@
       <script>scripts\form_gridMissile.gml</script>
       <script>scripts\form_meteors.gml</script>
       <script>scripts\form_curvedLeft.gml</script>
+      <scripts name="bezbez">
+        <script>scripts\bezTest.gml</script>
+      </scripts>
       <scripts name="procgen">
         <script>scripts\pg_addFormation.gml</script>
       </scripts>

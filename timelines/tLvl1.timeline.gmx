@@ -71,11 +71,13 @@ with make(vw/2,-64,oCircles) {
 
 bID = make(oBezier);
 with bID {
-    cp0 = make(vw/2-80,vh/2,controlPoint);
-    cp1 = make(vw/2-20,vh/2+30,controlPoint);
-    cp2 = make(vw/2+20,vh/2,controlPoint);
-    cp3 = make(vw/2+80,vh/2+30,controlPoint);
+    cp0 = make(-1,-1,controlPoint);
+    cp1 = make(-1,-1,vh/2+30,controlPoint);
+    cp2 = make(-1,-1,controlPoint);
+    cp3 = make(-1,-1,controlPoint);
 
+    bezTest();
+    
     event_perform(ev_user0,0);
 }
 
