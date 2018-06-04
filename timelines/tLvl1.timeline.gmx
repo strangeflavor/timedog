@@ -71,14 +71,13 @@ with make(vw/2,-64,oCircles) {
 
 bID = make(oBezier);
 with bID {
-    cp0 = make(-1,-1,controlPoint);
-    cp1 = make(-1,-1,vh/2+30,controlPoint);
-    cp2 = make(-1,-1,controlPoint);
-    cp3 = make(-1,-1,controlPoint);
+    cp0 = make(controlPoint);
+    cp1 = make(controlPoint);
+    cp2 = make(controlPoint);
+    cp3 = make(controlPoint);
 
     bezTest();
-    
-    event_perform(ev_user0,0);
+    updateBezierControlPoints();
 }
 
 with make(oMiniThex) {

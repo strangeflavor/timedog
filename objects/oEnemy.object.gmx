@@ -345,7 +345,7 @@ if waitTime &lt; 0 {
 
         var speed_per_tick = bezierSpeedSign*bezierSpeed; //constant speed you want the object to move at
 
-        trace(bezierPos);
+        //trace(bezierPos);
         
         if objectAge == 1 {
             x = bp[0];
@@ -384,6 +384,10 @@ if waitTime &lt; 0 {
                 if (bezierPos &gt;= 1 and bezierSpeedSign &gt; 0) or (bezierPos &lt;= 0 and bezierSpeedSign &lt; 0) {
                     //trace('*** reached end of path');
                     // new path!
+                    with bezierID updateBezierControlPoints();
+                    bezierSpeedSign *= -1;
+
+                    /*
                     kill(bezierID);
                     with make(oBezier) {
                         cp0 = make(vw/2-80,vh/2,controlPoint);
@@ -391,6 +395,7 @@ if waitTime &lt; 0 {
                         cp2 = make(vw/2+20,vh/2,controlPoint);
                         cp3 = make(vw/2+80,vh/2+30,controlPoint);
                     }
+                    */
 
                     /*
                     // reverse speed
