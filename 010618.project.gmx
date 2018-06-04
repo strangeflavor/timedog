@@ -241,6 +241,7 @@
       <sprite>sprites\sCursorBig</sprite>
       <sprite>sprites\sShopButtonUI</sprite>
       <sprite>sprites\sBack</sprite>
+      <sprite>sprites\sPause</sprite>
       <sprite>sprites\sConfirm</sprite>
       <sprite>sprites\sSoldOut</sprite>
       <sprite>sprites\sShopkeepHead</sprite>
@@ -537,6 +538,7 @@
       <object>objects\failedLevel</object>
       <object>objects\endLevel</object>
       <object>objects\endLevelButton</object>
+      <object>objects\pauseButton</object>
       <object>objects\XPcounter</object>
     </objects>
     <objects name="menu">
