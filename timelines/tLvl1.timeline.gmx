@@ -46,7 +46,7 @@
           <argument>
             <kind>1</kind>
             <string>///form_boxChains0(-64,vw/2,8);
-//form_boxChains0(-64,vw/2,8);
+form_boxChains0(-64,vw/2,8);
 
 /*
 with make(vw/2,-64,oCircles) {
@@ -68,7 +68,7 @@ with make(vw/2,-64,oCircles) {
 }
 */
 //form_circles(-1,-1,-1,80,-1,30);
-
+/*
 bID = make(oBezier);
 with bID {
     cp0 = make(controlPoint);
@@ -85,6 +85,7 @@ with make(oMiniThex) {
     followBezier = true;
     bezierID = other.bID;
 }
+*/
 </string>
           </argument>
         </arguments>

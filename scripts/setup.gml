@@ -1,6 +1,8 @@
 #define setup
 setupFiles();
 
+if os_type == os_ios or os_type == os_android mobile = true else mobile = false;
+
 ///////////////////////////////////////////////
 // screen stuff
 ///////////////////////////////////////////////

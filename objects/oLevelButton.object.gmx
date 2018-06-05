@@ -96,7 +96,7 @@ timeline_running = true;
           <argument>
             <kind>1</kind>
             <string>if !waitForUnlock {
-    if mouse_x &gt; x and mouse_x &lt; x + buttonSize and mouse_y &gt; y and mouse_y &lt; y + buttonSize {
+    if (mouse_x &gt; x and mouse_x &lt; x + buttonSize and mouse_y &gt; y and mouse_y &lt; y + buttonSize) {
         if !rollOver sfx(sndRollover);
         rollOver = true;
     } else {
@@ -104,9 +104,7 @@ timeline_running = true;
     }
 
     if rollOver and objectAge &gt; 10 {
-        if mouse_check_button(mb_left) {
-            image_alpha = .5;
-        }
+        if !mobile and mouse_check_button(mb_left) image_alpha = .5;
 
         if mouse_check_button_released(mb_left) and !locked and abs(frac(view_xview[0]/vw)) &lt; .03 {
             if shop {
@@ -148,7 +146,7 @@ timeline_running = true;
             <kind>1</kind>
             <string>var rr = 0;
 var fill = false;
-if rollOver and !locked {
+if (rollOver and !mobile) and !locked {
     rr = 4;
     fill = true;
     image_blend = merge_color(c_white,c_red,max(.1,.2,abs(sin(objectAge*.1))));

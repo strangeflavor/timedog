@@ -112,7 +112,7 @@ startBGtween = false;
             <string>/// player died
 
 room_speed = 60;
-if os_type != os_ios and os_type != os_android cursor_sprite = sCursorBig;
+if !mobile cursor_sprite = sCursorBig;
 with oEnemy kill();
 with oFX kill();
 with Smoke kill();

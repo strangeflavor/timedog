@@ -696,7 +696,7 @@
     <room>rooms\roomTest</room>
     <room>rooms\rWeaponSelect</room>
   </rooms>
-  <constants number="59">
+  <constants number="60">
     <constant name="scale">global._scale</constant>
     <constant name="vw">global._vw</constant>
     <constant name="vh">global._vh</constant>
@@ -706,6 +706,7 @@
     <constant name="base_h">global._base_h</constant>
     <constant name="gems">global._gems</constant>
     <constant name="developer">global._developer</constant>
+    <constant name="mobile">global._mobile</constant>
     <constant name="debug">global._debug</constant>
     <constant name="debugTimelineStartPos">global._debugTimelineStartPos</constant>
     <constant name="numLevels">global._numLevels</constant>
