@@ -96,10 +96,10 @@ if _xoffset == 1 _xoffset = 0;
 with make(vw/2+_xoffset,-96,fChain) {
     enemy = oMiniThex;
     path = pSine;
-    _path_speed = 7+(other.i/2);
+    _path_speed = 7; //7+(other.i/2);
     endaction = path_action_continue;
-    size = 12;
-    wait = 120+other.i*180;
+    size = 7;
+    wait = 120;//+other.i*180;
 
     /*
     phaseCondition[0] = _PHASE_CONDITION_TIME;

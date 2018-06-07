@@ -125,8 +125,9 @@ if objectAge &gt; 9 {
 
 if objectAge &gt; (appearDuration*60) - 3 {
     dangerous = true;
-    image_blend = c_aqua;
-    if frac(objectAge/3) == 0 image_blend = merge_color(c_dkgray,image_blend,.25)
+    image_xscale_tween = image_xscale_dest;
+    //image_blend = c_aqua;
+    //if frac(objectAge/3) == 0 image_blend = merge_color(c_dkgray,image_blend,.25)
 }
 
 if instance_exists(owner) if owner.aimAtPlayer image_angle = owner.image_angle;
@@ -152,16 +153,17 @@ if instance_exists(owner) if owner.aimAtPlayer image_angle = owner.image_angle;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !disappearing {
+            <string>
+if !disappearing {
     for (var i=0;i&lt;image_xscale*3;i+=1) {
         //image_blend = merge_colour(c_red,c_yellow,wave(0,1,.2,0));
         image_blend = merge_colour($FF0000,$0000FF,wave(0,1,.5,0));
-        draw_sprite_ext(sprite_index,0,x+nrandom(image_xscale/6),y,image_xscale,image_yscale,image_angle,image_blend,1);
+        draw_sprite_ext(sprite_index,0,x+nrandom(8+image_xscale*4),y,image_xscale,image_yscale,image_angle,image_blend,1);
     }
 }
 
 //draw_sprite_ext(sprite_index,0,x,y,image_xscale+(irandom(6)-3)*.05,image_yscale,image_angle,c_white,1);
-draw_sprite_ext(sprite_index,0,x,y,image_xscale+wave(image_xscale_dest/4,-image_xscale_dest/4,30,0),image_yscale,image_angle,c_white,1);
+draw_sprite_ext(sprite_index,0,x,y,image_xscale,image_yscale,image_angle,c_white,1);
 </string>
           </argument>
         </arguments>

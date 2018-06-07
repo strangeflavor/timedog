@@ -169,8 +169,8 @@ if active {
     // check bounds
     if x &gt; room_width x = room_width;
     if x &lt; 0 x = 0;
-    if y &gt; room_height y = room_height;
-    if y &lt; 0 y = 0;
+    if y + sprite_height/4 &gt; room_height y = room_height - sprite_height/4;
+    if y - sprite_height/4 &lt; 0 y = sprite_height/4;
 
     // fire
     doPlayerAttacks();

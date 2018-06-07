@@ -49,6 +49,8 @@ waitForUnlock = false;
 shake = false;
 shop = false;
 boss = false;
+
+unlockTimer = -1;
 </string>
           </argument>
         </arguments>
@@ -100,12 +102,12 @@ timeline_running = true;
         if !rollOver sfx(sndRollover);
         rollOver = true;
     } else {
+        unlockTimer = -1;
         rollOver = false;
     }
 
     if rollOver and objectAge &gt; 10 {
-        if !mobile and mouse_check_button(mb_left) image_alpha = .5;
-
+        //if !mobile and mouse_check_button(mb_left) image_alpha = .5;
         if mouse_check_button_released(mb_left) and !locked and abs(frac(view_xview[0]/vw)) &lt; .03 {
             if shop {
                 room_goto(rShop);
@@ -115,9 +117,8 @@ timeline_running = true;
             }
         }
 
-        if mouse_check_button_released(mb_right) { //and !locked {
-            unlockAdjacent(id);
-        }
+        if mouse_check_button(mb_left) unlockTimer += 1; //and mobile unlockTimer += 1;
+        if mouse_check_button_released(mb_right) or unlockTimer &gt; 40 unlockAdjacent(id);
     } else {
         image_alpha = 1;
     }
