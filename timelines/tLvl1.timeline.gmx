@@ -68,24 +68,6 @@ with make(vw/2,-64,oCircles) {
 }
 */
 //form_circles(-1,-1,-1,80,-1,30);
-/*
-bID = make(oBezier);
-with bID {
-    cp0 = make(controlPoint);
-    cp1 = make(controlPoint);
-    cp2 = make(controlPoint);
-    cp3 = make(controlPoint);
-
-    bezTest();
-    updateBezierControlPoints();
-}
-
-with make(oMiniThex) {
-    depth = -6;
-    followBezier = true;
-    bezierID = other.bID;
-}
-*/
 </string>
           </argument>
         </arguments>

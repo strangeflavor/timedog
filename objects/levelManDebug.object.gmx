@@ -54,7 +54,7 @@ winConditionValue = -2;
 // dialog stuff
 /////////////////////
 
-addDialog(_NONE,"debug room");
+//addDialog(_NONE,"debug room");
 
 ////////////////////
 // background

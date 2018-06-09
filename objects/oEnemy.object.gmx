@@ -84,6 +84,7 @@ bezierID = -1;
 bezierPos = 0;
 bezierSpeed = 7;
 bezierSpeedSign = 1;
+bezierEndAction = 'reverse';
 
 ///////////////////////////
 // formation stuff
@@ -383,9 +384,26 @@ if waitTime &lt; 0 {
 
                 if (bezierPos &gt;= 1 and bezierSpeedSign &gt; 0) or (bezierPos &lt;= 0 and bezierSpeedSign &lt; 0) {
                     //trace('*** reached end of path');
-                    // new path!
-                    with bezierID updateBezierControlPoints();
-                    bezierSpeedSign *= -1;
+
+                    switch bezierEndAction {
+                        case 'next':
+                            // new path!
+                            with bezierID updateBezierControlPoints();
+                            bezierSpeedSign *= -1;
+                        break;
+                        case 'reverse':
+                            // reverse speed
+                            bp = Bezier_Point_Find(bezierPos,bezierID.cp0.x,bezierID.cp0.y,bezierID.cp1.x,bezierID.cp1.y,bezierID.cp2.x,bezierID.cp2.y,bezierID.cp3.x,bezierID.cp3.y);
+                            bezierSpeedSign *= -1;
+                        break;
+                        case 'reset':
+                            // reset to start
+                            bezierPos = 0;
+                            bp = Bezier_Point_Find(bezierPos,bezierID.cp0.x,bezierID.cp0.y,bezierID.cp1.x,bezierID.cp1.y,bezierID.cp2.x,bezierID.cp2.y,bezierID.cp3.x,bezierID.cp3.y);
+                            x = bp[0];
+                            y = bp[1];
+                        break;
+                    }
 
                     /*
                     kill(bezierID);
@@ -395,20 +413,6 @@ if waitTime &lt; 0 {
                         cp2 = make(vw/2+20,vh/2,controlPoint);
                         cp3 = make(vw/2+80,vh/2+30,controlPoint);
                     }
-                    */
-
-                    /*
-                    // reverse speed
-                    bp = Bezier_Point_Find(bezierPos,bezierID.cp0.x,bezierID.cp0.y,bezierID.cp1.x,bezierID.cp1.y,bezierID.cp2.x,bezierID.cp2.y,bezierID.cp3.x,bezierID.cp3.y);
-                    bezierSpeedSign *= -1;
-                    */
-
-                    /*
-                    // reset to start
-                    bezierPos = 0;
-                    bp = Bezier_Point_Find(bezierPos,bezierID.cp0.x,bezierID.cp0.y,bezierID.cp1.x,bezierID.cp1.y,bezierID.cp2.x,bezierID.cp2.y,bezierID.cp3.x,bezierID.cp3.y);
-                    x = bp[0];
-                    y = bp[1];
                     */
                 }
 

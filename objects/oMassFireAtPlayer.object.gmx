@@ -93,11 +93,11 @@ flee_vspeed = -vspeed;
     //enemy_move_rotate(oShip.x,oShip.y,0,0);
 
     if objectAge == 45 {
-        speedBoost = 7;
+        speedBoost = 6;
         image_angle = point_direction(x,y,oShip.x,oShip.y);
         repeat 7 {
             shoot_spray(0,objectAge,2+speedBoost,sShot1,true);
-            if speedBoost &gt;= 0 speedBoost -= 1;
+            if speedBoost &gt;= 0 speedBoost -= .5;
         }
     }
 

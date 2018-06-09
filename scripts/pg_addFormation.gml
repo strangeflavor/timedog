@@ -68,5 +68,7 @@ f+=1;
 formScriptArray[f] = form_crab;
 f+=1;
 formScriptArray[f] = form_circles;
+f+=1;
+formScriptArray[f] = form_bez;
 
 return f;

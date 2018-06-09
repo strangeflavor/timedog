@@ -14,8 +14,8 @@ cp1X[1] = 80;
 cp1Y[1] = vh/2-50 + 16;
 cp2X[1] = 140;
 cp2Y[1] = vh/2+50 + 16;
-cp3X[1] = 180;
-cp3Y[1] = vh/2 + 16;
+cp3X[1] = cp3X[0];
+cp3Y[1] = cp3Y[0];
 
 cp0X[2] = 32;
 cp0Y[2] = vh/2 - 16;
@@ -24,7 +24,7 @@ cp1Y[2] = vh/2-50 - 16;
 cp2X[2] = 140;
 cp2Y[2] = vh/2+50 - 16;
 cp3X[2] = 180;
-cp3Y[2] = vh/2 - 16
+cp3Y[2] = cp3Y[1];
 
 cpMax = 2;
 
@@ -42,3 +42,5 @@ cp2.x = cp2X[cpIndex];
 cp2.y = cp2Y[cpIndex];
 cp3.x = cp3X[cpIndex];
 cp3.y = cp3Y[cpIndex];
+#define addBezPoint
+

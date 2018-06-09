@@ -108,3 +108,30 @@ with make(vw/2+_xoffset,-96,fChain) {
     phase[1] = enemy_move;
     */
 }
+#define form_bez
+/// form_meteors(size,rate);
+trace('starting form bez');
+
+var arg;
+for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
+
+var _xoffset = arg[0];
+if _xoffset == 1 _xoffset = 0;
+
+bID = make(oBezier);
+with bID {
+    cp0 = make(controlPoint);
+    cp1 = make(controlPoint);
+    cp2 = make(controlPoint);
+    cp3 = make(controlPoint);
+
+    bezTest();
+    updateBezierControlPoints();
+}
+
+with make(oMiniThex) {
+    depth = -6;
+    followBezier = true;
+    bezierID = other.bID;
+    bezierEndAction = 'reverse';
+}
