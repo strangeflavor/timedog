@@ -8,6 +8,9 @@ cp2Y[0] = vh/2+50;
 cp3X[0] = 180;
 cp3Y[0] = vh/2;
 
+cpMax = 0;
+
+/*
 cp0X[1] = 32;
 cp0Y[1] = vh/2 + 16;
 cp1X[1] = 80;
@@ -27,6 +30,7 @@ cp3X[2] = 180;
 cp3Y[2] = cp3Y[1];
 
 cpMax = 2;
+*/
 
 #define updateBezierControlPoints
 ///update control points

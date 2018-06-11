@@ -80,7 +80,8 @@ cy = -1; // to do: change this name lol
 // bezier curve stuff
 
 followBezier = false;
-bezierID = -1;
+bezierObjectArray[16] = -1;
+bezierIndex = 0;
 bezierPos = 0;
 bezierSpeed = 7;
 bezierSpeedSign = 1;
@@ -335,19 +336,19 @@ if waitTime &lt; 0 {
             if killWhenPathComplete kill();
         }
     }
-    
+
     //////////////////////////
     // handle bezier curve
     //////////////////////////
 
     if followBezier {
-        var bp;
-        bp = Bezier_Point_Find(bezierPos,bezierID.cp0.x,bezierID.cp0.y,bezierID.cp1.x,bezierID.cp1.y,bezierID.cp2.x,bezierID.cp2.y,bezierID.cp3.x,bezierID.cp3.y);
+        var bezID = bezierObjectArray[bezierIndex];
+        var bp = Bezier_Point_Find(bezierPos,bezID.cp0.x,bezID.cp0.y,bezID.cp1.x,bezID.cp1.y,bezID.cp2.x,bezID.cp2.y,bezID.cp3.x,bezID.cp3.y);
 
         var speed_per_tick = bezierSpeedSign*bezierSpeed; //constant speed you want the object to move at
 
         //trace(bezierPos);
-        
+
         if objectAge == 1 {
             x = bp[0];
             y = bp[1];
@@ -388,18 +389,20 @@ if waitTime &lt; 0 {
                     switch bezierEndAction {
                         case 'next':
                             // new path!
-                            with bezierID updateBezierControlPoints();
+                            //with bezID updateBezierControlPoints();
+                            bezierIndex += 1;
+                            bezID = bezierObjectArray[bezierIndex];
                             bezierSpeedSign *= -1;
                         break;
                         case 'reverse':
                             // reverse speed
-                            bp = Bezier_Point_Find(bezierPos,bezierID.cp0.x,bezierID.cp0.y,bezierID.cp1.x,bezierID.cp1.y,bezierID.cp2.x,bezierID.cp2.y,bezierID.cp3.x,bezierID.cp3.y);
+                            bp = Bezier_Point_Find(bezierPos,bezID.cp0.x,bezID.cp0.y,bezID.cp1.x,bezID.cp1.y,bezID.cp2.x,bezID.cp2.y,bezID.cp3.x,bezID.cp3.y);
                             bezierSpeedSign *= -1;
                         break;
                         case 'reset':
                             // reset to start
                             bezierPos = 0;
-                            bp = Bezier_Point_Find(bezierPos,bezierID.cp0.x,bezierID.cp0.y,bezierID.cp1.x,bezierID.cp1.y,bezierID.cp2.x,bezierID.cp2.y,bezierID.cp3.x,bezierID.cp3.y);
+                            bp = Bezier_Point_Find(bezierPos,bezID.cp0.x,bezID.cp0.y,bezID.cp1.x,bezID.cp1.y,bezID.cp2.x,bezID.cp2.y,bezID.cp3.x,bezID.cp3.y);
                             x = bp[0];
                             y = bp[1];
                         break;

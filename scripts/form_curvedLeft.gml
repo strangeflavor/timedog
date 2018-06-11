@@ -118,8 +118,19 @@ for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else
 var _xoffset = arg[0];
 if _xoffset == 1 _xoffset = 0;
 
-bID = make(oBezier);
-with bID {
+bID[0] = make(oBezier);
+with bID[0] {
+    cp0 = make(controlPoint);
+    cp1 = make(controlPoint);
+    cp2 = make(controlPoint);
+    cp3 = make(controlPoint);
+
+    bezTest();
+    updateBezierControlPoints();
+}
+
+bID[1] = make(oBezier);
+with bID[1] {
     cp0 = make(controlPoint);
     cp1 = make(controlPoint);
     cp2 = make(controlPoint);
@@ -132,6 +143,7 @@ with bID {
 with make(oMiniThex) {
     depth = -6;
     followBezier = true;
-    bezierID = other.bID;
+    bezierObjectArray[0] = other.bID[0];
+    bezierObjectArray[1] = other.bID[1];
     bezierEndAction = 'reverse';
 }
