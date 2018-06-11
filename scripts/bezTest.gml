@@ -43,4 +43,3 @@ cp2.y = cp2Y[cpIndex];
 cp3.x = cp3X[cpIndex];
 cp3.y = cp3Y[cpIndex];
 #define addBezPoint
-

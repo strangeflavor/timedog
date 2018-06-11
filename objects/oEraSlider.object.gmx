@@ -59,6 +59,7 @@ dir=-1
 objectAge = 0;
 //currentWorld = 0;
 
+savedCurrentWorld = false;
 waitForUnlock = false;
 
 pickupHUD = make(oPickup);
@@ -179,7 +180,6 @@ if !dragging and vx - view_wview[0]/2 &gt; 0 and vx + view_wview[0]/2 &lt; numWo
     }
 
     currentWorld = i;
-    saveFiles();
 }
 
 if !dragging {
@@ -235,7 +235,7 @@ objectAge += 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if debug &gt; 0 {
+            <string>if debug == 1 {
     ///Draw Swipe Cursor
     draw_set_colour(c_orange);
     //draw_line(MouseXStart, MouseYStart, MouseX, MouseY);
@@ -314,10 +314,12 @@ var flipUFO = -dir;
 draw_sprite_ext(sUFO,0,view_xview[0]+ufoX,y,flipUFO,1,8*sin(objectAge*.05),c_white,1);
 draw_set_font(fStapler);
 draw_set_color(c_white);
-draw_text(view_xview[0]+16,48,'WORLD '+string(currentWorld+1)+'#'+worldNames[currentWorld]);
+draw_set_halign(fa_left);
+draw_set_valign(fa_bottom);
+draw_text(view_xview[0]+16,54,'WORLD '+string(currentWorld+1)+'#'+worldNames[currentWorld]);
 pickupHUD.x = pickupHUD_x + view_xview[0];
 pickupHUD.y = pickupHUD_y;
-draw_text(pickupHUD_x+view_xview[0]+16,40,'x'+string(gems));
+draw_text(pickupHUD_x+view_xview[0]+16,42,'x'+string(gems));
 //draw_text(view_wview[0]-16,16,
 </string>
           </argument>

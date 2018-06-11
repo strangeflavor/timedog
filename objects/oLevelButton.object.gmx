@@ -109,6 +109,7 @@ timeline_running = true;
     if rollOver and objectAge &gt; 10 {
         //if !mobile and mouse_check_button(mb_left) image_alpha = .5;
         if mouse_check_button_released(mb_left) and !locked and abs(frac(view_xview[0]/vw)) &lt; .03 {
+            saveFiles();
             if shop {
                 room_goto(rShop);
             } else {
