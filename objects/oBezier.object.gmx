@@ -25,12 +25,24 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
-cp0 = make(vw/2-80,vh/2,controlPoint);
-cp1 = make(vw/2-20,vh/2+30,controlPoint);
-cp2 = make(vw/2+20,vh/2,controlPoint);
-cp3 = make(vw/2+80,vh/2+30,controlPoint);
-*/
+            <string>bezColors[0] = c_red;
+bezColors[1] = c_blue;
+bezColors[2] = c_orange;
+bezColors[3] = c_yellow;
+bezColors[4] = c_white;
+bezColors[5] = c_teal;
+
+myNumber = instance_number(oBezier)-1;
+image_blend = bezColors[myNumber];
+
+cp0 = make(controlPoint);
+cp1 = make(controlPoint);
+cp2 = make(controlPoint);
+cp3 = make(controlPoint);
+cp0.image_blend = image_blend;
+cp1.image_blend = image_blend;
+cp2.image_blend = image_blend;
+cp3.image_blend = image_blend;
 
 cpIndex = -1;
 cpMax = -1;
@@ -97,8 +109,8 @@ kill(cp3);
 
 for (i=0;i&lt;ww;i+=1) {
     a = Bezier_Point_Find(i*.05,cp0.x,cp0.y,cp1.x,cp1.y,cp2.x,cp2.y,cp3.x,cp3.y);
-    draw_set_color(c_red);
-    draw_circle(a[0],a[1],4,false);
+    draw_set_color(bezColors[myNumber]);
+    draw_circle(a[0],a[1],3,false);
 }
 
 </string>

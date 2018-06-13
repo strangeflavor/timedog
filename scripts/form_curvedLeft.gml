@@ -120,30 +120,28 @@ if _xoffset == 1 _xoffset = 0;
 
 bID[0] = make(oBezier);
 with bID[0] {
-    cp0 = make(controlPoint);
-    cp1 = make(controlPoint);
-    cp2 = make(controlPoint);
-    cp3 = make(controlPoint);
-
-    bezTest();
+    bezTest(0);
     updateBezierControlPoints();
 }
 
 bID[1] = make(oBezier);
 with bID[1] {
-    cp0 = make(controlPoint);
-    cp1 = make(controlPoint);
-    cp2 = make(controlPoint);
-    cp3 = make(controlPoint);
-
-    bezTest();
+    bezTest(-100);
     updateBezierControlPoints();
 }
+
+bID[2] = make(oBezier);
+with bID[2] {
+    bezTest(-200);
+    updateBezierControlPoints();
+}
+
 
 with make(oMiniThex) {
     depth = -6;
     followBezier = true;
     bezierObjectArray[0] = other.bID[0];
     bezierObjectArray[1] = other.bID[1];
-    bezierEndAction = 'reverse';
+    bezierObjectArray[2] = other.bID[2];
+    bezierEndAction = 'next';
 }

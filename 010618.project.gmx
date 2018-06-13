@@ -579,6 +579,7 @@
       <object>objects\oTimelinePlayer</object>
       <object>objects\oTimelineLooper</object>
       <object>objects\oBezier</object>
+      <object>objects\controlPoint</object>
     </objects>
     <objects name="debug">
       <object>objects\oTuner</object>
@@ -668,7 +669,6 @@
     </objects>
     <object>objects\obj_vignette_noise</object>
     <object>objects\o_shader_start</object>
-    <object>objects\controlPoint</object>
     <object>objects\Smoke</object>
   </objects>
   <timelines name="timelines">

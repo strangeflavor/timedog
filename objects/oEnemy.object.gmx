@@ -80,7 +80,7 @@ cy = -1; // to do: change this name lol
 // bezier curve stuff
 
 followBezier = false;
-bezierObjectArray[16] = -1;
+for (var i=0;i&lt;16;i+=1) bezierObjectArray[i] = -1;
 bezierIndex = 0;
 bezierPos = 0;
 bezierSpeed = 7;
@@ -389,10 +389,14 @@ if waitTime &lt; 0 {
                     switch bezierEndAction {
                         case 'next':
                             // new path!
-                            //with bezID updateBezierControlPoints();
+                            bezierSpeedSign *= -1;
+
                             bezierIndex += 1;
                             bezID = bezierObjectArray[bezierIndex];
-                            bezierSpeedSign *= -1;
+                            if bezID == -1 {
+                                bezierIndex = 0;
+                                bezID = bezierObjectArray[bezierIndex];
+                            }
                         break;
                         case 'reverse':
                             // reverse speed

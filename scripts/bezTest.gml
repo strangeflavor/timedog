@@ -1,12 +1,14 @@
 #define bezTest
+var yo = argument0;
+
 cp0X[0] = 32;
-cp0Y[0] = vh/2;
+cp0Y[0] = vh/2 + yo;
 cp1X[0] = 80;
-cp1Y[0] = vh/2-50;
+cp1Y[0] = vh/2-50 + yo;
 cp2X[0] = 140;
-cp2Y[0] = vh/2+50;
+cp2Y[0] = vh/2+50 + yo;
 cp3X[0] = 180;
-cp3Y[0] = vh/2;
+cp3Y[0] = vh/2 + yo;
 
 cpMax = 0;
 

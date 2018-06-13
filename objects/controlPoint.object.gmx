@@ -103,13 +103,13 @@ active = true;
             <string>//draw_self();
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
-if active draw_set_color(c_lime) else draw_set_color(c_blue);
+if active draw_set_color(c_lime) else draw_set_color(image_blend);
 draw_text(x,y,myNum);
 
 if debug == 1 {
     draw_set_halign(fa_right);
-    draw_set_color(c_white);
-    draw_text(vw-8,vh - 100 + myNum*20,string(x)+','+string(y));
+    draw_set_color(image_blend);
+    draw_text(vw-8,16 + myNum*20,string(x)+','+string(y)+':'+string(myNum));
 }
 </string>
           </argument>
