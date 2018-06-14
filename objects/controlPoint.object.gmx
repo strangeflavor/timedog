@@ -109,7 +109,8 @@ draw_text(x,y,myNum);
 if debug == 1 {
     draw_set_halign(fa_right);
     draw_set_color(image_blend);
-    draw_text(vw-8,16 + myNum*20,string(x)+','+string(y)+':'+string(myNum));
+    //draw_text(vw-8,16 + myNum*20,string(x)+','+string(y)+':'+string(myNum));
+    draw_text_ext_transformed(vw-8,30 + myNum*10,string(x)+','+string(y)+':'+string(myNum),0,-1,.5,.5,0)
 }
 </string>
           </argument>

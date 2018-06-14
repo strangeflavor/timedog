@@ -389,7 +389,8 @@ if waitTime &lt; 0 {
                     switch bezierEndAction {
                         case 'next':
                             // new path!
-                            bezierSpeedSign *= -1;
+                            //bezierSpeedSign *= -1;
+                            bezierPos = 0;
 
                             bezierIndex += 1;
                             bezID = bezierObjectArray[bezierIndex];

@@ -136,7 +136,6 @@ with bID[2] {
     updateBezierControlPoints();
 }
 
-
 with make(oMiniThex) {
     depth = -6;
     followBezier = true;
