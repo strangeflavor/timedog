@@ -53,7 +53,7 @@ form_largeAimer(-80)
             <string>for (i=0;i&lt;2;i+=1) {
     newFormationID = getFormationID();
 
-    with make(room_width-80,-32,fChain) {
+    with make(room_width-90,-32,fChain) {
         formationID = other.newFormationID;
         enemy = oMiniThex;
         path = pSine;
@@ -61,6 +61,26 @@ form_largeAimer(-80)
         endaction = path_action_continue;
         size = 3;
         wait = 1+other.i*120;
+    }
+
+    with make(room_width-90-50,-32,fChain) {
+        formationID = other.newFormationID;
+        enemy = oMiniThex;
+        path = pSine;
+        _path_speed = 7;
+        endaction = path_action_continue;
+        size = 3;
+        wait = 1+other.i*120 + nrandom(40);
+    }
+
+    with make(room_width-90+50,-32,fChain) {
+        formationID = other.newFormationID;
+        enemy = oMiniThex;
+        path = pSine;
+        _path_speed = 7;
+        endaction = path_action_continue;
+        size = 3;
+        wait = 1+other.i*120 + 20 + nrandom(40);
     }
 }
 </string>
