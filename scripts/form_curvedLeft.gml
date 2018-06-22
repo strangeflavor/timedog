@@ -120,22 +120,22 @@ if _xoffset == 1 _xoffset = 0;
 
 bID[0] = make(oBezier);
 with bID[0] {
-    bezTest(0);
-    updateBezierControlPoints();
+    bezTest();
+    createBezierControlPoints();
 }
-
+/*
 bID[1] = make(oBezier);
 with bID[1] {
-    bezTest(-100);
+    bezTest();
     updateBezierControlPoints();
 }
 
 bID[2] = make(oBezier);
 with bID[2] {
-    bezTest(-200);
+    bezTest();
     updateBezierControlPoints();
 }
-
+*/
 with make(oMiniThex) {
     depth = -6;
     followBezier = true;
