@@ -35,12 +35,13 @@ bezColors[5] = c_teal;
 myNumber = instance_number(oBezier)-1;
 image_blend = bezColors[myNumber];
 
+totalLength = 0;
 cpIndex = -1;
 
 for (var i=0;i&lt;64;i+=1) {
+    cpID[i] = -1;
     cpX[i] = -1;
     cpY[i] = -1;
-
 }
 </string>
           </argument>
@@ -98,11 +99,12 @@ for (i=0;i&lt;ww;i+=1) {
     draw_circle(a[0],a[1],3,false);
 }
 */
-
+var j = 0;
 while cpID[j] != -1 {
     for (i=0;i&lt;ww;i+=1) {
-        a = Bezier_Point_Find(i*.05,cpX[j],cpY[j],cpX[j+1],cpY[j+1],cpX[j+2],cpY[j+2],cpX[j+3],cpY[j+3]);
-        draw_set_color(bezColors[myNumber]);
+        //a = Bezier_Point_Find(i*.05,cpX[j],cpY[j],cpX[j+1],cpY[j+1],cpX[j+2],cpY[j+2],cpX[j+3],cpY[j+3]);
+        a = Bezier_Point_Find(i*.05,cpID[j].x,cpID[j].y,cpID[j+1].x,cpID[j+1].y,cpID[j+2].x,cpID[j+2].y,cpID[j+3].x,cpID[j+3].y);
+        draw_set_color(merge_color(bezColors[myNumber],c_white,j*.05));
         draw_circle(a[0],a[1],3,false);
     }
 

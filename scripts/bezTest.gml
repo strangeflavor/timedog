@@ -1,22 +1,4 @@
 #define bezTest
-//var yo = argument0;
-/*
-cp0X[0] = 480; cp0Y[0] = 545;
-cp1X[0] = 326; cp1Y[0] = 526;
-cp2X[0] = 305; cp2Y[0] = 409;
-cp3X[0] = 328; cp3Y[0] = 296;
-
-cp0X[1] = 331; cp0Y[1] = 293;
-cp1X[1] = 336; cp1Y[1] = 178;
-cp2X[1] = 477; cp2Y[1] = 193;
-cp3X[1] = 462; cp3Y[1] = 309;
-
-cp0X[2] = 463; cp0Y[2] = 312;
-cp1X[2] = 408; cp1Y[2] = 427;
-cp2X[2] = 187; cp2Y[2] = 280;
-cp3X[2] = 258; cp3Y[2] = 149;
-*/
-
 cpX[0] = 480; cpY[0] = 545;
 cpX[1] = 326; cpY[1] = 526;
 cpX[2] = 305; cpY[2] = 409;
@@ -45,19 +27,34 @@ cp2.image_blend = image_blend;
 cp3.image_blend = image_blend;
 */
 
-for (var i=0;i<=64;i+=4) {
+for (var i=0;i<64;i+=4) {
     if cpX[i] != -1 {
-        cpID[0] = make(controlPoint);
-        cpID[1] = make(controlPoint);
-        cpID[2] = make(controlPoint);
-        cpID[3] = make(controlPoint);
+        cpID[i] = make(controlPoint);
+        cpID[i+1] = make(controlPoint);
+        cpID[i+2] = make(controlPoint);
+        cpID[i+3] = make(controlPoint);
+
+        cpID[i].x = cpX[i]; cpID[i].y = cpY[i];
+        cpID[i+1].x = cpX[i+1]; cpID[i+1].y = cpY[i+1];
+        cpID[i+2].x = cpX[i+2]; cpID[i+2].y = cpY[i+2];
+        cpID[i+3].x = cpX[i+3]; cpID[i+3].y = cpY[i+3];
+
+        /*
+        cpID[i].image_blend = draw_set_color(merge_color(bezColors[myNumber],c_white,1*.05));
+        cpID[i+1].image_blend = draw_set_color(merge_color(bezColors[myNumber],c_white,1*.05));
+        cpID[i+2].image_blend = draw_set_color(merge_color(bezColors[myNumber],c_white,2*.05));
+        cpID[i+3].image_blend = draw_set_color(merge_color(bezColors[myNumber],c_white,3*.05));
+        */
+        
+        totalLength += 1;
     }
 }
+
+cpIndex = 0;
 
 /*
 cpIndex += 1;
 if cpIndex > cpMax cpIndex = 0;
-*/
 
 cp0.x = cp0X[cpIndex];
 cp0.y = cp0Y[cpIndex];
@@ -67,5 +64,6 @@ cp2.x = cp2X[cpIndex];
 cp2.y = cp2Y[cpIndex];
 cp3.x = cp3X[cpIndex];
 cp3.y = cp3Y[cpIndex];
+*/
 
 #define addBezPoint

@@ -140,7 +140,7 @@ with make(oMiniThex) {
     depth = -6;
     followBezier = true;
     bezierObjectArray[0] = other.bID[0];
-    bezierObjectArray[1] = other.bID[1];
-    bezierObjectArray[2] = other.bID[2];
-    bezierEndAction = 'next';
+    //bezierObjectArray[1] = other.bID[1];
+    //bezierObjectArray[2] = other.bID[2];
+    bezierEndAction = 'reverse';
 }
