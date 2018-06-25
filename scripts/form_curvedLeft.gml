@@ -123,19 +123,7 @@ with bID[0] {
     bezTest();
     createBezierControlPoints();
 }
-/*
-bID[1] = make(oBezier);
-with bID[1] {
-    bezTest();
-    updateBezierControlPoints();
-}
 
-bID[2] = make(oBezier);
-with bID[2] {
-    bezTest();
-    updateBezierControlPoints();
-}
-*/
 with make(oMiniThex) {
     depth = -6;
     followBezier = true;

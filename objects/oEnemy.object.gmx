@@ -411,18 +411,6 @@ if waitTime &lt; 0 {
                             break;
                         }
                     } else {
-                        // if it isn't the beginning or the end of the bezier series, advance to the next set of points in the proper direction
-                        //if (!isBeginning or bezierSpeedSign &gt; 0) and (!isEnd or bezierSpeedSign &lt; 0) {
-                        //trace('*** reached end of path');
-                        /*
-                        if bezID.cpID[bezID.cpIndex+4*bezierSpeedSign] &gt; -1 {
-                            bezID.cpIndex += 4*bezierSpeedSign;
-                            bezierPos = 0;
-                        }
-                        */
-                        
-                        show('next set')
-
                         bezID.cpIndex += 4*bezierSpeedSign;
                         if bezID.cpIndex &lt; 0 bezID.cpIndex = 0;
                         if bezierSpeedSign == 1 bezierPos = 0 else bezierPos = 1;

@@ -1,18 +1,26 @@
 #define bezTest
-cpX[0] = 480; cpY[0] = 545;
-cpX[1] = 326; cpY[1] = 526;
-cpX[2] = 305; cpY[2] = 409;
-cpX[3] = 328; cpY[3] = 296;
+add_bez_index = 0;
 
-cpX[4] = 331; cpY[4] = 293;
-cpX[5] = 336; cpY[5] = 178;
-cpX[6] = 477; cpY[6] = 193;
-cpX[7] = 462; cpY[7] = 309;
+addBezPoint(480,545);
+addBezPoint(326,526);
+addBezPoint(305,409);
+addBezPoint(328,296);
 
-cpX[8] = 463; cpY[8] = 312;
-cpX[9] = 408; cpY[9] = 427;
-cpX[10] = 187; cpY[10] = 280;
-cpX[11] = 258; cpY[11] = 149;
+addBezPoint(331,293);
+addBezPoint(336,178);
+addBezPoint(477,193);
+addBezPoint(462,309);
+
+addBezPoint(463,312);
+addBezPoint(408,427);
+addBezPoint(187,280);
+addBezPoint(258,149);
+
+addBezPoint(463,312-100);
+addBezPoint(408,427-100);
+addBezPoint(187,280-100);
+addBezPoint(258,149-100);
+
 
 #define createBezierControlPoints
 ///create control points
@@ -67,3 +75,7 @@ cp3.y = cp3Y[cpIndex];
 */
 
 #define addBezPoint
+cpX[add_bez_index] = argument0;
+cpY[add_bez_index] = argument1;
+
+add_bez_index += 1;
