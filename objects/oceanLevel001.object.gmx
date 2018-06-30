@@ -39,11 +39,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>winCondition = _WIN_TIMELINE_END;
-winConditionValue = tLvl8;
+            <string>/////////////////////
+// win condition stuff
+/////////////////////
 
-TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,0,2,50);
-TweenBackgroundSpeedV(0,EaseLinear,TWEEN_MODE_LOOP,false,1,12000,1,0,25);
+winCondition = _WIN_TIMELINE_END;
+winConditionValue = tLvl_skull0;
+
+/////////////////////
+// dialog stuff
+/////////////////////
+
+addDialog(_NONE,"Deep underwater....");
+addDialog(_THEPROF,"be careful");
+
+////////////////////
+// background
+////////////////////
+
+make(oTrenchBG);
+
+alarm[1] = -1;
+kill(oMegaThruster);
+
 </string>
           </argument>
         </arguments>

@@ -39,14 +39,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
-background_vspeed[0] = 1;
-background_vspeed[1] = 2;
-background_vspeed[2] = 3;
-background_vspeed[3] = 4;
-*/
-
-cloudsurf[0] = -1;
+            <string>cloudsurf[0] = -1;
 cloudsurf[1] = -1;
 cloudsurf[2] = -1;
 cloudsurf[3] = -1;
@@ -55,13 +48,31 @@ cloudsurf[5] = -1;
 
 noisesurf = -1;
 
-doBGTween = false;
-background_vspeed[0] = .25;
-background_vspeed[1] = 0;
+doBGTween = true;
+BGtween_startspeed[0] = 1;
+BGtween_stopspeed[0] = 8;
+BGtween_startspeed[1] = .5;
+BGtween_stopspeed[1] = 4;
+BGtween_startspeed[2] = .25;
+BGtween_stopspeed[2] = 2;
+BGtween_dur = 90;
+BGtween_ease = EaseInQuint;
 
 xo[0] = 0;
 xo[1] = 0;
 xo[2] = 0;
+
+
+background_color = c_red;
+
+with make(oWaters) {
+    star_z_layer = 18;
+    radius = 0.0025;
+    oscillatorValue = .6;
+}
+
+center_x = vw/2;
+center_y = vh/2;
 </string>
           </argument>
         </arguments>
@@ -145,7 +156,7 @@ if surface_exists(starssurf) {
     }
 }
 
-///// clouds
+///// trench
 
 var starfieldColor = c_white;
 
@@ -183,8 +194,16 @@ for (var i=2;i&gt;=0;i-=1) {
        xo[i] = -2*(((oShip.x-vw)/vw) +.5)*((2-i+1)*5);
     }
 
-    draw_surface_tiled_ext(cloudsurf[i],xo[i]-50,((objectAge*8)/(i+1)),2,2,c_white,1);
+    //draw_surface_tiled_ext(cloudsurf[i],xo[i]-50,trench_rate*((objectAge*8)/(i+1)),2,2,c_white,1);
+    draw_surface_tiled_ext(cloudsurf[i],xo[i]-50,(objectAge*background_vspeed[i]),2,2,c_white,1);
 }
+
+// dark edges
+//makeBlendTester();
+draw_set_blend_mode_ext(4,9);
+draw_circle_colour(vw/2+nrandom(32),vh/2+nrandom(32),vh*2,c_white,c_black,false);
+draw_set_blend_mode(bm_normal);
+
 
 ///////////////////////////////////
 // draw aura around player ship

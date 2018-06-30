@@ -61,6 +61,7 @@ draw_moonnoisesurf();
 draw_set_blend_mode_ext(9,5);
 draw_circle_colour(vw/2+nrandom(32),vh/2+nrandom(32),vh*2,c_white,c_black,false);
 draw_set_blend_mode(bm_normal);
+
 ///////////////////////////////////
 // draw aura around player ship
 ///////////////////////////////////

@@ -87,6 +87,14 @@ background_vspeed[1] = 100;
 
 doBGTween = true;
 startBGtween = false;
+BGtween_startspeed[0] = 2;
+BGtween_stopspeed[0] = 1;
+BGtween_startspeed[1] = 2;
+BGtween_stopspeed[1] = 1;
+BGtween_startspeed[2] = 2;
+BGtween_stopspeed[2] = 1;
+BGtween_dur = 90;
+BGtween_ease = EaseOutQuart;
 </string>
           </argument>
         </arguments>
@@ -149,8 +157,9 @@ with make(playerDestroyed_x,playerDestroyed_y,oFX) {
             <string>objectAge += 1;
 
 if startBGtween {
-    TweenBackgroundSpeedV(id,EaseOutQuart,TWEEN_MODE_ONCE,false,1,90,0,background_vspeed[0],2);
-    TweenBackgroundSpeedV(id,EaseOutQuart,TWEEN_MODE_ONCE,false,1,90,1,background_vspeed[1],1);
+    TweenBackgroundSpeedV(id,BGtween_ease,TWEEN_MODE_ONCE,false,1,BGtween_dur,0,BGtween_startspeed[0],BGtween_stopspeed[0]);
+    TweenBackgroundSpeedV(id,BGtween_ease,TWEEN_MODE_ONCE,false,1,BGtween_dur,1,BGtween_startspeed[1],BGtween_stopspeed[1]);
+    TweenBackgroundSpeedV(id,BGtween_ease,TWEEN_MODE_ONCE,false,1,BGtween_dur,2,BGtween_startspeed[2],BGtween_stopspeed[2]);
 
     startBGtween = false;
 }

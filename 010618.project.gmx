@@ -503,16 +503,27 @@
         <object>objects\levelMan006</object>
         <object>objects\levelMan007</object>
         <object>objects\levelMan008</object>
+        <object>objects\levelMan012</object>
         <object>objects\levelMan014</object>
         <object>objects\levelManMidBoss_0</object>
+      </objects>
+      <objects name="trash">
+        <object>objects\trashLevel000</object>
+      </objects>
+      <objects name="ocean">
+        <object>objects\oceanLevel000</object>
+        <object>objects\oceanLevel001</object>
       </objects>
       <objects name="skull">
         <object>objects\skullLevel000</object>
         <object>objects\skullBoss000</object>
       </objects>
-      <object>objects\levelManager</object>
+      <objects name="cloud">
+        <object>objects\cloudLevel000</object>
+        <object>objects\cloudLevel001</object>
+      </objects>
       <object>objects\levelManDebug</object>
-      <object>objects\levelMan119</object>
+      <object>objects\levelManager</object>
     </objects>
     <objects name="level">
       <objects name="ocean">
@@ -681,6 +692,7 @@
     <timeline>timelines\tLvl9</timeline>
     <timeline>timelines\tLvl14</timeline>
     <timeline>timelines\tLvl_skull0</timeline>
+    <timeline>timelines\tLvl_cloud0</timeline>
     <timeline>timelines\tBasicFwd</timeline>
     <timeline>timelines\tDeepSpace</timeline>
     <timeline>timelines\tButtonUnlock</timeline>

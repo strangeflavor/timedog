@@ -20,17 +20,24 @@ managerArray[8] = levelMan008;
 managerArray[9] = -9;
     timelineArray[9] = tLvl9;
 
+managerArray[12] = levelMan012;
+    
 // world 2: trash world
 for (var i=100;i<200;i+=1) {
     managerArray[i] = levelManager;
     timelineArray[i] = -1;
 }
 
+managerArray[100] = trashLevel000;
+
 // world 3: underwater
 for (var i=200;i<300;i+=1) {
     managerArray[i] = levelManager;
     timelineArray[i] = -1;
 }
+
+managerArray[200] = oceanLevel000;
+managerArray[201] = oceanLevel001;
 
 // world 4: planet FM
 for (var i=300;i<400;i+=1) {
@@ -43,6 +50,9 @@ for (var i=400;i<500;i+=1) {
     managerArray[i] = levelManager;
     timelineArray[i] = -1;
 }
+
+managerArray[400] = cloudLevel000;
+managerArray[401] = cloudLevel001;
 
 // world 6: skull planet
 for (var i=500;i<600;i+=1) {
