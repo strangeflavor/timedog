@@ -15,6 +15,8 @@ for (var i=0;i<8;i+=1) {
     }
 }
 
+runPhase = true;
+
 #define formationTransferPhaseVars
 ///formationTransferPhaseVars()
 
@@ -37,6 +39,10 @@ eID.currentPhaseDelay = eID.phaseDelay[0];
 
 #define checkPhaseCondition
 var met_condition = false;
+var _arg0 = phaseConditionArguments[currentPhase,0];
+var _arg1 = phaseConditionArguments[currentPhase,1];
+var _arg2 = phaseConditionArguments[currentPhase,2];
+
 switch phaseCondition[currentPhase] {
     case _PHASE_CONDITION_X:
     break;
@@ -54,6 +60,17 @@ switch phaseCondition[currentPhase] {
             y = yStop;
             timeline_running = false;
             path_end();
+            met_condition = true;
+        }
+    break;
+    case _PHASE_CONDITION_XY:
+        move_towards_point(_arg0,_arg1,4)
+
+        var _dist = point_distance(x,y,_arg0,_arg1);
+        if _dist < 2 {
+            x = _arg0;
+            y = _arg1;
+
             met_condition = true;
         }
     break;

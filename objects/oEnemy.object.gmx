@@ -86,6 +86,7 @@ bezierPos = 0;
 bezierSpeed = 10;
 bezierSpeedSign = 1;
 bezierEndAction = 'reverse';
+cpIndex = 0;
 
 ///////////////////////////
 // formation stuff
@@ -343,12 +344,12 @@ if waitTime &lt; 0 {
 
     if followBezier {
         var bezID = bezierObjectArray[bezierIndex];
-        var bp = Bezier_Point_Find(bezierPos,bezID.cpID[bezID.cpIndex].x,bezID.cpID[bezID.cpIndex].y,bezID.cpID[bezID.cpIndex+1].x,bezID.cpID[bezID.cpIndex+1].y,bezID.cpID[bezID.cpIndex+2].x,bezID.cpID[bezID.cpIndex+2].y,bezID.cpID[bezID.cpIndex+3].x,bezID.cpID[bezID.cpIndex+3].y);
+        var bp = Bezier_Point_Find(bezierPos,bezID.cpID[cpIndex].x,bezID.cpID[cpIndex].y,bezID.cpID[cpIndex+1].x,bezID.cpID[cpIndex+1].y,bezID.cpID[cpIndex+2].x,bezID.cpID[cpIndex+2].y,bezID.cpID[cpIndex+3].x,bezID.cpID[cpIndex+3].y);
         var isBeginning = false;
         var isEnd = false;
 
-        if bezID.cpIndex == 0 isBeginning = true;
-        if bezID.cpID[bezID.cpIndex + 4] == -1 isEnd = true;
+        if cpIndex == 0 isBeginning = true;
+        if bezID.cpID[cpIndex + 4] == -1 isEnd = true;
 
         var speed_per_tick = bezierSpeedSign*bezierSpeed; //constant speed you want the object to move at
 
@@ -404,15 +405,19 @@ if waitTime &lt; 0 {
                             case 'reset':
                                 // reset to start
                                 bezierPos = 0;
-                                bezID.cpIndex = 0;
-                                bp = Bezier_Point_Find(bezierPos,bezID.cpID[bezID.cpIndex].x,bezID.cpID[bezID.cpIndex].y,bezID.cpID[bezID.cpIndex+1].x,bezID.cpID[bezID.cpIndex+1].y,bezID.cpID[bezID.cpIndex+2].x,bezID.cpID[bezID.cpIndex+2].y,bezID.cpID[bezID.cpIndex+3].x,bezID.cpID[bezID.cpIndex+3].y);
+                                cpIndex = 0;
+                                bp = Bezier_Point_Find(bezierPos,bezID.cpID[cpIndex].x,bezID.cpID[cpIndex].y,bezID.cpID[cpIndex+1].x,bezID.cpID[cpIndex+1].y,bezID.cpID[cpIndex+2].x,bezID.cpID[cpIndex+2].y,bezID.cpID[cpIndex+3].x,bezID.cpID[cpIndex+3].y);
                                 x = bp[0];
                                 y = bp[1];
                             break;
+                            case 'update phase':
+                                followBezier = false;
+                                currentPhase += 1;
+                            break;
                         }
                     } else {
-                        bezID.cpIndex += 4*bezierSpeedSign;
-                        if bezID.cpIndex &lt; 0 bezID.cpIndex = 0;
+                        cpIndex += 4*bezierSpeedSign;
+                        if cpIndex &lt; 0 cpIndex = 0;
                         if bezierSpeedSign == 1 bezierPos = 0 else bezierPos = 1;
                     }
                 }
@@ -426,7 +431,7 @@ if waitTime &lt; 0 {
     // run phase
     //////////////////////////
 
-    enemy_RunPhase(currentPhase);
+    if currentPhase &gt; -1 enemy_RunPhase(currentPhase);
 
 } else {
     if waitTime &gt;= 0 {

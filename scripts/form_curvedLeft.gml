@@ -118,17 +118,57 @@ for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else
 var _xoffset = arg[0];
 if _xoffset == 1 _xoffset = 0;
 
+////////////////////////
+// make bez
+////////////////////////
+
 bID[0] = make(oBezier);
 with bID[0] {
     bezTest();
     createBezierControlPoints();
 }
 
+
+////////////////////////
+// chain up
+////////////////////////
+
+var _xoffset = arg[0];
+if _xoffset == 1 _xoffset = 0;
+
+with make(vw/2+_xoffset,-96,fBezChain) {
+    bezierID = other.bID[0];
+    enemy = oMiniThex;
+    bezierEndAction = 'update phase';
+
+    phase[0] = enemy_move;
+
+    phaseCondition[0] = _PHASE_CONDITION_XY;
+    phaseConditionArguments[0,0] = 16;
+    phaseConditionArguments[0,1] = 16;
+
+    phase[1] = enemy_stop;
+
+    size = 7;
+    rate = 30;
+}
+
+/*
 with make(oMiniThex) {
     depth = -6;
+    invul = false;
+
     followBezier = true;
     bezierObjectArray[0] = other.bID[0];
-    //bezierObjectArray[1] = other.bID[1];
-    //bezierObjectArray[2] = other.bID[2];
-    bezierEndAction = 'reverse';
+    bezierEndAction = 'update phase';
+
+    currentPhase = -1;
+    phase[0] = enemy_move;
+
+    phaseCondition[0] = _PHASE_CONDITION_XY;
+    phaseConditionArguments[0,0] = 16;
+    phaseConditionArguments[0,1] = 16;
+
+    phase[1] = enemy_stop;
 }
+*/

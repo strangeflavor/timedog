@@ -581,6 +581,7 @@
       <object>objects\fMaze</object>
       <object>objects\fLogisticSpawner</object>
       <object>objects\fChain</object>
+      <object>objects\fBezChain</object>
       <object>objects\fSkullBorder</object>
       <object>objects\fMeteors</object>
       <object>objects\fBehind</object>
@@ -708,7 +709,7 @@
     <room>rooms\roomTest</room>
     <room>rooms\rWeaponSelect</room>
   </rooms>
-  <constants number="60">
+  <constants number="61">
     <constant name="scale">global._scale</constant>
     <constant name="vw">global._vw</constant>
     <constant name="vh">global._vh</constant>
@@ -753,6 +754,7 @@
     <constant name="_PHASE_CONDITION_Y">1</constant>
     <constant name="_PHASE_CONDITION_TIME">2</constant>
     <constant name="_PHASE_CONDITION_HP">3</constant>
+    <constant name="_PHASE_CONDITION_XY">4</constant>
     <constant name="_PHASE_DELAY_WAIT">999999</constant>
     <constant name="_TIMEDOG">1</constant>
     <constant name="_NIGHTBIRD">2</constant>

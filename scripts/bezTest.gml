@@ -3,24 +3,18 @@ add_bez_index = 0;
 
 addBezPoint(480,545);
 addBezPoint(326,526);
-addBezPoint(305,409);
+addBezPoint(325,417);
 addBezPoint(328,296);
 
-addBezPoint(331,293);
+addBezPoint(328,296);
 addBezPoint(336,178);
 addBezPoint(477,193);
 addBezPoint(462,309);
 
-addBezPoint(463,312);
+addBezPoint(462,309);
 addBezPoint(408,427);
-addBezPoint(187,280);
-addBezPoint(258,149);
-
-addBezPoint(463,312-100);
-addBezPoint(408,427-100);
-addBezPoint(187,280-100);
-addBezPoint(258,149-100);
-
+addBezPoint(172,323);
+addBezPoint(192,238);
 
 #define createBezierControlPoints
 ///create control points
