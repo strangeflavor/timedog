@@ -90,24 +90,26 @@ kill(cp3);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var ww = 20;
-/*
-for (i=0;i&lt;ww;i+=1) {
-    a = Bezier_Point_Find(i*.05,cp0.x,cp0.y,cp1.x,cp1.y,cp2.x,cp2.y,cp3.x,cp3.y);
-    draw_set_color(bezColors[myNumber]);
-    draw_circle(a[0],a[1],3,false);
-}
-*/
-var j = 0;
-while cpID[j] != -1 {
+            <string>if debug == 1 {
+    var ww = 20;
+    /*
     for (i=0;i&lt;ww;i+=1) {
-        //a = Bezier_Point_Find(i*.05,cpX[j],cpY[j],cpX[j+1],cpY[j+1],cpX[j+2],cpY[j+2],cpX[j+3],cpY[j+3]);
-        a = Bezier_Point_Find(i*.05,cpID[j].x,cpID[j].y,cpID[j+1].x,cpID[j+1].y,cpID[j+2].x,cpID[j+2].y,cpID[j+3].x,cpID[j+3].y);
-        draw_set_color(merge_color(bezColors[myNumber],c_white,j*.05));
+        a = Bezier_Point_Find(i*.05,cp0.x,cp0.y,cp1.x,cp1.y,cp2.x,cp2.y,cp3.x,cp3.y);
+        draw_set_color(bezColors[myNumber]);
         draw_circle(a[0],a[1],3,false);
     }
-
-    j+=4;
+    */
+    var j = 0;
+    while cpID[j] != -1 {
+        for (i=0;i&lt;ww;i+=1) {
+            //a = Bezier_Point_Find(i*.05,cpX[j],cpY[j],cpX[j+1],cpY[j+1],cpX[j+2],cpY[j+2],cpX[j+3],cpY[j+3]);
+            a = Bezier_Point_Find(i*.05,cpID[j].x,cpID[j].y,cpID[j+1].x,cpID[j+1].y,cpID[j+2].x,cpID[j+2].y,cpID[j+3].x,cpID[j+3].y);
+            draw_set_color(merge_color(bezColors[myNumber],c_white,j*.05));
+            draw_circle(a[0],a[1],3,false);
+        }
+    
+        j+=4;
+    }
 }
 </string>
           </argument>

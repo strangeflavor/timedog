@@ -141,16 +141,21 @@ with make(vw/2+_xoffset,-96,fBezChain) {
     enemy = oMiniThex;
     bezierEndAction = 'update phase';
 
-    phase[0] = enemy_move;
-
+    // this just prevents phase 0 from ending until we manually end it at the end of the bezier path
     phaseCondition[0] = _PHASE_CONDITION_XY;
-    phaseConditionArguments[0,0] = 16;
-    phaseConditionArguments[0,1] = 16;
+    phaseConditionArguments[0,0] = -100;
+    phaseConditionArguments[0,1] = -100;
 
-    phase[1] = enemy_stop;
+    phase[1] = enemy_move;
+
+    phaseCondition[1] = _PHASE_CONDITION_XY;
+    phaseConditionArguments[1,0] = -1;
+    phaseConditionArguments[1,1] = -1;
+
+    phase[2] = enemy_stop;
 
     size = 7;
-    rate = 30;
+    rate = 12;
 }
 
 /*

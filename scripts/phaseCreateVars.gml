@@ -15,8 +15,6 @@ for (var i=0;i<8;i+=1) {
     }
 }
 
-runPhase = true;
-
 #define formationTransferPhaseVars
 ///formationTransferPhaseVars()
 
@@ -64,7 +62,7 @@ switch phaseCondition[currentPhase] {
         }
     break;
     case _PHASE_CONDITION_XY:
-        move_towards_point(_arg0,_arg1,4)
+        move_towards_point(_arg0,_arg1,8)
 
         var _dist = point_distance(x,y,_arg0,_arg1);
         if _dist < 2 {

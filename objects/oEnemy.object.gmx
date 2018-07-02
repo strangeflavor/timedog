@@ -61,6 +61,7 @@ cy_offset = 0; // NB, change the name, this is too similar to cx and cy but unre
 
 
 phaseCreateVars();
+runPhase = true;
 
 // path stuff
 
@@ -431,7 +432,7 @@ if waitTime &lt; 0 {
     // run phase
     //////////////////////////
 
-    if currentPhase &gt; -1 enemy_RunPhase(currentPhase);
+    if runPhase enemy_RunPhase(currentPhase);
 
 } else {
     if waitTime &gt;= 0 {
