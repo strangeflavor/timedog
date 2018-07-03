@@ -62,10 +62,13 @@ switch phaseCondition[currentPhase] {
         }
     break;
     case _PHASE_CONDITION_XY:
-        move_towards_point(_arg0,_arg1,8)
-
         var _dist = point_distance(x,y,_arg0,_arg1);
-        if _dist < 2 {
+        var _spd = bezierSpeed;
+        if _dist < 36 _spd = 9;
+
+        move_towards_point(_arg0,_arg1,_spd)
+
+        if _dist < 9 {
             x = _arg0;
             y = _arg1;
 
@@ -73,7 +76,7 @@ switch phaseCondition[currentPhase] {
         }
     break;
     case _PHASE_CONDITION_TIME:
-        if currentPhaseAge > phaseConditionArguments[currentPhase,0] met_condition = true;
+        if currentPhaseAge > phaseConditionArguments[currentPhase,0] and phaseConditionArguments[currentPhase,0] > -1 met_condition = true;
     break;
     case _PHASE_CONDITION_HP:
     break;
