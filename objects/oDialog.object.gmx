@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speakerName[_NONE] = 'NARRATOR';
+            <string>objectAge = 0;
+
+speakerName[_NONE] = 'NARRATOR';
 speakerName[_TIMEDOG] = 'TIMEDOG';
 speakerName[_NIGHTBIRD] = 'NIGHTBIRD';
 speakerName[_THEPROF] = 'THE PROF';
@@ -42,6 +44,15 @@ speakerVoice[_NIGHTBIRD] = -1;
 speakerVoice[_THEPROF] = -1;
 speakerVoice[_SHOPKEEP] = -1;
 
+speakerBlend[_NONE,0] = c_white;
+speakerBlend[_TIMEDOG,0] = c_white;
+speakerBlend[_NIGHTBIRD,0] = c_blue;
+speakerBlend[_NIGHTBIRD,1] = c_red;
+speakerBlend[_THEPROF,0] = make_color_rgb(0,255,0);
+speakerBlend[_THEPROF,1] = make_color_rgb(255,0,255);
+speakerBlend[_SHOPKEEP,0] = c_white;
+
+speaker_index = -1;
 speaker = -1;
 name = -1;
 voice = -1
@@ -178,6 +189,7 @@ if dialogIndex &lt;= dialogObject.dialogPanels {
             <string>dialogIndex += 1;
 
 if dialogIndex &lt;= levelManager.dialogPanels {
+    speaker_index = levelManager.dialog[dialogIndex,0];
     speaker = speakerImg[levelManager.dialog[dialogIndex,0]];
     name = speakerName[levelManager.dialog[dialogIndex,0]];
     voice = speakerVoice[levelManager.dialog[dialogIndex,0]];
@@ -221,7 +233,9 @@ if dialogIndex &lt;= levelManager.dialogPanels {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if type &gt; 0 {
+            <string>objectAge += 1;
+
+if type &gt; 0 {
     type = typerate;
     if string_length(text) &lt; string_length(fulltext) {
         text = string_copy(fulltext,0,string_length(text)+1);

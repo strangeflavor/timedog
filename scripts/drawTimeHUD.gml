@@ -69,14 +69,14 @@ if instance_exists(levelManager) if levelManager.winCondition == _WIN_TIME drawT
 if dialogIndex > -1 {
     var xx = 8;
     var yy = 8;
-    
+
     gradientSlideIn += 2;
     if room != rShop {
         draw_set_blend_mode_ext(0,3);
         draw_sprite_ext(sTopGradient,0,0,min(gradientSlideIn,-64),1,1,0,c_white,1);
         draw_set_blend_mode(bm_normal);
     }
-    
+
     if oDialog.name == 'NARRATOR' {
         draw_set_halign(fa_left);
         draw_set_valign(fa_top);
@@ -87,12 +87,18 @@ if dialogIndex > -1 {
         draw_set_halign(fa_left);
         draw_set_valign(fa_top);
         if oDialog.speaker > -1 {
-            draw_sprite(oDialog.speaker,0,xx,yy);
-            draw_sprite(sDialogBub,0,xx,yy);
+            draw_sprite_ext(sDialogBub,0,xx,yy,1.1,1.1,0,c_white,1);
+            speaker_c1 = speakerBlend[oDialog.speaker_index,0];
+            speaker_c2 = speakerBlend[oDialog.speaker_index,1];
+            cc = abs(sin(objectAge*.02));
+
+            speakerblend = merge_color(speaker_c1,speaker_c2,cc);
+            draw_sprite_ext(oDialog.speaker,0,xx+3,yy+3,1,1,0,speakerblend,1);
         }
-        draw_set_color(c_blue);
-        draw_text(xx+90,yy,oDialog.name);
+
+        draw_set_color(speakerBlend[oDialog.speaker_index,0]);
+        draw_text(xx+100,yy,oDialog.name);
         draw_set_color(c_white);
-        draw_text_ext(xx+90,min(yy+16,gradientSlideIn+128),oDialog.text,-1,vw*.7);
+        draw_text_ext(xx+110,min(yy+26,gradientSlideIn+128),oDialog.text,-1,vw*.7);
     }
 }
