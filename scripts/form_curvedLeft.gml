@@ -128,7 +128,6 @@ with bID[0] {
     createBezierControlPoints();
 }
 
-
 ////////////////////////
 // chain up
 ////////////////////////
@@ -138,7 +137,7 @@ if _xoffset == 1 _xoffset = 0;
 
 with make(vw/2+_xoffset,-96,fBezChain) {
     bezierID = other.bID[0];
-    enemy = oMiniThex;
+    enemy = oBezThex;
     bezierEndAction = 'update phase';
     bezierSpeed = 16;
 
@@ -154,9 +153,23 @@ with make(vw/2+_xoffset,-96,fBezChain) {
     phaseConditionArguments[1,1] = 16;
 
     phase[2] = enemy_stop;
+    phaseCondition[2] = _PHASE_CONDITION_TIME;
+    phaseConditionArguments[2,0] = 150;
 
-    size = 6;
-    rate = 12;
+    phase[3] = enemy_move;
+    phaseArguments[3,0] = -2;
+    phaseArguments[3,1] = 9;
+
+    size = 24;
+
+    // g90 position data
+    columns = 8;
+    rows = 3;
+    rate = 6;
+    xspacing = 40;
+    yspacing = 40;
+    xo = 100;
+    yo = 80;
 }
 
 /*

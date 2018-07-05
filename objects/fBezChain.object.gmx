@@ -76,9 +76,11 @@ yStop = -1;
           <argument>
             <kind>1</kind>
             <string>/// start spawning
+var _column = ((count) mod (columns));
+var _row = (count div (size/rows));
 
-phaseConditionArguments[1,0] = 64*(count+1);
-phaseConditionArguments[1,1] = 32;
+phaseConditionArguments[1,0] = xo + (xspacing * _column);
+phaseConditionArguments[1,1] = yo + (yspacing * _row);
 
 var eID = -1;
 eID = make(enemy);
@@ -89,17 +91,6 @@ with eID {
     bezierObjectArray[0] = other.bezierID;
     bezierEndAction = other.bezierEndAction;
     bezierSpeed = other.bezierSpeed;
-
-    /*
-    currentPhase = -1;
-    phase[0] = enemy_move;
-
-    phaseCondition[0] = _PHASE_CONDITION_XY;
-    phaseConditionArguments[0,0] = 16;
-    phaseConditionArguments[0,1] = 16;
-
-    phase[1] = enemy_stop;
-    */
 }
 
 formationTransferPhaseVars(eID);

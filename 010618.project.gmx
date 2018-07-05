@@ -640,6 +640,7 @@
       <object>objects\oDrone</object>
       <object>objects\oMassFireAtPlayer</object>
       <object>objects\oMiniThex</object>
+      <object>objects\oBezThex</object>
       <object>objects\oThexMed</object>
       <object>objects\oThexPatrolSpitter</object>
       <object>objects\oThexLarge</object>

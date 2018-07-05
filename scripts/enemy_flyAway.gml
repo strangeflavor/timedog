@@ -32,6 +32,7 @@ image_angle = direction;
 var dir = argument0;
 var spd = argument1;
 if dir == -1 dir = 270;
+if dir == -2 if x < vw/2 dir = 180 else dir = 0;
 if spd == -1 spd = 8;
 
 if path_index != -1 path_end();

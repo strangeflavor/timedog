@@ -76,7 +76,9 @@ switch phaseCondition[currentPhase] {
         }
     break;
     case _PHASE_CONDITION_TIME:
-        if currentPhaseAge > phaseConditionArguments[currentPhase,0] and phaseConditionArguments[currentPhase,0] > -1 met_condition = true;
+        if currentPhaseAge > phaseConditionArguments[currentPhase,0] and phaseConditionArguments[currentPhase,0] > -1 {
+            met_condition = true;
+        }
     break;
     case _PHASE_CONDITION_HP:
     break;
