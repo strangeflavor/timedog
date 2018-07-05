@@ -146,6 +146,7 @@
       <sprite>sprites\sPickupBits</sprite>
       <sprite>sprites\sEmptyPickup</sprite>
       <sprite>sprites\sBigPickup</sprite>
+      <sprite>sprites\sDogPickup</sprite>
       <sprite>sprites\sPickupIrrid</sprite>
     </sprites>
     <sprites name="beams">
@@ -613,6 +614,7 @@
       <object>objects\oShot</object>
       <object>objects\oChargeShot</object>
       <object>objects\oChargeShotExplode</object>
+      <object>objects\oDogPickup</object>
       <object>objects\oPickup</object>
       <object>objects\oPickupBits</object>
     </objects>
