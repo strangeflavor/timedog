@@ -19,6 +19,7 @@ managerArray[7] = levelMan007;
 managerArray[8] = levelMan008;
 managerArray[9] = -9;
     timelineArray[9] = tLvl9;
+managerArray[10] = levelMan010;
 
 managerArray[12] = levelMan012;
     

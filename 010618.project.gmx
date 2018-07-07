@@ -209,12 +209,14 @@
       <sprite>sprites\sForcefield</sprite>
       <sprite>sprites\sExplo</sprite>
       <sprite>sprites\sBubble</sprite>
+      <sprite>sprites\sSparkle</sprite>
     </sprites>
     <sprites name="dialog">
       <sprite>sprites\sSpeakerNightbird</sprite>
       <sprite>sprites\sSpeakerProf</sprite>
       <sprite>sprites\sSpeakerShopkeep</sprite>
       <sprite>sprites\sDialogBub</sprite>
+      <sprite>sprites\sDialogPanel</sprite>
       <sprite>sprites\sProjectionBG</sprite>
       <sprite>sprites\sProjectionAlpha</sprite>
       <sprite>sprites\sTopGradient</sprite>
@@ -493,6 +495,8 @@
     <font>fonts\fStapler</font>
     <font>fonts\fArial</font>
     <font>fonts\fFont</font>
+    <font>fonts\fNarrator</font>
+    <font>fonts\fDialog</font>
   </fonts>
   <objects name="objects">
     <objects name="level mans">
@@ -504,6 +508,7 @@
         <object>objects\levelMan006</object>
         <object>objects\levelMan007</object>
         <object>objects\levelMan008</object>
+        <object>objects\levelMan010</object>
         <object>objects\levelMan012</object>
         <object>objects\levelMan014</object>
         <object>objects\levelManMidBoss_0</object>
@@ -666,6 +671,7 @@
       <object>objects\oBeam</object>
     </objects>
     <objects name="fx">
+      <object>objects\object151</object>
       <object>objects\oBubble</object>
       <object>objects\oExplo</object>
       <object>objects\oLargeExplo</object>
@@ -694,6 +700,7 @@
     <timeline>timelines\tLvl7</timeline>
     <timeline>timelines\tLvl8</timeline>
     <timeline>timelines\tLvl9</timeline>
+    <timeline>timelines\tLvl10</timeline>
     <timeline>timelines\tLvl14</timeline>
     <timeline>timelines\tLvl_skull0</timeline>
     <timeline>timelines\tLvl_cloud0</timeline>
