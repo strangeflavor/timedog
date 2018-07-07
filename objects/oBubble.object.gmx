@@ -76,9 +76,7 @@ alarm[0] = 90+nrandom(30);
             <kind>1</kind>
             <string>objectAge += 1;
 
-if fade {
-    image_scale(image_xscale*.9);
-}
+if fade image_scale(image_xscale*.9);
 
 if image_xscale &lt; .05 kill();
 </string>
@@ -104,6 +102,33 @@ if image_xscale &lt; .05 kill();
           <argument>
             <kind>1</kind>
             <string>kill();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// circle
+draw_sprite_ext(sprite_index,0,x,y,image_xscale,image_yscale,0,c_white,1);
+
+// sheen
+draw_sprite_ext(sprite_index,1,x,y,image_xscale,image_yscale,0,c_white,.7);
 </string>
           </argument>
         </arguments>

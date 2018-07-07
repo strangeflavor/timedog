@@ -44,7 +44,7 @@
 /////////////////////
 
 winCondition = _WIN_TIMELINE_END;
-winConditionValue = tLvl_skull0;
+winConditionValue = tOcean00;
 
 /////////////////////
 // dialog stuff

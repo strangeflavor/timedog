@@ -138,7 +138,7 @@ for( var i = 0; i &lt; numStars; i++ ) {
         //var size = (1 - star_z[i] / 32.0) * 5;
         //draw_set_color(merge_color(c_white,c_black,star_z[i]/MAX_DEPTH));
         var size = (1 - star_z[i] / 32.0) * 4;
-        draw_set_color(merge_color(c_white,c_aqua,star_z[i]/MAX_DEPTH));
+        draw_set_color(merge_color(c_white,c_gray,star_z[i]/MAX_DEPTH));
         draw_circle(px,py,size,true);
   }
 }

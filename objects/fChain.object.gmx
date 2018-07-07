@@ -51,6 +51,8 @@ count = 0;
 
 _enemy_speed = -1;
 _enemy_direction = -1;
+_enemy_xshuffle = 0;
+_enemy_yshuffle = 0;
 
 yStop = -1;
 </string>
@@ -89,7 +91,7 @@ if path &gt; -1 {
 
     _path_scale += _path_scale_delta;
 } else {
-    eID = make(x,y,enemy);
+    eID = make(x+nrandom(_enemy_xshuffle),y+nrandom(_enemy_yshuffle),enemy);
     if _enemy_direction != -1 {
         eID.direction = _enemy_direction;
         eID.speed = _enemy_speed;

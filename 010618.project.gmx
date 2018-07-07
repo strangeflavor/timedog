@@ -625,10 +625,15 @@
     </objects>
     <objects name="enemy">
       <object>objects\oEnemy</object>
-      <object>objects\oWaiter</object>
       <object>objects\oSteering</object>
-      <object>objects\oLargeEnemy</object>
-      <object>objects\oSkullKing</object>
+      <object>objects\oWaiter</object>
+      <objects name="ocean">
+        <object>objects\oShrimp</object>
+      </objects>
+      <objects name="skull">
+        <object>objects\oSkull</object>
+        <object>objects\oSkullKing</object>
+      </objects>
       <object>objects\oMerchant</object>
       <object>objects\oMerchantPilot</object>
       <object>objects\oSatellite</object>
@@ -642,7 +647,6 @@
       <object>objects\oLaserCrab</object>
       <object>objects\oMeteor</object>
       <object>objects\oWorm</object>
-      <object>objects\oSkull</object>
       <object>objects\oAimAtPlayer</object>
       <object>objects\oDrone</object>
       <object>objects\oMassFireAtPlayer</object>
@@ -658,6 +662,7 @@
       <object>objects\mazeEater</object>
       <object>objects\mazeEndpoint</object>
       <object>objects\oCube</object>
+      <object>objects\oLargeEnemy</object>
     </objects>
     <objects name="shots">
       <object>objects\shot_pattern</object>
@@ -704,6 +709,9 @@
     <timeline>timelines\tLvl14</timeline>
     <timeline>timelines\tLvl_skull0</timeline>
     <timeline>timelines\tLvl_cloud0</timeline>
+    <timelines name="ocean">
+      <timeline>timelines\tOcean00</timeline>
+    </timelines>
     <timeline>timelines\tBasicFwd</timeline>
     <timeline>timelines\tDeepSpace</timeline>
     <timeline>timelines\tButtonUnlock</timeline>
