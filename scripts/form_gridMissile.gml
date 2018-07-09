@@ -64,7 +64,7 @@ var _xoffset = arg[0];
 if _xoffset == -1 _xoffset = 0;
 
 with make(vw/2+_xoffset,-32,oMultiShot) {
-    formationID = other.newFormationID;
+    //formationID = other.newFormationID;
     path = pCurvedApproachMirror;
     path_speed = 6;
     path_endtime = 45;
