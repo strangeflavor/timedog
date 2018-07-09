@@ -26,13 +26,13 @@ with make(vw,270,fChain) {
     enemy = oShrimp;
     //invul = true;
 
-    _enemy_yshuffle = 32;
+    _enemy_yshuffle = 60;
     _enemy_direction = 160;
     _enemy_speed = 6;
 
-    size = 5;
-    wait = 15;
-    rate = 30;
+    size = 7;
+    wait = 24;
+    rate = 18;
     speedSign = 1;//choose(-1,1);
 
     //phaseDelay[0] = _PHASE_DELAY_WAIT;

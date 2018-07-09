@@ -83,6 +83,10 @@ with make(vw/2+100,-80,oThexLarge) {
     current_state_duration += 120;
 }
 
+/*
+form_circles(-60);
+form_circles(80,-32,-1,150,20);
+*/
 timeline_running = false;
 timeline_position += 1;
 </string>

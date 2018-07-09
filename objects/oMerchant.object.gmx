@@ -59,7 +59,7 @@ with turretID {
     killWhenOffscreen = false;
     value = 0;
     sprite_index = sMerchantTurret;
-    HP = 18;
+    HP = 120;
     cy_offset = 133 - 75;
     
 }

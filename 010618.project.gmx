@@ -194,6 +194,7 @@
       <sprite>sprites\sMox</sprite>
       <sprite>sprites\sGridShip</sprite>
       <sprite>sprites\sCircles</sprite>
+      <sprite>sprites\sStix</sprite>
       <sprite>sprites\sCrab</sprite>
     </sprites>
     <sprites name="fx">
@@ -214,6 +215,7 @@
     <sprites name="dialog">
       <sprite>sprites\sSpeakerNightbird</sprite>
       <sprite>sprites\sSpeakerProf</sprite>
+      <sprite>sprites\sGlitchProf</sprite>
       <sprite>sprites\sSpeakerShopkeep</sprite>
       <sprite>sprites\sDialogBub</sprite>
       <sprite>sprites\sDialogPanel</sprite>

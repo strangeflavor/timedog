@@ -135,10 +135,11 @@ if mouse_wheel_down() {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_halign(fa_left);
-draw_set_color($EE1010)
-draw_text(8,16,script_get_name(formScriptArray[formScriptIndex]));
-
+            <string>if debug &gt; 0 {
+    draw_set_halign(fa_left);
+    draw_set_color($EE1010)
+    draw_text(8,16,script_get_name(formScriptArray[formScriptIndex]));
+}
 </string>
           </argument>
         </arguments>

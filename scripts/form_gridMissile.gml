@@ -133,6 +133,10 @@ var _wait = arg[4];
 if _wait < 1 _wait = 1;
 var _moveduration = arg[5];
 
+if _ydest == -1 _ydest = 64;
+if _xoffsetDest == -1 _xoffsetDest = _xoffset;
+if _moveduration == -1 _moveduration = 30;
+
 var eID = make(vw/2+_xoffset,_ystart,oCircles);
 eID._xoffsetDest = _xoffsetDest;
 eID.ydest = _ydest;

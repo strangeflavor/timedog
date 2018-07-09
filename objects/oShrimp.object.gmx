@@ -39,11 +39,51 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>HP = 1;
+            <string>HP = .5;
 
 image_speed = choose(.1,.2,.3);
 
 objectAge = irandom(360);
+
+baby = false;
+
+alarm[11] = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if !baby {
+    repeat 2+irandom(5) {
+        var xo = lengthdir_x(50,direction-90) + irandom(32);
+        var yo = 60+lengthdir_y(50,direction-90) + irandom(32);
+        
+        with make(x+xo,y+yo,oShrimp) {
+            HP = .25;
+            baby = true;
+            image_speed *= 2;
+            speed = other.speed - .5;
+            direction = other.direction;
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -89,24 +129,32 @@ if fired == 0 and y &gt; 32 {
 if draw_red &gt; 0 draw_red -= .05;
 */
 
-image_xscale = 1+.5*abs(sin(objectAge*.025));
-image_yscale = image_xscale;
+if baby {
+    image_xscale = .4+.2*abs(sin(objectAge*.04));
+    image_yscale = image_xscale;
+} else {
+    image_xscale = 1+.5*abs(sin(objectAge*.025));
+    image_yscale = image_xscale;
 
-image_angle = direction-90;
+    // bubbls   
+    if objectAge mod 9 == 0 {
+        var xo = lengthdir_x(32,direction-90) + nrandom(8);
+        var yo = 32+lengthdir_y(32,direction-90) + nrandom(8);
+        with make(x+xo,y+yo,oBubble) {
+            finalScale = choose(.25,.1);
+            initScale = .25;
 
-if objectAge mod 9 == 0 {
-    var xo = lengthdir_x(32,direction-90) + nrandom(8);
-    var yo = 32+lengthdir_y(32,direction-90) + nrandom(8);
-    with make(x+xo,y+yo,oBubble) {
-        finalScale = choose(.25,.1);
-        initScale = .25;
-        //TweenSimpleScale(initScale,initScale,finalScale,finalScale,choose(.2,.3),EaseOutBack);
-        alarm[0] = choose(3,6,9,12);
-        sprite_index = sBubble;
-        direction = other.direction;
-        speed = other.speed*.7;
+            alarm[0] = choose(3,6,9,12);
+            sprite_index = sBubble;
+            direction = other.direction;
+            speed = other.speed*.7;
+        }
     }
 }
+
+
+r = image_xscale*18;
+image_angle = direction-90 + r;
 </string>
           </argument>
         </arguments>

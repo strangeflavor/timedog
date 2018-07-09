@@ -70,8 +70,6 @@ if dialogIndex > -1 {
     var xx = 8;
     var yy = 4;
 
-    draw_set_font(fDialog);
-    
     gradientSlideIn += 2;
     if room != rShop {
         draw_set_blend_mode_ext(0,3);
@@ -80,12 +78,14 @@ if dialogIndex > -1 {
     }
 
     if oDialog.name == 'NARRATOR' {
+        draw_set_font(fNarrator);
         draw_set_halign(fa_left);
         draw_set_valign(fa_top);
         draw_set_color(c_white);
         //draw_text(xx+8,min(yy,gradientSlideIn+128),oDialog.text);
         draw_text_ext(xx+8,min(yy,gradientSlideIn+128),oDialog.text,-1,vw*.7);
     } else {
+        draw_set_font(fDialog);
         draw_set_halign(fa_left);
         draw_set_valign(fa_top);
         if oDialog.speaker > -1 {
@@ -95,14 +95,17 @@ if dialogIndex > -1 {
             cc = abs(sin(objectAge*.02));
 
             speakerblend = c_white; //merge_color(speaker_c1,speaker_c2,cc);
-            draw_sprite_ext(oDialog.speaker,0,xx+13,yy+17,1,1,0,speakerblend,1);
-
+            draw_sprite_ext(oDialog.speaker,image_index,xx+13,yy+17,1,1,0,speakerblend,1);
             draw_sprite_ext(sDialogPanel,0,xx+110,yy+8,1.1,1.1,0,c_white,1);
+
+            if speakerImgGlitch[speaker_index] > -1 and alarm[2] == -1 {
+                alarm[2] = choose(60,120,150,180);
+            }
         }
 
         //draw_set_color(speakerBlend[oDialog.speaker_index,0]);
         //draw_text(xx+100,yy,oDialog.name);
         draw_set_color(c_white);
-        draw_text_ext(xx+120,min(yy+18,gradientSlideIn+128),oDialog.text,-1,vw*.7);
+        draw_text_ext(xx+128,min(yy+20,gradientSlideIn+128),oDialog.text,-1,vw*.7);
     }
 }

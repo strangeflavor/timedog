@@ -50,14 +50,11 @@ winConditionValue = tLvl1;
 // dialog stuff
 /////////////////////
 
-addDialog(_NONE,"our story begins...");
-addDialog(_NIGHTBIRD,"this is nightbird, checking in!");
-addDialog(_THEPROF,"lorem ipsum!");
-addProjection();
-addDialog(_THEPROF,"tipsum bipsum!");
-addDialog(_THEPROF,"it the bit sit");
-removeProjection();
-addDialog(_NIGHTBIRD,"ya");
+addDialog(_NONE,"Our story begins on the border of the known Universe...");
+addDialog(_THEPROF,"Nightbird! This is the Prof, do you copy?");
+//addProjection();
+//removeProjection();
+addDialog(_NIGHTBIRD,"This is Nightbird! I'm a sitting duck out here...");
 
 ////////////////////
 // background

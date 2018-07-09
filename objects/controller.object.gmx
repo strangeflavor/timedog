@@ -40,9 +40,6 @@ surf = -1;
 
 screen_scale = 1;
 
-//if (window_get_fullscreen()) { cursor_sprite = sprCrosshairLarge; }
-//else { cursor_sprite = sprCrosshair; } 
-
 if !mobile cursor_sprite = sCursorBig;
 window_set_cursor(cr_none); // Disable the system cursor
 </string>

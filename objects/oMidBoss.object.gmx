@@ -216,7 +216,7 @@ levelManager.bossDefeated = true;
                         direction = 360*sin(other.objectAge*.04);
                         speed = 5;
                         friction = .02;
-                        image_blend = c_lime;
+                        image_blend = make_color_rgb(255,0,128);
                     }
                 } else {
                     with make(getTurretX(1),getTurretY(1),oBullet) {
@@ -225,7 +225,7 @@ levelManager.bossDefeated = true;
                         direction = 360*sin(other.objectAge*.03);
                         speed = 5;
                         friction = .02;
-                        image_blend = c_lime;
+                        image_blend = make_color_rgb(255,0,128);
                     }
                 }
             }
