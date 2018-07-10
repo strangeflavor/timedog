@@ -207,7 +207,7 @@ make(-32,vh/4,oFireAtPlayer);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>form_curvedRight(-180,-70,6,12,1);
+            <string>form_curvedRight(-1,-70,6,12,1);
 </string>
           </argument>
         </arguments>

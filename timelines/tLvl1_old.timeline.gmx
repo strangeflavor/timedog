@@ -128,7 +128,7 @@ form_boxChains0(0,vw/2+100,4);
           <argument>
             <kind>1</kind>
             <string>///form_curvedLeft(-160,0,12);
-form_curvedLeft(-160,-160,12);
+form_curvedLeft(-1,-160,12);
 </string>
           </argument>
         </arguments>
@@ -155,7 +155,7 @@ form_curvedLeft(-160,-160,12);
           <argument>
             <kind>1</kind>
             <string>///form_curvedRight(-240,0,12);
-form_curvedRight(-180,-160,12);
+form_curvedRight(-1,-160,12);
 </string>
           </argument>
         </arguments>

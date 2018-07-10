@@ -193,7 +193,7 @@ form_largeAimer(150)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>form_curvedRight(-180,-70,6,12,1);
+            <string>form_curvedRight(-1,-70,6,12,1);
 </string>
           </argument>
         </arguments>
@@ -220,7 +220,7 @@ form_largeAimer(150)
           <argument>
             <kind>1</kind>
             <string>///form_curvedLeft(-160,0,12);
-form_curvedLeft(-160,-160,12);
+form_curvedLeft(-1,-160,12);
 </string>
           </argument>
         </arguments>
@@ -247,7 +247,7 @@ form_curvedLeft(-160,-160,12);
           <argument>
             <kind>1</kind>
             <string>///form_curvedRight(-240,0,12);
-form_curvedRight(-180,-160,12);
+form_curvedRight(-1,-160,12);
 </string>
           </argument>
         </arguments>
@@ -274,7 +274,7 @@ form_curvedRight(-180,-160,12);
           <argument>
             <kind>1</kind>
             <string>///form_curvedLeft(-160,0,12);
-form_curvedLeft(-160,-80,12);
+form_curvedLeft(-1,-80,12);
 </string>
           </argument>
         </arguments>

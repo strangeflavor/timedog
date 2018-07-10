@@ -3,16 +3,7 @@
 trace('starting form boxchains0');
 
 var arg;
-for (var i = 0; i < 16; i += 1;) {
-    if argument_count > i
-       {
-       arg[i] = argument[i];
-       }
-    else
-       {
-       arg[i] = -1;
-       }
-}
+for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
 
 var xoffset = arg[0];
 _ystop = arg[1];
@@ -76,16 +67,7 @@ with make(vw-32-(32*_size)+xoffset,-32,fChain) {
 trace('starting form boxchains_descent');
 
 var arg;
-for (var i = 0; i < 16; i += 1;) {
-    if argument_count > i
-       {
-       arg[i] = argument[i];
-       }
-    else
-       {
-       arg[i] = -1;
-       }
-}
+for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
 
 var xoffset = arg[0];
 _ystop = arg[1];
@@ -160,16 +142,7 @@ with make(vw/2+150+xoffset+(_size*16),32,fChain) {
 #define form_line
 ///form_line(xoffset,yoffset,rate,size,direction,speed,attacker,wait)
 var arg;
-for (var i = 0; i < 16; i += 1;) {
-    if argument_count > i
-       {
-       arg[i] = argument[i];
-       }
-    else
-       {
-       arg[i] = -1;
-       }
-}
+for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
 
 if _value newFormationID = getFormationID() else newFormationID = -1;
 
@@ -183,8 +156,12 @@ _speed = arg[5];
 _attacker = arg[6];
 _wait = arg[7];
 
+if yoffset == -1 yoffset = 30;
+if _rate == -1 _rate = 6;
+if _size == -1 _size = 5;
+if _direction == -1 _direction = 330;
+if _speed == -1 _speed = 9;
 if _wait == -1 _wait = 1;
-if _rate == -1 rate = 9;
 
 var xoffset;
 
@@ -235,9 +212,16 @@ with make(xoffset,yoffset,fChain) {
 
 #define form_orbit
 ///form_orbit(wait,xoffset,yoffset)
-var xoffset = argument1;
-var yoffset = argument2;
-_direction = argument3;
+var arg;
+for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
+
+_wait = arg[0];
+var xoffset = arg[1];
+var yoffset = arg[2];
+_direction = arg[3];
+
+if _wait == -1 _wait = 6;
+if xoffset == -1 xoffset = 0;
 if _direction == -1 _direction = 270;
 
 newFormationID = getFormationID();
@@ -246,11 +230,8 @@ with make(vw/2+xoffset,32+yoffset,fChain) {
     formationID = other.newFormationID;
     enemy = oMiniThex;
     invul = true;
-    //path = pCircle;
-    //_path_speed = 7+(other.i/2);
-    //endaction = path_action_continue;
     size = 12;
-    wait = 1+argument0;
+    wait = 1+other._wait;
     rate = 4;
 
     //phaseDelay[0] = _PHASE_DELAY_WAIT;

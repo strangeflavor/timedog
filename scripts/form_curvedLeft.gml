@@ -15,9 +15,9 @@ for (var i = 0; i < 16; i += 1;) {
 }
 
 var xoffset = arg[0];
-if xoffset == -1 xoffset = 0;
+if xoffset == -1 xoffset = -180;
 var yoffset = arg[1];
-if yoffset == -1 yoffset = 0;
+if yoffset == -1 yoffset = -60;
 
 var count = arg[2];
 if count < 1 count = 5;
@@ -46,21 +46,12 @@ for (var i=0;i<count;i+=1) {
 trace('starting form curved left');
 
 var arg;
-for (var i = 0; i < 16; i += 1;) {
-    if argument_count > i
-       {
-       arg[i] = argument[i];
-       }
-    else
-       {
-       arg[i] = -1;
-       }
-}
+for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
 
 var xoffset = arg[0];
-if xoffset == -1 xoffset = 0;
+if xoffset == -1 xoffset = -180;
 var yoffset = arg[1];
-if yoffset == -1 yoffset = 0;
+if yoffset == -1 yoffset = -60;
 
 var count = arg[2];
 if count < 1 count = 5;
@@ -83,6 +74,7 @@ for (var i=0;i<count;i+=1) {
     tId.path_position = 1;
     tId.path_endaction = path_action_reverse;
 }
+
 #define form_simplesine
 /// form_meteors(size,rate);
 trace('starting form simplesine');
@@ -99,7 +91,7 @@ with make(vw/2+_xoffset,-96,fChain) {
     _path_speed = 7; //7+(other.i/2);
     endaction = path_action_continue;
     size = 7;
-    wait = 120;//+other.i*180;
+    wait = 8;//+other.i*180;
 
     /*
     phaseCondition[0] = _PHASE_CONDITION_TIME;
@@ -108,6 +100,7 @@ with make(vw/2+_xoffset,-96,fChain) {
     phase[1] = enemy_move;
     */
 }
+
 #define form_bez
 /// form_meteors(size,rate);
 trace('starting form bez');
