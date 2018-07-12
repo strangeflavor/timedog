@@ -328,8 +328,9 @@
       <script>scripts\occupySpace.gml</script>
       <script>scripts\form_boxChains0.gml</script>
       <script>scripts\form_gridMissile.gml</script>
-      <script>scripts\form_curvedLeft.gml</script>
       <script>scripts\form_meteors.gml</script>
+      <script>scripts\form_curvedLeft.gml</script>
+      <script>scripts\form_bez.gml</script>
       <scripts name="bezbez">
         <script>scripts\bezTest.gml</script>
       </scripts>

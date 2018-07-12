@@ -11,10 +11,10 @@ _rate = arg[2];
 _path_speed = arg[3];
 _size = arg[4];
 
-if xoffset == -1 xoffset = -64;
+if xoffset == -1 xoffset = -64 + choose(64,80,128,160,200);
 if _ystop == -1 _ystop = vh/2 - choose(60,120,180,240); // choose(180,120,200,300,400);
 if _path_speed == -1 _path_speed = choose(16,24,32);
-if _rate == -1 rate = 4;
+if _rate == -1 _rate = 4;
 if _size == -1 _size = 3;
 
 newFormationID = getFormationID();
@@ -22,7 +22,7 @@ newFormationID = getFormationID();
 with make(-32+xoffset,32,fChain) {
     formationID = other.newFormationID;
     invul = true;
-    
+
     space = _LEFTCOLUMN;
     size = 3;
     enemy = oMiniThex;
@@ -78,12 +78,12 @@ _descentSpeed = arg[5];
 _direction = arg[6];
 _wait = arg[7];
 
-if xoffset == -1 xoffset = 0;
-if _ystop == -1 _ystop = vh/2 - choose(60,120,180); // choose(180,120,200,300,400);
-if _rate == -1 rate = 4;
+if xoffset == -1 xoffset = choose(1,-1)*choose(0,60,120,180)
+if _ystop == -1 _ystop = choose(vh/2,vh/3,vh/4) + nrandom(80);
+if _rate == -1 _rate = 8;
 if _path_speed == -1 _path_speed = 32;
 if _size == -1 _size = 3;
-if _wait == -1 _wait = 0;
+if _wait == -1 _wait = 8;
 if _direction == -1 _direction = 270;
 
 newFormationID = getFormationID();
