@@ -33,7 +33,7 @@ if y &gt; (vh + 32) instance_destroy();
 
 image_xscale = scale * 2;
 image_yscale = scale * 2;
-image_speed = choose(.1,.25,-.2);
+image_speed = .5*choose(.1,.25,-.2);
 image_index = choose(0,1);
 
 objectAge = 0;

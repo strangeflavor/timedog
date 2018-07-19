@@ -225,7 +225,10 @@ if y &gt; other.y {
           <argument>
             <kind>1</kind>
             <string>if flashing == 0 flashing = -4;
-with other kill();
+with other {
+    destroy_shot_sprite = sTinyFlameExplosion;
+    kill();
+}
 
 HP -= 1;
 if HP &lt; 0 kill();

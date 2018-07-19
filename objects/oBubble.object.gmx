@@ -76,7 +76,7 @@ alarm[0] = 90+nrandom(30);
             <kind>1</kind>
             <string>objectAge += 1;
 
-if fade image_scale(image_xscale*.9);
+if fade and objectAge &gt; 30 image_scale(image_xscale*.9);
 
 if image_xscale &lt; .05 kill();
 </string>

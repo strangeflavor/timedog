@@ -42,7 +42,7 @@
             <string>//objectAge = nrandom(60);
 make(oFXFlare);
 //make(oExplo);
-HP = 40;
+HP = 24;
 value = 1;
 image_speed = 0;//.25;
 killWhenOffscreen = false;
@@ -128,6 +128,7 @@ myPos = instance_number(oSatellite);
             } else {
                 with make(x,y,shot_spiller) {
                     sprite_index = sShot3;
+                    image_speed = .5;
                     rounds = 3;
                     shot_speed = 3;
                     shot_direction_jitter = 8;

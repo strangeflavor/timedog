@@ -85,12 +85,22 @@ center_y = vh/2;
             <string>if instance_exists(oShip) {
     if objectAge mod 4 == 0 {
         if abs(oShip.recentDx) &gt; 20 {
-            with make(oShip.x+nrandom(16),oShip.y+nrandom(32),oBubble) {
-                finalScale = choose(.5,1);
-                initScale = finalScale*.07;
-                TweenSimpleScale(initScale,initScale,finalScale,finalScale,15,EaseOutBack);
-                sprite_index = sBubble;
-                vspeed = choose(.5,1);
+            if irandom(3) == 1 {
+                with make(oShip.x+nrandom(16),oShip.y+nrandom(32),oBubble) {
+                    finalScale = 1;
+                    initScale = finalScale*.07;
+                    TweenSimpleScale(initScale,initScale,finalScale,finalScale,15,EaseOutBack);
+                    sprite_index = sBubble;
+                    vspeed = choose(.5,1);
+                }
+            } else {
+                with make(oShip.x+nrandom(16),oShip.y+nrandom(32),oBubble) {
+                    finalScale = 1;
+                    initScale = finalScale*.07;
+                    TweenSimpleScale(initScale,initScale,finalScale,finalScale,15,EaseOutBack);
+                    sprite_index = sBubbleSmall;
+                    vspeed = choose(.5,1);
+                }
             }
         }
     }

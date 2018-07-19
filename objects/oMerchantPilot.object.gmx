@@ -31,6 +31,10 @@ image_scale(2);
 flee = false;
 direction = 90;
 speed = 0;
+
+// offset to position oneself from ship
+ship_xo = 0;
+ship_yo = 0;
 </string>
           </argument>
         </arguments>

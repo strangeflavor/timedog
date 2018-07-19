@@ -39,7 +39,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>pilotID = make(oMerchantPilot);
+            <string>for (var i=0;i&lt;16;i+=1) pilotID[i] = -1;
+
+pilotID[0] = make(oMerchantPilot);
+pilotID[0].ship_xo = 0;
+pilotID[0].ship_yo = 0;
+
+pilotID[1] = make(oMerchantPilot);
+pilotID[1].ship_xo = -45*2;
+pilotID[1].ship_yo = 50*2;
+pilotID[1].image_xscale = 1;
+pilotID[1].image_yscale = 1;
+
+pilotID[2] = make(oMerchantPilot);
+pilotID[2].ship_xo = 45*2;
+pilotID[2].ship_yo = 48*2;
+pilotID[2].image_xscale = 1;
+pilotID[2].image_yscale = 1;
+
+//with oMerchantPilot depth = other.depth-1;
 
 value = 10;
 HP = 360;
@@ -114,7 +132,7 @@ start_state_paths();
           <argument>
             <kind>1</kind>
             <string>///levelManager.bossDefeated = true;
-if instance_exists(pilotID) pilotID.flee = true;
+for (var i=0;i&lt;16;i+=1) if instance_exists(pilotID[i]) pilotID[i].flee = true;
 levelManager.bossDefeated = true;
 </string>
           </argument>
@@ -138,9 +156,13 @@ levelManager.bossDefeated = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(pilotID) {
-    pilotID.x = xprevious;
-    pilotID.y = y+30;
+            <string>for (var i=0;i&lt;16;i+=1) {
+    if pilotID[i] &gt; -1 {
+        if instance_exists(pilotID[i]) {
+            pilotID[i].x = xprevious + pilotID[i].ship_xo;
+            pilotID[i].y = y+30 + pilotID[i].ship_yo;
+        }
+    }
 }
 </string>
           </argument>
@@ -180,6 +202,13 @@ levelManager.bossDefeated = true;
             <kind>1</kind>
             <string>if active {
     switch state {
+        case _WAIT:
+            if state_path_position &gt; 1 or state_path_loops &gt; 0 {
+                if current_state_age &gt; 30 {
+                    shoot_spray(2,24,choose(2,3,3,4),sShot3);
+                }
+            }
+        break;
         case _BACKANDFORTH_HORI:
             if current_state_age == 15 {
                 addRecoil(20);
@@ -199,10 +228,8 @@ levelManager.bossDefeated = true;
                     owner = other.id;
                     duration = 330;
                 }
-            }
-            
-            if state_path_position &gt; 1 or state_path_loops &gt; 0 {
-                if current_state_age &gt; 60 {
+
+                if state_path_position &gt; 0 or state_path_loops &gt; 0 {
                     shoot_spray(2,24,choose(2,3,3,4),sShot3);
                 }
             }

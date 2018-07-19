@@ -46,7 +46,9 @@ showShop = false;
 rectAlpha = 1;
 
 make(oFader);
-with make(oDialog) gradientSlideIn = 128;
+with make(oDialog) {
+    gradientSlideIn = 128;
+}
 
 /////////////////////
 // buttons stuff

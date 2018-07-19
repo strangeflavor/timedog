@@ -37,6 +37,8 @@ dy = 0;
 
 image_xscale = scale;
 image_yscale = scale;
+
+destroy_shot_sprite = sTinyExplosion;
 </string>
           </argument>
         </arguments>
@@ -60,8 +62,15 @@ image_yscale = scale;
           <argument>
             <kind>1</kind>
             <string>if y &gt; 24*scale {
-    fxID = instance_create(x+irandom(6*scale)-3*scale,y+irandom(6*scale)-3*scale,oFX);
-    fxID.sprite_index = sTinyExplosion;
+    if sprite_index == sTinyExplosion {
+        fxID = instance_create(x+irandom(6*scale)-3*scale,y+irandom(6*scale)-3*scale,oFX);
+    } else {
+        // flame 
+        fxID = instance_create(x+irandom(12*scale)-3*scale,y+irandom(12*scale),oFX);
+        fXID.image_speed = .5;
+    }
+
+    fxID.sprite_index = destroy_shot_sprite;
     fxID.image_alpha = image_alpha;
 }
 </string>

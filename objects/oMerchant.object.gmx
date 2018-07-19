@@ -64,9 +64,12 @@ with turretID {
     
 }
 
-pilotID = make(oMerchantPilot);
-pilotID.killWhenOffscreen = false;
+for (var i=0;i&lt;16;i+=1) pilotID[i] = -1;
 
+pilotID[0] = make(oMerchantPilot);
+pilotID[0].killWhenOffscreen = false;
+pilotID[0].ship_xo = 0;
+pilotID[0].ship_yo = 0;
 state = _WAIT;
 
 //alarm[1] = 120;
@@ -108,7 +111,10 @@ state = _WAIT;
             <kind>1</kind>
             <string>if instance_exists(bottomID) kill(bottomID);
 if instance_exists(turretID) kill(turretID);
-if instance_exists(pilotID) pilotID.flee = true;
+
+for (var i=0;i&lt;15;i+=1) {
+    if instance_exists(pilotID[i]) pilotID[i].flee = true;
+}
 </string>
           </argument>
         </arguments>
@@ -215,9 +221,13 @@ if instance_exists(turretID) {
     turretID.image_angle = image_angle;
 }
 
-if instance_exists(pilotID) {
-    pilotID.x = xprevious;
-    pilotID.y = y - 80;
+for (var i=0;i&lt;16;i+=1) {
+    if pilotID[i] &gt; -1 {
+        if instance_exists(pilotID[i]) {
+            pilotID[i].x = xprevious;
+            pilotID[i].y = y - 80;
+        }
+    }
 }
 </string>
           </argument>

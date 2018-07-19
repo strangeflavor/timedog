@@ -82,7 +82,6 @@ if dialogIndex > -1 {
         draw_set_halign(fa_left);
         draw_set_valign(fa_top);
         draw_set_color(c_white);
-        //draw_text(xx+8,min(yy,gradientSlideIn+128),oDialog.text);
         draw_text_ext(xx+8,min(yy,gradientSlideIn+128),oDialog.text,-1,vw*.7);
     } else {
         draw_set_font(fDialog);
@@ -103,8 +102,6 @@ if dialogIndex > -1 {
             }
         }
 
-        //draw_set_color(speakerBlend[oDialog.speaker_index,0]);
-        //draw_text(xx+100,yy,oDialog.name);
         draw_set_color(c_white);
         draw_text_ext(xx+128,min(yy+20,gradientSlideIn+128),oDialog.text,-1,vw*.7);
     }

@@ -204,12 +204,14 @@
       <sprite>sprites\sLargeExplosion</sprite>
       <sprite>sprites\sMedExplosion</sprite>
       <sprite>sprites\sTinyExplosion</sprite>
+      <sprite>sprites\sTinyFlameExplosion</sprite>
       <sprite>sprites\sBombLoop</sprite>
       <sprite>sprites\sBombLoopCenter</sprite>
       <sprite>sprites\sGotPickup</sprite>
       <sprite>sprites\sForcefield</sprite>
       <sprite>sprites\sExplo</sprite>
       <sprite>sprites\sBubble</sprite>
+      <sprite>sprites\sBubbleSmall</sprite>
       <sprite>sprites\sSparkle</sprite>
     </sprites>
     <sprites name="dialog">
