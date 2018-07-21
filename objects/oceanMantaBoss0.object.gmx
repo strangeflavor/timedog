@@ -5,12 +5,78 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>oEnemy</parentName>
+  <parentName>levelManager</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/////////////////////
+// win condition stuff
+/////////////////////
+
+winCondition = _WIN_BOSS;
+winConditionValue = id;
+
+/////////////////////
+// dialog stuff
+/////////////////////
+
+//addDialog(_NONE,"Deep underwater....");
+//addDialog(_THEPROF,"be careful");
+
+////////////////////
+// background
+////////////////////
+
+make(oOceanBG);
+
+alarm[1] = -1;
+kill(oMegaThruster);
+
+////////////////////
+// 
+////////////////////
+
+direction = 270;
+
+pilotID[0] = make(x,y,oMerchantPilot);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
         <id>604</id>
         <kind>0</kind>
         <userelative>0</userelative>
@@ -39,108 +105,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>value = 10;
-HP = 300;
-explosionType = _LARGE;
-
-flashing = 0;
-
-xdest = room_width/2;
-ydest = room_height/8;
-
-x1 = 128;
-x2 = room_width-x1;
-xVel = 2;
-yVel = 7;
-slowdown = 0;
-
-attack_state = -1;
-change_attack_state = 70;
-next_attack_state = _ATK_BEAMS;
-
-attack_started = false;
-
-shot_last_hit_x = -1;
-
-for (var i=0;i&lt;16;i+=1) pilotID[i] = -1;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="oShot">
-      <action>
-        <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if flashing == 0 flashing = -9;
-shot_last_hit_x = other.x;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if flashing &lt; 0 {
-    flashing += 1;
-    if flashing == 0 flashing = 12;
-} else {
-    if flashing &gt; 0 flashing -= 1;
-}
-
-draw_self();
-if flashing &lt; 0 {
-    draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,c_red,.7);
-}
-
-if debug &gt;= 1 {
-    draw_set_halign(fa_middle);
-    draw_set_valign(fa_middle);
-    draw_set_font(fFont);
-    draw_set_color(c_white);
-    draw_text(x,y+sprite_height/2+16,state_get_name(state));
+            <string>///make(vw/2,-80,oMantaBoss);
+with make(100,vh+sprite_height+32,oMantaBoss) {
+    direction = 90;
+    TweenSimpleMove(x,y,x,vh/3,120,EaseOutQuart);
 }
 </string>
           </argument>

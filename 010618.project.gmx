@@ -181,6 +181,7 @@
       <sprite>sprites\sMerchantTurret</sprite>
       <sprite>sprites\sMerchant</sprite>
       <sprite>sprites\sTaxi</sprite>
+      <sprite>sprites\sMantaRay</sprite>
       <sprite>sprites\sEnergyOrb</sprite>
       <sprite>sprites\sFireAtPlayer</sprite>
       <sprite>sprites\spr_drone</sprite>
@@ -522,8 +523,9 @@
         <object>objects\trashLevel000</object>
       </objects>
       <objects name="ocean">
-        <object>objects\oceanLevel000</object>
-        <object>objects\oceanLevel001</object>
+        <object>objects\ocean000</object>
+        <object>objects\ocean001</object>
+        <object>objects\oceanMantaBoss0</object>
       </objects>
       <objects name="skull">
         <object>objects\skullLevel000</object>
@@ -633,6 +635,7 @@
       <object>objects\oSteering</object>
       <object>objects\oWaiter</object>
       <objects name="ocean">
+        <object>objects\oMantaBoss</object>
         <object>objects\oShrimp</object>
       </objects>
       <objects name="skull">

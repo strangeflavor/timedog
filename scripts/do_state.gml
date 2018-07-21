@@ -1,5 +1,6 @@
 #define do_state
-if state_scripts[argument0] > -1 script_execute(state_scripts[argument0]);
+//if state_scripts[argument0] > -1 script_execute(state_scripts[argument0]);
+if state_scripts[argument0] > -1 and state_scripts[argument0] > -1 script_execute(state_scripts[argument0]);
 current_state_age += 1;
 
 #define _state_APPROACH

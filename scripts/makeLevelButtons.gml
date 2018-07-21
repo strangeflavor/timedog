@@ -22,7 +22,7 @@ for (var r=0;r<numWorlds*view_wview[0];r+=view_wview[0]) {
 
             //if instanceID.levelID == 5 instanceID.shop = true;
             if controller.managerArray[instanceID.levelID] == 999 instanceID.shop = true;
-            if controller.managerArray[instanceID.levelID] == levelManMidBoss_0 or controller.managerArray[instanceID.levelID] < -1 instanceID.boss = true;
+            if controller.managerArray[instanceID.levelID] == levelManMidBoss_0 or controller.managerArray[instanceID.levelID] == oceanMantaBoss0 or controller.managerArray[instanceID.levelID] < -1 instanceID.boss = true;
 
             levelID += 1;
         }

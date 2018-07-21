@@ -37,8 +37,9 @@ for (var i=200;i<300;i+=1) {
     timelineArray[i] = -1;
 }
 
-managerArray[200] = oceanLevel000;
-managerArray[201] = oceanLevel001;
+managerArray[200] = ocean000;
+managerArray[201] = ocean001;
+managerArray[211] = oceanMantaBoss0;
 
 // world 4: planet FM
 for (var i=300;i<400;i+=1) {

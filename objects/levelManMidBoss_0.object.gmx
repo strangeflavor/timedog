@@ -82,8 +82,8 @@ make(oMoonBG);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>make(vw/2,-80,oMidBoss);
-//make(vw/2,-80,oEnergyOrb);
+            <string>///make(vw/2,-80,oMidBoss);
+make(vw/2,-80,oMidBoss);
 </string>
           </argument>
         </arguments>

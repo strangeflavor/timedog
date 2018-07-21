@@ -67,7 +67,7 @@ destroy_shot_sprite = sTinyExplosion;
     } else {
         // flame 
         fxID = instance_create(x+irandom(12*scale)-3*scale,y+irandom(12*scale),oFX);
-        fXID.image_speed = .5;
+        fxID.image_speed = .5;
     }
 
     fxID.sprite_index = destroy_shot_sprite;
