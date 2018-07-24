@@ -94,7 +94,7 @@ center_y = vh/2;
                     initScale = finalScale*.07;
                     TweenSimpleScale(initScale,initScale,finalScale,finalScale,15,EaseOutBack);
                     sprite_index = sBubble;
-                    vspeed = choose(.5,1);
+                    vspeed = 9*choose(.5,1);
                 }
             } else {
                 with make(oShip.x+nrandom(16),oShip.y+nrandom(32),oBubble) {
@@ -102,7 +102,7 @@ center_y = vh/2;
                     initScale = finalScale*.07;
                     TweenSimpleScale(initScale,initScale,finalScale,finalScale,15,EaseOutBack);
                     sprite_index = sBubbleSmall;
-                    vspeed = choose(.5,1);
+                    vspeed = 9*choose(.5,1);
                 }
             }
         }
