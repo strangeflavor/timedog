@@ -17,4 +17,14 @@ if (x < x1 and xVel < 0) or (x > x2 and xVel > 0) {
     slowdown = .2;
 }
 if slowdown < 1 slowdown += .025;
-x += xVel*slowdown
+x += xVel*slowdown;
+
+#define _state_MOVETOWARD
+///state_MOVETOWARD
+
+x = approach(x,x1,xVel);
+y = approach(y,y1,xVel/2);
+//move_towards_point(x1,y1,xVel);
+
+//slowdown = 1;
+//x += xVel*slowdown;

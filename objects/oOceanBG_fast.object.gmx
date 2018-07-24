@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>levelManager</parentName>
+  <parentName>oBG</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -39,52 +39,36 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/////////////////////
-// win condition stuff
-/////////////////////
+            <string>background_color = c_red;
+with make(oWaters) {
+    star_z_layer = 6;
+    radius = 0;
+    oscillatorValue = .1;
+    BG_bubbleSpeed = 12;
+}
 
-winCondition = _WIN_BOSS;
-winConditionValue = id;
+with make(oWaters) {
+    star_z_layer = 12;
+    radius = 0.001;
+    oscillatorValue = .3;
+    BG_bubbleSpeed = 12;
+}
 
-/////////////////////
-// dialog stuff
-/////////////////////
+with make(oWaters) {
+    star_z_layer = 18;
+    radius = 0.0025;
+    oscillatorValue = .6;
+    BG_bubbleSpeed = 12;
+}
 
-//addDialog(_NONE,"Deep underwater....");
-//addDialog(_THEPROF,"be careful");
-
-////////////////////
-// background
-////////////////////
-
-make(oOceanBG_fast);
-
-alarm[1] = -1;
-kill(oMegaThruster);
-
-////////////////////
-// 
-////////////////////
+center_x = vw/2;
+center_y = vh/2;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -101,11 +85,64 @@ kill(oMegaThruster);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///make(vw/2,-80,oMantaBoss);
-with make(120,vh+sprite_height+32,oMantaBoss) {
-    direction = 90;
-    TweenSimpleMove(x,y,x,vh/3,120,EaseOutQuart);
+            <string>if instance_exists(oShip) {
+    if objectAge mod 4 == 0 {
+        if abs(oShip.recentDx) &gt; 20 {
+            if irandom(3) == 1 {
+                with make(oShip.x+nrandom(16),oShip.y+nrandom(32),oBubble) {
+                    finalScale = 1;
+                    initScale = finalScale*.07;
+                    TweenSimpleScale(initScale,initScale,finalScale,finalScale,15,EaseOutBack);
+                    sprite_index = sBubble;
+                    vspeed = choose(.5,1);
+                }
+            } else {
+                with make(oShip.x+nrandom(16),oShip.y+nrandom(32),oBubble) {
+                    finalScale = 1;
+                    initScale = finalScale*.07;
+                    TweenSimpleScale(initScale,initScale,finalScale,finalScale,15,EaseOutBack);
+                    sprite_index = sBubbleSmall;
+                    vspeed = choose(.5,1);
+                }
+            }
+        }
+    }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="72">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if instance_exists(oShip) {
+   // center_x = lerp(center_x,(((vw - oShip.x)/vw)-.5) * 64,1);
+   // center_y = lerp(center_y,(((vh - oShip.y)/vh)-.5) * 24,1);
+   center_x = lerp(center_x,vw/2+(((oShip.x-vw)/vw ) + .5)*vw/1,.005);
+   center_y = lerp(center_y,vh/2+(((oShip.y-vh)/vh ) + .5)*vh/1,.01);
+
+}
+
+var c1 = make_color_rgb(16,32,90);
+//var c2 = make_color_rgb(16,32,180);
+//var c1 = c_white;
+var c2 = c_black;
+draw_circle_colour(center_x,center_y,wave(base_h*1.5,base_h*2,180,0),c1,c2,false);
 </string>
           </argument>
         </arguments>

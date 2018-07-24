@@ -5,26 +5,12 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>levelManager</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -39,52 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/////////////////////
-// win condition stuff
-/////////////////////
-
-winCondition = _WIN_BOSS;
-winConditionValue = id;
-
-/////////////////////
-// dialog stuff
-/////////////////////
-
-//addDialog(_NONE,"Deep underwater....");
-//addDialog(_THEPROF,"be careful");
-
-////////////////////
-// background
-////////////////////
-
-make(oOceanBG_fast);
-
-alarm[1] = -1;
-kill(oMegaThruster);
-
-////////////////////
-// 
-////////////////////
+            <string>bb = 0;
+vspeed = 5;
+x += nrandom(16);
+wavedur = choose(2,3,4);
+age = choose(90,120);
+objectAge = 0;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -101,11 +53,40 @@ kill(oMegaThruster);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///make(vw/2,-80,oMantaBoss);
-with make(120,vh+sprite_height+32,oMantaBoss) {
-    direction = 90;
-    TweenSimpleMove(x,y,x,vh/3,120,EaseOutQuart);
-}
+            <string>x = wave(xstart-4,xstart+4,wavedur,0);
+
+vspeed = lerp(vspeed,2,.05);
+
+objectAge += 1;
+
+if objectAge &gt; age kill();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var s = wave(1,1.25,.5,0);
+image_blend = lerp(image_blend,c_red,bb);
+if bb &lt; 1 bb += .1 else bb = 1;
+if objectAge &gt; age - 30 draw_sprite_ext(sMine,1,x,y,s,s,0,image_blend,1);
+draw_sprite_ext(sMine,0,x,y,1,1,0,c_white,1);
 </string>
           </argument>
         </arguments>

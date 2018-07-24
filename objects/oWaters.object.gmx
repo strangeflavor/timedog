@@ -38,6 +38,7 @@ for( var i = 0; i &lt; numStars; i++ ) {
 }
 
 star_z_layer = 0;
+BG_bubbleSpeed = 1;
 
 objectAge = irandom(360);
 </string>
@@ -108,7 +109,7 @@ for( var i = 0; i &lt; numStars; i++ ) {
 */
 
  // star_x[i] -= 0.05;
- star_y[i] += .025;
+ star_y[i] += .025*BG_bubbleSpeed;
  /*
  if( star_y[i] &gt;= 25 ) {
     star_x[i] = irandom(50)-25;

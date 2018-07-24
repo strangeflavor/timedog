@@ -21,7 +21,7 @@ _output = string_copy(_output,3,string_length(_output));
 show_message(_output);
 
 #define approach
-/// Approach(a, b, amount)
+///approach(a,b,amount)
 // Moves "a" towards "b" by "amount" and returns the result
 // Nice bcause it will not overshoot "b", and works in both directions
 // Examples:

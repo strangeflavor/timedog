@@ -48,13 +48,24 @@ HP = 320;
 
 pilotID[0] = make(oMerchantPilot);
 pilotID[0].ship_xo = 0;
-pilotID[0].ship_yo = 0;
+pilotID[0].ship_yo = -16;
+pilotID[0].image_xscale = 1;
+pilotID[0].image_yscale = -1;
 
-state = _WAIT;
+state = _APPROACH;
 
 setup_state_paths();
-add_state_path(_WAIT,120);
+add_state_path(_APPROACH,240);
+add_state_path(_MOVETOWARD,90);
+//add_state_path(_MOVEVERT,240);
+
 state_path_loop_position = 0;
+
+x1 = xstart;
+y1 = 80;
+ao = 0;
+
+image_angle = 90
 </string>
           </argument>
         </arguments>
@@ -126,71 +137,42 @@ state_path_loop_position = 0;
             <string>if active {
 
     switch state {
-        case _WAIT:
+        case _APPROACH:
+            yVel = 0; // disables _state_APPROACH script behavior
+
             if state_path_position &gt; 1 or state_path_loops &gt; 0 {
                 if current_state_age &gt; 30 {
                     //shoot_spray(2,24,choose(2,3,3,4),sShot3);
                 }
             }
 
-            ao = wave(-5,5,3,0);
-            image_angle = 90 + ao;
-            x = xstart + ao*1.5;//wave(-8,8,3,0);
-
-            // bubbls   
-            if objectAge mod 6 == 0 {
-                repeat (5) {
-                    var xo = -other.ao*2 + nrandom(12); //lengthdir_x(32,direction-90) + nrandom(8);
-                    var yo = 32+lengthdir_y(32,direction-90) + nrandom(8);
-                    with make(x+xo,y+yo,oBubble) {
-                        finalScale = choose(.25,.1);
-                        initScale = .25;
-
-                        alarm[0] = choose(9,12,16,19);
-                        sprite_index = sBubble;
-                        direction = 270 + other.ao*2;
-                        speed = choose(3,4,5,6);//other.speed*.7;
-                    }
-                }
+            //if current_state_age &gt; 10 and current_state_age mod 120 == 0 {
+            if objectAge &gt; 10 and current_state_age mod 120 == 0 {
+                gravity = choose(.025,-.025);
+                make(x+nrandom(32),y+32,oMantaMine);
             }
-            
-            //if current_state_age &gt; 250 and current_state_age mod 240 == 0 {
-            if current_state_age &gt; 10 and current_state_age mod 120 == 0 {
-                var yy = y + choose(-1,1)*choose(vh/5,vh/3,vh/4);
-                yy = floor(clamp(yy,80,vh-150));
 
-                TweenSimpleMove(x,y,x,yy,160+nrandom(30),EaseInExpo);
-            }
+            if y &gt; vh - vh/3 gravity = -.025;
+            if y &lt; 80 gravity = .025;
+            speed = clamp(speed,-1.5,1.5);
         break;
-        case _BACKANDFORTH_HORI:
-            if current_state_age == 15 {
-                addRecoil(20);
+        case _MOVETOWARD:
+            gravity = 0;
 
-                beam[0] = make(getTurretX(0),getTurretY(0),oBeam);
-                with beam[0] {
-                    xo = x - other.x;
-                    yo = 0;//y + sprite_height/3;
-                    owner = other.id;
-                    duration = 330;
-                }
-
-                beam[1] = make(getTurretX(1),getTurretY(1),oBeam);
-                with beam[1] {
-                    xo = x - other.x;
-                    yo = 0;//y + sprite_height/3;
-                    owner = other.id;
-                    duration = 330;
-                }
-
-                if state_path_position &gt; 0 or state_path_loops &gt; 0 {
-                    shoot_spray(2,24,choose(2,3,3,4),sShot3);
-                }
+            if current_state_age == 0 {
+                xVel = .1;
+                if x &lt; vw/2 x1 = vw - xstart else x1 = xstart;
             }
+
+            if xVel &lt; 3 xVel *= 1.2;
+
+            //if x &lt; x1 image_angle -= .2 else image_angle += .2;
         break;
         case _SPIRAL:
             if frac(objectAge/2) == 0 {
                 if current_state_age &lt; 120 {
-                    with make(getTurretX(0),getTurretY(0),oBullet) {
+                    //with make(getTurretX(0),getTurretY(0),oBullet) {
+                    with make(x,y,oBullet) {
                         sprite_index = sShot1;
                         depth -= 1;
                         direction = 360*sin(other.objectAge*.04);
@@ -199,7 +181,8 @@ state_path_loop_position = 0;
                         image_blend = make_color_rgb(255,0,128);
                     }
                 } else {
-                    with make(getTurretX(1),getTurretY(1),oBullet) {
+                    //with make(getTurretX(1),getTurretY(1),oBullet) {
+                    with make(x,y,oBullet) {
                         sprite_index = sShot1;
                         depth -= 1;
                         direction = 360*sin(other.objectAge*.03);
@@ -211,16 +194,40 @@ state_path_loop_position = 0;
             }
         break;
     }
+}
 
-    /*
-    if change_attack_state &gt; -1 {
-        change_attack_state -= 1;
-        if change_attack_state &lt; 0 {
-            change_attack_state = -1;
-            attack_state = next_attack_state;
+// angle
+if x == xprevious {
+    //image_angle += wave(-5,5,3,0);
+    image_angle = lerp(image_angle,90,.1);
+} else {
+    if x &lt; xprevious image_angle += .2;
+    if x &gt; xprevious image_angle -= .2;
+}
+
+/*
+if state != _MOVEHORI {
+    ao = wave(-5,5,3,0);
+    image_angle = 90 + ao;
+    //x = x1 + ao*1.5;//wave(-8,8,3,0);
+}
+*/
+
+// bubbls
+if objectAge mod 6 == 0 {
+    repeat (5) {
+        var xo = -other.ao*2 + nrandom(15); //lengthdir_x(32,direction-90) + nrandom(8);
+        var yo = 32+lengthdir_y(32,direction-90) + nrandom(8);
+        with make(x+xo,y+yo,oBubble) {
+            finalScale = choose(.25,.1);
+            initScale = .25;
+
+            alarm[0] = choose(9,12,16,19);
+            sprite_index = sBubble;
+            direction = 270 + other.ao*2 + nrandom(12);
+            speed = choose(4,5,6,7);
         }
     }
-    */
 }
 </string>
           </argument>

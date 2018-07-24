@@ -160,6 +160,7 @@
       <sprite>sprites\sShot4</sprite>
       <sprite>sprites\sShot5</sprite>
       <sprite>sprites\sShot6</sprite>
+      <sprite>sprites\sMine</sprite>
       <sprite>sprites\sMissile</sprite>
     </sprites>
     <sprites name="enemy">
@@ -541,6 +542,7 @@
     <objects name="level">
       <objects name="ocean">
         <object>objects\oOceanBG</object>
+        <object>objects\oOceanBG_fast</object>
         <object>objects\oWaters</object>
         <object>objects\obj_stars</object>
         <object>objects\obj_camera</object>
@@ -681,6 +683,7 @@
       <object>objects\oBullet</object>
       <object>objects\oMissile</object>
       <object>objects\oGundam</object>
+      <object>objects\oMantaMine</object>
       <object>objects\oBeam</object>
     </objects>
     <objects name="fx">
@@ -735,7 +738,7 @@
     <room>rooms\roomTest</room>
     <room>rooms\rWeaponSelect</room>
   </rooms>
-  <constants number="61">
+  <constants number="62">
     <constant name="scale">global._scale</constant>
     <constant name="vw">global._vw</constant>
     <constant name="vh">global._vh</constant>
@@ -771,6 +774,7 @@
     <constant name="_SPIRAL">6</constant>
     <constant name="_ATK_BEAMS">7</constant>
     <constant name="_CIRCLE">8</constant>
+    <constant name="_MOVETOWARD">9</constant>
     <constant name="_WIN_TIME">0</constant>
     <constant name="_WIN_BOSS">1</constant>
     <constant name="_WIN_FORMATIONS_COMPLETE">2</constant>

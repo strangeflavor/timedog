@@ -20,15 +20,17 @@ attack_state_path_position = 0;
 attack_state_path_size = 0;
 attack_state_entered = false;
 
-state_scripts[_WAIT] = -1;
+for (var i=0;i<64;i+=1) state_scripts[i] = -1;
 state_scripts[_APPROACH] = _state_APPROACH;
 state_scripts[_BACKANDFORTH_HORI] = _state_BACKANDFORTH_HORI;
-state_scripts[_SPIRAL] = -1; //_state_BACKANDFORTH_HORI;
-state_scripts[_CIRCLE] = -1; //_state_BACKANDFORTH_HORI;
+state_scripts[_MOVETOWARD] = _state_MOVETOWARD;
 
 #define add_state_path
 state_path[state_path_size] = argument0;
 state_path_duration[state_path_size] = argument1;
+
+if state_path_size == 0 current_state_duration = state_path_duration[state_path_size];
+
 state_path_size += 1;
 
 #define add_attack_state_path
@@ -52,7 +54,7 @@ if attack_state_path_size > 0 {
 
 #define enter_state_path
 state = state_path[state_path_position];
-current_state_age = 0;
+current_state_age = -1;
 current_state_duration = state_path_duration[state_path_position];
 state_entered = false;
 
@@ -100,6 +102,7 @@ stateNames[_APPROACH] = 'APPROACH';
 stateNames[_BACKANDFORTH_HORI] = 'BACKANDFORTH_HORI';
 stateNames[_SPIRAL] = 'SPIRAL';
 stateNames[_ATK_BEAMS] = '_ATK_BEAMS';
-stateNames[_CIRCLE] = '_CIRCLE';
+stateNames[_CIRCLE] = 'CIRCLE';
+stateNames[_MOVETOWARD] = 'MOVETOWARD';
 
 return stateNames[argument0];
