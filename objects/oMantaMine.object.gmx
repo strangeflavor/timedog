@@ -45,7 +45,7 @@ bb = 0;
 vspeed = 5;
 x += nrandom(16);
 wavedur = choose(2,3,4);
-age = choose(90,120);
+age = choose(60,90);
 objectAge = 0;
 </string>
           </argument>
@@ -80,8 +80,8 @@ objectAge = 0;
     explosion_image_blend = -1;//other.explosion_blend;
 }
 
-with make(x+cx_offset,y+cy_offset,oExploChain) {
-    wait = 45;
+with make(x+cx_offset,y+cy_offset+16,oExploChain) {
+    wait = 20;
     size = 5;
     rate = 5;
     xrandom = 150;
@@ -92,7 +92,24 @@ with make(x+cx_offset,y+cy_offset,oExploChain) {
     explosion_image_blend = -1;//other.explosion_blend;
 }
 
-repeat 3 make(x+cx_offset,y+cy_offset,Smoke);
+with make(x,y,oMantaMineExplosion) {
+    visible = false;
+    sprite_index = sExplo;
+    image_speed = 0;
+    image_xscale = 3;
+    image_yscale = 2;
+}
+
+//repeat 3 make(x+cx_offset,y+cy_offset,Smoke);
+repeat 16 {
+    with make(x,y,oBubble) {
+        alarm[0] = irandom(12);
+        direction = irandom(180);
+        speed = choose(1,2,3);
+        gravity = .15;
+        friction = .1;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -154,7 +171,7 @@ if objectAge &gt; age kill();
 var s = wave(1,1.2,.2,0);
 image_blend = lerp(image_blend,c_red,bb);
 if bb &lt; 1 bb += .1 else bb = 1;
-if objectAge &gt; age - 30 draw_sprite_ext(sMine,1,x,y,s,s,0,image_blend,1);
+if objectAge &gt; age - 12 draw_sprite_ext(sMine,1,x,y,s,s,0,image_blend,1);
 draw_sprite_ext(sMine,0,x,y,1,1,0,c_white,1);
 if flashing &lt; 0 draw_sprite_ext(sMine,image_index,x,y,1,1,image_angle,c_red,.5);
 </string>

@@ -48,7 +48,7 @@ HP = 320;
 
 pilotID[0] = make(oMerchantPilot);
 pilotID[0].ship_xo = 0;
-pilotID[0].ship_yo = -16;
+pilotID[0].ship_yo = -52;
 pilotID[0].image_xscale = 1;
 pilotID[0].image_yscale = -1;
 
@@ -138,6 +138,10 @@ image_angle = 90
 
     switch state {
         case _APPROACH:
+            if current_state_age == 0 {
+                TweenSimpleRotate(image_angle,90,210,EaseOutElastic);
+            }
+    
             yVel = 0; // disables _state_APPROACH script behavior
 
             if state_path_position &gt; 1 or state_path_loops &gt; 0 {
@@ -161,12 +165,26 @@ image_angle = 90
 
             if current_state_age == 0 {
                 xVel = .1;
-                if x &lt; vw/2 x1 = vw - xstart else x1 = xstart;
+                if x &lt; vw/2 {
+                    TweenSimpleRotate(image_angle,image_angle-12,60,EaseOutQuint);
+                    x1 = vw - xstart
+                } else {
+                    TweenSimpleRotate(image_angle,image_angle+12,60,EaseOutQuint);
+                    x1 = xstart;
+                }
             }
 
             if xVel &lt; 3 xVel *= 1.2;
 
-            //if x &lt; x1 image_angle -= .2 else image_angle += .2;
+            /*
+            if x &lt; xprevious {
+                image_angle += .25;
+            }
+
+            if x &gt; xprevious {
+                image_angle -= .25;
+            }
+            */
         break;
         case _SPIRAL:
             if frac(objectAge/2) == 0 {
@@ -199,10 +217,11 @@ image_angle = 90
 // angle
 if x == xprevious {
     //image_angle += wave(-5,5,3,0);
-    image_angle = lerp(image_angle,90,.1);
+    //image_angle = lerp(image_angle,90,.8);
+    //TweenSimpleRotate(image_angle,90,30,EaseInOutElastic);
 } else {
-    if x &lt; xprevious image_angle += .2;
-    if x &gt; xprevious image_angle -= .2;
+    //if x &lt; xprevious image_angle += .25;
+    //if x &gt; xprevious image_angle -= .25;
 }
 
 /*
@@ -214,6 +233,7 @@ if state != _MOVEHORI {
 */
 
 // bubbls
+/*
 if objectAge mod 6 == 0 {
     repeat (5) {
         var xo = -other.ao*2 + nrandom(15); //lengthdir_x(32,direction-90) + nrandom(8);
@@ -229,6 +249,7 @@ if objectAge mod 6 == 0 {
         }
     }
 }
+*/
 </string>
           </argument>
         </arguments>

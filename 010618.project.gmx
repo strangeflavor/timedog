@@ -684,6 +684,7 @@
       <object>objects\oMissile</object>
       <object>objects\oGundam</object>
       <object>objects\oMantaMine</object>
+      <object>objects\oMantaMineExplosion</object>
       <object>objects\oBeam</object>
     </objects>
     <objects name="fx">
