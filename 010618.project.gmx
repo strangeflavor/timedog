@@ -263,6 +263,7 @@
       <sprite>sprites\sTrench</sprite>
       <sprite>sprites\sCloudLeft</sprite>
       <sprite>sprites\sCloudRight</sprite>
+      <sprite>sprites\sBGTurtle</sprite>
     </sprites>
     <sprite>sprites\sOwlFlies</sprite>
   </sprites>
@@ -547,6 +548,7 @@
         <object>objects\obj_stars</object>
         <object>objects\obj_camera</object>
         <object>objects\obj_worldspawn</object>
+        <object>objects\oBGTurtle</object>
       </objects>
       <object>objects\oGrandpaIntro</object>
       <object>objects\oGrandpaBG</object>
@@ -688,7 +690,6 @@
       <object>objects\oBeam</object>
     </objects>
     <objects name="fx">
-      <object>objects\object151</object>
       <object>objects\oBubble</object>
       <object>objects\oExplo</object>
       <object>objects\oLargeExplo</object>

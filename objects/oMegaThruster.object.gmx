@@ -92,17 +92,21 @@ alarm[1] = 30;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>repeat(6) {
-    with instance_create(x,y+70,Smoke) {
-        motion_add(270+random(40)-20,6+random(3));
-
-        image_speed *= .5;
-        image_xscale = choose(1,2,2);
-        image_yscale = image_xscale;
-    }
+            <string>if instance_exists(oOceanBG) or instance_exists(oOceanBG_fast) {
+    kill();
+    } else {
+        repeat(6) {
+            with instance_create(x,y+70,Smoke) {
+                motion_add(270+random(40)-20,6+random(3));
+        
+                image_speed *= .5;
+                image_xscale = choose(1,2,2);
+                image_yscale = image_xscale;
+            }
+        }
+        
+        if state == 0 alarm[1] = choose(8,10,12);
 }
-
-if state == 0 alarm[1] = choose(8,10,12);
 </string>
           </argument>
         </arguments>
