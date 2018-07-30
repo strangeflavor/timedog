@@ -147,8 +147,7 @@ if surface_exists(noisesurf) {
                 draw_rectangle_color(0,0,vw,vh,c_black,c_black,c_black,c_black,false);
             }
         */
-        
-    }    
+    }
     surface_reset_target();
 
     draw_surface_stretched(noisesurf, 0, 0, display_get_gui_width(), display_get_gui_height());

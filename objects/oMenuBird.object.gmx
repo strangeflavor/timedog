@@ -47,7 +47,11 @@ starssurf = -1;
 noiseblendsurf = 4;
 noiseblenddest = 2;
 
+rainbowoffset = 0;
+rainbowBlend = 0;
 objectAge = 0;
+
+image_speed = .125;
 
 //alarm[11] = choose(60,120,150);
 </string>
@@ -214,7 +218,7 @@ background_hspeed[1] = -1;
 // draw starfields
 ///////////////////////////////////
 
-
+/*
 if surface_exists(starssurf) {
     surface_set_target(starssurf);
     draw_clear_alpha(c_white,0)
@@ -225,13 +229,13 @@ if surface_exists(starssurf) {
     draw_background_tiled_ext(bgStarfieldTop,background_x[1],0,2,2,c_red,starfieldAlpha);
     surface_reset_target();
 }
-
+*/
 
 
 // bird
-image_speed = .2
-var _c1 = make_color_rgb(0,32,180);
-var _c2 = make_color_rgb(0,0,128);
+//image_speed = .2
+var _c1 = make_color_rgb(255,255,255);
+var _c2 = make_color_rgb(0,0,255);
 
 // draw noise
 
@@ -252,37 +256,56 @@ if surface_exists(noisesurf) {
         }
     } else {
         // fade
-        draw_set_alpha(.01);
+        draw_set_alpha(.001);
         var c_fade = merge_color(bg_color,c_black,0);
         draw_rectangle_colour(0,0,vw,vh,c_fade,c_fade,c_fade,c_fade,false);
         draw_set_alpha(1);
 
+        //makeBlendTester();
+        if rainbowBlend == 0 {
+            draw_set_blend_mode_ext(3,3);
+            if irandom(400) == 1 rainbowBlend = 1;
+        } else {
+            draw_set_blend_mode_ext(9,10);
+            if irandom(400) == 1 rainbowBlend = 0;
+        }
+
+        draw_sprite_ext(sRainbowSweep,image_index+rainbowoffset,0,0,1,1,0,c_white,1);
+        draw_set_blend_mode(bm_normal);
+
+        if irandom(180) == 1 {
+            rainbowoffset = irandom(18);
+        }
+        
         if irandom(400) == 1 {
             draw_clear_alpha(c2,.01);
             draw_set_alpha(1);
             draw_rectangle_color(0,0,vw,vh,c_black,c_black,c_black,c_black,false);
         }
     }
+
+    draw_set_blend_mode_ext(5,6);
+    draw_sprite_ext(sOwlFlies,image_index-1,vw/2-6,vh/2,1.8,1.8,image_angle,merge_color(_c1,_c2,abs(sin(objectAge*.0025))),abs(sin(objectAge*.004)));
+    draw_set_blend_mode(bm_normal);
     surface_reset_target();
 
     //draw_surface_stretched_ext(noisesurf,0,0,display_get_gui_width(), display_get_gui_height(),merge_color(_c1,_c2,abs(sin(objectAge*.001))),1);
 }
-
-
-draw_set_blend_mode(bm_normal);
-draw_sprite_ext(sOwlFlies,image_index,vw/2,vh/2,2,2,image_angle,c_white,1);//merge_color(_c1,_c2,abs(sin(objectAge*.001))),1);
-draw_set_blend_mode(bm_normal);
 
 starAlpha = .5;
 draw_set_alpha(starAlpha);
 draw_surface_stretched(starssurf, 0, 0, display_get_gui_width(), display_get_gui_height());
 draw_set_alpha(1);
 
-draw_set_blend_mode_ext(4,10);
+//draw_set_blend_mode_ext(4,10);
+draw_set_blend_mode_ext(5,5);
+//makeBlendTester();
 draw_surface_stretched_ext(noisesurf,0,0,display_get_gui_width(), display_get_gui_height(),c_white,1)//merge_color(_c1,_c2,abs(sin(objectAge*.001))),.1);
 //makeBlendTester();
-draw_set_blend_mode_ext(5,2);
-draw_sprite_ext(sOwlFlies,image_index,vw/2+nrandom(4),vh/2+nrandom(2),1.7,1.7,image_angle,merge_color(c_gray,c_blue,abs(sin(objectAge*.001))),1);
+//draw_set_blend_mode_ext(5,2);
+draw_set_blend_mode(bm_normal);
+//draw_sprite_ext(sOwlFlies,image_index,vw/2+nrandom(4),vh/2+nrandom(2),1.7,1.7,image_angle,merge_color(c_gray,c_blue,abs(sin(objectAge*.001))),1);
+draw_sprite_ext(sOwlFlies,image_index,vw/2+nrandom(4),vh/2+nrandom(2),1.7,1.7,image_angle,c_white,1);
 
 draw_set_blend_mode(bm_normal);
 

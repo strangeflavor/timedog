@@ -39,7 +39,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>formScriptName = '';
+            <string>make(oRainbowSweep);
+
+formScriptName = '';
 formScriptIndex = 0;
 formScriptCount = pg_makeFormationScriptArray();
 
@@ -104,7 +106,7 @@ if mouse_wheel_down() {
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="8" enumb="72">
       <action>
         <libid>1</libid>
         <id>604</id>
