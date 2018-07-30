@@ -165,8 +165,12 @@
     </sprites>
     <sprites name="enemy">
       <sprites name="ocean">
+        <sprite>sprites\sMantaRay</sprite>
         <sprite>sprites\sJellyMan</sprite>
         <sprite>sprites\sJellyShrimp</sprite>
+        <sprite>sprites\sBattleship</sprite>
+        <sprite>sprites\sBattleshipMegaCannon</sprite>
+        <sprite>sprites\sBattleshipCannon</sprite>
       </sprites>
       <sprites name="skull">
         <sprite>sprites\sSkullKing</sprite>
@@ -182,7 +186,6 @@
       <sprite>sprites\sMerchantTurret</sprite>
       <sprite>sprites\sMerchant</sprite>
       <sprite>sprites\sTaxi</sprite>
-      <sprite>sprites\sMantaRay</sprite>
       <sprite>sprites\sEnergyOrb</sprite>
       <sprite>sprites\sFireAtPlayer</sprite>
       <sprite>sprites\spr_drone</sprite>
@@ -518,6 +521,7 @@
         <object>objects\levelMan008</object>
         <object>objects\levelMan010</object>
         <object>objects\levelMan012</object>
+        <object>objects\levelMan013</object>
         <object>objects\levelMan014</object>
         <object>objects\levelManMidBoss_0</object>
       </objects>
@@ -636,9 +640,13 @@
     </objects>
     <objects name="enemy">
       <object>objects\oEnemy</object>
+      <object>objects\oLargeEnemy</object>
       <object>objects\oSteering</object>
       <object>objects\oWaiter</object>
       <objects name="ocean">
+        <object>objects\oBattleship</object>
+        <object>objects\oBattleshipCannon</object>
+        <object>objects\oBattleshipMegaCannon</object>
         <object>objects\oMantaBoss</object>
         <object>objects\oShrimp</object>
       </objects>
@@ -674,7 +682,6 @@
       <object>objects\mazeEater</object>
       <object>objects\mazeEndpoint</object>
       <object>objects\oCube</object>
-      <object>objects\oLargeEnemy</object>
     </objects>
     <objects name="shots">
       <object>objects\shot_pattern</object>
@@ -709,6 +716,10 @@
     <object>objects\obj_vignette_noise</object>
     <object>objects\o_shader_start</object>
     <object>objects\Smoke</object>
+    <object>objects\par_drone</object>
+    <object>objects\demo_drone_chasee</object>
+    <object>objects\demo_drone_chaser</object>
+    <object>objects\cont_steering</object>
   </objects>
   <timelines name="timelines">
     <timeline>timelines\tLvl1</timeline>
@@ -719,11 +730,13 @@
     <timeline>timelines\tLvl8</timeline>
     <timeline>timelines\tLvl9</timeline>
     <timeline>timelines\tLvl10</timeline>
+    <timeline>timelines\tLvl13</timeline>
     <timeline>timelines\tLvl14</timeline>
     <timeline>timelines\tLvl_skull0</timeline>
     <timeline>timelines\tLvl_cloud0</timeline>
     <timelines name="ocean">
       <timeline>timelines\tOcean00</timeline>
+      <timeline>timelines\tOcean01</timeline>
     </timelines>
     <timeline>timelines\tBasicFwd</timeline>
     <timeline>timelines\tDeepSpace</timeline>

@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_blend = c_blue;
+            <string>image_index = choose(0,1);
+image_speed = choose(.025,.05,.03);
+image_blend = make_color_rgb(0,32,180);
 offScreenTimer = 60;
 image_scale(.5);
 </string>

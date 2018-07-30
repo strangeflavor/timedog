@@ -22,7 +22,9 @@ managerArray[9] = -9;
 managerArray[10] = levelMan010;
 
 managerArray[12] = levelMan012;
-    
+managerArray[13] = levelMan013;
+managerArray[14] = levelMan014;
+
 // world 2: trash world
 for (var i=100;i<200;i+=1) {
     managerArray[i] = levelManager;
@@ -233,6 +235,7 @@ if GAMEFLOW_currentLevel == -1 {
 }
 
 if managerObject >= 0 {
+    trace('making '+string(object_get_name(managerObject)));
     make(managerObject);
 } else {
     // if -1, we use a regular level manager and asign a timeline to it automatically
