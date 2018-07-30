@@ -247,6 +247,7 @@
       <sprite>sprites\sFilmGrain</sprite>
       <sprite>sprites\sGradientCircle</sprite>
       <sprite>sprites\sAlphaGradientCircle</sprite>
+      <sprite>sprites\sRainbowSweep</sprite>
       <sprite>sprites\sBrak</sprite>
     </sprites>
     <sprites name="UI">

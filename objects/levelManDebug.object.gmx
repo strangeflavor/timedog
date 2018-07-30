@@ -39,9 +39,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>make(oRainbowSweep);
-
-formScriptName = '';
+            <string>formScriptName = '';
 formScriptIndex = 0;
 formScriptCount = pg_makeFormationScriptArray();
 

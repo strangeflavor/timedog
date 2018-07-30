@@ -103,7 +103,8 @@ repeat(irandom_range(2,5)) {
 */
 
 //Spawn Chasers
-repeat(irandom_range(3,6)) {
+//repeat(irandom_range(3,6)) {
+repeat 2 {
     var new_drone = instance_create(random(vw/2),random(vh),demo_drone_chaser); //Chasers spawn on left
     //Make sure drone isn't spawned stuck in solid object
     with(new_drone) {
@@ -118,7 +119,7 @@ repeat(irandom_range(3,6)) {
 }
 
 //Spawn Chasees
-repeat(32) {
+repeat(9) {
     var new_drone = instance_create(random(vw/2)+(vw/2),random(vh),demo_drone_chasee); //Chasees spawn on right
     //Make sure drone isn't spawned stuck in solid object
     with(new_drone) {
