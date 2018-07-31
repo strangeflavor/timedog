@@ -72,5 +72,7 @@ f+=1;
 formScriptArray[f] = form_invaders;
 f+=1;
 formScriptArray[f] = form_bez;
+f+=1;
+formScriptArray[f] = form_missiles;
 
 return f;

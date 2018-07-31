@@ -162,6 +162,7 @@
       <sprite>sprites\sShot6</sprite>
       <sprite>sprites\sMine</sprite>
       <sprite>sprites\sMissile</sprite>
+      <sprite>sprites\sLargeMissile</sprite>
     </sprites>
     <sprites name="enemy">
       <sprites name="ocean">
@@ -606,6 +607,7 @@
       <object>objects\fBezChain</object>
       <object>objects\fSkullBorder</object>
       <object>objects\fMeteors</object>
+      <object>objects\fLargeMissiles</object>
       <object>objects\fBehind</object>
       <object>objects\fThexSpitter</object>
       <object>objects\formationTracker</object>
@@ -693,6 +695,7 @@
       <object>objects\oBullet</object>
       <object>objects\oMissile</object>
       <object>objects\oGundam</object>
+      <object>objects\oLargeMissile</object>
       <object>objects\oMantaMine</object>
       <object>objects\oMantaMineExplosion</object>
       <object>objects\oBeam</object>
