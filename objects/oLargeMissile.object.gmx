@@ -51,11 +51,11 @@ offScreenTimer = 60;
 
 if y &gt; (vh + 32) instance_destroy();
 
-image_scale(4);
+image_scale(3);
 image_speed = choose(.1,.25,-.2);
 image_index = choose(0,1);
 
-HP = 7;
+HP = 5;
 
 make(Smoke);
 with make(oExplo) {

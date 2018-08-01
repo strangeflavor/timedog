@@ -106,6 +106,7 @@ eID.fireAge = attacker[count];
 
 count += 1;
 rate *= rateDelta;
+
 if size == 999 and count &gt;= 16 count = 0; // size = 999 means we're spawning forever, so reset the count after 16
 
 if count &lt; size {

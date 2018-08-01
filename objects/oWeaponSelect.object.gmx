@@ -29,14 +29,13 @@
 for (i=1;i&lt;=4;i+=1) {
     if getWeaponUnlock(i) {
         j+=1;
-        with make(vw/2+(j*60),vh/3,weaponDelivery) weapon = other.i;
+        with make(j*60,vh/3,weaponDelivery) weapon = other.i;
     }
 }
 
 if instance_number(weaponDelivery) == 0 {
     oShip.weapon = 0;
     make(oHUD);
-    //with make(oHUD) weapon = other.weapon;
     startDialog();
 } else {
     make(vw/2,vh*.1,equipSplash);

@@ -91,7 +91,7 @@ noisesurf = -1;
 //
 
 pickupHUD = make(oPickup);
-pickupHUD_x = view_xview[0]+view_wview[0]-64 - 24;
+pickupHUD_x = view_xview[0]+view_wview[0] - 100;
 pickupHUD_y = 32;
 pickupHUD.visible = false;
 </string>

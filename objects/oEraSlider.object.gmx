@@ -63,7 +63,7 @@ savedCurrentWorld = false;
 waitForUnlock = false;
 
 pickupHUD = make(oPickup);
-pickupHUD_x = view_xview[0]+view_wview[0]-64 - 24;
+pickupHUD_x = view_xview[0]+view_wview[0] - 100;
 pickupHUD_y = 32;
 </string>
           </argument>
@@ -317,6 +317,7 @@ draw_set_color(c_white);
 draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
 draw_text(view_xview[0]+16,54,'WORLD '+string(currentWorld+1)+'#'+worldNames[currentWorld]);
+
 pickupHUD.x = pickupHUD_x + view_xview[0];
 pickupHUD.y = pickupHUD_y;
 draw_text(pickupHUD_x+view_xview[0]+16,42,'x'+string(gems));

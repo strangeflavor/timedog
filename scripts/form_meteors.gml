@@ -15,6 +15,7 @@ if rateDelta == 1 rateDelta = 1.25;
 
 var mID = make(fMeteors);
 mID.size = size;
+mID.rate = rate;
 
 #define form_missiles
 /// form_meteors(size,rate,rateDelta);
@@ -37,4 +38,5 @@ if rateDelta == -1 rateDelta = 1;
 
 var mID = make(xx,-32,fLargeMissiles);
 mID.size = size;
+mID.rate = rate;
 mID._enemy_xshuffle = _enemy_xshuffle;

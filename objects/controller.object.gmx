@@ -506,7 +506,11 @@ if view_wview[1] == vw {
           <argument>
             <kind>1</kind>
             <string>///repeat 10 make(mouse_x,mouse_y,oPickup);
-repeat 10 make(mouse_x,mouse_y,oPickup);
+if room == rLevelSelect {
+    gems += 100;
+} else {
+    repeat 10 make(mouse_x,mouse_y,oPickup);
+}
 </string>
           </argument>
         </arguments>
