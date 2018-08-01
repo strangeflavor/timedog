@@ -45,56 +45,14 @@ rateDelta = 1;
 
 count = 0;
 
-_enemy_speed = 5;
+_enemy_speed = 12;
+_enemy_speed_range = 3;
 _enemy_direction = 270;
 
 yStop = -1;
 
-xstart = 24+irandom(vw/12)*11;
-ystart = -128;
-x = xstart;
-y = ystart;
-
 enemy = oLargeMissile;
 alarm[0] = rate;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>_enemy_speed = choose(2,3,4,6);
-x = centerX+nrandom(_enemy_xshuffle);
 </string>
           </argument>
         </arguments>

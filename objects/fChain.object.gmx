@@ -50,6 +50,7 @@ size = 8;
 count = 0;
 
 _enemy_speed = -1;
+_enemy_speed_range = 0; // nrange added to each enemy's speed
 _enemy_direction = -1;
 _enemy_xshuffle = 0;
 _enemy_yshuffle = 0;
@@ -94,7 +95,7 @@ if path &gt; -1 {
     eID = make(x+nrandom(_enemy_xshuffle),y+nrandom(_enemy_yshuffle),enemy);
     if _enemy_direction != -1 {
         eID.direction = _enemy_direction;
-        eID.speed = _enemy_speed;
+        eID.speed = _enemy_speed + nrandom(_enemy_speed_range);
     }
 }
 

@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-10</depth>
   <persistent>0</persistent>
-  <parentName>oBullet</parentName>
+  <parentName>oLargeEnemy</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -39,7 +39,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>active = true;
+            <string>value = -1;
+
+active = true;
 invul = false;
 dangerous = true;
 killWhenBelowScreen = true;
@@ -49,11 +51,11 @@ offScreenTimer = 60;
 
 if y &gt; (vh + 32) instance_destroy();
 
-image_scale(2);
+image_scale(4);
 image_speed = choose(.1,.25,-.2);
 image_index = choose(0,1);
 
-HP = 3;
+HP = 7;
 
 make(Smoke);
 with make(oExplo) {
@@ -62,8 +64,8 @@ with make(oExplo) {
 }
 
 direction = 270;
-vspeed = choose(4,5);
-gravity = choose(0,0,0,.1,.2);
+//vspeed = random(7)+4;
+//gravity = choose(0,0,0,.1,.2);
 </string>
           </argument>
         </arguments>
@@ -135,39 +137,6 @@ if objectAge &gt; 6 and objectAge &lt; 52 {
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="oShot">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if active and !invul and y &gt; 0 {
-    with other {
-        HP -= 1;
-        if HP &lt;= 0 {
-            kill();
-            sfx(sndDamageEnemy)
-        }
-    }
-    HP -= other.damage;
-    if HP &lt; 0 kill();
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -185,8 +154,20 @@ if objectAge &gt; 6 and objectAge &lt; 52 {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
-draw_sprite_ext(sThruster,objectAge*.25,x,y-sprite_height/2,image_xscale,image_yscale,image_angle,c_yellow,1);
+            <string>draw_sprite_ext(sThruster,objectAge*.25,x+2,y-sprite_height/2-16,image_xscale,image_yscale,image_angle-90,c_yellow,1);
+
+if flashing &lt; 0 {
+    flashing += 1;
+    if flashing == 0 flashing = 12;
+} else {
+    if flashing &gt; 0 flashing -= 1;
+}
+
+draw_self();
+
+if flashing &lt; 0 {
+    draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,c_red,.7);
+}
 </string>
           </argument>
         </arguments>

@@ -23,18 +23,18 @@ trace('starting form meteors');
 var arg;
 for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
 
-var centerX = arg[0];
+var xx = arg[0];
  _enemy_xshuffle = arg[1];
 var size = arg[2];
 var rate = arg[3];
 var rateDelta = arg[4];
 
-if centerX == -1 centerX = vw/2;
-if _enemy_xshuffle == -1 _enemy_xshuffle = vw/4;
-if size == -1 size = 24;
-if rate == -1 rate = 30;
-if rateDelta == 1 rateDelta = 1;
+if xx == -1 xx = vw/2;
+if _enemy_xshuffle == -1 _enemy_xshuffle = vw/3;
+if size == -1 size = 32;
+if rate == -1 rate = 12;
+if rateDelta == -1 rateDelta = 1;
 
-var mID = make(centerX,-32,fLargeMissiles);
+var mID = make(xx,-32,fLargeMissiles);
 mID.size = size;
 mID._enemy_xshuffle = _enemy_xshuffle;
