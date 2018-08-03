@@ -39,7 +39,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>HP = 32;
+            <string>image_angle = random(320);
+r = choose(0,.1,.2)*choose(1,-1);
+
+HP = 32;
 
 bb = 0;
 vspeed = 5;
@@ -161,7 +164,9 @@ if objectAge &gt; age kill();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if flashing &lt; 0 {
+            <string>image_angle += r;
+
+if flashing &lt; 0 {
     flashing += 1;
     if flashing == 0 flashing = 12;
 } else {
@@ -171,9 +176,9 @@ if objectAge &gt; age kill();
 var s = wave(1,1.2,.2,0);
 image_blend = lerp(image_blend,c_red,bb);
 if bb &lt; 1 bb += .1 else bb = 1;
-if objectAge &gt; age - 12 draw_sprite_ext(sMine,1,x,y,s,s,0,image_blend,1);
-draw_sprite_ext(sMine,0,x,y,1,1,0,c_white,1);
-if flashing &lt; 0 draw_sprite_ext(sMine,image_index,x,y,1,1,image_angle,c_red,.5);
+if objectAge &gt; age - 12 draw_sprite_ext(sMine,1,x,y,s,s,image_angle,image_blend,1);
+draw_sprite_ext(sMine,0,x,y,1,1,image_angle,c_white,1);
+if flashing &lt; 0 draw_sprite_ext(sMine,image_index,x,y,s,s,image_angle,c_red,.5);
 </string>
           </argument>
         </arguments>

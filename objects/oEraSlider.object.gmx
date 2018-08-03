@@ -321,9 +321,9 @@ draw_text(view_xview[0]+16,54,'WORLD '+string(currentWorld+1)+'#'+worldNames[cur
 var sw = string_width('x'+string(gems));
 
 draw_set_halign(fa_right);
-draw_text(view_xview[0]+view_wview[0]-16,42,'x'+string(gems));
+draw_text(view_xview[0]+view_wview[0]-16,42,'x '+string(gems));
 
-pickupHUD.x = view_xview[0]+view_wview[0]-sw-16;
+pickupHUD.x = view_xview[0]+view_wview[0]-sw-36;
 pickupHUD.y = pickupHUD_y;
 
 

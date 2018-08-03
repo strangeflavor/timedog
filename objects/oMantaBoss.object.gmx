@@ -153,11 +153,12 @@ image_angle = 90
             //if current_state_age &gt; 10 and current_state_age mod 120 == 0 {
             if objectAge &gt; 10 and current_state_age mod 120 == 0 {
                 gravity = choose(.025,-.025);
-                make(x+nrandom(32),y+32,oMantaMine);
+                make(x,y+32,oMantaMine);
+                vspeed -= 2;
             }
 
             if y &gt; vh - vh/3 gravity = -.025;
-            if y &lt; 80 gravity = .025;
+            if y &lt; 100 gravity = .03;
             speed = clamp(speed,-1.5,1.5);
         break;
         case _MOVETOWARD:
