@@ -101,4 +101,15 @@ with make(vw/2+_xoffset,-96,fChain) {
     */
 }
 
-#define form_tbd
+#define form_steerTowardPlayer
+///form_steerTowardPlayer
+
+trace('starting form steertowardplayer');
+
+var arg;
+for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
+
+var _xoffset = 0;
+
+with make(vw/2+_xoffset,-32,oSteerTowardPlayer) {
+}

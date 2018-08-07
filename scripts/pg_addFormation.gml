@@ -74,5 +74,7 @@ f+=1;
 formScriptArray[f] = form_bez;
 f+=1;
 formScriptArray[f] = form_missiles;
+f+=1;
+formScriptArray[f] = form_steerTowardPlayer;
 
 return f;

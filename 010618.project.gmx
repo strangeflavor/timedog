@@ -663,6 +663,7 @@
       <object>objects\oMidBoss</object>
       <object>objects\oEnergyOrb</object>
       <object>objects\oFireAtPlayer</object>
+      <object>objects\oSteerTowardPlayer</object>
       <object>objects\oPopo</object>
       <object>objects\oMox</object>
       <object>objects\oCircles</object>
