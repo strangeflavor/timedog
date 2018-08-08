@@ -43,38 +43,26 @@ managerArray[200] = ocean000;
 managerArray[201] = ocean001;
 managerArray[211] = oceanMantaBoss0;
 
-// world 4: planet FM
+// world 4: planet FM/cloud
 for (var i=300;i<400;i+=1) {
     managerArray[i] = levelManager;
     timelineArray[i] = -1;
 }
 
-// world 5: cloud
+managerArray[300] = cloudLevel000;
+managerArray[301] = cloudLevel001;
+
+// world 5: skull planet
 for (var i=400;i<500;i+=1) {
     managerArray[i] = levelManager;
     timelineArray[i] = -1;
 }
 
-managerArray[400] = cloudLevel000;
-managerArray[401] = cloudLevel001;
+managerArray[400] = skullLevel000;
+managerArray[415] = skullBoss000;
 
-// world 6: skull planet
+// world 6: temple
 for (var i=500;i<600;i+=1) {
-    managerArray[i] = levelManager;
-    timelineArray[i] = -1;
-}
-
-managerArray[500] = skullLevel000;
-managerArray[515] = skullBoss000;
-
-// world 7: flashback
-for (var i=600;i<700;i+=1) {
-    managerArray[i] = levelManager;
-    timelineArray[i] = -1;
-}
-
-// world 8: temple
-for (var i=700;i<800;i+=1) {
     managerArray[i] = levelManager;
     timelineArray[i] = -1;
 }

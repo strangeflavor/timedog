@@ -26,10 +26,9 @@ worldNames[0] = 'DOG STAR';
 worldNames[1] = 'TRASH PLANET';
 worldNames[2] = 'SPICY DARK OCEAN';
 worldNames[3] = 'PLANET FM';
-worldNames[4] = 'CLOUD WORLD';
-worldNames[5] = 'SKULL PLANET';
-worldNames[6] = 'FLASHBACK';
-worldNames[7] = 'TEMPLE';
+worldNames[4] = 'SKULL PLANET';
+worldNames[5] = 'TEMPLE';
+worldNames[6] = '?';
 
 #define getLevelData
 ///getLevelData(levelID,key)

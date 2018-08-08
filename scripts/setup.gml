@@ -29,7 +29,7 @@ room_set_view(rMysteryPlanet,0,true,0,0,vw,vh,0,0,vw,vh,0,0,0,0,-1)
 ///////////////////////////////////////////////
 
 numLevels = 16; // levels per world
-numWorlds = 8; // worlds total
+numWorlds = 6; // worlds total
 
 createLevelData();
 
