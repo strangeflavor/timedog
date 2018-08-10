@@ -698,6 +698,7 @@
       <object>objects\oGundam</object>
       <object>objects\oLargeMissile</object>
       <object>objects\oMantaMine</object>
+      <object>objects\oMantaMine_defective</object>
       <object>objects\oMantaMineExplosion</object>
       <object>objects\oBeam</object>
     </objects>

@@ -150,10 +150,9 @@ image_angle = 90
                 }
             }
 
-            //if current_state_age &gt; 10 and current_state_age mod 120 == 0 {
             if objectAge &gt; 10 and current_state_age mod 120 == 0 {
                 gravity = choose(.025,-.025);
-                make(x,y+32,oMantaMine);
+                if irandom(10) == 1 make(x,y+32,oMantaMine_defective) else make(x,y+32,oMantaMine);
                 vspeed -= 2;
             }
 
