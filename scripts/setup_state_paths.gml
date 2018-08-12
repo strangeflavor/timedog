@@ -24,6 +24,7 @@ for (var i=0;i<64;i+=1) state_scripts[i] = -1;
 state_scripts[_APPROACH] = _state_APPROACH;
 state_scripts[_BACKANDFORTH_HORI] = _state_BACKANDFORTH_HORI;
 state_scripts[_MOVETOWARD] = _state_MOVETOWARD;
+state_scripts[_MOVECENTER] = _state_MOVECENTER;
 
 #define add_state_path
 state_path[state_path_size] = argument0;
@@ -104,5 +105,10 @@ stateNames[_SPIRAL] = 'SPIRAL';
 stateNames[_ATK_BEAMS] = '_ATK_BEAMS';
 stateNames[_CIRCLE] = 'CIRCLE';
 stateNames[_MOVETOWARD] = 'MOVETOWARD';
+stateNames[_MOVECENTER] = 'MOVECENTER';
 
-return stateNames[argument0];
+if argument0 <= -1 {
+    return '-1';
+} else {
+    return stateNames[argument0];
+}

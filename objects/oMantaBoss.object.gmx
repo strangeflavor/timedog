@@ -57,7 +57,8 @@ state = _APPROACH;
 setup_state_paths();
 add_state_path(_APPROACH,240);
 add_state_path(_MOVETOWARD,90);
-//add_state_path(_MOVEVERT,240);
+add_state_path(_MOVECENTER,120);
+add_state_path(_MOVEVERT,6000);
 
 state_path_loop_position = 0;
 
@@ -141,7 +142,7 @@ image_angle = 90
             if current_state_age == 0 {
                 TweenSimpleRotate(image_angle,90,210,EaseOutElastic);
             }
-    
+
             yVel = 0; // disables _state_APPROACH script behavior
 
             if state_path_position &gt; 1 or state_path_loops &gt; 0 {
@@ -150,10 +151,22 @@ image_angle = 90
                 }
             }
 
+            // drop mine
             if objectAge &gt; 10 and current_state_age mod 120 == 0 {
+                if irandom(6) == 1 make(x,y+32,oMantaMine_defective) else make(x,y+32,oMantaMine);
                 gravity = choose(.025,-.025);
-                if irandom(10) == 1 make(x,y+32,oMantaMine_defective) else make(x,y+32,oMantaMine);
                 vspeed -= 2;
+
+                repeat 8 {
+                    with make(x+nrandom(8),y+80+nrandom(8),oBubble) {
+                        alarm[0] = irandom(12);
+                        direction = 90 + nrandom(90);
+                        speed = choose(1,2,3);
+                        gravity = .15;
+                        friction = .1;
+                        depth = other.depth - 1;
+                    }
+                }
             }
 
             if y &gt; vh - vh/3 gravity = -.025;
@@ -175,40 +188,29 @@ image_angle = 90
             }
 
             if xVel &lt; 3 xVel *= 1.2;
-
-            /*
-            if x &lt; xprevious {
-                image_angle += .25;
-            }
-
-            if x &gt; xprevious {
-                image_angle -= .25;
-            }
-            */
         break;
-        case _SPIRAL:
-            if frac(objectAge/2) == 0 {
-                if current_state_age &lt; 120 {
-                    //with make(getTurretX(0),getTurretY(0),oBullet) {
-                    with make(x,y,oBullet) {
-                        sprite_index = sShot1;
-                        depth -= 1;
-                        direction = 360*sin(other.objectAge*.04);
-                        speed = 5;
-                        friction = .02;
-                        image_blend = make_color_rgb(255,0,128);
-                    }
-                } else {
-                    //with make(getTurretX(1),getTurretY(1),oBullet) {
-                    with make(x,y,oBullet) {
-                        sprite_index = sShot1;
-                        depth -= 1;
-                        direction = 360*sin(other.objectAge*.03);
-                        speed = 5;
-                        friction = .02;
-                        image_blend = make_color_rgb(255,0,128);
-                    }
-                }
+        case _MOVECENTER:
+            image_angle = approach(image_angle,90,1);
+            xVel = 1;
+            yVel = 3;
+
+            if current_state_age == 30 {
+                TweenSimpleMove(x,y,x-16,-200,60,EaseInQuint);
+            }
+        break;
+        case _MOVEVERT:
+            if current_state_age == 0 {
+                xVel = 0;
+                yVel = 0;
+                gravity = 0;
+                speed = 0;
+            }
+
+            if current_state_age == 60 {
+                show('ok')
+                //image_yscale = -1;
+                image_angle = 270;
+                y = vh/2;
             }
         break;
     }

@@ -190,8 +190,8 @@ var s = wave(1,1.2,.2,0);
 image_blend = c_red;
 
 if bb &lt; 1 bb += .1 else bb = 1;
-if objectAge &gt; age - 12 draw_sprite_ext(sMine,1,x,y,s,s,image_angle,image_blend,1);
-draw_sprite_ext(sMine,0,x+nrandom(4),y+nrandom(4),1,1,image_angle,c_white,1);
+if objectAge &gt; age - 12 draw_sprite_ext(sMine,1,x,y,s,s,image_angle,c_red,1);
+draw_sprite_ext(sMine,0,x+nrandom(4),y+nrandom(4),1,1,image_angle,c_red,1);
 if flashing &lt; 0 draw_sprite_ext(sMine,image_index,x,y,s,s,image_angle,c_red,.5);
 </string>
           </argument>

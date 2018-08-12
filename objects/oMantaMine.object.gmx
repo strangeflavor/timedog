@@ -72,38 +72,10 @@ objectAge = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with make(x+cx_offset,y+cy_offset,oExploChain) {
-    size = 5;
-    rate = 5;
-    xrandom = 150;
-    yrandom = 40;
-    explosion = oLargeExplo;
-    explosion_scale = 3;
-    explosion_sprite_index = sLargeExplosion;
-    explosion_image_blend = -1;//other.explosion_blend;
-}
+            <string>//shoot_circle2(16,x,y-16,32,oBullet,5,sShot0,false);
+shoot_circle2(18,x+12,y+8,8,oBullet,3,sShot3,false);
+shoot_circle2(24,x-12,y+8,8,oBullet,2,sShot3,false);
 
-with make(x+cx_offset,y+cy_offset+16,oExploChain) {
-    wait = 20;
-    size = 5;
-    rate = 5;
-    xrandom = 150;
-    yrandom = 40;
-    explosion = oLargeExplo;
-    explosion_scale = 3;
-    explosion_sprite_index = sLargeExplosion;
-    explosion_image_blend = -1;//other.explosion_blend;
-}
-
-with make(x,y,oMantaMineExplosion) {
-    visible = false;
-    sprite_index = sExplo;
-    image_speed = 0;
-    image_xscale = 3;
-    image_yscale = 2;
-}
-
-//repeat 3 make(x+cx_offset,y+cy_offset,Smoke);
 repeat 16 {
     with make(x,y,oBubble) {
         alarm[0] = irandom(12);
