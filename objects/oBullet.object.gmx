@@ -26,7 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>dangerous = true;
-killWhenBelowScreen = true;
+killWhenBelowScreen = false;
+killWhenOffscreen = true;
+offScreenTimer = 18;
 direction_to_angle = false;
 
 if y &gt; (vh + 32) instance_destroy();
@@ -61,6 +63,17 @@ objectAge = 0;
             <kind>1</kind>
             <string>if killWhenBelowScreen {
    if y &gt; (vh + 32*scale) kill(self);
+} else {
+    if killWhenOffscreen {
+        if offscreen() {
+            if offScreenTimer &lt;= 0 {
+                kill(self);
+            }
+            offScreenTimer -= 1;
+        } else {
+            offScreenTimer = 36;
+        }
+    }
 }
 
 if direction_to_angle image_angle = direction;

@@ -1,5 +1,6 @@
 #define setup_state_paths
 use_state_path = true;
+disable_script = false; // allows you to run a state but disable 
 
 for (var i=0; i<128; i+=1) {
     state_path[i] = -1;
@@ -112,3 +113,7 @@ if argument0 <= -1 {
 } else {
     return stateNames[argument0];
 }
+#define do_next_state
+///do_next_state()
+
+current_state_duration = -1;

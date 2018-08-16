@@ -73,13 +73,13 @@ objectAge = 0;
           <argument>
             <kind>1</kind>
             <string>//shoot_circle2(16,x,y-16,32,oBullet,5,sShot0,false);
-shoot_circle2(18,x+12,y+8,8,oBullet,3,sShot3,false);
-shoot_circle2(24,x-12,y+8,8,oBullet,2,sShot3,false);
+shoot_circle2(360/12,x+12,y+8,8,oBullet,3,sShot3,false,0);
+shoot_circle2(360/12,x-12,y+8,8,oBullet,2,sShot3,false,45);
 
 repeat 16 {
     with make(x,y,oBubble) {
         alarm[0] = irandom(12);
-        direction = irandom(180);
+        direction = irandom(360);
         speed = choose(1,2,3);
         gravity = .15;
         friction = .1;

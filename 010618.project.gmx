@@ -357,8 +357,8 @@
       <script>scripts\addFormation.gml</script>
       <script>scripts\updateLeader.gml</script>
       <script>scripts\setup_state_paths.gml</script>
-      <script>scripts\makeTurret.gml</script>
       <script>scripts\do_state.gml</script>
+      <script>scripts\makeTurret.gml</script>
       <script>scripts\addRecoil.gml</script>
       <script>scripts\phaseCreateVars.gml</script>
       <script>scripts\enemy_flyAway.gml</script>
