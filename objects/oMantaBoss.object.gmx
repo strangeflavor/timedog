@@ -199,22 +199,27 @@ image_angle = 90
             yVel = 1.8;
 
             if !end_MOVECENTER {
-                if instance_number(oBullet) == 0 {
+                if instance_number(oBullet) &lt;= 7 {
                     TweenSimpleMove(x,y,x-16,-180,60,EaseInQuint);
                     end_MOVECENTER = true;
                 }
             } else {
-                if current_state_age mod 17 == 0 make(x,y+32,oMantaMine);
+                if current_state_age mod 7 == 0 and y &gt; 80 {
+                    with make(x,y+32,oMantaMine) {
+                        myOffset = other.current_state_age;
+                        age *= .5;
+                        if irandom(3) == 1 {
+                            myShotSprite = sShot3;
+                            numShots = 6;
+                        } else {
+                            numShots = 5;
+                        }
+                        
+                    }
+                }
+
                 if y &lt; -100 do_next_state();
             }
-            /*
-            if current_state_age == 120 {
-                TweenSimpleMove(x,y,x-16,-180,60,EaseInQuint);
-            }
-            if current_state_age &gt; 130 and current_state_age &lt; 130 + 17*3 {
-                if current_state_age mod 17 == 0 make(x,y+32,oMantaMine);
-            }
-            */
         break;
         case _MOVEVERT:
             disable_script = false;

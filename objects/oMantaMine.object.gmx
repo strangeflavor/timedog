@@ -45,11 +45,16 @@ r = choose(0,.1,.2)*choose(1,-1);
 HP = 32;
 
 bb = 0;
+
 vspeed = 5;
 x += nrandom(16);
 wavedur = choose(2,3,4);
 age = choose(60,90);
 objectAge = 0;
+
+myOffset = 0; // offset for circle rotation 
+myShotSprite = sShot1;
+numShots = 12;
 </string>
           </argument>
         </arguments>
@@ -73,8 +78,8 @@ objectAge = 0;
           <argument>
             <kind>1</kind>
             <string>//shoot_circle2(16,x,y-16,32,oBullet,5,sShot0,false);
-shoot_circle2(360/12,x+12,y+8,8,oBullet,3,sShot3,false,0);
-shoot_circle2(360/12,x-12,y+8,8,oBullet,2,sShot3,false,45);
+shoot_circle2(360/numShots,x+12,y+8,8,oBullet,6,myShotSprite,false,0+myOffset);
+shoot_circle2(360/numShots,x-12,y+8,8,oBullet,4,myShotSprite,false,45+myOffset);
 
 repeat 16 {
     with make(x,y,oBubble) {

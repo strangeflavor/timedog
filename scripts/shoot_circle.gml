@@ -24,7 +24,7 @@ for (i=0; i<360; i+=density)   // controls the density of the bullet ring; small
     }
 
 #define shoot_circle2
-///shoot_circle2(density,x,y,radius,object,speed,sprite,imageaim);
+///shoot_circle2(density,x,y,radius,object,speed,sprite,imageaim,offset);
 // written by S20-TBL
 //this is for 360 attacks that aren't supposed to be aimed.
 
