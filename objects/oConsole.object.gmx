@@ -214,9 +214,11 @@ if debug == 2 {
           <argument>
             <kind>1</kind>
             <string>/// toggle between debug / console / nothing
+var debug_max = 2;
+if instance_exists(obj_bhpg_turret) debug_max = 3;
 
 debug += 1;
-if debug &gt; 2 debug = 0;
+if debug &gt; debug_max debug = 0;
 </string>
           </argument>
         </arguments>

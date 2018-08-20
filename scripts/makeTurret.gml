@@ -16,3 +16,10 @@ return x+turret[argument0,0];
 ///getTurretY(id)
 
 return y+turret[argument0,1];
+#define make_bhpg_turret
+///make_bhpg_turret(id)
+
+bhpg_turret[argument0] = make(obj_bhpg_turret);
+bhpg_turret[argument0].parent = id;
+
+return bhpg_turret[argument0]

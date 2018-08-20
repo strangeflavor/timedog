@@ -132,4 +132,3 @@ do {
 
 w = sqrt(-2 * ln(w)/w);
 return argument0 + argument1 * x1 * w;
-

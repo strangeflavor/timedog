@@ -39,7 +39,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_scale(1);
+            <string>with make_bhpg_turret(0) {
+    sprite_index = other.sprite_index;
+    bhpg_pattern_init(3,90,135,1,90,15,-0.25,1,30,4,16,16,0,32);
+    bhpg_bullet_init(oBullet,3,-0.05,1);
+}
+
+image_scale(1);
 
 killWhenOffscreen = false;
 killWhenBelowScreen = false;
@@ -52,12 +58,12 @@ pilotID[0].ship_yo = -52;
 pilotID[0].image_xscale = 1;
 pilotID[0].image_yscale = -1;
 
-state = _APPROACH;
+state = _MOVEVERT;//_APPROACH;
 
 setup_state_paths();
-add_state_path(_APPROACH,240);
-add_state_path(_MOVETOWARD,90);
-add_state_path(_MOVECENTER,6000);
+//add_state_path(_APPROACH,240);
+//add_state_path(_MOVETOWARD,90);
+//add_state_path(_MOVECENTER,6000);
 add_state_path(_MOVEVERT,6000);
 
 state_path_loop_position = 0;
@@ -208,13 +214,7 @@ image_angle = 90
                     with make(x,y+32,oMantaMine) {
                         myOffset = other.current_state_age;
                         age *= .5;
-                        if irandom(3) == 1 {
-                            myShotSprite = sShot3;
-                            numShots = 6;
-                        } else {
-                            numShots = 5;
-                        }
-                        
+                        type = 'messy';
                     }
                 }
 
@@ -230,14 +230,18 @@ image_angle = 90
                 gravity = 0;
                 speed = 0;
                 image_angle = 270;
-                
+
                 TweenSimpleMove(x,y,vw/2,150,60,EaseOutQuint);
             }
 
-            if current_state_age == 60 {
-                //image_yscale = -1;
-
-                //y = vh/2;
+            if current_state_age &gt;= 210 {
+                with bhpg_turret[0] {
+                    bhpg_pattern_step();
+                    if other.current_state_age mod 50 == 0 {
+                        spin = spin_start;
+                        base_angle = 0;
+                    }
+                }
             }
         break;
     }

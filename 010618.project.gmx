@@ -367,6 +367,7 @@
       <script>scripts\sfx.gml</script>
     </scripts>
     <scripts name="bullets">
+      <script>scripts\bhpg_pattern_init.gml</script>
       <script>scripts\shoot_spray.gml</script>
       <script>scripts\shoot_circle.gml</script>
     </scripts>
@@ -651,6 +652,9 @@
         <object>objects\oBattleshipCannon</object>
         <object>objects\oBattleshipMegaCannon</object>
         <object>objects\oMantaBoss</object>
+        <object>objects\oMantaMine</object>
+        <object>objects\oMantaMine_defective</object>
+        <object>objects\oMantaMineExplosion</object>
         <object>objects\oShrimp</object>
       </objects>
       <objects name="skull">
@@ -688,6 +692,7 @@
       <object>objects\oCube</object>
     </objects>
     <objects name="shots">
+      <object>objects\obj_bhpg_turret</object>
       <object>objects\shot_pattern</object>
       <object>objects\shot_spiller</object>
       <object>objects\shot_lineFollower</object>
@@ -697,9 +702,6 @@
       <object>objects\oMissile</object>
       <object>objects\oGundam</object>
       <object>objects\oLargeMissile</object>
-      <object>objects\oMantaMine</object>
-      <object>objects\oMantaMine_defective</object>
-      <object>objects\oMantaMineExplosion</object>
       <object>objects\oBeam</object>
     </objects>
     <objects name="fx">
