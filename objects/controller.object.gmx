@@ -425,7 +425,8 @@ trace('saved '+string(levelManager.timeline_position)+' to debugTimelineStartPos
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>screen_scale += .5;
+            <string>///screenResize(false);
+screen_scale += .5;
 screenResize(false);
 </string>
           </argument>

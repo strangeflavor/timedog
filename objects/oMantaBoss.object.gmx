@@ -235,13 +235,7 @@ image_angle = 90
             }
 
             if current_state_age &gt;= 210 {
-                with bhpg_turret[0] {
-                    bhpg_pattern_step();
-                    if other.current_state_age mod 50 == 0 {
-                        spin = spin_start;
-                        base_angle = 0;
-                    }
-                }
+                bhpg_turret[0].active = true;
             }
         break;
     }
