@@ -78,6 +78,10 @@ objectAge = 0;
 
 if direction_to_angle image_angle = direction;
 
+speed += accel;
+direction += curve;
+//image_angle = direction;
+
 objectAge += 1;
 </string>
           </argument>
