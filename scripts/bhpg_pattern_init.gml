@@ -132,6 +132,7 @@ switch (menu_choice) {
         spin_mod_col = c_white;
         spin_reverse_col = c_white;
         max_spin_spd_col = c_white;
+        spin_reset_col = c_white;
         fire_rate_col = c_white;
         spread_col = c_white;
         start_angle_col = c_white;
@@ -157,6 +158,7 @@ switch (menu_choice) {
         spin_mod_col = c_white;
         spin_reverse_col = c_white;
         max_spin_spd_col = c_white;
+        spin_reset_col = c_white;
         fire_rate_col = c_white;
         spread_col = c_yellow;
         start_angle_col = c_white;
@@ -184,6 +186,7 @@ switch (menu_choice) {
         spin_mod_col = c_white;
         spin_reverse_col = c_white;
         max_spin_spd_col = c_white;
+        spin_reset_col = c_white;
         fire_rate_col = c_white;
         spread_col = c_white;
         start_angle_col = c_white;
@@ -211,6 +214,7 @@ switch (menu_choice) {
         spin_mod_col = c_white;
         spin_reverse_col = c_white;
         max_spin_spd_col = c_white;
+        spin_reset_col = c_white;
         fire_rate_col = c_white;
         spread_col = c_white;
         start_angle_col = c_white;
@@ -231,13 +235,15 @@ switch (menu_choice) {
             array_spread += 5;
         }
         break;
-        
+    
+    // start_angle
     case 4:
         bullets_col = c_white;
         spin_col = c_white;
         spin_mod_col = c_white;
         spin_reverse_col = c_white;
         max_spin_spd_col = c_white;
+        spin_reset_col = c_white;
         fire_rate_col = c_white;
         spread_col = c_white;
         start_angle_col = c_yellow;
@@ -258,13 +264,14 @@ switch (menu_choice) {
             start_angle += 5;
         }
         break;
-        
+    // spin
     case 5:
         bullets_col = c_white;
         spin_col = c_yellow;
         spin_mod_col = c_white;
         spin_reverse_col = c_white;
         max_spin_spd_col = c_white;
+        spin_reset_col = c_white;
         fire_rate_col = c_white;
         spread_col = c_white;
         start_angle_col = c_white;
@@ -285,13 +292,14 @@ switch (menu_choice) {
             spin += 5;
         }
         break;
-        
+    // spin_mod
     case 6:
         bullets_col = c_white;
         spin_col = c_white;
         spin_mod_col = c_yellow;
         spin_reverse_col = c_white;
         max_spin_spd_col = c_white;
+        spin_reset_col = c_white;
         fire_rate_col = c_white;
         spread_col = c_white;
         start_angle_col = c_white;
@@ -312,13 +320,14 @@ switch (menu_choice) {
             spin_mod += 0.1;
         }
         break;
-        
+    // spin_reverse
     case 7:
         bullets_col = c_white;
         spin_col = c_white;
         spin_mod_col = c_white;
         spin_reverse_col = c_yellow;
         max_spin_spd_col = c_white;
+        spin_reset_col = c_white;
         fire_rate_col = c_white;
         spread_col = c_white;
         start_angle_col = c_white;
@@ -336,13 +345,14 @@ switch (menu_choice) {
             spin_reverse = !spin_reverse;
         }
         break;
-        
+    // max_spin_spd
     case 8:
         bullets_col = c_white;
         spin_col = c_white;
         spin_mod_col = c_white;
         spin_reverse_col = c_white;
         max_spin_spd_col = c_yellow;
+        spin_reset_col = c_white;
         fire_rate_col = c_white;
         spread_col = c_white;
         start_angle_col = c_white;
@@ -363,13 +373,42 @@ switch (menu_choice) {
             max_spin_spd += 5;
         }
         break;
-        
+    // spin_reset
     case 9:
         bullets_col = c_white;
         spin_col = c_white;
         spin_mod_col = c_white;
         spin_reverse_col = c_white;
         max_spin_spd_col = c_white;
+        spin_reset_col = c_yellow;
+        fire_rate_col = c_white;
+        spread_col = c_white;
+        start_angle_col = c_white;
+        total_arrays_col = c_white;
+        array_spread_col = c_white;
+        bullet_object_col = c_white;
+        bullet_speed_col = c_white;
+        bullet_accel_col = c_white;
+        bullet_curve_col = c_white;
+        object_width_col = c_white;
+        object_height_col = c_white;
+        x_offset_col = c_white;
+        y_offset_col = c_white;
+        if (keyboard_check_pressed(vk_left)) {
+            spin_reset -= 2;
+        }
+        if (keyboard_check_pressed(vk_right)) {
+            spin_reset += 2;
+        }
+        break;
+    // fire_rate
+    case 10:
+        bullets_col = c_white;
+        spin_col = c_white;
+        spin_mod_col = c_white;
+        spin_reverse_col = c_white;
+        max_spin_spd_col = c_white;
+        spin_reset_col = c_white;
         fire_rate_col = c_yellow;
         spread_col = c_white;
         start_angle_col = c_white;
@@ -390,13 +429,14 @@ switch (menu_choice) {
             fire_rate += 1;
         }
         break;
-    
-    case 10:
+    // bullet_speed
+    case 11:
         bullets_col = c_white;
         spin_col = c_white;
         spin_mod_col = c_white;
         spin_reverse_col = c_white;
         max_spin_spd_col = c_white;
+        spin_reset_col = c_white;
         fire_rate_col = c_white;
         spread_col = c_white;
         start_angle_col = c_white;
@@ -416,12 +456,14 @@ switch (menu_choice) {
             bullet_speed += 1;
         }
         break;
-    case 11:
+    // accel
+    case 12:
         bullets_col = c_white;
         spin_col = c_white;
         spin_mod_col = c_white;
         spin_reverse_col = c_white;
         max_spin_spd_col = c_white;
+        spin_reset_col = c_white;
         fire_rate_col = c_white;
         spread_col = c_white;
         start_angle_col = c_white;
@@ -441,12 +483,14 @@ switch (menu_choice) {
             bullet_accel += 0.1;
         }
         break;
-    case 12:
+    // bullet_curve
+    case 13:
         bullets_col = c_white;
         spin_col = c_white;
         spin_mod_col = c_white;
         spin_reverse_col = c_white;
         max_spin_spd_col = c_white;
+        spin_reset_col = c_white;
         fire_rate_col = c_white;
         spread_col = c_white;
         start_angle_col = c_white;
@@ -466,12 +510,14 @@ switch (menu_choice) {
             bullet_curve += 1;
         }
         break;
-    case 13:
+    // object_width
+    case 14:
         bullets_col = c_white;
         spin_col = c_white;
         spin_mod_col = c_white;
         spin_reverse_col = c_white;
         max_spin_spd_col = c_white;
+        spin_reset_col = c_white;
         fire_rate_col = c_white;
         spread_col = c_white;
         start_angle_col = c_white;
@@ -491,12 +537,14 @@ switch (menu_choice) {
             object_width += 1;
         }
         break;
-    case 14:
+    // object_height
+    case 15:
         bullets_col = c_white;
         spin_col = c_white;
         spin_mod_col = c_white;
         spin_reverse_col = c_white;
         max_spin_spd_col = c_white;
+        spin_reset_col = c_white;
         fire_rate_col = c_white;
         spread_col = c_white;
         start_angle_col = c_white;
@@ -516,12 +564,14 @@ switch (menu_choice) {
             object_height += 1;
         }
         break;
-    case 15:
+    // x_offset
+    case 16:
         bullets_col = c_white;
         spin_col = c_white;
         spin_mod_col = c_white;
         spin_reverse_col = c_white;
         max_spin_spd_col = c_white;
+        spin_reset_col = c_white;
         fire_rate_col = c_white;
         spread_col = c_white;
         start_angle_col = c_white;
@@ -541,12 +591,14 @@ switch (menu_choice) {
             x_offset += 1;
         }
         break;
-    case 16:
+    // y_offset
+    case 17:
         bullets_col = c_white;
         spin_col = c_white;
         spin_mod_col = c_white;
         spin_reverse_col = c_white;
         max_spin_spd_col = c_white;
+        spin_reset_col = c_white;
         fire_rate_col = c_white;
         spread_col = c_white;
         start_angle_col = c_white;

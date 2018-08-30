@@ -41,8 +41,10 @@
             <kind>1</kind>
             <string>with make_bhpg_turret(0) {
     sprite_index = other.sprite_index;
-    bhpg_pattern_init(3,90,135,1,90,15,-0.25,1,30,4,16,16,0,32);
-    bhpg_bullet_init(oBullet,3,-0.05,1);
+    //bhpg_pattern_init(3,60,195,1,90,15,-0.25,1,30,7,32,16,0,16);
+    bhpg_pattern_init(3,15,215,1,90,15,-0.25,1,30,8,32,16,0,16);
+    bhpg_bullet_init(oBullet,4,-0,1);
+    reset_spin = 50;
 }
 
 image_scale(1);

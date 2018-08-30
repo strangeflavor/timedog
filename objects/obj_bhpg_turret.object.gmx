@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>active = false;
 objectAge = 0;
+spin_reset = 0;
 
 // debug stuff
 
@@ -35,6 +36,7 @@ spin_col = c_white;
 spin_mod_col = c_white;
 spin_reverse_col = c_white;
 max_spin_spd_col = c_white;
+spin_reset_col = c_white;
 fire_rate_col = c_white;
 spread_col = c_white;
 start_angle_col = c_white;
@@ -50,7 +52,7 @@ x_offset_col = c_white;
 y_offset_col = c_white;
 
 menu_choice = 0;
-total_menu = 16;
+total_menu = 17;
 </string>
           </argument>
         </arguments>
@@ -107,9 +109,11 @@ if active objectAge += 1;
             <kind>1</kind>
             <string>if active {
     bhpg_pattern_step();
-    if objectAge mod 50 == 0 {
-        spin = spin_start;
-        base_angle = 0;
+    if spin_reset &gt; 0 {
+        if objectAge mod spin_reset == 0 {
+            spin = spin_start
+            base_angle = 0;
+        }
     }
 }
 </string>
@@ -138,61 +142,85 @@ if active objectAge += 1;
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
     draw_set_font(fArial);
+    
+    var yy = 8;
+    var hh = 16;
 
     draw_set_color(bullets_col);
-    draw_text(8,8,"bullets per array: " + string(bullets));
+    draw_text(8,yy,"bullets per array: " + string(bullets));
+    yy += hh;
 
     draw_set_color(spread_col);
-    draw_text(8,24,"individual array spread: " + string(spread));
-    
+    draw_text(8,yy,"individual array spread: " + string(spread));
+    yy += hh*2;
+
     draw_set_color(total_arrays_col);
-    draw_text(8,56,"total bullet arrays: " + string(total_arrays));
-    
+    draw_text(8,yy,"total bullet arrays: " + string(total_arrays));
+    yy += hh;
+
     draw_set_color(array_spread_col);
-    draw_text(8,72,"total array spread: " + string(array_spread));
-    
+    draw_text(8,yy,"total array spread: " + string(array_spread));
+    yy += hh*2;
+
     draw_set_color(start_angle_col);
-    draw_text(8,104,"start angle: " + string(start_angle));
-    
+    draw_text(8,yy,"start angle: " + string(start_angle));
+    yy += hh;
+
     draw_set_color(spin_col);
-    draw_text(8,120,"current spin speed: " + string(spin));
+    draw_text(8,yy,"current spin speed: " + string(spin));
+    yy += hh;
     
     draw_set_color(spin_mod_col);
-    draw_text(8,136,"spin speed change rate: " + string(spin_mod));
+    draw_text(8,yy,"spin speed change rate: " + string(spin_mod));
+    yy += hh;
     
     draw_set_color(spin_reverse_col);
-    draw_text(8,152,"spin reversal: " + string(spin_reverse));
+    draw_text(8,yy,"spin reversal: " + string(spin_reverse));
+    yy += hh;
     
     draw_set_color(max_spin_spd_col);
-    draw_text(8,168,"max spin speed: " + string(max_spin_spd));
-    
+    draw_text(8,yy,"max spin speed: " + string(max_spin_spd));
+    yy += hh;
+
+    draw_set_color(spin_reset_col);
+    draw_text(8,yy,"spin reset: " + string(spin_reset));
+    yy += hh;
+
     draw_set_color(fire_rate_col);
-    draw_text(8,200,"fire rate: " + string(fire_rate));
+    draw_text(8,yy,"fire rate: " + string(fire_rate));
+    yy += hh;
     
     draw_set_color(bullet_speed_col);
-    draw_text(8,216,"bullet speed: " + string(bullet_speed));
+    draw_text(8,yy,"bullet speed: " + string(bullet_speed));
+    yy += hh;
     
     draw_set_color(bullet_accel_col);
-    draw_text(8,232,"bullet acceleration: " + string(bullet_accel));
+    draw_text(8,yy,"bullet acceleration: " + string(bullet_accel));
+    yy += hh;
     
     draw_set_color(bullet_curve_col);
-    draw_text(8,248,"bullet curve: " + string(bullet_curve));
+    draw_text(8,yy,"bullet curve: " + string(bullet_curve));
+    yy += hh*2;
     
     draw_set_color(object_width_col);
-    draw_text(8,280,"object width: " + string(object_width));
+    draw_text(8,yy,"object width: " + string(object_width));
+    yy += hh;
     
     draw_set_color(object_height_col);
-    draw_text(8,296,"object height: " + string(object_height));
+    draw_text(8,yy,"object height: " + string(object_height));
+    yy += hh;
     
     draw_set_color(x_offset_col);
-    draw_text(8,312,"x offset: " + string(x_offset));
+    draw_text(8,yy,"x offset: " + string(x_offset));
+    yy += hh;
     
     draw_set_color(y_offset_col);
-    draw_text(8,328,"y offset: " + string(y_offset));
-    
-    
+    draw_text(8,yy,"y offset: " + string(y_offset));
+    yy += hh*2;
+
     draw_set_color(c_white);
-    draw_text(8,360,"bullets on screen: " + string(instance_number(oBullet)));
+    draw_text(8,yy,"bullets on screen: " + string(instance_number(oBullet)));
+    yy += hh;
 }
 </string>
           </argument>
