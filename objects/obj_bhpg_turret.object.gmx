@@ -28,6 +28,11 @@
             <string>active = false;
 objectAge = 0;
 spin_reset = 0;
+spin_reset_wait = 0;
+wait = 0;
+spin_direction_reverse = false;
+spin_reset_adjustStartAngle = false;
+spin_reset_spin_direction_reverse = false;
 
 // debug stuff
 
@@ -37,6 +42,7 @@ spin_mod_col = c_white;
 spin_reverse_col = c_white;
 max_spin_spd_col = c_white;
 spin_reset_col = c_white;
+spin_wait_col = c_white;
 fire_rate_col = c_white;
 spread_col = c_white;
 start_angle_col = c_white;
@@ -108,12 +114,25 @@ if active objectAge += 1;
           <argument>
             <kind>1</kind>
             <string>if active {
-    bhpg_pattern_step();
-    if spin_reset &gt; 0 {
-        if objectAge mod spin_reset == 0 {
-            spin = spin_start
-            base_angle = 0;
+    if wait &gt; 0 {
+        bhpg_pattern_step();
+        if spin_reset &gt; 0 {
+            if objectAge mod spin_reset == 0 {
+                if spin_reset_spin_direction_reverse {
+                    spin_direction_reverse = true;
+                } else {
+                    spin = spin_start;
+                }
+                base_angle = 0;
+                wait = -spin_reset_wait;
+                objectAge = -spin_reset_wait;
+
+                start_angle += spin_reset_adjustStartAngle;
+                spin_reset_adjustStartAngle *= -1;
+            }
         }
+    } else {
+        wait += 1;
     }
 }
 </string>
@@ -169,21 +188,25 @@ if active objectAge += 1;
     draw_set_color(spin_col);
     draw_text(8,yy,"current spin speed: " + string(spin));
     yy += hh;
-    
+
     draw_set_color(spin_mod_col);
     draw_text(8,yy,"spin speed change rate: " + string(spin_mod));
     yy += hh;
-    
+
     draw_set_color(spin_reverse_col);
     draw_text(8,yy,"spin reversal: " + string(spin_reverse));
     yy += hh;
-    
+
     draw_set_color(max_spin_spd_col);
     draw_text(8,yy,"max spin speed: " + string(max_spin_spd));
     yy += hh;
 
     draw_set_color(spin_reset_col);
     draw_text(8,yy,"spin reset: " + string(spin_reset));
+    yy += hh;
+
+    draw_set_color(spin_wait_col);
+    draw_text(8,yy,"spin wait: " + string(spin_reset_wait));
     yy += hh;
 
     draw_set_color(fire_rate_col);

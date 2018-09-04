@@ -65,6 +65,8 @@ objectAge = 0;
 xLast = xstart;
 yLast = ystart;
 
+debugHit = 1;
+
 //alarm[1] = 1;
 </string>
           </argument>
@@ -158,6 +160,7 @@ if active {
             <kind>1</kind>
             <string>if active  {
     objectAge += 1;
+    debugHit += 1;
 
     // move player
     x += dx;

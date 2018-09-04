@@ -1,6 +1,19 @@
 #define shipHit
 ///shipHit();
-if !debug {
+if debug {
+     if debugHit > 0 {
+        repeat 8 {
+            with make(oFX) {
+                sprite_index = sSparkle;
+                image_speed = choose(.1,.2,.3);
+                depth = other.depth - 1;
+                direction = irandom(360);
+                speed = 4;
+                friction = .02;
+            }
+        }
+     }
+} else {
     if weapon == 4 {
         weapon = -1
         buttonSize = 32;
