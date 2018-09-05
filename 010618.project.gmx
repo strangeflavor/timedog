@@ -692,13 +692,13 @@
       <object>objects\oCube</object>
     </objects>
     <objects name="shots">
+      <object>objects\oBullet</object>
       <object>objects\obj_bhpg_turret</object>
       <object>objects\shot_pattern</object>
       <object>objects\shot_spiller</object>
       <object>objects\shot_lineFollower</object>
       <object>objects\shot_missileFlurry</object>
       <object>objects\shot_fork</object>
-      <object>objects\oBullet</object>
       <object>objects\oMissile</object>
       <object>objects\oGundam</object>
       <object>objects\oLargeMissile</object>

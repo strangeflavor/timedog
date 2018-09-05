@@ -26,10 +26,14 @@
           <argument>
             <kind>1</kind>
             <string>dangerous = true;
+
 killWhenBelowScreen = false;
 killWhenOffscreen = true;
 offScreenTimer = 18;
+
 direction_to_angle = false;
+accel = 0;
+curve = 0;
 
 if y &gt; (vh + 32) instance_destroy();
 

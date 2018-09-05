@@ -41,13 +41,13 @@
             <kind>1</kind>
             <string>with make_bhpg_turret(0) {
     sprite_index = other.sprite_index;
-    //bhpg_pattern_init(3,60,195,1,90,15,-0.25,1,30,7,32,16,0,16);
-    bhpg_pattern_init(3,45,220,1,90,15,-0.25,0,30,6,32,16,0,16);
-    bhpg_bullet_init(oBullet,5,-0.02,0);
+    bhpg_pattern_init(3,50,220,1,90,15,-0.25,0,30,6,32,16,0,16);
+    bhpg_bullet_init(oBullet,4,0,0);
     spin_reset = 50;
     spin_reset_wait = 45;
-    spin_reset_adjustStartAngle = 60; // added and then subtracted from start_angle each time spin resets
+    spin_reset_adjustStartAngle = 64; // added and then subtracted from start_angle each time spin resets
     spin_reset_spin_direction_reverse = true;
+    spin_reset_adjustBullets = -1;
 
     //TweenFire(id, tween_spin_reset_wait, EaseLinear, TWEEN_MODE_LOOP, true, 0.0, 1, 7, 60);
 }
@@ -241,8 +241,12 @@ image_angle = 90
                 TweenSimpleMove(x,y,vw/2,150,60,EaseOutQuint);
             }
 
-            if current_state_age &gt;= 210 {
-                bhpg_turret[0].active = true;
+            if current_state_age &gt;= 210 bhpg_turret[0].active = true;
+
+            if current_state_age &gt; 320 {
+                if current_state_age mod 90 == 0 {
+                    make(vw/2 + choose(60,-60,100,-100),-32,oMantaMine);
+                }
             }
         break;
     }

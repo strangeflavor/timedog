@@ -33,6 +33,7 @@ wait = 0;
 spin_direction_reverse = false;
 spin_reset_adjustStartAngle = false;
 spin_reset_spin_direction_reverse = false;
+spin_reset_adjustBullets = 0;
 
 // debug stuff
 
@@ -129,6 +130,9 @@ if active objectAge += 1;
 
                 start_angle += spin_reset_adjustStartAngle;
                 spin_reset_adjustStartAngle *= -1;
+
+                bullets += spin_reset_adjustBullets;
+                spin_reset_adjustBullets *= -1;
             }
         }
     } else {

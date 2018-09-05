@@ -141,6 +141,7 @@ array_spread_col = c_white;
 bullet_object_col = c_white;
 bullet_accel_col = c_white;
 bullet_speed_col = c_white;
+bullet_curve_col = c_white;
 object_width_col = c_white;
 object_height_col = c_white;
 x_offset_col = c_white;
