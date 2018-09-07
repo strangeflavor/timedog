@@ -45,6 +45,15 @@
     bhpg_bullet_init(oBullet,4,0,0);
     
     bullets[1] = 2;
+    bullets[2] = 1;
+    bullets[3] = 3;
+    bullets[4] = 2;
+    bullets[5] = 1;
+    bullets[6] = 3;
+    bullets[7] = 2;
+    bullets[8] = 1;
+    bullets[9] = 5;
+    bullets[10] = 1;
     spin_reset_advanceBulletsIndex = true;
     
     spin_reset = 50;
@@ -248,8 +257,13 @@ image_angle = 90
 
             if current_state_age &gt;= 210 bhpg_turret[0].active = true;
 
+            var mine_freq = 0;
+            if current_state_age &gt; 320 mine_freq = 180;
+            if current_state_age &gt; 530 mine_freq = 90;
+
+
             if current_state_age &gt; 320 {
-                if current_state_age mod 90 == 0 {
+                if current_state_age mod mine_freq == 0 {
                     make(vw/2 + choose(60,-60,100,-100),-32,oMantaMine);
                 }
             }
