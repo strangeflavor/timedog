@@ -43,8 +43,13 @@
     sprite_index = other.sprite_index;
     bhpg_pattern_init(3,50,220,1,90,15,-0.25,0,30,6,32,16,0,16);
     bhpg_bullet_init(oBullet,4,0,0);
+    
+    bullets[1] = 2;
+    spin_reset_advanceBulletsIndex = true;
+    
     spin_reset = 50;
     spin_reset_wait = 45;
+
     spin_reset_adjustStartAngle = 64; // added and then subtracted from start_angle each time spin resets
     spin_reset_spin_direction_reverse = true;
     spin_reset_adjustBullets = -1;

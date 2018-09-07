@@ -28,7 +28,11 @@
 base_angle = 0;
 shoot = 0;
 
-bullets = argument0;
+for (var i=0;i<16;i+=1) bullets[i] = -1;
+
+bullets[0] = argument0;
+bulletsIndex = 0;
+
 spread = argument1;
 
 start_angle = argument2;
@@ -49,7 +53,7 @@ object_height = argument11;
 x_offset = argument12;
 y_offset = argument13; 
 
-b_ang = spread/bullets;
+b_ang = spread/bullets[0];
 
 #define bhpg_bullet_init
 ///bhpg_bullet_init(bullet object, bullet speed, bullet acceleration, bullet curve);
@@ -71,7 +75,7 @@ bullet_curve = argument3;
 ///bhpg_pattern_step()
  
 //control spread angles 
-bb = max(1,bullets-1);
+bb = max(1,bullets[bulletsIndex]-1);
 aa = max(1,total_arrays-1);
 
 a_ang = (array_spread/aa);
@@ -85,7 +89,7 @@ if spin_direction_reverse {
 
 if (shoot=0) {//fire rate control
     for (var j=0;j<total_arrays;j++) {//loop for each array
-        for (var i=0;i<bullets;i++) {//loop for each bullet
+        for (var i=0;i<bullets[bulletsIndex];i++) {//loop for each bullet
             //determine the point where the bullets will fire from
             xx = x+x_offset+lengthdir_x(object_width,base_angle+(b_ang*i)+(a_ang*j)+start_angle);
             yy = y+y_offset+lengthdir_y(object_height,base_angle+(b_ang*i)+(a_ang*j)+start_angle);
@@ -151,8 +155,8 @@ switch (menu_choice) {
     case 0:
         bullets_col = c_yellow;
 
-        if (keyboard_check_pressed(vk_left)) bullets -= 1;
-        if (keyboard_check_pressed(vk_right)) bullets += 1;
+        if (keyboard_check_pressed(vk_left)) bullets[bulletsIndex] -= 1;
+        if (keyboard_check_pressed(vk_right)) bullets[bulletsIndex] += 1;
         break;
     case 1:
         spread_col = c_yellow;

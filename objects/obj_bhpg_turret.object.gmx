@@ -31,6 +31,8 @@ spin_reset = 0;
 spin_reset_wait = 0;
 wait = 0;
 spin_direction_reverse = false;
+
+spin_reset_advanceBulletArray = false;
 spin_reset_adjustStartAngle = false;
 spin_reset_spin_direction_reverse = false;
 spin_reset_adjustBullets = 0;
@@ -131,8 +133,12 @@ if active objectAge += 1;
                 start_angle += spin_reset_adjustStartAngle;
                 spin_reset_adjustStartAngle *= -1;
 
-                bullets += spin_reset_adjustBullets;
-                spin_reset_adjustBullets *= -1;
+                if spin_reset_advanceBulletsIndex {
+                    bulletsIndex += 1;
+                    if bulletsIndex &gt;= 16 or bullets[bulletsIndex] &lt; 0 bulletsIndex = 0;
+                }
+                //bullets += spin_reset_adjustBullets;
+                //spin_reset_adjustBullets *= -1;
             }
         }
     } else {
