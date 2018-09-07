@@ -84,8 +84,7 @@ state = _MOVEVERT;//_APPROACH;
 setup_state_paths();
 //add_state_path(_APPROACH,240);
 //add_state_path(_MOVETOWARD,90);
-//add_state_path(_MOVECENTER,6000);
-add_state_path(_MOVEVERT,6000);
+add_state_path(_MOVECENTER,6000);
 
 state_path_loop_position = 0;
 
@@ -261,12 +260,29 @@ image_angle = 90
             if current_state_age &gt; 320 mine_freq = 180;
             if current_state_age &gt; 530 mine_freq = 90;
 
-
             if current_state_age &gt; 320 {
                 if current_state_age mod mine_freq == 0 {
-                    make(vw/2 + choose(60,-60,100,-100),-32,oMantaMine);
+                    with make(vw/2 + choose(60,-60,100,-100),-32,oMantaMine) depth = other.depth - 1;
                 }
             }
+
+            // move
+            if current_state_age &gt;= 360 and current_state_age mod 360 == 0 {
+                if x &lt; vw/4 {
+                    hspeed = 1;
+                } else {
+                    if x &gt; vw-vw/4 {
+                        hspeed = -1;
+                    } else {
+                        hspeed = choose(1,-1);
+                    }
+                }
+
+                image_angle = 270 - hspeed*8;
+                TweenSimpleRotate(image_angle,270,210,EaseInCubic);
+            }
+
+            if x &lt; vw/4 or x &gt; vw-vw/4 friction = .05 else friction = .0025;
         break;
     }
 }
