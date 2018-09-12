@@ -53,6 +53,15 @@ _enemy_speed = -1;
 _enemy_direction = -1;
 
 yStop = -1;
+
+// g90 stuff
+    columns = -1;
+    rows = -1;
+    rate = -1;
+    xspacing = -1;
+    yspacing = -1;
+    xo = -1;
+    yo = -1;
 </string>
           </argument>
         </arguments>
@@ -76,11 +85,13 @@ yStop = -1;
           <argument>
             <kind>1</kind>
             <string>/// start spawning
-var _column = ((count) mod (columns));
-var _row = (count div (size/rows));
-
-phaseConditionArguments[1,0] = xo + (xspacing * _column);
-phaseConditionArguments[1,1] = yo + (yspacing * _row);
+if rows &gt; 0 {
+    var _column = ((count) mod (columns));
+    var _row = (count div (size/rows));
+    
+    phaseConditionArguments[1,0] = xo + (xspacing * _column);
+    phaseConditionArguments[1,1] = yo + (yspacing * _row);
+}
 
 var eID = -1;
 eID = make(enemy);

@@ -16,6 +16,24 @@ addBezPoint(408,427);
 addBezPoint(172,323);
 addBezPoint(192,238);
 
+#define bezArch
+add_bez_index = 0;
+
+addBezPoint(5,282);
+addBezPoint(136,322);
+addBezPoint(172,217);
+addBezPoint(158,148);
+
+addBezPoint(160,123);
+addBezPoint(161,46);
+addBezPoint(317,50);
+addBezPoint(332,132);
+
+addBezPoint(331,156);
+addBezPoint(314,234);
+addBezPoint(373,328);
+addBezPoint(472,305);
+
 #define createBezierControlPoints
 ///create control points
 
