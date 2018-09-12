@@ -100,8 +100,10 @@ active = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with controlPoint active = false;
+            <string>/*
+with controlPoint active = false;
 active = true;
+*/
 </string>
           </argument>
         </arguments>
