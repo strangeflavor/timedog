@@ -45,11 +45,11 @@ with make(vw/2+_xoffset,-96,fBezChain) {
     phase[2] = enemy_stop;
     phaseCondition[2] = _PHASE_CONDITION_TIME;
     phaseConditionArguments[2,0] = 150;
-/*
+
     phase[3] = enemy_move;
     phaseArguments[3,0] = -2;
     phaseArguments[3,1] = 9;
-*/
+
     size = 24;
 
     // g90 position data
@@ -61,26 +61,6 @@ with make(vw/2+_xoffset,-96,fBezChain) {
     xo = 100;
     yo = 80;
 }
-
-/*
-with make(oMiniThex) {
-    depth = -6;
-    invul = false;
-
-    followBezier = true;
-    bezierObjectArray[0] = other.bID[0];
-    bezierEndAction = 'update phase';
-
-    currentPhase = -1;
-    phase[0] = enemy_move;
-
-    phaseCondition[0] = _PHASE_CONDITION_XY;
-    phaseConditionArguments[0,0] = 16;
-    phaseConditionArguments[0,1] = 16;
-
-    phase[1] = enemy_stop;
-}
-*/
 
 #define form_invaders
 /// form_meteors(size,rate);
@@ -128,7 +108,7 @@ with make(vw/2+_xoffset,-96,fBezChain) {
 
     phase[2] = enemy_stop;
     phaseCondition[2] = _PHASE_CONDITION_TIME;
-    phaseConditionArguments[2,0] = 150;
+    phaseConditionArguments[2,0] = 180;
 
     phase[3] = enemy_move;
     phaseArguments[3,0] = -2;
@@ -145,23 +125,3 @@ with make(vw/2+_xoffset,-96,fBezChain) {
     xo = 100;
     yo = 80;
 }
-
-/*
-with make(oMiniThex) {
-    depth = -6;
-    invul = false;
-
-    followBezier = true;
-    bezierObjectArray[0] = other.bID[0];
-    bezierEndAction = 'update phase';
-
-    currentPhase = -1;
-    phase[0] = enemy_move;
-
-    phaseCondition[0] = _PHASE_CONDITION_XY;
-    phaseConditionArguments[0,0] = 16;
-    phaseConditionArguments[0,1] = 16;
-
-    phase[1] = enemy_stop;
-}
-*/

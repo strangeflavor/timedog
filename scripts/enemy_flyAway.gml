@@ -28,6 +28,7 @@ image_angle = direction;
 #define enemy_move
 ///enemy_move(direction, speed, wiggleAmplitude)
 // moves in a direction at a speed
+followBezier = false;
 
 var dir = argument0;
 var spd = argument1;

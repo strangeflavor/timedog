@@ -491,6 +491,7 @@
     <script>scripts\draw_SHADER_sceneFringe.gml</script>
     <script>scripts\draw_SHADER_glitter.gml</script>
     <script>scripts\draw_SHADER_bokeh.gml</script>
+    <script>scripts\script134.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shader_bloom.shader</shader>
@@ -667,7 +668,6 @@
       <object>objects\oMidBoss</object>
       <object>objects\oEnergyOrb</object>
       <object>objects\oFireAtPlayer</object>
-      <object>objects\oSteerTowardPlayer</object>
       <object>objects\oPopo</object>
       <object>objects\oMox</object>
       <object>objects\oCircles</object>
@@ -679,6 +679,7 @@
       <object>objects\oDrone</object>
       <object>objects\oMassFireAtPlayer</object>
       <object>objects\oMiniThex</object>
+      <object>objects\oSteerTowardPlayer</object>
       <object>objects\oBezThex</object>
       <object>objects\oThexMed</object>
       <object>objects\oThexPatrolSpitter</object>
