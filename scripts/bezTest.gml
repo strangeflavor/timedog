@@ -16,6 +16,11 @@ addBezPoint(408,427);
 addBezPoint(172,323);
 addBezPoint(192,238);
 
+addBezPoint(462,309);
+addBezPoint(408,427);
+addBezPoint(172,323);
+addBezPoint(192,238);
+
 #define bezData
 var bezType = argument0;
     add_bez_index = 0;
@@ -80,6 +85,11 @@ for (var i=0;i<64;i+=4) {
         cpID[i+1] = make(controlPoint);
         cpID[i+2] = make(controlPoint);
         cpID[i+3] = make(controlPoint);
+
+        cpID[i].myBezier = id;
+        cpID[i+1].myBezier = id;
+        cpID[i+2].myBezier = id;
+        cpID[i+3].myBezier = id;
 
         cpID[i].x = cpX[i]; cpID[i].y = cpY[i];
         cpID[i+1].x = cpX[i+1]; cpID[i+1].y = cpY[i+1];

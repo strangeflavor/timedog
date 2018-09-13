@@ -42,6 +42,8 @@ for (var i=0;i&lt;64;i+=1) {
     cpX[i] = -1;
     cpY[i] = -1;
 }
+
+hmirror = false;
 </string>
           </argument>
         </arguments>
@@ -109,6 +111,29 @@ kill(cp3);
         </arguments>
       </action>
     </event>
+    <event eventtype="9" enumb="83">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>hmirror = !hmirror;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="9" enumb="67">
       <action>
         <libid>1</libid>
@@ -133,13 +158,14 @@ if myNumber == 0 {
         for (var i=0;i&lt;64;i+=1) {
             if cpX[i] != -1 {
                 _bezstring += '
-'+string(cpX[i])+','+string(cpY[i]);//+',';
+addBezPoint('+string(cpX[i])+','+string(cpY[i])+');';//+',';
             }
         }
        // _bezstring = string_copy(_bezstring,0,string_length(_bezstring)-1);
         clipboard_set_text(_bezstring);
     }
 }
+
 </string>
           </argument>
         </arguments>

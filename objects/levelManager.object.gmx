@@ -215,12 +215,14 @@ if active {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if debug {
-    draw_set_color(c_white);
-    draw_set_halign(fa_middle);
-    draw_set_valign(fa_middle);
-    draw_set_alpha(1);
-    draw_text(vw/2,32,timeline_position);
+            <string>if debug == 1 {
+    if timeline_position &gt; 0 {
+        draw_set_color(c_white);
+        draw_set_halign(fa_middle);
+        draw_set_valign(fa_middle);
+        draw_set_alpha(1);
+        draw_text(vw/2,32,timeline_position);
+    }
 }
 </string>
           </argument>

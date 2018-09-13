@@ -60,7 +60,7 @@ winConditionValue = -2;
 // background
 ////////////////////
 
-make(oBG);
+//make(oBG);
 //kill(oBG);
 //make(oTrenchBG);
 //make(oMoonBG);
@@ -137,6 +137,7 @@ if mouse_wheel_down() {
             <kind>1</kind>
             <string>if debug &gt; 0 {
     draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
     draw_set_color($EE1010)
     draw_text(8,16,script_get_name(formScriptArray[formScriptIndex]));
 }
