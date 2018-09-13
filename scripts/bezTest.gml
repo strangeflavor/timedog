@@ -1,25 +1,48 @@
 #define bezTest
 add_bez_index = 0;
 
-addBezPoint(480,545);
-addBezPoint(326,526);
-addBezPoint(325,417);
-addBezPoint(328,296);
 
-addBezPoint(328,296);
-addBezPoint(336,178);
-addBezPoint(477,193);
-addBezPoint(462,309);
+addBezPoint(140,240);
+addBezPoint(140,280);
+addBezPoint(140,320);
+addBezPoint(140,360);
 
-addBezPoint(462,309);
-addBezPoint(408,427);
-addBezPoint(172,323);
-addBezPoint(192,238);
+addBezPoint(190,240);
+addBezPoint(190,280);
+addBezPoint(190,320);
+addBezPoint(190,360);
 
-addBezPoint(462,309);
-addBezPoint(408,427);
-addBezPoint(172,323);
-addBezPoint(192,238);
+addBezPoint(290,240);
+addBezPoint(290,280);
+addBezPoint(290,320);
+addBezPoint(290,360);
+
+addBezPoint(340,240);
+addBezPoint(340,280);
+addBezPoint(340,320);
+addBezPoint(340,360);
+
+/*
+addBezPoint(vw/2-100,vh/2-80);
+addBezPoint(vw/2-100,vh/2-40);
+addBezPoint(vw/2-100,vh/2);
+addBezPoint(vw/2-100,vh/2+40);
+
+addBezPoint(vw/2-50,vh/2-80);
+addBezPoint(vw/2-50,vh/2-40);
+addBezPoint(vw/2-50,vh/2);
+addBezPoint(vw/2-50,vh/2+40);
+
+addBezPoint(vw/2+50,vh/2-80);
+addBezPoint(vw/2+50,vh/2-40);
+addBezPoint(vw/2+50,vh/2);
+addBezPoint(vw/2+50,vh/2+40);
+
+addBezPoint(vw/2+100,vh/2-80);
+addBezPoint(vw/2+100,vh/2-40);
+addBezPoint(vw/2+100,vh/2);
+addBezPoint(vw/2+100,vh/2+40);
+*/
 
 #define bezData
 var bezType = argument0;

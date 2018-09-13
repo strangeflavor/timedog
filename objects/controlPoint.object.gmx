@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>image_scale(2.5);
 myNum = instance_number(controlPoint);
+myPair = -1;
 active = false;
 </string>
           </argument>
@@ -52,9 +53,12 @@ active = false;
             <kind>1</kind>
             <string>if myBezier.hmirror {
     if myNum &gt; floor((myBezier.totalLength/2))*4 {
-        myPair = myBezier.totalLength*4 - abs(myNum-4);
-        //image_blend = c_red;
-        x = myBezier.cpID[myPair].x;
+        image_blend = c_red;
+        //myPair = myBezier.totalLength*4 - abs(myNum-4);
+        myPair = myNum - (myBezier.totalLength*4)/2;
+        myPair = (myBezier.totalLength*4)/2 - myPair;
+
+        x = vw - myBezier.cpID[myPair].x;
         y = myBezier.cpID[myPair].y;
     }
 }
@@ -106,8 +110,10 @@ active = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with controlPoint active = false;
-active = true;
+            <string>if myNum &lt;= floor((myBezier.totalLength/2))*4 or !myBezier.hmirror {
+    with controlPoint active = false;
+    active = true;
+}
 </string>
           </argument>
         </arguments>
@@ -130,10 +136,10 @@ active = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
-with controlPoint active = false;
-active = true;
-*/
+            <string>if myNum &lt;= floor((myBezier.totalLength/2))*4 or !myBezier.hmirror {
+    with controlPoint active = false;
+    active = true;
+}
 </string>
           </argument>
         </arguments>
@@ -175,18 +181,23 @@ if debug == 1 {
     }
 
     draw_text_transformed(x,y,myNum,myScale,myScale,0);
+    draw_text_transformed(x,y+16,myPair,myScale,myScale,0);
+    
+
+    var yo = 0;
+    yo = floor((myNum-1)/4)*8
 
     if mouse_x &gt; vw*.75 and mouse_y &lt; vh*.4 {
         draw_set_halign(fa_left);
         draw_set_color(image_blend);
         draw_set_alpha(.7);
-        draw_text_ext_transformed(8,30 + myNum*10,string(x)+','+string(y)+':'+string(myNum),0,-1,.5,.5,0)
+        draw_text_ext_transformed(8,30 + yo+myNum*10,string(x)+','+string(y)+':'+string(myNum),0,-1,.5,.5,0)
         draw_set_alpha(1);
     } else {
         draw_set_halign(fa_right);
         draw_set_color(image_blend);
         draw_set_alpha(.7);
-        draw_text_ext_transformed(vw-8,30 + myNum*10,string(x)+','+string(y)+':'+string(myNum),0,-1,.5,.5,0)
+        draw_text_ext_transformed(vw-8,30 +yo+ myNum*10,string(x)+','+string(y)+':'+string(myNum),0,-1,.5,.5,0)
         draw_set_alpha(1);
     }
 }
