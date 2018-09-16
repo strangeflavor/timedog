@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="5" name="datafiles">
-    <datafiles number="5" name="TweenGMS">
+  <datafiles number="15" name="datafiles">
+    <datafiles number="15" name="TweenGMS">
       <datafile>
         <name>Starter_Guide.html</name>
         <exists>-1</exists>
@@ -91,11 +91,182 @@
         <filename>Required Changes.txt</filename>
       </datafile>
     </datafiles>
+    <datafile>
+      <name>netlog.gmez</name>
+      <exists>-1</exists>
+      <size>1614</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>netlog.gmez</filename>
+    </datafile>
+    <datafile>
+      <name>GMLiveHelper.gmez</name>
+      <exists>-1</exists>
+      <size>33494</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>GMLiveHelper.gmez</filename>
+    </datafile>
+    <datafile>
+      <name>std.ndll</name>
+      <exists>-1</exists>
+      <size>116224</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>std.ndll</filename>
+    </datafile>
+    <datafile>
+      <name>regexp.ndll</name>
+      <exists>-1</exists>
+      <size>111616</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>regexp.ndll</filename>
+    </datafile>
+    <datafile>
+      <name>neko.dll</name>
+      <exists>-1</exists>
+      <size>101888</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>neko.dll</filename>
+    </datafile>
+    <datafile>
+      <name>gmlive-server.n</name>
+      <exists>-1</exists>
+      <size>140364</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>gmlive-server.n</filename>
+    </datafile>
+    <datafile>
+      <name>gmlive.html</name>
+      <exists>-1</exists>
+      <size>46102</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>gmlive.html</filename>
+    </datafile>
+    <datafile>
+      <name>gc.dll</name>
+      <exists>-1</exists>
+      <size>81920</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>gc.dll</filename>
+    </datafile>
+    <datafile>
+      <name>gmlive-server.exe</name>
+      <exists>-1</exists>
+      <size>152148</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>gmlive-server.exe</filename>
+    </datafile>
+    <datafile>
+      <name>netlog.exe</name>
+      <exists>-1</exists>
+      <size>54272</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>netlog.exe</filename>
+    </datafile>
   </datafiles>
   <NewExtensions>
     <extension index="0">extensions\TweenGMS</extension>
     <extension index="1">extensions\PostFx Bundle 1</extension>
     <extension index="2">extensions\Vignette and Noise shader</extension>
+    <extension index="3">extensions\GMLive</extension>
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\sndGet</sound>
@@ -729,6 +900,7 @@
     <object>objects\demo_drone_chasee</object>
     <object>objects\demo_drone_chaser</object>
     <object>objects\cont_steering</object>
+    <object>objects\obj_gmlive</object>
   </objects>
   <timelines name="timelines">
     <timeline>timelines\tLvl1</timeline>
@@ -762,7 +934,8 @@
     <room>rooms\roomTest</room>
     <room>rooms\rWeaponSelect</room>
   </rooms>
-  <constants number="63">
+  <constants number="64">
+    <constant name="live_enabled">1</constant>
     <constant name="scale">global._scale</constant>
     <constant name="vw">global._vw</constant>
     <constant name="vh">global._vh</constant>

@@ -1,3 +1,4 @@
+// 2018-09-16 15:15:06
 #define doPlayerAttacks
 ///doPlayerAttacks()
 
@@ -35,7 +36,7 @@ if canFire >= 1 {
     shotID = make(x,y-yo,oShot);
     shotID.damage = damage;
 
-    shotID = make(x,y-yo*2,oShot);
+    shotID = make(x,y-yo/3-17,oShot);
     shotID.damage = damage;
 
     canFire = -rate*scale;
