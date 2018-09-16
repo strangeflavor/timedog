@@ -13,8 +13,8 @@ var target_angle = argument[0];
 
 image_angle += min(sign(angle_difference(image_angle, target_angle) * rotation_speed), angle_difference(image_angle, target_angle));
 */
-var destx = x+argument[0];
-var desty = y+argument[1];
+var destx = argument[0];
+var desty = argument[1];
 var _speed = argument[2];
 var _rotation_speed = argument[3];
 

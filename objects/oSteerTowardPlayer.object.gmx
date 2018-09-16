@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>oSteering</parentName>
+  <parentName>oEnemy</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -47,12 +47,13 @@ HP = 18;
 offScreenTimer = 50;
 
 makeTurret(0,0,0);
-
+/*
 phase[0] = enemy_steering;
 phaseArguments[0,0] = vw/2 + nrandom(vw/3) // dest x
 phaseArguments[0,1] = vh; // dest y
 phaseArguments[0,2] = 5 // max speed
 phaseArguments[0,3] = 2; // max force
+*/
 /*
 phaseCondition[0] = _PHASE_CONDITION_TIME;
 phaseConditionArguments[0,0] = 40;
@@ -119,9 +120,11 @@ phaseArguments[3,3] = 4; // rotation amount
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if currentPhase == 2 {
-    if instance_exists(oShip) enemy_move_rotate(oShip.x,oShip.y,0,.5);
-}
+            <string>//if currentPhase == 2 {
+    if instance_exists(oShip) {
+        enemy_move_rotate(oShip.x,oShip.y,_speed,_rotation_speed);
+    }
+//}
 </string>
           </argument>
         </arguments>

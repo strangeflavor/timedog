@@ -109,7 +109,18 @@ trace('starting form steertowardplayer');
 var arg;
 for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
 
-var _xoffset = 0;
+var _xoffset = arg[0];
+if _xoffset == -1 _xoffset = 0;
 
-with make(vw/2+_xoffset,-32,oSteerTowardPlayer) {
-}
+var _yoffset = arg[1];
+if _yoffset == -1 _yoffset = 0;
+
+var _speed = arg[2];
+if _speed == -1 _speed = 2;
+
+var _rotation_speed = arg[3];
+if _rotation_speed == -1 _rotation_speed = 2;
+
+var eID = make(vw/2+_xoffset,-32+_yoffset,oSteerTowardPlayer);
+eID._speed = _speed;
+eID._rotation_speed = _rotation_speed;

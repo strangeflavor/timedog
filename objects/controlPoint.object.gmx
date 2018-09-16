@@ -51,17 +51,59 @@ active = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if myBezier.hmirror {
-    if myNum &gt; floor((myBezier.totalLength/2))*4 {
-        image_blend = c_red;
-        //myPair = myBezier.totalLength*4 - abs(myNum-4);
-        myPair = myNum - (myBezier.totalLength*4)/2;
-        myPair = (myBezier.totalLength*4)/2 - myPair;
+            <string>image_blend = c_white;
 
+var mirrored = false;
+if myNum &gt; floor((myBezier.totalLength/2))*4 {
+    mirrored = true;
+    myPair = myNum - (myBezier.totalLength*4)/2;
+    myPair = (myBezier.totalLength*4)/2 - myPair;
+}
+
+if mirrored and myBezier.hmirror {
+    image_blend = c_red;
+    x = vw - myBezier.cpID[myPair].x;
+    y = myBezier.cpID[myPair].y;
+}
+
+/*
+if myBezier.hmirror {
+    if mirrored {
         x = vw - myBezier.cpID[myPair].x;
+        //if !myBezier.vmirror y = myBezier.cpID[myPair].y;
+    }
+}
+
+if myBezier.vmirror {
+    if mirrored {
+        //if !myBezier.hmirror x = vw - myBezier.cpID[myPair].x;
         y = myBezier.cpID[myPair].y;
     }
 }
+*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="57">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with controlPoint active = false;
 </string>
           </argument>
         </arguments>
@@ -110,7 +152,7 @@ active = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if myNum &lt;= floor((myBezier.totalLength/2))*4 or !myBezier.hmirror {
+            <string>if myNum &lt;= floor((myBezier.totalLength/2))*4 or !myBezier.hmirror or !myBezier.vmirror {
     with controlPoint active = false;
     active = true;
 }
@@ -136,9 +178,11 @@ active = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if myNum &lt;= floor((myBezier.totalLength/2))*4 or !myBezier.hmirror {
-    with controlPoint active = false;
-    active = true;
+            <string>if active {
+    if myNum &lt;= floor((myBezier.totalLength/2))*4 or !myBezier.hmirror or !myBezier.vmirror {
+        with controlPoint active = false;
+        active = true;
+    }
 }
 </string>
           </argument>
@@ -175,14 +219,13 @@ if debug == 1 {
         if (myNum mod 4) == 1 or (myNum mod 4) == 0 {
             draw_set_color(image_blend);
         } else {
-            draw_set_color(c_gray);
+            if image_blend = c_red draw_set_color(c_dkgray) else draw_set_color(c_gray);
             myScale = .75;
         }
     }
 
     draw_text_transformed(x,y,myNum,myScale,myScale,0);
-    draw_text_transformed(x,y+16,myPair,myScale,myScale,0);
-    
+    //draw_text_transformed(x,y+16,myPair,myScale,myScale,0);
 
     var yo = 0;
     yo = floor((myNum-1)/4)*8
