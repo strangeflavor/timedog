@@ -23,7 +23,6 @@ if attacking {
 
 #define normalShot
 ///normalShot(rate,damage)
-if (live_call(argument0, argument1)) return live_result;
 
 var rate = argument0;
 var damage = argument1;

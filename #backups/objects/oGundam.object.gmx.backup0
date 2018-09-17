@@ -1,4 +1,4 @@
-// 2018-09-16 16:25:40
+// 2018-09-17 13:16:58
 #event create
 #action action_inherited
 #section
@@ -7,6 +7,7 @@ invul = false;
 dangerous = true;
 killWhenBelowScreen = true;
 direction_to_angle = false;
+flashing = 0;
 
 if y > (vh + 32) instance_destroy();
 
@@ -26,27 +27,18 @@ with make(oExplo) {
 #event step
 #action action_inherited
 #section
+if (live_call()) return live_result;
+
 if killWhenBelowScreen {
    if y > (vh + 32*scale) kill(self);
 }
 
-if objectAge mod 6 == 0 {
-    repeat(2) {
-        with instance_create(x+nrandom(4),y+nrandom(4),Smoke) {
-            friction = 0;
-            motion_add(other.direction+nrandom(10),1+nrandom(4));
-
-            image_speed *= .5;
-            image_xscale = choose(.5,1);
-            image_yscale = image_xscale;
-        }
-    }
-}
+smokeTrail();
 
 if objectAge > 6 and objectAge < 70 {
     if instance_exists(oShip) {
         var a = point_direction(x, y, oShip.x, oShip.y);
-        direction += sign(dsin(a - direction)) * 6;
+        direction += sign(dsin(a - direction)) * 4;
         if speed < 8 speed += .2;
         //speed = point_distance(x, y, oShip.x, oShip.y) / 10;
         //speed 
@@ -54,7 +46,6 @@ if objectAge > 6 and objectAge < 70 {
 }
 
 image_angle = direction;
-
 
 #event collision:oShot
 if active and !invul and y > 0 {
@@ -67,4 +58,23 @@ if active and !invul and y > 0 {
     }
     HP -= other.damage;
     if HP < 0 kill();
+}
+
+#event draw
+
+if objectAge > 3 {
+    draw_sprite_ext(sMissileThruster,objectAge*.25,x,y,image_xscale,image_yscale,image_angle,c_yellow,1);
+    
+    if flashing < 0 {
+        flashing += 1;
+        if flashing == 0 flashing = 12;
+    } else {
+        if flashing > 0 flashing -= 1;
+    }
+    
+    draw_self();
+    
+    if flashing < 0 {
+        draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,c_red,.7);
+    }
 }

@@ -44,6 +44,7 @@ invul = false;
 dangerous = true;
 killWhenBelowScreen = true;
 direction_to_angle = false;
+flashing = 0;
 
 if y &gt; (vh + 32) instance_destroy();
 
@@ -95,7 +96,9 @@ with make(oExplo) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if killWhenBelowScreen {
+            <string>if (live_call()) return live_result;
+
+if killWhenBelowScreen {
    if y &gt; (vh + 32*scale) kill(self);
 }
 
@@ -104,7 +107,7 @@ smokeTrail();
 if objectAge &gt; 6 and objectAge &lt; 70 {
     if instance_exists(oShip) {
         var a = point_direction(x, y, oShip.x, oShip.y);
-        direction += sign(dsin(a - direction)) * 6;
+        direction += sign(dsin(a - direction)) * 4;
         if speed &lt; 8 speed += .2;
         //speed = point_distance(x, y, oShip.x, oShip.y) / 10;
         //speed 
@@ -144,6 +147,45 @@ image_angle = direction;
     }
     HP -= other.damage;
     if HP &lt; 0 kill();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+if objectAge &gt; 3 {
+    draw_sprite_ext(sMissileThruster,objectAge*.25,x,y,image_xscale,image_yscale,image_angle,c_yellow,1);
+    
+    if flashing &lt; 0 {
+        flashing += 1;
+        if flashing == 0 flashing = 12;
+    } else {
+        if flashing &gt; 0 flashing -= 1;
+    }
+    
+    draw_self();
+    
+    if flashing &lt; 0 {
+        draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,c_red,.7);
+    }
 }
 </string>
           </argument>

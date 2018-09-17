@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="15" name="datafiles">
-    <datafiles number="15" name="TweenGMS">
+  <datafiles number="25" name="datafiles">
+    <datafiles number="25" name="TweenGMS">
       <datafile>
         <name>Starter_Guide.html</name>
         <exists>-1</exists>
@@ -91,6 +91,23 @@
         <filename>Required Changes.txt</filename>
       </datafile>
     </datafiles>
+    <datafile>
+      <name>gmlive-server.exe</name>
+      <exists>-1</exists>
+      <size>152148</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>gmlive-server.exe</filename>
+    </datafile>
     <datafile>
       <name>netlog.gmez</name>
       <exists>-1</exists>
@@ -228,23 +245,6 @@
       <filename>gc.dll</filename>
     </datafile>
     <datafile>
-      <name>gmlive-server.exe</name>
-      <exists>-1</exists>
-      <size>152148</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>gmlive-server.exe</filename>
-    </datafile>
-    <datafile>
       <name>netlog.exe</name>
       <exists>-1</exists>
       <size>54272</size>
@@ -333,6 +333,7 @@
       <sprite>sprites\sShot6</sprite>
       <sprite>sprites\sMine</sprite>
       <sprite>sprites\sMissile</sprite>
+      <sprite>sprites\sMissileThruster</sprite>
       <sprite>sprites\sLargeMissile</sprite>
     </sprites>
     <sprites name="enemy">
