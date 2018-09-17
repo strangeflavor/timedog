@@ -1,0 +1,35 @@
+// 2018-09-16 15:52:34
+#event create
+HP = 0;
+damage = .25;
+
+//image_alpha = .777;
+image_alpha = 1;
+direction = 90;
+speed = 40;
+dx = 0;
+dy = 0;
+
+image_xscale = scale;
+image_yscale = scale;
+
+destroy_shot_sprite = sTinyExplosion;
+
+#event destroy
+if y > 24*scale {
+    if sprite_index == sTinyExplosion {
+        fxID = instance_create(x+irandom(6*scale)-3*scale,y+irandom(6*scale)-3*scale,oFX);
+    } else {
+        // flame 
+        fxID = instance_create(x+irandom(12*scale)-3*scale,y+irandom(12*scale),oFX);
+        fxID.image_speed = .5;
+    }
+
+    fxID.sprite_index = destroy_shot_sprite;
+    fxID.image_alpha = image_alpha;
+}
+
+#event step
+//y += dy;
+visible = !visible;
+if y < 6*scale instance_destroy();

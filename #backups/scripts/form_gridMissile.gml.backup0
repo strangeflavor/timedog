@@ -1,3 +1,4 @@
+// 2018-09-16 16:08:18
 #define form_gridMissile
 ///form_gridMissile()
 with make(vw/2+100,-80,oGridShip) {

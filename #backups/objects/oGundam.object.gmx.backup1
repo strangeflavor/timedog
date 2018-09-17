@@ -1,0 +1,70 @@
+// 2018-09-16 16:24:00
+#event create
+#action action_inherited
+#section
+active = true;
+invul = false;
+dangerous = true;
+killWhenBelowScreen = true;
+direction_to_angle = false;
+
+if y > (vh + 32) instance_destroy();
+
+image_xscale = scale * 2;
+image_yscale = scale * 2;
+image_speed = choose(.1,.25,-.2);
+image_index = choose(0,1);
+
+HP = 3;
+
+make(Smoke);
+with make(oExplo) {
+    depth -= 1;
+    image_blend = c_red;
+}
+
+#event step
+#action action_inherited
+#section
+if killWhenBelowScreen {
+   if y > (vh + 32*scale) kill(self);
+}
+
+if objectAge mod 6 == 0 {
+    repeat(2) {
+        with instance_create(x+nrandom(4),y+nrandom(4),Smoke) {
+            friction = 0;
+            motion_add(other.direction+nrandom(10),1+nrandom(4));
+
+            image_speed *= .5;
+            image_xscale = choose(.5,1);
+            image_yscale = image_xscale;
+        }
+    }
+}
+
+if objectAge > 6 and objectAge < 90 {
+    if instance_exists(oShip) {
+        var a = point_direction(x, y, oShip.x, oShip.y);
+        direction += sign(dsin(a - direction)) * 6;
+        if speed < 8 speed += .2;
+        //speed = point_distance(x, y, oShip.x, oShip.y) / 10;
+        //speed 
+    }
+}
+
+image_angle = direction;
+
+
+#event collision:oShot
+if active and !invul and y > 0 {
+    with other {
+        HP -= 1;
+        if HP <= 0 {
+            kill();
+            sfx(sndDamageEnemy)
+        }
+    }
+    HP -= other.damage;
+    if HP < 0 kill();
+}

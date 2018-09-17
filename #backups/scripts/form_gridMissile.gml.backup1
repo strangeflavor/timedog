@@ -1,5 +1,8 @@
+// 2018-09-16 16:01:47
 #define form_gridMissile
 ///form_gridMissile()
+if (live_call(argument0, argument1)) return live_result
+
 with make(vw/2+100,-80,oGridShip) {
     phase[0] = enemy_move;
     phaseArguments[0,0] = 270; // direction
