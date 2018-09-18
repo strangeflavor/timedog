@@ -65,6 +65,39 @@ with make(oExplo) {
         </arguments>
       </action>
     </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+if active {
+    if y &lt; vh + 32*scale {
+        sfx(sndDefeatEnemy);
+        with make(oExplo) {
+            image_blend = c_yellow;
+            direction = other.direction;
+            speed = other.speed;
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -98,9 +131,7 @@ with make(oExplo) {
             <kind>1</kind>
             <string>if (live_call()) return live_result;
 
-if killWhenBelowScreen {
-   if y &gt; (vh + 32*scale) kill(self);
-}
+if killWhenBelowScreen if y &gt; (vh + 32*scale) kill(self);
 
 smokeTrail();
 

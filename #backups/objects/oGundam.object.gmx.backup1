@@ -1,4 +1,4 @@
-// 2018-09-17 13:16:46
+// 2018-09-18 13:04:30
 #event create
 #action action_inherited
 #section
@@ -24,21 +24,32 @@ with make(oExplo) {
     image_blend = c_red;
 }
 
+#event destroy
+
+if active {
+    if y < vh + 32*scale {
+        sfx(sndDefeatEnemy);
+        with make(oExplo) {
+            image_blend = c_yellow;
+            direction = other.direction;
+            speed = other.speed *.8;
+        }
+    }
+}
+
 #event step
 #action action_inherited
 #section
 if (live_call()) return live_result;
 
-if killWhenBelowScreen {
-   if y > (vh + 32*scale) kill(self);
-}
+if killWhenBelowScreen if y > (vh + 32*scale) kill(self);
 
 smokeTrail();
 
 if objectAge > 6 and objectAge < 70 {
     if instance_exists(oShip) {
         var a = point_direction(x, y, oShip.x, oShip.y);
-        direction += sign(dsin(a - direction)) * 2;
+        direction += sign(dsin(a - direction)) * 4;
         if speed < 8 speed += .2;
         //speed = point_distance(x, y, oShip.x, oShip.y) / 10;
         //speed 

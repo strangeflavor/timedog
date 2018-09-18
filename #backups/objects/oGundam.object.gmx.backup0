@@ -1,4 +1,4 @@
-// 2018-09-17 13:16:58
+// 2018-09-18 13:05:01
 #event create
 #action action_inherited
 #section
@@ -24,14 +24,25 @@ with make(oExplo) {
     image_blend = c_red;
 }
 
+#event destroy
+
+if active {
+    if y < vh + 32*scale {
+        sfx(sndDefeatEnemy);
+        with make(oExplo) {
+            image_blend = c_yellow;
+            direction = other.direction;
+            speed = other.speed;
+        }
+    }
+}
+
 #event step
 #action action_inherited
 #section
 if (live_call()) return live_result;
 
-if killWhenBelowScreen {
-   if y > (vh + 32*scale) kill(self);
-}
+if killWhenBelowScreen if y > (vh + 32*scale) kill(self);
 
 smokeTrail();
 
