@@ -135,13 +135,19 @@ if killWhenBelowScreen if y &gt; (vh + 32*scale) kill(self);
 
 smokeTrail();
 
-if objectAge &gt; 6 and objectAge &lt; 70 {
-    if instance_exists(oShip) {
-        var a = point_direction(x, y, oShip.x, oShip.y);
-        direction += sign(dsin(a - direction)) * 4;
-        if speed &lt; 8 speed += .2;
-        //speed = point_distance(x, y, oShip.x, oShip.y) / 10;
-        //speed 
+if objectAge &lt; 30 {
+    var a = point_direction(x, y, x, y+200);
+    direction += sign(dsin(a - direction)) * 4;
+    if speed &lt; 8 speed += .2;
+} else {
+    if objectAge &lt; 70 {
+        if instance_exists(oShip) {
+            var a = point_direction(x, y, oShip.x, oShip.y);
+            direction += sign(dsin(a - direction)) * 4;
+            if speed &lt; 8 speed += .2;
+            //speed = point_distance(x, y, oShip.x, oShip.y) / 10;
+            //speed 
+        }
     }
 }
 
@@ -203,7 +209,11 @@ image_angle = direction;
             <kind>1</kind>
             <string>
 if objectAge &gt; 3 {
-    draw_sprite_ext(sMissileThruster,objectAge*.25,x,y,image_xscale,image_yscale,image_angle,c_yellow,1);
+    if objectAge &gt; 30 {
+        draw_sprite_ext(sMissileThruster,objectAge*.25,x,y,image_xscale,image_yscale,image_angle,c_yellow,1);
+    } else {
+        draw_sprite_ext(sMissileThruster,objectAge*.25,x,y,image_xscale*.5,image_yscale,image_angle,c_yellow,1);
+    }
     
     if flashing &lt; 0 {
         flashing += 1;

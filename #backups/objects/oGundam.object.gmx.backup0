@@ -1,4 +1,4 @@
-// 2018-09-18 13:05:01
+// 2018-09-20 17:43:15
 #event create
 #action action_inherited
 #section
@@ -46,13 +46,19 @@ if killWhenBelowScreen if y > (vh + 32*scale) kill(self);
 
 smokeTrail();
 
-if objectAge > 6 and objectAge < 70 {
-    if instance_exists(oShip) {
-        var a = point_direction(x, y, oShip.x, oShip.y);
-        direction += sign(dsin(a - direction)) * 4;
-        if speed < 8 speed += .2;
-        //speed = point_distance(x, y, oShip.x, oShip.y) / 10;
-        //speed 
+if objectAge < 30 {
+    var a = point_direction(x, y, x, y+200);
+    direction += sign(dsin(a - direction)) * 4;
+    if speed < 8 speed += .2;
+} else {
+    if objectAge < 70 {
+        if instance_exists(oShip) {
+            var a = point_direction(x, y, oShip.x, oShip.y);
+            direction += sign(dsin(a - direction)) * 4;
+            if speed < 8 speed += .2;
+            //speed = point_distance(x, y, oShip.x, oShip.y) / 10;
+            //speed 
+        }
     }
 }
 
@@ -74,7 +80,11 @@ if active and !invul and y > 0 {
 #event draw
 
 if objectAge > 3 {
-    draw_sprite_ext(sMissileThruster,objectAge*.25,x,y,image_xscale,image_yscale,image_angle,c_yellow,1);
+    if objectAge > 30 {
+        draw_sprite_ext(sMissileThruster,objectAge*.25,x,y,image_xscale,image_yscale,image_angle,c_yellow,1);
+    } else {
+        draw_sprite_ext(sMissileThruster,objectAge*.25,x,y,image_xscale*.5,image_yscale,image_angle,c_yellow,1);
+    }
     
     if flashing < 0 {
         flashing += 1;
