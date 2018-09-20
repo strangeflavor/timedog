@@ -1,11 +1,11 @@
-// 2018-09-18 13:17:46
+// 2018-09-19 21:32:02
 #event create
 rounds = 5; // how many to fire
 rate = 3; // how frequently to fire
 fired = 0; // how many fired so far
 shot_speed = 1.5;
 shot_speed_delta = .5; // change in speed per shot
-shot_xpos_jitter = 16;
+shot_xpos_jitter = 4;
 shot_direction = 90;
 shot_direction_jitter = 60;
 
@@ -24,19 +24,19 @@ if objectAge == fireAge {
     creatorID.image_speed = .2;
     creatorID.image_index = 0;
 
-    var bID = make(x+16+nrandom(shot_xpos_jitter),y-20-nrandom(12),oGundam);
+    var bID = make(x+16+nrandom(shot_xpos_jitter)-fired*2,y-20,oGundam);
     bID.sprite_index = sprite_index;
     bID.depth -= 1;
-    bID.direction = 40+nrandom(16);
+    bID.direction = 35+nrandom(8) + fired*8;
     bID.speed = 3+nrandom(4);
 
     bID.targetX = oShip.x;
     bID.targetY = oShip.y;
 
-    var bID = make(x-16+nrandom(shot_xpos_jitter),y-20-nrandom(12),oGundam);
+    var bID = make(x-16+nrandom(shot_xpos_jitter)+fired*2,y-20,oGundam);
     bID.sprite_index = sprite_index;
     bID.depth -= 1;
-    bID.direction = 90+40+nrandom(16);
+    bID.direction = 90+35+nrandom(8) - fired*8;
     bID.speed = 3+nrandom(4);
 
     bID.targetX = oShip.x;

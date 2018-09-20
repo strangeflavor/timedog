@@ -1,5 +1,4 @@
 ///smokeTrail
-if (live_call()) return live_result;
 
 if objectAge mod 5 == 0 {
     repeat(1) {
