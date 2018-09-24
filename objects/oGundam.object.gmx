@@ -44,6 +44,7 @@ invul = false;
 dangerous = true;
 killWhenBelowScreen = true;
 direction_to_angle = false;
+_rotAmount = 1;
 flashing = 0;
 
 if y &gt; (vh + 32) instance_destroy();
@@ -133,25 +134,23 @@ if active {
 
 if killWhenBelowScreen if y &gt; (vh + 32*scale) kill(self);
 
-smokeTrail();
+var _destinationDirection = direction;
 
 if objectAge &lt; 30 {
-    var a = point_direction(x, y, x, y+200);
-    direction += sign(dsin(a - direction)) * 4;
-    if speed &lt; 8 speed += .2;
+    _destinationDirection = point_direction(x, y, x, y+200);
 } else {
-    if objectAge &lt; 70 {
-        if instance_exists(oShip) {
-            var a = point_direction(x, y, oShip.x, oShip.y);
-            direction += sign(dsin(a - direction)) * 4;
-            if speed &lt; 8 speed += .2;
-            //speed = point_distance(x, y, oShip.x, oShip.y) / 10;
-            //speed 
-        }
+    if objectAge &lt; 70 and instance_exists(oShip) {
+        _destinationDirection = point_direction(x, y, oShip.x, oShip.y);
     }
 }
 
-image_angle = direction;
+_rotAmount = lerp(_rotAmount,4,.25);
+var prevDirection = direction;
+direction += sign(dsin(_destinationDirection - direction)) * _rotAmount;
+if speed &lt; 9 speed += .2;
+
+image_angle = prevDirection;
+
 </string>
           </argument>
         </arguments>
@@ -209,10 +208,9 @@ image_angle = direction;
             <kind>1</kind>
             <string>
 if objectAge &gt; 3 {
-    if objectAge &gt; 30 {
+    if objectAge &gt; 30 and objectAge &lt; 90 {
         draw_sprite_ext(sMissileThruster,objectAge*.25,x,y,image_xscale,image_yscale,image_angle,c_yellow,1);
-    } else {
-        draw_sprite_ext(sMissileThruster,objectAge*.25,x,y,image_xscale*.5,image_yscale,image_angle,c_yellow,1);
+        smokeTrail();
     }
     
     if flashing &lt; 0 {
