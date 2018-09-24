@@ -130,8 +130,7 @@ if active {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (live_call()) return live_result;
-
+            <string>
 if killWhenBelowScreen if y &gt; (vh + 32*scale) kill(self);
 
 var _destinationDirection = direction;

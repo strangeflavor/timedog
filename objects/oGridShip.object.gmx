@@ -49,6 +49,8 @@ HP = 18;
 image_xscale = scale*4;
 image_yscale = scale*4;
 
+shot_xpos_jitter = 0;
+
 yStop = vh/4;
 
 makeTurret(0,0,9);

@@ -43,8 +43,9 @@
 // win condition stuff
 /////////////////////
 
-winCondition = _WIN_TIMELINE_END;
-winConditionValue = tLvl1;
+//winCondition = _WIN_TIMELINE_END;
+//winConditionValue = tLvl1;
+winCondition = _WIN_WAVES_COMPLETE;
 
 /////////////////////
 // dialog stuff
@@ -55,6 +56,13 @@ addDialog(_THEPROF,"Nightbird! This is the Prof, do you copy?");
 //addProjection();
 //removeProjection();
 addDialog(_NIGHTBIRD,"This is Nightbird! I'm a sitting duck out here...");
+
+////////////////////
+// make waves
+////////////////////
+
+
+
 
 ////////////////////
 // background

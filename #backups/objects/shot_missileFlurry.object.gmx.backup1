@@ -1,4 +1,4 @@
-// 2018-09-19 21:20:43
+// 2018-09-24 12:09:19
 #event create
 rounds = 5; // how many to fire
 rate = 3; // how frequently to fire
@@ -27,7 +27,7 @@ if objectAge == fireAge {
     var bID = make(x+16+nrandom(shot_xpos_jitter)-fired*2,y-20,oGundam);
     bID.sprite_index = sprite_index;
     bID.depth -= 1;
-    bID.direction = 35+nrandom(8) + fired*8;
+    bID.direction = 35 + fired*8;
     bID.speed = 3+nrandom(4);
 
     bID.targetX = oShip.x;
@@ -36,7 +36,7 @@ if objectAge == fireAge {
     var bID = make(x-16+nrandom(shot_xpos_jitter)+fired*2,y-20,oGundam);
     bID.sprite_index = sprite_index;
     bID.depth -= 1;
-    bID.direction = 90+35+nrandom(8) - fired*8;
+    bID.direction = 90+35 - fired*8;
     bID.speed = 3+nrandom(4);
 
     bID.targetX = oShip.x;

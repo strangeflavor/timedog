@@ -62,8 +62,6 @@ followCreator = true;
           <argument>
             <kind>1</kind>
             <string>
-if (live_call()) return live_result;
-
 if objectAge == fireAge {
     creatorID.image_angle += choose(-12,12);
     creatorID.image_speed = .2;
@@ -72,7 +70,7 @@ if objectAge == fireAge {
     var bID = make(x+16+nrandom(shot_xpos_jitter)-fired*2,y-20,oGundam);
     bID.sprite_index = sprite_index;
     bID.depth -= 1;
-    bID.direction = 35+nrandom(8) + fired*8;
+    bID.direction = 35 + fired*8;
     bID.speed = 3+nrandom(4);
 
     bID.targetX = oShip.x;
@@ -81,7 +79,7 @@ if objectAge == fireAge {
     var bID = make(x-16+nrandom(shot_xpos_jitter)+fired*2,y-20,oGundam);
     bID.sprite_index = sprite_index;
     bID.depth -= 1;
-    bID.direction = 90+35+nrandom(8) - fired*8;
+    bID.direction = 90+35 - fired*8;
     bID.speed = 3+nrandom(4);
 
     bID.targetX = oShip.x;

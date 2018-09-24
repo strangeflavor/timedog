@@ -7,9 +7,13 @@ switch winCondition {
         if debugTimelineStartPos > -1 timeline_position = debugTimelineStartPos;
         trace('starting timeline '+timeline_get_name(timeline_index));
     break;
+    /*
     case _WIN_FORMATIONS_COMPLETE:
     case _WIN_TIME:
         alarm[1] = 60;
+    break;
+    */
+    case _WIN_FORMATIONS_COMPLETE:
     break;
 }
 
@@ -19,6 +23,12 @@ active = true;
 var caughtEndLevel = false;
 
 switch winCondition {
+    case _WIN_WAVES_COMPLETE:
+        if wavesRemaining < 0 {
+            trace('no waves remaining');
+            caughtEndLevel = true;
+        }
+    break;
     case _WIN_TIMELINE_END:
         if timeline_position > timeline_max_moment(timeline_index) { 
             timeline_running = false;
@@ -32,7 +42,8 @@ switch winCondition {
         }
     break;
     case _WIN_FORMATIONS_COMPLETE:
-        if wave > 16 caughtEndLevel = true;
+        // nb: this doesn't work, fix?
+        //if formations > 16 caughtEndLevel = true;
     break;
     case _WIN_TIME:
         if winConditionValue > -2 {

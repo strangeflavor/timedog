@@ -935,7 +935,7 @@
     <room>rooms\roomTest</room>
     <room>rooms\rWeaponSelect</room>
   </rooms>
-  <constants number="64">
+  <constants number="65">
     <constant name="live_enabled">1</constant>
     <constant name="scale">global._scale</constant>
     <constant name="vw">global._vw</constant>
@@ -979,6 +979,7 @@
     <constant name="_WIN_FORMATIONS_COMPLETE">2</constant>
     <constant name="_WIN_TIMELINE_END">3</constant>
     <constant name="_WIN_PROTECTION">4</constant>
+    <constant name="_WIN_WAVES_COMPLETE">5</constant>
     <constant name="_PHASE_CONDITION_X">0</constant>
     <constant name="_PHASE_CONDITION_Y">1</constant>
     <constant name="_PHASE_CONDITION_TIME">2</constant>
