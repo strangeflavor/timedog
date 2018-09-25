@@ -500,6 +500,10 @@
       <script>scripts\manageManagers.gml</script>
       <script>scripts\drawTimeHUD.gml</script>
     </scripts>
+    <scripts name="waves">
+      <script>scripts\setupWaves.gml</script>
+      <script>scripts\wave_boxChains0.gml</script>
+    </scripts>
     <scripts name="menus">
       <script>scripts\createLevelData.gml</script>
       <script>scripts\makeLevelButtons.gml</script>
@@ -719,6 +723,7 @@
       </objects>
       <object>objects\levelManDebug</object>
       <object>objects\levelManager</object>
+      <object>objects\waveListener</object>
     </objects>
     <objects name="level">
       <objects name="ocean">

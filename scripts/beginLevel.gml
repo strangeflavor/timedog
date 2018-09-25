@@ -15,6 +15,10 @@ switch winCondition {
     */
     case _WIN_FORMATIONS_COMPLETE:
     break;
+    case _WIN_WAVES_COMPLETE:
+        currentWave = 0;
+        play_wave = -30;
+    break;
 }
 
 active = true;
@@ -24,10 +28,6 @@ var caughtEndLevel = false;
 
 switch winCondition {
     case _WIN_WAVES_COMPLETE:
-        if wavesRemaining < 0 {
-            trace('no waves remaining');
-            caughtEndLevel = true;
-        }
     break;
     case _WIN_TIMELINE_END:
         if timeline_position > timeline_max_moment(timeline_index) { 

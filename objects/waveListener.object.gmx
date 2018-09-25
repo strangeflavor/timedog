@@ -5,23 +5,52 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>levelManager</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>alarm[0] = 60;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
+          </argument>
+        </arguments>
       </action>
       <action>
         <libid>1</libid>
@@ -39,45 +68,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/////////////////////
-// win condition stuff
-/////////////////////
-
-//winCondition = _WIN_TIMELINE_END;
-//winConditionValue = tLvl1;
-winCondition = _WIN_WAVES_COMPLETE;
-
-/////////////////////
-// dialog stuff
-/////////////////////
-
-addDialog(_NONE,"Our story begins on the border of the known Universe...");
-addDialog(_THEPROF,"Nightbird! This is the Prof, do you copy?");
-//addProjection();
-//removeProjection();
-addDialog(_NIGHTBIRD,"This is Nightbird! I'm a sitting duck out here...");
-
-////////////////////
-// make waves
-////////////////////
-
-setupWaves();
-addWave(wave_boxChains0);
-addWave(wave_boxChains1);
-
-////////////////////
-// background
-////////////////////
-
-//make(oBG);
-//kill(oBG);
-//make(oTrenchBG);
-//make(oMoonBG);
-//make(oOceanBG);
-//make(oAuroraBG);
-
-alarm[1] = -1;
-kill(oMegaThruster);
+            <string>if !instance_exists(oEnemy) and !instance_exists(formationParent) {
+    levelManager.play_wave = -30;
+    kill();
+} else {
+    alarm[0] = 30;
+}
 </string>
           </argument>
         </arguments>

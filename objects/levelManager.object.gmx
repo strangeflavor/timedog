@@ -55,6 +55,14 @@ _slower = false;
 _value = false;
 
 ////////////////////
+// new version wave stuff
+////////////////////
+
+currentWave = -1;
+waveCount= -1;
+play_wave = -30;
+
+////////////////////
 // maze
 ////////////////////
 
@@ -168,6 +176,20 @@ beginLevel();
             <string>///catchEndLevel();
 if active {
     objectAge += 1;
+
+    if play_wave &lt; 0 {
+        play_wave += 1;
+        if play_wave == 0 {
+            if currentWave &lt; waveCount {
+                trace('*** reading wave ',currentWave);
+                readWave(currentWave);
+                currentWave += 1;
+            } else {
+                trace('*** no more waves');
+            }
+        }
+    }
+
     catchEndLevel();
 }
 </string>
