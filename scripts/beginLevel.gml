@@ -28,6 +28,7 @@ var caughtEndLevel = false;
 
 switch winCondition {
     case _WIN_WAVES_COMPLETE:
+        if currentWave > waveCount caughtEndLevel = true;
     break;
     case _WIN_TIMELINE_END:
         if timeline_position > timeline_max_moment(timeline_index) { 

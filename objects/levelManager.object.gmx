@@ -75,7 +75,7 @@ mazeSpeed = 5;
 winCondition = _WIN_TIME;
 winConditionValue = 30*60*60;
 bossDefeated = false;
-gracePeriod = 120; // time after the end of level and the tally screen appears
+gracePeriod = 60; // time after the end of level and the tally screen appears
 
 /////////////////////
 // dialog stuff
@@ -183,10 +183,10 @@ if active {
             if currentWave &lt; waveCount {
                 trace('*** reading wave ',currentWave);
                 readWave(currentWave);
-                currentWave += 1;
             } else {
                 trace('*** no more waves');
             }
+            currentWave += 1;
         }
     }
 
