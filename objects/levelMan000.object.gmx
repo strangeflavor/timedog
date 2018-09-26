@@ -62,7 +62,7 @@ addDialog(_NIGHTBIRD,"This is Nightbird! I'm a sitting duck out here...");
 ////////////////////
 
 setupWaves();
-addWave(wave_boxChains0);
+addWave(wave_boxChains0,2);
 addWave(wave_boxChains1);
 
 ////////////////////
