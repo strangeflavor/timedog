@@ -1,19 +1,22 @@
 #define form_boxChains0
-///form_boxChains0(xoffset,ystop,rate,path_speed,size);
+///form_boxChains0(wait,xoffset,ystop,rate,path_speed,size);
 trace('starting form boxchains0');
 
 var arg;
 for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
 
-var xoffset = arg[0];
-_ystop = arg[1];
-_rate = arg[2];
-_path_speed = arg[3];
-_size = arg[4];
+_wait = arg[0];
+if _wait < 0 _wait = 0;
+
+var xoffset = arg[1];
+_ystop = arg[2];
+_rate = arg[3];
+_path_speed = arg[4];
+_size = arg[5];
 
 if xoffset == -1 xoffset = -64 + choose(64,80,128,160,200);
 if _ystop == -1 _ystop = vh/2 - choose(90,120,180,240); // choose(180,120,200,300,400);
-if _path_speed == -1 _path_speed = choose(16,24,32);
+if _path_speed == -1 _path_speed = choose(24,32,40);
 if _rate == -1 _rate = 4;
 if _size == -1 _size = 3;
 
@@ -23,6 +26,7 @@ with make(-32+xoffset,32,fChain) {
     formationID = other.newFormationID;
     invul = true;
 
+    wait = 1+other._wait;
     space = _LEFTCOLUMN;
     size = 3;
     enemy = oMiniThex;
@@ -44,7 +48,7 @@ with make(vw-32-(32*_size)+xoffset,-32,fChain) {
     formationID = other.newFormationID;
     invul = true;
 
-    wait = 15;
+    wait = 15+other._wait;
     space = _RIGHTCOLUMN;
     size = 3;
     enemy = oMiniThex;
