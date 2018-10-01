@@ -503,6 +503,8 @@
     <scripts name="waves">
       <script>scripts\setupWaves.gml</script>
       <script>scripts\wave_boxChains0.gml</script>
+      <script>scripts\wave_sines0.gml</script>
+      <script>scripts\wave_circles0.gml</script>
     </scripts>
     <scripts name="menus">
       <script>scripts\createLevelData.gml</script>

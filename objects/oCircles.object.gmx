@@ -79,7 +79,6 @@ rTween = -1;
           <argument>
             <kind>1</kind>
             <string>/// active, start moving!
-
 TweenSimpleMove(x,y,vw/2+_xoffsetDest,ydest,moveduration,EaseOutCirc);
 </string>
           </argument>
@@ -143,21 +142,23 @@ TweenSimpleMove(x,y,xstart,ystart,moveduration,EaseOutCirc);
           <argument>
             <kind>1</kind>
             <string>//if currentPhase == 1 and fired == 0 {
-if y &gt;= ydest - 1 and fired == 0 {
-    fired += 1;
-    rTween = TweenFire(id,"",EaseInOutBounce,TWEEN_MODE_ONCE,true,0.0,.2,16,.5);
-    TweenSimpleRotate(image_angle,image_angle+359,90,EaseOutCirc);
-
-    shoot_circle2(16,x,y-16,32,oBullet,5,sShot0,false,0);
-    shoot_circle2(24,x+24,y+16,32,oBullet,3,sShot3,false,0);
-    shoot_circle2(24,x-24,y+16,32,oBullet,2,sShot3,false,0);
+if active {
+    if y &gt;= ydest - 1 and fired == 0 {
+        fired += 1;
+        rTween = TweenFire(id,"",EaseInOutBounce,TWEEN_MODE_ONCE,true,0.0,.2,16,.5);
+        TweenSimpleRotate(image_angle,image_angle+359,90,EaseOutCirc);
     
-    if alarm[10] == -1 alarm[10] = 60;
+        shoot_circle2(16,x,y-16,32,oBullet,5,sShot0,false,0);
+        shoot_circle2(24,x+24,y+16,32,oBullet,3,sShot3,false,0);
+        shoot_circle2(24,x-24,y+16,32,oBullet,2,sShot3,false,0);
+        
+        if alarm[10] == -1 alarm[10] = 60;
+    }
+    
+    
+    if TweenExists(rTween) r = TweenCalc(rTween);
+    image_angle += r;
 }
-
-
-if TweenExists(rTween) r = TweenCalc(rTween);
-image_angle += r;
 </string>
           </argument>
         </arguments>
