@@ -247,4 +247,3 @@ if _endaction <= 0 {
 
 eID.size = 24;
 eID.rate = 6;
-

@@ -55,7 +55,7 @@ addDialog(_NONE,"Our story begins on the border of the known Universe...");
 addDialog(_THEPROF,"Nightbird! This is the Prof, do you copy?");
 //addProjection();
 //removeProjection();
-addDialog(_NIGHTBIRD,"This is Nightbird! I'm a sitting duck out here...");
+addDialog(_NIGHTBIRD,"This is Nightbird! I'm a sitting duck out here.. .");
 
 ////////////////////
 // make waves
@@ -63,9 +63,9 @@ addDialog(_NIGHTBIRD,"This is Nightbird! I'm a sitting duck out here...");
 
 setupWaves();
 //addWave(form_corkscrew);
-addWave(form_arch,0,0,1);
-addWave(form_arch,0,0,0);
-addWave(wave_sines0);
+//addWave(form_arch,0,0,1);
+//addWave(form_arch,0,0,0);
+addWave(wave_sines0,-1,-80);
 addWave(wave_circles0);
 addWave(wave_circles0,2);
 addWave(wave_boxChains0,3);
