@@ -66,11 +66,16 @@ setupWaves();
 //addWave(form_arch,0,0,1);
 //addWave(form_arch,0,0,0);
 addWave(wave_sines0,-1,-80);
+addWave2(wave_circles0);
+
+addWave(wave_boxChains0,3);
+
+/*
 addWave(wave_circles0);
 addWave(wave_circles0,2);
 addWave(wave_boxChains0,3);
 addWave(wave_boxChains1);
-
+*/
 ////////////////////
 // background
 ////////////////////
