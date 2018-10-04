@@ -3,16 +3,7 @@
 trace('starting form curved left');
 
 var arg;
-for (var i = 0; i < 16; i += 1;) {
-    if argument_count > i
-       {
-       arg[i] = argument[i];
-       }
-    else
-       {
-       arg[i] = -1;
-       }
-}
+for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
 
 var xoffset = arg[0];
 if xoffset == -1 xoffset = -180;
@@ -110,7 +101,13 @@ var arg;
 for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
 
 var _xoffset = arg[0];
-if _xoffset == -1 _xoffset = 0;
+if _xoffset == -1 {
+    if oShip.x > vw/2 {
+        _xoffset = 0;
+    } else {
+        _xoffset = vw;
+    }
+}
 
 var _yoffset = arg[1];
 if _yoffset == -1 _yoffset = 0;

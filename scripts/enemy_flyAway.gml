@@ -141,16 +141,7 @@ if phaseArguments[currentPhase,1] > 0 {
 ///enemy_FireInDirection()
 // fires in the direction the enemy is facing
 var arg;
-for (var i = 0; i < 16; i += 1;) {
-    if argument_count > i
-       {
-       arg[i] = argument[i];
-       }
-    else
-       {
-       arg[i] = -1;
-       }
-}
+for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
 
 var _turret = arg[0];
 //var _rounds = arg[1];
@@ -161,18 +152,18 @@ if phaseArguments[currentPhase,1] > 0 {
     var numShots = 3;
     with make(getTurretX(_turret),getTurretY(_turret),oBullet) {
         direction = _direction;
-        speed = 5;
+        speed = 7;
     }
 
     if numShots == 3 {
         with make(getTurretX(_turret),getTurretY(_turret),oBullet) {
-            direction = _direction-30;
-            speed = 5;
+            direction = _direction-8;
+            speed = 7;
         }
 
         with make(getTurretX(_turret),getTurretY(_turret),oBullet) {
-            direction = _direction+30;
-            speed = 5;
+            direction = _direction+8;
+            speed = 7;
         }
     }
 

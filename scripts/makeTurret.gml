@@ -10,12 +10,17 @@ turret[_id,1] = yy;
 #define getTurretX
 ///getTurretX(id)
 
-return x+turret[argument0,0];
+//return x+turret[argument0,0];
+
+return x+turret[argument0,0]+lengthdir_x(sprite_width/2,direction);
 
 #define getTurretY
 ///getTurretY(id)
 
-return y+turret[argument0,1];
+//return y+turret[argument0,1];
+
+return y+turret[argument0,1]+lengthdir_y(sprite_height/2,direction);
+
 #define make_bhpg_turret
 ///make_bhpg_turret(id)
 
