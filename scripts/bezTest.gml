@@ -46,7 +46,7 @@ addBezPoint(vw/2+100,vh/2+40);
 
 #define bezData
 var bezType = argument0;
-    add_bez_index = 0;
+add_bez_index = 0;
 
 switch bezType {
     case 'test':
@@ -70,13 +70,13 @@ switch bezType {
         addBezPoint(136,322);
         addBezPoint(172,217);
         addBezPoint(158,148);
-        
-        addBezPoint(160,123);
+
+        addBezPoint(159,149);
         addBezPoint(161,46);
         addBezPoint(317,50);
-        addBezPoint(332,132);
-        
-        addBezPoint(331,156);
+        addBezPoint(329,149);
+
+        addBezPoint(327,148);
         addBezPoint(314,234);
         addBezPoint(373,328);
         addBezPoint(472,305);

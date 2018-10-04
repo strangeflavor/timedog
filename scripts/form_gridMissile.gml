@@ -115,24 +115,26 @@ with make(vw/2+_xoffset,-64,oWaiter) {
     changeAge = other._wait;
 }
 #define form_circles
-/// form_circles(xoffset,ystart,xdest,ydest,wait,moveduration);
+/// form_circles(wait,xoffset,ystart,xdest,ydest,moveduration);
 trace('starting form circles');
 
 var arg;
 for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
 
-var _xoffset = arg[0];
-var _ystart = arg[1];
+_wait = arg[0];
+if _wait < 1 _wait = 1;
+
+var _xoffset = arg[1];
+var _ystart = arg[2];
 if _xoffset == -1 _xoffset = 0;
 if _ystart == -1 _ystart = -64;
 
-var _xoffsetDest = arg[2];
-var _ydest = arg[3];
-var _wait = arg[4];
-if _wait < 1 _wait = 1;
+var _xoffsetDest = arg[3];
+var _ydest = arg[4];
+
 var _moveduration = arg[5];
 
-if _ydest == -1 _ydest = 64;
+if _ydest == -1 _ydest = 120;
 if _xoffsetDest == -1 _xoffsetDest = _xoffset;
 if _moveduration == -1 _moveduration = 30;
 
@@ -140,4 +142,6 @@ var eID = make(vw/2+_xoffset,_ystart,oCircles);
 eID._xoffsetDest = _xoffsetDest;
 eID.ydest = _ydest;
 eID.moveduration = _moveduration;
+eID.active = false;
+//eID.alarm[0] = -1;
 eID.alarm[11] = _wait;

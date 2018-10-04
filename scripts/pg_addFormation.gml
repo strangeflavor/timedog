@@ -73,8 +73,14 @@ formScriptArray[f] = form_invaders;
 f+=1;
 formScriptArray[f] = form_bez;
 f+=1;
+formScriptArray[f] = form_corkscrew;
+f+=1;
+formScriptArray[f] = form_arch;
+f+=1;
 formScriptArray[f] = form_missiles;
 f+=1;
 formScriptArray[f] = form_steerTowardPlayer;
+f+=1;
+formScriptArray[f] = wave_sines0;
 
 return f;

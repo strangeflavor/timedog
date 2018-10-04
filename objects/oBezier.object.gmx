@@ -159,7 +159,7 @@ if myNumber == 0 {
         for (var i=0;i&lt;64;i+=1) {
             if cpX[i] != -1 {
                 _bezstring += '
-addBezPoint('+string(cpX[i])+','+string(cpY[i])+');';//+',';
+addBezPoint('+string(cpX[i])+','+string(cpY[i])+');';
             }
         }
        // _bezstring = string_copy(_bezstring,0,string_length(_bezstring)-1);
