@@ -41,7 +41,7 @@ make(oBG);
 
 for (var i=0;i&lt;32;i+=1) formationComplete[i] = false;
 
-currentWave = -1;
+currentWave = 0;
 waveID = -1;
 waveComplete = false;
 checkForEndOfWave = false;
@@ -180,7 +180,7 @@ if active {
     if play_wave &lt; 0 {
         play_wave += 1;
         if play_wave == 0 {
-            if currentWave &lt; waveCount {
+            if currentWave &lt;= waveCount {
                 trace('*** reading wave ',currentWave);
                 readWave(currentWave);
             } else {

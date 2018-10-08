@@ -1,7 +1,10 @@
 #define setupWaves
 waveCount = -1;
-wavesArray[128,16] = -1;
-wavesArray2[128,16] = -1;
+for (var i=0; i<128; i+=1) {
+    wavesArray[i,0] = -1;
+    wavesArray2[i,0] = -1;
+    hastenArray[i] = 0;
+}
 
 #define addWave
 ///addWave(script,optional,arguments,go,here)
@@ -65,8 +68,15 @@ if _waveScript > -1 {
     arg[13] = wavesArray2[_waveIndex,13];
     arg[14] = wavesArray2[_waveIndex,14];
     arg[15] = wavesArray2[_waveIndex,15];
+
+    script_execute(_waveScript,arg[1],arg[2],arg[3],arg[4],arg[5],arg[6],arg[7],arg[8],arg[9],arg[10],arg[11],arg[12],arg[13],arg[14],arg[15]);
 }
 
-script_execute(_waveScript,arg[1],arg[2],arg[3],arg[4],arg[5],arg[6],arg[7],arg[8],arg[9],arg[10],arg[11],arg[12],arg[13],arg[14],arg[15]);
+var listener = make(waveListener);
+listener.hasten = hastenArray[_waveIndex];
 
-make(waveListener);
+#define hastenWave
+///hastenWave(numEnemies)
+
+
+
