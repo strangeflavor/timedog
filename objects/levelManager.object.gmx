@@ -60,7 +60,8 @@ _value = false;
 
 currentWave = -1;
 waveCount= -1;
-play_wave = -30;
+play_wave = 0;
+//play_wave = -30;
 
 ////////////////////
 // maze

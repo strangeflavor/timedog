@@ -62,8 +62,9 @@ addDialog(_NIGHTBIRD,"This is Nightbird! I'm a sitting duck out here.. .");
 ////////////////////
 
 setupWaves();
+
 addWave(form_corkscrew);
-hastenWave(8);
+//hastenWave(1);
 
 addWave(wave_circles0);
 

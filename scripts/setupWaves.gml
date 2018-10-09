@@ -78,5 +78,4 @@ listener.hasten = hastenArray[_waveIndex];
 #define hastenWave
 ///hastenWave(numEnemies)
 
-
-
+hastenArray[waveCount] = argument0;
