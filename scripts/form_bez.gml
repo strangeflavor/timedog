@@ -160,7 +160,7 @@ with make(vw/2+_xoffset,-96,fBezChain) {
     bezierID = other.bID[0];
     enemy = oBezThex;
     bezierEndAction = 'update phase';
-    bezierSpeed = 16;
+    bezierSpeed = 12;
 
     // this just prevents phase 0 from ending until we manually end it at the end of the bezier path
 
@@ -181,7 +181,7 @@ with make(vw/2+_xoffset,-96,fBezChain) {
     phaseArguments[1,0] = 94;
     phaseArguments[1,1] = 9;
 
-    size = 24;
+    size = 10;
     rate = 6;
     // g90 position data
     // used in fBezChain to set individual destinations

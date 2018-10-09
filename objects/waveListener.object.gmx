@@ -50,11 +50,11 @@ alarm[0] = 60;
           <argument>
             <kind>1</kind>
             <string>//if !instance_exists(oEnemy) and !instance_exists(formationParent) {
-if instance_number(oEnemy) &lt;= hasten and !instance_exists(formationParent) {
-    levelManager.play_wave = -30;
+if instance_number(oEnemy) &lt;= hasten or !instance_exists(formationParent) {
+    levelManager.play_wave = -1;
     kill();
 } else {
-    alarm[0] = 12;
+    alarm[0] = 6;
 }
 </string>
           </argument>
