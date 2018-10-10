@@ -317,8 +317,9 @@ if waitTime &lt; 0 {
                 kill(self);
             }
             offScreenTimer -= 1;
+            trace(offScreenTimer)
         } else {
-            offScreenTimer = 36;
+            //offScreenTimer = 36;
         }
     }
 

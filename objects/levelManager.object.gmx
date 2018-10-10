@@ -174,7 +174,7 @@ beginLevel();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///catchEndLevel();
+            <string>///play_wave &amp; catchEndLevel();
 if active {
     objectAge += 1;
 

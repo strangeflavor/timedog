@@ -101,7 +101,7 @@ if path &gt; -1 {
 
 formationTransferPhaseVars(eID);
 formationTransferVars(eID);
-if offscreen() eID.offScreenTimer *= 4;
+//if offscreen() eID.offScreenTimer += 20; //eID.offScreenTimer *= 4;
 eID.fireAge = attacker[count];
 
 count += 1;

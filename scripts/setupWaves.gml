@@ -3,7 +3,7 @@ waveCount = -1;
 for (var i=0; i<128; i+=1) {
     wavesArray[i,0] = -1;
     wavesArray2[i,0] = -1;
-    hastenArray[i] = 0;
+    hastenArray[i] = -1;
 }
 
 #define addWave
@@ -74,6 +74,7 @@ if _waveScript > -1 {
 
 var listener = make(waveListener);
 listener.hasten = hastenArray[_waveIndex];
+//if listener.hasten > -1 listener.alarm[0] = 120; // wait a little longer before we try to advance the wave
 
 #define hastenWave
 ///hastenWave(numEnemies)

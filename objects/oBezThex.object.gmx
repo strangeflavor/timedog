@@ -40,7 +40,7 @@
           <argument>
             <kind>1</kind>
             <string>killWhenOffscreen = true;
-offScreenTimer = 36;
+offScreenTimer = 6;
 value = -1;
 image_angle_tween = 0;
 

@@ -50,7 +50,16 @@ alarm[0] = 60;
           <argument>
             <kind>1</kind>
             <string>//if !instance_exists(oEnemy) and !instance_exists(formationParent) {
-if instance_number(oEnemy) &lt;= hasten and !instance_exists(formationParent) {
+//if instance_number(oEnemy) &lt;= hasten and !instance_exists(formationParent) {
+var _advanceWave = false;
+
+if hasten &gt; -1 {
+    if instance_number(oEnemy) &lt;= hasten _advanceWave = true;
+} else {
+    if !instance_exists(oEnemy) and !instance_exists(formationParent) _advanceWave = true;
+}
+
+if _advanceWave {
     levelManager.play_wave = -1;
     kill();
 } else {
