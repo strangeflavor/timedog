@@ -3,7 +3,7 @@
   <spriteName>sShot2</spriteName>
   <solid>0</solid>
   <visible>0</visible>
-  <depth>0</depth>
+  <depth>1</depth>
   <persistent>0</persistent>
   <parentName>shot_pattern</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -68,6 +68,7 @@ followCreator = true;
     bID.image_angle = irandom(bID.image_number);
     bID.direction = creatorID.direction + nrandom(shot_direction_jitter);
     bID.speed = shot_speed;
+    bID.depth = depth;
 
     fired += 1;
     if fired &gt; rounds kill();

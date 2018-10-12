@@ -82,7 +82,10 @@ draw_red = false;
           <argument>
             <kind>1</kind>
             <string>if fired == 0 and y &gt; 32 {
-    with make(shot_lineFollower) creatorID = other.id;
+    with make(shot_lineFollower) {
+        creatorID = other.id;
+        //depth = other.depth+1;
+    }
     fired += 1;
 }
 

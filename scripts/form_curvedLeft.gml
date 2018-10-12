@@ -101,11 +101,13 @@ var arg;
 for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
 
 var _xoffset = arg[0];
+var _direction = 270;
+
 if _xoffset == -1 {
-    if oShip.x > vw/2 {
-        _xoffset = 0;
+    if oShip.x < vw/2 {
+        _xoffset = vw/2;
     } else {
-        _xoffset = vw;
+        _xoffset = -vw/2;
     }
 }
 
@@ -121,3 +123,4 @@ if _rotation_speed == -1 _rotation_speed = 2;
 var eID = make(vw/2+_xoffset,-32+_yoffset,oSteerTowardPlayer);
 eID._speed = _speed;
 eID._rotation_speed = _rotation_speed;
+eID.direction = _direction;
