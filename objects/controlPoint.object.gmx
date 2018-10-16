@@ -3,7 +3,7 @@
   <spriteName>sShot1</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-5</depth>
+  <depth>-4</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -54,33 +54,17 @@ active = false;
             <string>image_blend = c_white;
 
 var mirrored = false;
-if myNum &gt; floor((myBezier.totalLength/2))*4 {
+if myNum &gt;= floor(((myBezier.totalLength+1)/2))*4 {
     mirrored = true;
-    myPair = myNum - (myBezier.totalLength*4)/2;
-    myPair = (myBezier.totalLength*4)/2 - myPair;
+    myPair = myNum - ((myBezier.totalLength+1)*4);///2;
+    myPair = ((myBezier.totalLength)*4)/2 - myPair;
+    //myPair = myBezier.totalLength*4 - myNum;// mod (myBezier.totalLength*4)
 }
 
 if mirrored and myBezier.hmirror {
-    image_blend = c_red;
     x = vw - myBezier.cpID[myPair].x;
     y = myBezier.cpID[myPair].y;
 }
-
-/*
-if myBezier.hmirror {
-    if mirrored {
-        x = vw - myBezier.cpID[myPair].x;
-        //if !myBezier.vmirror y = myBezier.cpID[myPair].y;
-    }
-}
-
-if myBezier.vmirror {
-    if mirrored {
-        //if !myBezier.hmirror x = vw - myBezier.cpID[myPair].x;
-        y = myBezier.cpID[myPair].y;
-    }
-}
-*/
 </string>
           </argument>
         </arguments>
@@ -211,24 +195,31 @@ myBezier.cpY[myNum] = y;
             <kind>1</kind>
             <string>//draw_self();
 var myScale = 1;
+var mirrored = false;
+if myNum &gt;= floor(((myBezier.totalLength+1)/2))*4 mirrored = true;
 
 if debug == 1 {
     draw_set_halign(fa_center);
     draw_set_valign(fa_center);
 
     if active {
-        draw_set_color(c_lime)
+        draw_set_color(c_lime);
     } else {
+        if mirrored draw_set_color(c_red) else draw_set_color(c_white);
+        /*
         if (myNum mod 4) == 1 or (myNum mod 4) == 0 {
             draw_set_color(image_blend);
         } else {
             if image_blend = c_red draw_set_color(c_dkgray) else draw_set_color(c_gray);
             myScale = .75;
         }
+        */
     }
 
     draw_text_transformed(x,y,myNum,myScale,myScale,0);
-    //draw_text_transformed(x,y+16,myPair,myScale,myScale,0);
+    draw_set_color(c_white);
+    //if myBezier.hmirror 
+    draw_text_transformed(x+16,y+16,myPair,myScale*.75,myScale*.75,0);
 
     var yo = 0;
     yo = floor((myNum-1)/4)*8
