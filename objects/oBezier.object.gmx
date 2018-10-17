@@ -162,7 +162,8 @@ alarm[0] = 60;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hmirror = !hmirror;
+            <string>///hmirror = !hmirror;
+hmirror = !hmirror;
 </string>
           </argument>
         </arguments>

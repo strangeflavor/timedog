@@ -3,7 +3,7 @@
   <spriteName>sShot1</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-4</depth>
+  <depth>-5</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -54,11 +54,14 @@ active = false;
             <string>image_blend = c_white;
 
 var mirrored = false;
-if myNum &gt;= floor(((myBezier.totalLength+1)/2))*4 {
+var _control_point_mid = floor(((myBezier.totalLength+1)/2))*4;
+var _control_point_count = floor(myBezier.totalLength)*4 - 1;
+
+if myNum &gt;= _control_point_mid {
     mirrored = true;
-    myPair = myNum - ((myBezier.totalLength+1)*4);///2;
-    myPair = ((myBezier.totalLength)*4)/2 - myPair;
-    //myPair = myBezier.totalLength*4 - myNum;// mod (myBezier.totalLength*4)
+
+    var _diff_from_center = _control_point_mid - ((myNum - _control_point_mid)+1);
+    myPair = _diff_from_center;
 }
 
 if mirrored and myBezier.hmirror {
