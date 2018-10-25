@@ -44,17 +44,33 @@ addBezPoint(vw/2+100,vh/2);
 addBezPoint(vw/2+100,vh/2+40);
 */
 
+#define bezTest_single
+add_bez_index = 0;
+
+addBezPoint(140,240);
+addBezPoint(140,280);
+addBezPoint(140,320);
+addBezPoint(140,360);
+
 #define bezData
 var bezType = argument0;
 add_bez_index = 0;
 
 switch bezType {
+    case 'empty 1':
+        addBezPoint(vw/2,240);
+        addBezPoint(vw/2,280);
+        addBezPoint(vw/2,320);
+        addBezPoint(vw/2,360);
+    break;
+    case 'empty 2':
+    break;
     case 'test':
         addBezPoint(480,545);
         addBezPoint(326,526);
         addBezPoint(325,417);
         addBezPoint(328,296);
-        
+
         addBezPoint(328,296);
         addBezPoint(336,178);
         addBezPoint(477,193);

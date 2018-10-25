@@ -356,85 +356,87 @@ if waitTime &lt; 0 {
 
     if followBezier {
         var bezID = bezierObjectArray[bezierIndex];
-        var bp = Bezier_Point_Find(bezierPos,bezID.cpID[cpIndex].x,bezID.cpID[cpIndex].y,bezID.cpID[cpIndex+1].x,bezID.cpID[cpIndex+1].y,bezID.cpID[cpIndex+2].x,bezID.cpID[cpIndex+2].y,bezID.cpID[cpIndex+3].x,bezID.cpID[cpIndex+3].y);
-        var isBeginning = false;
-        var isEnd = false;
+        if instance_exists(bezID) {
+            var bp = Bezier_Point_Find(bezierPos,bezID.cpID[cpIndex].x,bezID.cpID[cpIndex].y,bezID.cpID[cpIndex+1].x,bezID.cpID[cpIndex+1].y,bezID.cpID[cpIndex+2].x,bezID.cpID[cpIndex+2].y,bezID.cpID[cpIndex+3].x,bezID.cpID[cpIndex+3].y);
+            var isBeginning = false;
+            var isEnd = false;
 
-        if cpIndex == 0 isBeginning = true;
-        if bezID.cpID[cpIndex + 4] == -1 isEnd = true;
+            if cpIndex == 0 isBeginning = true;
+            if bezID.cpID[cpIndex + 4] == -1 isEnd = true;
 
-        var speed_per_tick = bezierSpeedSign*bezierSpeed; //constant speed you want the object to move at
+            var speed_per_tick = bezierSpeedSign*bezierSpeed; //constant speed you want the object to move at
 
-        if objectAge == 1 {
-            x = bp[0];
-            y = bp[1];
-        } else {
-            x_goal = bp[0];
-            y_goal = bp[1];
-
-            if bezierSpeedSign &gt; 0 {
-                delta_x = x_goal - x;
-                delta_y = y_goal - y;
+            if objectAge == 1 {
+                x = bp[0];
+                y = bp[1];
             } else {
-                delta_x = x - x_goal;
-                delta_y = y - y_goal;
-            }
-
-            goal_dist = sqrt( (delta_x * delta_x) + (delta_y * delta_y) )
-
-            if (abs(goal_dist) &gt; abs(speed_per_tick)) {
-                // move twd goal
-                ratio = speed_per_tick / goal_dist
-                x_move = ratio * delta_x  
-                y_move = ratio * delta_y
-                x = x_move + x;
-                y = y_move + y;
-            } else {
-                // reached goal, advance position
-                x = x_goal;
-                y = y_goal;
-
-                // ok we're at the end of a bezier segment
-                if (bezierPos &gt;= 1 and bezierSpeedSign &gt; 0) or (bezierPos &lt;= 0 and bezierSpeedSign &lt; 0) {
-                    // are we at the end of the whole series? if so, do something..
-                    if (isEnd and bezierSpeedSign &gt; 0) or (isBeginning and bezierSpeedSign &lt; 0) {
-                        switch bezierEndAction {
-                            case 'next':
-                                // new path!
-                                bezierPos = 0;
-
-                                bezierIndex += 1;
-                                bezID = bezierObjectArray[bezierIndex];
-                                if bezID == -1 {
-                                    bezierIndex = 0;
-                                    bezID = bezierObjectArray[bezierIndex];
-                                }
-                            break;
-                            case 'reverse':
-                                // reverse speed
-                                bezierSpeedSign *= -1;
-                            break;
-                            case 'reset':
-                                // reset to start
-                                bezierPos = 0;
-                                cpIndex = 0;
-                                bp = Bezier_Point_Find(bezierPos,bezID.cpID[cpIndex].x,bezID.cpID[cpIndex].y,bezID.cpID[cpIndex+1].x,bezID.cpID[cpIndex+1].y,bezID.cpID[cpIndex+2].x,bezID.cpID[cpIndex+2].y,bezID.cpID[cpIndex+3].x,bezID.cpID[cpIndex+3].y);
-                                x = bp[0];
-                                y = bp[1];
-                            break;
-                            case 'update phase':
-                                followBezier = false;
-                                currentPhase += 1;
-                            break;
-                        }
-                    } else {
-                        cpIndex += 4*bezierSpeedSign;
-                        if cpIndex &lt; 0 cpIndex = 0;
-                        if bezierSpeedSign == 1 bezierPos = 0 else bezierPos = 1;
-                    }
+                x_goal = bp[0];
+                y_goal = bp[1];
+    
+                if bezierSpeedSign &gt; 0 {
+                    delta_x = x_goal - x;
+                    delta_y = y_goal - y;
+                } else {
+                    delta_x = x - x_goal;
+                    delta_y = y - y_goal;
                 }
-
-                bezierPos += bezierSpeedSign*.1;
+    
+                goal_dist = sqrt( (delta_x * delta_x) + (delta_y * delta_y) )
+    
+                if (abs(goal_dist) &gt; abs(speed_per_tick)) {
+                    // move twd goal
+                    ratio = speed_per_tick / goal_dist
+                    x_move = ratio * delta_x  
+                    y_move = ratio * delta_y
+                    x = x_move + x;
+                    y = y_move + y;
+                } else {
+                    // reached goal, advance position
+                    x = x_goal;
+                    y = y_goal;
+    
+                    // ok we're at the end of a bezier segment
+                    if (bezierPos &gt;= 1 and bezierSpeedSign &gt; 0) or (bezierPos &lt;= 0 and bezierSpeedSign &lt; 0) {
+                        // are we at the end of the whole series? if so, do something..
+                        if (isEnd and bezierSpeedSign &gt; 0) or (isBeginning and bezierSpeedSign &lt; 0) {
+                            switch bezierEndAction {
+                                case 'next':
+                                    // new path!
+                                    bezierPos = 0;
+    
+                                    bezierIndex += 1;
+                                    bezID = bezierObjectArray[bezierIndex];
+                                    if bezID == -1 {
+                                        bezierIndex = 0;
+                                        bezID = bezierObjectArray[bezierIndex];
+                                    }
+                                break;
+                                case 'reverse':
+                                    // reverse speed
+                                    bezierSpeedSign *= -1;
+                                break;
+                                case 'reset':
+                                    // reset to start
+                                    bezierPos = 0;
+                                    cpIndex = 0;
+                                    bp = Bezier_Point_Find(bezierPos,bezID.cpID[cpIndex].x,bezID.cpID[cpIndex].y,bezID.cpID[cpIndex+1].x,bezID.cpID[cpIndex+1].y,bezID.cpID[cpIndex+2].x,bezID.cpID[cpIndex+2].y,bezID.cpID[cpIndex+3].x,bezID.cpID[cpIndex+3].y);
+                                    x = bp[0];
+                                    y = bp[1];
+                                break;
+                                case 'update phase':
+                                    followBezier = false;
+                                    currentPhase += 1;
+                                break;
+                            }
+                        } else {
+                            cpIndex += 4*bezierSpeedSign;
+                            if cpIndex &lt; 0 cpIndex = 0;
+                            if bezierSpeedSign == 1 bezierPos = 0 else bezierPos = 1;
+                        }
+                    }
+    
+                    bezierPos += bezierSpeedSign*.1;
+                }
             }
         }
     }

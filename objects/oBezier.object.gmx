@@ -71,12 +71,13 @@ alarm[0] = 180;
             <kind>1</kind>
             <string>///trace('destroyed oBezier');
 trace('destroyed oBezier');
-
 for (var i=0;i&lt;totalLength*4;i+=4) {
     kill(cpID[i]);
     kill(cpID[i+1]);
     kill(cpID[i+2]);
     kill(cpID[i+3]);
+
+    with oEnemy if bezierObjectArray[bezierIndex] == other.id kill();
 }
 </string>
           </argument>
@@ -104,6 +105,38 @@ for (var i=0;i&lt;totalLength*4;i+=4) {
 if !instance_exists(oEnemy) and debug == 0 kill();
 
 alarm[0] = 60;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="16">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if debug { //and objectAge &gt; 10 {
+    if keyboard_check_pressed(ord('1')) {
+        with make(oBezier) {
+            bezData('empty 1');
+            createBezierControlPoints();
+        }
+        keyboard_key_release(ord('1'));
+        kill();
+    }
+}
 </string>
           </argument>
         </arguments>

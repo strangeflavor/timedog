@@ -45,7 +45,9 @@ var arg;
 for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
 
 var xpos = arg[0];
-if xpos == -1 xpos = 0;
+if xpos == -1 {
+    if oShip.x > vw/2 xpos = 0 else xpos = vw;
+}
 
 var ypos = arg[1];
 if ypos == -1 ypos = 0;
