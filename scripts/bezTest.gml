@@ -1,48 +1,33 @@
 #define bezTest
-add_bez_index = 0;
+var size = argument0;
 
+add_bez_index = 0;
 
 addBezPoint(140,240);
 addBezPoint(140,280);
 addBezPoint(140,320);
 addBezPoint(140,360);
 
-addBezPoint(190,240);
-addBezPoint(190,280);
-addBezPoint(190,320);
-addBezPoint(190,360);
+if size > 0 {
+    addBezPoint(190,240);
+    addBezPoint(190,280);
+    addBezPoint(190,320);
+    addBezPoint(190,360);
 
-addBezPoint(290,240);
-addBezPoint(290,280);
-addBezPoint(290,320);
-addBezPoint(290,360);
+    if size > 1 {    
+        addBezPoint(290,240);
+        addBezPoint(290,280);
+        addBezPoint(290,320);
+        addBezPoint(290,360);
 
-addBezPoint(340,240);
-addBezPoint(340,280);
-addBezPoint(340,320);
-addBezPoint(340,360);
-
-/*
-addBezPoint(vw/2-100,vh/2-80);
-addBezPoint(vw/2-100,vh/2-40);
-addBezPoint(vw/2-100,vh/2);
-addBezPoint(vw/2-100,vh/2+40);
-
-addBezPoint(vw/2-50,vh/2-80);
-addBezPoint(vw/2-50,vh/2-40);
-addBezPoint(vw/2-50,vh/2);
-addBezPoint(vw/2-50,vh/2+40);
-
-addBezPoint(vw/2+50,vh/2-80);
-addBezPoint(vw/2+50,vh/2-40);
-addBezPoint(vw/2+50,vh/2);
-addBezPoint(vw/2+50,vh/2+40);
-
-addBezPoint(vw/2+100,vh/2-80);
-addBezPoint(vw/2+100,vh/2-40);
-addBezPoint(vw/2+100,vh/2);
-addBezPoint(vw/2+100,vh/2+40);
-*/
+        if size > 2 {        
+            addBezPoint(340,240);
+            addBezPoint(340,280);
+            addBezPoint(340,320);
+            addBezPoint(340,360);
+        }
+    }
+}
 
 #define bezTest_single
 add_bez_index = 0;

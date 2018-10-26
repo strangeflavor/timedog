@@ -518,7 +518,7 @@
       <script>scripts\form_gridMissile.gml</script>
       <script>scripts\form_meteors.gml</script>
       <script>scripts\form_curvedLeft.gml</script>
-      <script>scripts\form_bez.gml</script>
+      <script>scripts\form_bez1.gml</script>
       <scripts name="bezbez">
         <script>scripts\bezTest.gml</script>
       </scripts>

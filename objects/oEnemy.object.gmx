@@ -372,7 +372,7 @@ if waitTime &lt; 0 {
             } else {
                 x_goal = bp[0];
                 y_goal = bp[1];
-    
+
                 if bezierSpeedSign &gt; 0 {
                     delta_x = x_goal - x;
                     delta_y = y_goal - y;
@@ -380,9 +380,9 @@ if waitTime &lt; 0 {
                     delta_x = x - x_goal;
                     delta_y = y - y_goal;
                 }
-    
+
                 goal_dist = sqrt( (delta_x * delta_x) + (delta_y * delta_y) )
-    
+
                 if (abs(goal_dist) &gt; abs(speed_per_tick)) {
                     // move twd goal
                     ratio = speed_per_tick / goal_dist

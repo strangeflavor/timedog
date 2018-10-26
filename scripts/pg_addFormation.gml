@@ -41,6 +41,14 @@ return irandom(pg_count);
 #define pg_makeFormationScriptArray
 var f = 0;
 
+formScriptArray[f] = form_bez1;
+f+=1;
+formScriptArray[f] = form_bez2;
+f+=1;
+formScriptArray[f] = form_bez3;
+f+=1;
+formScriptArray[f] = form_bez4;
+f+=1;
 formScriptArray[f] = form_meteors;
 f+=1;
 formScriptArray[f] = form_boxChains0;
@@ -70,8 +78,6 @@ f+=1;
 formScriptArray[f] = form_circles;
 f+=1;
 formScriptArray[f] = form_invaders;
-f+=1;
-formScriptArray[f] = form_bez;
 f+=1;
 formScriptArray[f] = form_corkscrew;
 f+=1;
