@@ -42,13 +42,16 @@ var bezType = argument0;
 add_bez_index = 0;
 
 switch bezType {
-    case 'empty 1':
-        addBezPoint(vw/2,240);
-        addBezPoint(vw/2,280);
-        addBezPoint(vw/2,320);
-        addBezPoint(vw/2,360);
-    break;
-    case 'empty 2':
+    case 'curve away up right':
+        addBezPoint(-27,280);
+        addBezPoint(79,112);
+        addBezPoint(102,390);
+        addBezPoint(181,224);
+
+        addBezPoint(178,224);
+        addBezPoint(221,-18);
+        addBezPoint(351,269);
+        addBezPoint(459,-29);
     break;
     case 'test':
         addBezPoint(480,545);
@@ -129,5 +132,7 @@ cpIndex = 0;
 #define addBezPoint
 cpX[add_bez_index] = argument0;
 cpY[add_bez_index] = argument1;
+
+if read_data_hmirror cpX[add_bez_index] = vw - cpX[add_bez_index];
 
 add_bez_index += 1;

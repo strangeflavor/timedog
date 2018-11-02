@@ -380,16 +380,6 @@ with make(vw/2+_xoffset,-96,fBezChain) {
 
     size = 10;
     rate = 6;
-    // g90 position data
-    // used in fBezChain to set individual destinations
-    /*
-    columns = 8;
-    rows = 3;
-    xspacing = 40;
-    yspacing = 40;
-    xo = 100;
-    yo = 80;
-    */
 }
 
 #define form_arch
@@ -444,3 +434,65 @@ if _endaction <= 0 {
 
 eID.size = 24;
 eID.rate = 6;
+#define form_bezchain
+/// form_curve0ff0(wait,bezData,xoffset,yoffset)
+trace('starting form_bezchain');
+
+var arg;
+for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
+
+var _wait = arg[0];
+if _wait <= 0 _wait = 1;
+
+var _bezData = arg[1];
+if _bezData == -1 _bezData = 'arch';
+
+var _xoffset = arg[2];
+if _xoffset == -1 _xoffset = 0;
+
+_yoffset = arg[3];
+
+_endaction = 0;
+
+////////////////////////
+// make bez
+////////////////////////
+
+bID[0] = make(oBezier);
+with bID[0] {
+    read_data_hmirror = false;
+    read_data_ymirror = false;
+    bezData(_bezData);
+    createBezierControlPoints();
+}
+
+////////////////////////
+// chain up
+////////////////////////
+
+var _xoffset = arg[0];
+if _xoffset == 1 _xoffset = 0;
+
+var eID = make(vw/2+_xoffset,-96,fBezChain);
+eID.bezierID = other.bID[0];
+eID.enemy = oBezThex;
+eID.bezierSpeed = 16;
+
+// this just prevents phase 0 from ending until we manually end it at the end of the bezier path
+eID.phaseCondition[0] = _PHASE_CONDITION_TIME;
+eID.phaseConditionArguments[0,0] = -1;
+
+if _endaction <= 0 {
+    eID.bezierEndAction = 'update phase';
+    eID.phase[1] = enemy_move;
+    eID.phaseArguments[1,0] = 0;
+    eID.phaseArguments[1,1] = 9;
+} else {
+    eID.bezierEndAction = 'reverse';
+}
+
+eID.size = 24;
+eID.rate = 6;
+
+#define form_diagWave
+form_bezchain(0,'curve away up right');
