@@ -496,3 +496,5 @@ eID.rate = 6;
 
 #define form_diagWave
 form_bezchain(0,'curve away up right');
+#define form_bezSpiral
+form_bezchain(0,'bez spiral');

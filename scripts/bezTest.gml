@@ -42,6 +42,24 @@ var bezType = argument0;
 add_bez_index = 0;
 
 switch bezType {
+    case 'bez spiral':
+addBezPoint(42,3);
+addBezPoint(54,355);
+addBezPoint(262,320);
+addBezPoint(306,230);
+addBezPoint(306,228);
+addBezPoint(347,76);
+addBezPoint(173,38);
+addBezPoint(148,139);
+addBezPoint(147,138);
+addBezPoint(132,310);
+addBezPoint(342,225);
+addBezPoint(247,134);
+addBezPoint(245,133);
+addBezPoint(120,122);
+addBezPoint(234,240);
+addBezPoint(228,168);
+    break;
     case 'curve away up right':
         addBezPoint(-27,280);
         addBezPoint(79,112);
