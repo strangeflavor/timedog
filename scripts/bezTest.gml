@@ -42,23 +42,41 @@ var bezType = argument0;
 add_bez_index = 0;
 
 switch bezType {
+    case 'low arc':
+        addBezPoint(61,37);
+        addBezPoint(10,252);
+        addBezPoint(81,346);
+        addBezPoint(108,391);
+        addBezPoint(111,392);
+        addBezPoint(167,473);
+        addBezPoint(181,457);
+        addBezPoint(235,463);
+        addBezPoint(245,463);
+        addBezPoint(299,457);
+        addBezPoint(313,473);
+        addBezPoint(369,392);
+        addBezPoint(372,391);
+        addBezPoint(399,346);
+        addBezPoint(470,252);
+        addBezPoint(419,37);
+    break;
     case 'bez spiral':
-addBezPoint(42,3);
-addBezPoint(54,355);
-addBezPoint(262,320);
-addBezPoint(306,230);
-addBezPoint(306,228);
-addBezPoint(347,76);
-addBezPoint(173,38);
-addBezPoint(148,139);
-addBezPoint(147,138);
-addBezPoint(132,310);
-addBezPoint(342,225);
-addBezPoint(247,134);
-addBezPoint(245,133);
-addBezPoint(120,122);
-addBezPoint(234,240);
-addBezPoint(228,168);
+        addBezPoint(42,3);
+        addBezPoint(54,355);
+        addBezPoint(262,320);
+        addBezPoint(306,230);
+        addBezPoint(306,228);
+        addBezPoint(347,76);
+        addBezPoint(173,38);
+        addBezPoint(148,139);
+        addBezPoint(147,138);
+        addBezPoint(132,310);
+        addBezPoint(342,225);
+        addBezPoint(247,134);
+        addBezPoint(245,133);
+        addBezPoint(120,122);
+        addBezPoint(234,240);
+        addBezPoint(228,168);
     break;
     case 'curve away up right':
         addBezPoint(-27,280);
