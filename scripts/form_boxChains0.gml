@@ -255,14 +255,14 @@ with make(vw/2+xoffset,32+yoffset,fChain) {
 
     for (i=1;i<12;i+=2) {
         phase[i] = enemy_orbit;
-        phaseArguments[i,0] = 24; // orbit radius
+        phaseArguments[i,0] = 24; //120; // orbit radius
         phaseArguments[i,1] = 11-i; // orbit speed
         phaseArguments[i,2] = 1; // xbend
         phaseArguments[i,3] = 1; // ybend
         phaseArguments[i,4] = other._direction; // direction
         if other._direction > 270 other._direction = 270 - irandom(45) - 12 - (i*2) else other._direction = 270 + irandom(45) + 12 + (i*2);
-        phaseArguments[i,5] = 12-i; // speed
-        phaseArguments[i,6] = 1; // radius delta
+        phaseArguments[i,5] = 10-i; // speed
+        phaseArguments[i,6] = 8; // radius delta
 
             phaseCondition[i] = _PHASE_CONDITION_TIME
             phaseConditionArguments[i,0] = _PHASE_DELAY_WAIT;
@@ -271,6 +271,7 @@ with make(vw/2+xoffset,32+yoffset,fChain) {
         phase[i+1] = enemy_orbit;
         phaseArguments[i+1,0] = 24; // orbit radius
         phaseArguments[i+1,1] = 6; // orbit speed
+        phaseArguments[i+1,6] = 120; // radius delta
 
             phaseCondition[i+1] = _PHASE_CONDITION_TIME
             phaseConditionArguments[i+1,0] = _PHASE_DELAY_WAIT;
@@ -320,4 +321,68 @@ with make(vw/2+xoffset,32+yoffset,fChain) {
     phaseArguments[1,4] = other._direction; // direction
     phaseArguments[1,5] = 3; // speed
     phaseArguments[1,6] = 1; // radius delta
+}
+#define form_orbit_doubler
+///form_orbit(wait,xoffset,yoffset)
+var arg;
+for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
+
+_wait = arg[0];
+var xoffset = arg[1];
+if xoffset == -1 xoffset = choose(1,-1)*irandom(vw/3)//_xoffset = (1+irandom(8)*vw) - vw/8;;
+
+var yoffset = arg[2];
+if yoffset == -1 yoffset = choose(12,24,60);
+_direction = arg[3];
+
+if _wait == -1 _wait = 6;
+
+if xoffset > 0 {
+    _direction = 270 - irandom(45) - 12;
+} else {
+    _direction = 270 + irandom(45) + 12;
+}
+
+newFormationID = getFormationID();
+
+with make(vw/2+xoffset,32+yoffset,fChain) {
+    formationID = other.newFormationID;
+    enemy = oMiniThex;
+    invul = true;
+    size = 11;
+    wait = 1+other._wait;
+    rate = 4;
+
+    phase[0] = enemy_orbit;
+    phaseArguments[0,0] = 24; // orbit radius
+    phaseArguments[0,1] = 9; // orbit speed
+
+        phaseCondition[0] = _PHASE_CONDITION_TIME
+        phaseConditionArguments[0,0] = _PHASE_DELAY_WAIT;
+            advancePhase_AbsoluteTime[0] = choose(45,50,50);
+
+    for (i=1;i<12;i+=2) {
+        phase[i] = enemy_orbit;
+        phaseArguments[i,0] = 24;//60+30*i; // orbit radius
+        phaseArguments[i,1] = 11-i; // orbit speed
+        phaseArguments[i,2] = 1; // xbend
+        phaseArguments[i,3] = 1; // ybend
+        phaseArguments[i,4] = other._direction; // direction
+        if other._direction > 270 other._direction = 270 - irandom(45) - 12 - (i*2) else other._direction = 270 + irandom(45) + 12 + (i*2);
+        phaseArguments[i,5] = 10-i; // speed
+        phaseArguments[i,6] = 6; // radius delta
+
+            phaseCondition[i] = _PHASE_CONDITION_TIME
+            phaseConditionArguments[i,0] = _PHASE_DELAY_WAIT;
+                advancePhase_AbsoluteTime[i] = i*10;
+
+        phase[i+1] = enemy_orbit;
+        phaseArguments[i+1,0] = 60+8*i; // orbit radius
+        phaseArguments[i+1,1] = 6; // orbit speed
+        phaseArguments[i+1,6] = 120; // radius delta
+
+            phaseCondition[i+1] = _PHASE_CONDITION_TIME
+            phaseConditionArguments[i+1,0] = _PHASE_DELAY_WAIT;
+                advancePhase_AbsoluteTime[i+1] = 30+i*12;
+    }
 }
