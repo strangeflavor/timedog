@@ -221,76 +221,94 @@ for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else
 
 _wait = arg[0];
 var xoffset = arg[1];
+if xoffset == -1 xoffset = choose(1,-1)*irandom(vw/3)//_xoffset = (1+irandom(8)*vw) - vw/8;;
+
 var yoffset = arg[2];
+if yoffset == -1 yoffset = choose(12,24,60);
 _direction = arg[3];
 
 if _wait == -1 _wait = 6;
-if xoffset == -1 xoffset = 0;
-if _direction == -1 _direction = 270;
+
+if xoffset > 0 {
+    _direction = 270 - irandom(45) - 12;
+} else {
+    _direction = 270 + irandom(45) + 12;
+}
 
 newFormationID = getFormationID();
 
 with make(vw/2+xoffset,32+yoffset,fChain) {
     formationID = other.newFormationID;
+    enemy = oMiniThex;
+    invul = true;
+    size = 11;
+    wait = 1+other._wait;
+    rate = 4;
+
+    phase[0] = enemy_orbit;
+    phaseArguments[0,0] = 24; // orbit radius
+    phaseArguments[0,1] = 9; // orbit speed
+
+        phaseCondition[0] = _PHASE_CONDITION_TIME
+        phaseConditionArguments[0,0] = _PHASE_DELAY_WAIT;
+            advancePhase_AbsoluteTime[0] = choose(45,50,50);
+
+    for (i=1;i<12;i+=2) {
+        phase[i] = enemy_orbit;
+        phaseArguments[i,0] = 24; // orbit radius
+        phaseArguments[i,1] = 11-i; // orbit speed
+        phaseArguments[i,2] = 1; // xbend
+        phaseArguments[i,3] = 1; // ybend
+        phaseArguments[i,4] = other._direction; // direction
+        if other._direction > 270 other._direction = 270 - irandom(45) - 12 - (i*2) else other._direction = 270 + irandom(45) + 12 + (i*2);
+        phaseArguments[i,5] = 12-i; // speed
+        phaseArguments[i,6] = 1; // radius delta
+
+            phaseCondition[i] = _PHASE_CONDITION_TIME
+            phaseConditionArguments[i,0] = _PHASE_DELAY_WAIT;
+                advancePhase_AbsoluteTime[i] = 10+i*10;
+
+        phase[i+1] = enemy_orbit;
+        phaseArguments[i+1,0] = 24; // orbit radius
+        phaseArguments[i+1,1] = 6; // orbit speed
+
+            phaseCondition[i+1] = _PHASE_CONDITION_TIME
+            phaseConditionArguments[i+1,0] = _PHASE_DELAY_WAIT;
+                advancePhase_AbsoluteTime[i+1] = 20+i*10;
+    }
+}
+
+#define form_orbit_expanding
+///form_orbit_expanding(wait,xoffset,yoffset,direction,moveDelay)
+var arg;
+for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
+
+_wait = arg[0];
+if _wait == -1 _wait = 1;
+
+var xoffset = arg[1];
+var yoffset = arg[2];
+_direction = arg[3];
+if _direction == -1 _direction = 270;
+var moveDelay = arg[4];
+if moveDelay == -1 moveDelay = 120;
+
+//newFormationID = getFormationID();
+
+with make(vw/2+xoffset,32+yoffset,fChain) {
     enemy = oMiniThex;
     invul = true;
     size = 12;
     wait = 1+other._wait;
     rate = 4;
-
-    //phaseDelay[0] = _PHASE_DELAY_WAIT;
-        //advancePhase_AbsoluteTime[0] = 60;
-    phase[0] = enemy_orbit;
-    phaseArguments[0,0] = 24; // radius
-    phaseArguments[0,1] = 9; // speed
-
-    phaseCondition[0] = _PHASE_CONDITION_TIME
-    //phaseConditionArguments[0,0] = 120; // snake string
-    phaseConditionArguments[0,0] = _PHASE_DELAY_WAIT;
-        advancePhase_AbsoluteTime[0] = 120;
-
-    phase[1] = enemy_orbit;
-    phaseArguments[1,0] = 24; // radius
-    phaseArguments[1,1] = 9; // speed
-    phaseArguments[1,2] = 1; // xbend
-    phaseArguments[1,3] = 1; // ybend
-    phaseArguments[1,4] = other._direction; // direction
-    phaseArguments[1,5] = 12; // speed
-    phaseArguments[1,6] = 1; // radius delta
-}
-
-#define form_orbit_expanding
-///form_orbit_expanding(wait,xoffset,yoffset,direction,moveDelay)
-var xoffset = argument1;
-var yoffset = argument2;
-_direction = argument3;
-if _direction == -1 _direction = 270;
-var moveDelay = argument4;
-if moveDelay == -1 moveDelay = 120;
-
-newFormationID = getFormationID();
-
-with make(vw/2+xoffset,32+yoffset,fChain) {
-    formationID = other.newFormationID;
-    enemy = oMiniThex;
-    invul = true;
-    //path = pCircle;
-    //_path_speed = 7+(other.i/2);
-    //endaction = path_action_continue;
-    size = 12;
-    wait = 1+argument0;
-    rate = 4;
     speedSign = choose(-1,1);
 
-    //phaseDelay[0] = _PHASE_DELAY_WAIT;
-        //advancePhase_AbsoluteTime[0] = 60;
     phase[0] = enemy_orbit;
     phaseArguments[0,0] = 60; // radius
     phaseArguments[0,1] = speedSign*5; // speed
     phaseArguments[0,6] = 1; // radius delta
 
     phaseCondition[0] = _PHASE_CONDITION_TIME
-    //phaseConditionArguments[0,0] = 120; // snake string
     phaseConditionArguments[0,0] = _PHASE_DELAY_WAIT;
         advancePhase_AbsoluteTime[0] = moveDelay;
 

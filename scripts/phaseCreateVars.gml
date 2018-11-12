@@ -3,7 +3,7 @@ currentPhase = 0;
 currentPhaseAge = 0;
 currentPhaseDelay = 0;
 
-for (var i=0;i<8;i+=1) {
+for (var i=0;i<16;i+=1) {
     phaseDelay[i] = 0; // amount of time to delay before running the current phase
     phase[i] = -1; // script to execute for this phase. enemies start in phase 0.
     phaseCondition[i] = -1; // condition to advance beyond this phase
@@ -21,7 +21,7 @@ for (var i=0;i<8;i+=1) {
 var eID = argument0;
 
 eID.currentPhase = 0;
-for (var i=0;i<8;i+=1) {
+for (var i=0;i<16;i+=1) {
     eID.phase[i] = phase[i]; // script to execute for this phase. enemies start in phase 0.
     eID.phaseDelay[i] = phaseDelay[i];
     eID.phaseCondition[i] = phaseCondition[i]; // condition to advance beyond this phase
