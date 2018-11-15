@@ -56,6 +56,11 @@ _enemy_xshuffle = 0;
 _enemy_yshuffle = 0;
 
 yStop = -1;
+
+// used for formation script callbacks
+// if ran_script_on_chain[phase] is true, the script has already been called and won't run again
+// this is bc the script call is determined by the enemy's phase, and we only want to call it once per chain even though multiple enemies may be alive
+for (var i=0;i&lt;16;i+=1) ran_script_on_chain[i] = false;
 </string>
           </argument>
         </arguments>

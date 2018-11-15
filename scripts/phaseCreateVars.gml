@@ -115,3 +115,9 @@ if phase[currentPhase] == -999 {
     currentPhase = 0;
     currentPhaseDelay = phaseDelay[currentPhase];
 }
+#define run_script_on_chain
+if chainID.ran_script_on_chain[currentPhase] == false {
+    //show(currentPhase);
+    chainID.ran_script_on_chain[currentPhase] = true;
+    script_execute(argument0);
+}

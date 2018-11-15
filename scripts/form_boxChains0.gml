@@ -329,7 +329,7 @@ for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else
 
 _wait = arg[0];
 var xoffset = arg[1];
-if xoffset == -1 xoffset = choose(1,-1)*irandom(vw/3)//_xoffset = (1+irandom(8)*vw) - vw/8;;
+if xoffset == -1 xoffset = choose(1,-1)*irandom(vw/4)//_xoffset = (1+irandom(8)*vw) - vw/8;;
 
 var yoffset = arg[2];
 if yoffset == -1 yoffset = choose(12,24,60);
@@ -338,9 +338,9 @@ _direction = arg[3];
 if _wait == -1 _wait = 6;
 
 if xoffset > 0 {
-    _direction = 270 - irandom(45) - 12;
+    _direction = 270 - irandom(15) - 6;
 } else {
-    _direction = 270 + irandom(45) + 12;
+    _direction = 270 + irandom(15) + 6;
 }
 
 newFormationID = getFormationID();
@@ -361,15 +361,15 @@ with make(vw/2+xoffset,32+yoffset,fChain) {
         phaseConditionArguments[0,0] = _PHASE_DELAY_WAIT;
             advancePhase_AbsoluteTime[0] = choose(45,50,50);
 
-    for (i=1;i<12;i+=2) {
+    for (i=1;i<12;i+=3) {
         phase[i] = enemy_orbit;
         phaseArguments[i,0] = 24;//60+30*i; // orbit radius
         phaseArguments[i,1] = 11-i; // orbit speed
         phaseArguments[i,2] = 1; // xbend
         phaseArguments[i,3] = 1; // ybend
         phaseArguments[i,4] = other._direction; // direction
-        if other._direction > 270 other._direction = 270 - irandom(45) - 12 - (i*2) else other._direction = 270 + irandom(45) + 12 + (i*2);
-        phaseArguments[i,5] = 10-i; // speed
+        if other._direction > 270 other._direction = 270 - irandom(15) - 6 - i else other._direction = 270 + irandom(15) + 6 + i;
+        phaseArguments[i,5] = 10; // speed
         phaseArguments[i,6] = 6; // radius delta
 
             phaseCondition[i] = _PHASE_CONDITION_TIME
@@ -383,6 +383,13 @@ with make(vw/2+xoffset,32+yoffset,fChain) {
 
             phaseCondition[i+1] = _PHASE_CONDITION_TIME
             phaseConditionArguments[i+1,0] = _PHASE_DELAY_WAIT;
-                advancePhase_AbsoluteTime[i+1] = 30+i*12;
+                advancePhase_AbsoluteTime[i+1] = 30+i*3;
+
+        phase[i+2] = run_script_on_chain;
+        phaseArguments[i+2,0] = form_orbit_doubler;
+
+            phaseCondition[i+2] = _PHASE_CONDITION_TIME
+            phaseConditionArguments[i+2,0] = _PHASE_DELAY_WAIT;
+                advancePhase_AbsoluteTime[i+2] = 3;
     }
 }
