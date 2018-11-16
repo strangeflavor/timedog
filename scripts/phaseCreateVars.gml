@@ -116,8 +116,15 @@ if phase[currentPhase] == -999 {
     currentPhaseDelay = phaseDelay[currentPhase];
 }
 #define run_script_on_chain
+///run_script_on_chain
+var arg;
+for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -1;
+
 if chainID.ran_script_on_chain[currentPhase] == false {
-    //show(currentPhase);
     chainID.ran_script_on_chain[currentPhase] = true;
-    script_execute(argument0);
+    
+    if arg[2] == -999 arg[2] = x;
+    if arg[3] == -999 arg[3] = y+24;
+
+    script_execute(arg[0],arg[1],arg[2],arg[3],arg[4],arg[5],arg[6],arg[7],arg[8],arg[9]);
 }
