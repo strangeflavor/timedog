@@ -498,3 +498,5 @@ eID.rate = 6;
 form_bezchain(0,'curve away up right');
 #define form_bezSpiral
 form_bezchain(0,'bez spiral');
+#define form_bezWideSine
+form_bezchain(0,'1 wide sine');

@@ -42,6 +42,12 @@ var bezType = argument0;
 add_bez_index = 0;
 
 switch bezType {
+    case '1 wide sine':
+        addBezPoint(4,210);
+        addBezPoint(176,350);
+        addBezPoint(317,114);
+        addBezPoint(474,205);
+    break;
     case 'low arc':
         addBezPoint(61,37);
         addBezPoint(10,252);

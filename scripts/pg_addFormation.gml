@@ -95,6 +95,7 @@ formScriptArray[f] = form_diagWave;
 f+=1;
 formScriptArray[f] = form_bezSpiral;
 f+=1;
+formScriptArray[f] = form_bezWideSine;
+f+=1;
 formScriptArray[f] = wave_sines0;
-
 return f;

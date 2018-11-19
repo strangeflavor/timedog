@@ -123,7 +123,7 @@ for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else
 if chainID.ran_script_on_chain[currentPhase] == false {
     chainID.ran_script_on_chain[currentPhase] = true;
     
-    if arg[2] == -999 arg[2] = x+12;
+    if arg[2] == -999 arg[2] = x+24;
     if arg[3] == -999 arg[3] = y-8;
 
     script_execute(arg[0],arg[1],arg[2],arg[3],arg[4],arg[5],arg[6],arg[7],arg[8],arg[9]);

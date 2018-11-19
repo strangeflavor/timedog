@@ -66,6 +66,30 @@ for (var i=0;i&lt;16;i+=1) ran_script_on_chain[i] = false;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///kill()
+kill()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -117,8 +141,12 @@ if size == 999 and count &gt;= 16 count = 0; // size = 999 means we're spawning 
 if count &lt; size {
     alarm[0] = rate;
 } else {
+    // only delete if this chain doesn't have  a timer attached to it
     if advancePhase_AbsoluteTime[advancePhase_AbsoluteIndex] == -1 {
         kill(self);
+    } else {
+        // instead, clean up in 5 seconds
+        alarm[1] = 5*60;
     }
 }
 </string>
