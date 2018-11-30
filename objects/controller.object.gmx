@@ -373,6 +373,7 @@ draw_set_valign(fa_bottom);
 
 if debug == 2 {
     draw_text(8*scale,vh-24*scale,instance_count);
+    draw_text(8*scale,vh-8*scale,string(room_speed)+','+string(fps)+','+string(fps_real));
 
     with oEnemy {
         draw_set_halign(fa_middle);

@@ -51,7 +51,7 @@ _enemy_direction = 270;
 yStop = -1;
 
 xstart = 24+irandom(vw/12)*11;
-ystart = -128;
+ystart = -64;
 x = xstart;
 y = ystart;
 

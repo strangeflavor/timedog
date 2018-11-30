@@ -184,7 +184,7 @@ with shot_pattern {
     if creatorID == other.id kill();
 }
 
-// destroy any turrents owned by this enemy
+// destroy any turrets owned by this enemy
 for (i=0;i&lt;16;i+=1) {
     if bhpg_turret[i] &gt; -1 {
         with bhpg_turret[i] kill();
@@ -304,10 +304,10 @@ if waitTime &lt; 0 {
     objectAge += 1;
 
     if killWhenBelowScreen {
-       if y &gt; (vh + 64*scale) {
-        value = 0;
-        kill(self);
-       }
+        if y &gt; (vh + 64*scale) {
+            value = 0;
+            kill(self);
+        }
     }
 
     if killWhenOffscreen {

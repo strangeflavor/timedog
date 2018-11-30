@@ -39,7 +39,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>value = -1;
+            <string>//offScreenTimer = 50;
+killWhenOffscreen = false;
+killWhenBelowScreen = true;
+
+value = -1;
 r = choose(-1,1)*choose(.2,.3,.5);
 
 image_xscale = choose(.75,1,1,1.5);
