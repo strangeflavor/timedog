@@ -52,6 +52,8 @@ WEAPON_bomb = false;
 WEAPON_shield = false;
 WEAPON_warp = false;
 
+choose_norepeat_lastvalue = -9999;
+choose_norepeat_lastvalue2 = -9999;
 
 ///////////////////////////////////////////////
 // system objects

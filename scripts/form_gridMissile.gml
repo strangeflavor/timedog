@@ -128,7 +128,8 @@ if _wait < 1 _wait = 1;
 
 var _xoffset = arg[1];
 var _ystart = arg[2];
-if _xoffset == -1 _xoffset = 0;
+if _xoffset == -1 _xoffset = choose_norepeat2(0,-vw/3,-vw/6,vw/3,vw/6);
+
 if _ystart == -1 _ystart = -64;
 
 var _xoffsetDest = arg[3];
@@ -145,5 +146,5 @@ eID._xoffsetDest = _xoffsetDest;
 eID.ydest = _ydest;
 eID.moveduration = _moveduration;
 eID.active = false;
-//eID.alarm[0] = -1;
+
 eID.alarm[11] = _wait;

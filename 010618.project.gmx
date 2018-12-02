@@ -942,7 +942,7 @@
     <room>rooms\roomTest</room>
     <room>rooms\rWeaponSelect</room>
   </rooms>
-  <constants number="65">
+  <constants number="67">
     <constant name="live_enabled">1</constant>
     <constant name="scale">global._scale</constant>
     <constant name="vw">global._vw</constant>
@@ -1008,6 +1008,8 @@
     <constant name="_SMALL">1</constant>
     <constant name="_MED">2</constant>
     <constant name="_LARGE">3</constant>
+    <constant name="choose_norepeat_lastvalue">global._choose_norepeat_lastvalue</constant>
+    <constant name="choose_norepeat_lastvalue2">global._choose_norepeat_lastvalue2</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

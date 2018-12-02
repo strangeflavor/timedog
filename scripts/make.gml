@@ -79,3 +79,42 @@ py +=        ttt * p3y;
 //Pack into an array
 var PA; PA[0] = px; PA[1] = py;
 return PA;
+#define choose_norepeat
+///choose_norepeat()
+// just like choose, but it won't return the same value twice in a row
+// doesn't work with 0 for some reason... ?
+var arg;
+for (var i = 0; i < 8; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -9999;
+
+var _found_value = false;
+var _return_value = -9999;
+
+while _found_value == false {
+    _return_value = choose(arg[0],arg[1],arg[2],arg[3],arg[4],arg[5],arg[6],arg[7]);//arg[8],arg[9],arg[10],arg[11],arg[12],arg[13],arg[14],arg[15]);
+    
+    if _return_value != choose_norepeat_lastvalue and _return_value != -9999 _found_value = true;
+}
+
+choose_norepeat_lastvalue = _return_value;
+return _return_value;
+
+#define choose_norepeat2
+///choose_norepeat2()
+// just like choose, but it won't return the same value twice in a row
+// doesn't work with 0 for some reason... ?
+var arg;
+for (var i = 0; i < 8; i += 1;) if argument_count > i arg[i] = argument[i] else arg[i] = -9999;
+
+var _found_value = false;
+var _return_value = -9999;
+
+while _found_value == false {
+    _return_value = choose(arg[0],arg[1],arg[2],arg[3],arg[4],arg[5],arg[6],arg[7]);//arg[8],arg[9],arg[10],arg[11],arg[12],arg[13],arg[14],arg[15]);
+
+    if _return_value != choose_norepeat_lastvalue and _return_value != choose_norepeat_lastvalue2 and _return_value != -9999 _found_value = true;
+}
+
+choose_norepeat_lastvalue2 = choose_norepeat_lastvalue;
+choose_norepeat_lastvalue = _return_value;
+
+return _return_value;
