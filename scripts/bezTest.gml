@@ -42,6 +42,24 @@ var bezType = argument0;
 add_bez_index = 0;
 
 switch bezType {
+    case 'w':
+        addBezPoint(26,-2);
+        addBezPoint(15,168);
+        addBezPoint(72,203);
+        addBezPoint(144,138);
+        addBezPoint(149,136);
+        addBezPoint(205,126);
+        addBezPoint(153,223);
+        addBezPoint(241,228);
+        addBezPoint(239,228);
+        addBezPoint(327,223);
+        addBezPoint(275,126);
+        addBezPoint(331,136);
+        addBezPoint(336,138);
+        addBezPoint(408,203);
+        addBezPoint(465,168);
+        addBezPoint(454,-2);
+    break;
     case '1 wide sine':
         addBezPoint(4,210);
         addBezPoint(176,350);
@@ -147,6 +165,10 @@ switch bezType {
 
 #define createBezierControlPoints
 ///create control points
+///createBezierControlPoints(_xoffset);
+//var _xoffset = argument0;
+var _xoffset = 0;
+if argument_count > 0 _xoffset = argument[0];
 
 for (var i=0;i<64;i+=4) {
     if cpX[i] != -1 {
@@ -160,10 +182,17 @@ for (var i=0;i<64;i+=4) {
         cpID[i+2].myBezier = id;
         cpID[i+3].myBezier = id;
 
-        cpID[i].x = cpX[i]; cpID[i].y = cpY[i];
-        cpID[i+1].x = cpX[i+1]; cpID[i+1].y = cpY[i+1];
-        cpID[i+2].x = cpX[i+2]; cpID[i+2].y = cpY[i+2];
-        cpID[i+3].x = cpX[i+3]; cpID[i+3].y = cpY[i+3];
+        cpID[i].x = cpX[i] + _xoffset;
+        cpID[i].y = cpY[i];
+
+        cpID[i+1].x = cpX[i+1] + _xoffset;
+        cpID[i+1].y = cpY[i+1];
+        
+        cpID[i+2].x = cpX[i+2] + _xoffset;
+        cpID[i+2].y = cpY[i+2];
+
+        cpID[i+3].x = cpX[i+3] + _xoffset;
+        cpID[i+3].y = cpY[i+3];
 
         totalLength += 1;
     }

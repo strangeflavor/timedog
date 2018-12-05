@@ -463,15 +463,12 @@ with bID[0] {
     read_data_hmirror = false;
     read_data_ymirror = false;
     bezData(_bezData);
-    createBezierControlPoints();
+    createBezierControlPoints(_xoffset);
 }
 
 ////////////////////////
 // chain up
 ////////////////////////
-
-var _xoffset = arg[0];
-if _xoffset == 1 _xoffset = 0;
 
 var eID = make(vw/2+_xoffset,-96,fBezChain);
 eID.bezierID = other.bID[0];
