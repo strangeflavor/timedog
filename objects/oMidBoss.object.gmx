@@ -39,19 +39,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>pilotID[0] = make(oMerchantPilot);
+            <string>if (live_call()) return live_result;
+
+pilotID[0] = make(oMerchantPilot);
 pilotID[0].ship_xo = 0;
 pilotID[0].ship_yo = 0;
 
 pilotID[1] = make(oMerchantPilot);
 pilotID[1].ship_xo = -45*2;
-pilotID[1].ship_yo = 50*2;
+pilotID[1].ship_yo = 38*2;
 pilotID[1].image_xscale = 1;
 pilotID[1].image_yscale = 1;
 
 pilotID[2] = make(oMerchantPilot);
 pilotID[2].ship_xo = 45*2;
-pilotID[2].ship_yo = 48*2;
+pilotID[2].ship_yo = 38*2;
 pilotID[2].image_xscale = 1;
 pilotID[2].image_yscale = 1;
 
@@ -76,9 +78,9 @@ next_attack_state = _ATK_BEAMS;
 
 attack_started = false;
 
-makeTurret(0,-153,56);
-makeTurret(1,153,56);
-makeTurret(2,0,sprite_height/2);
+makeTurret(0,-178,30);
+makeTurret(1,178,30);
+makeTurret(2,0,sprite_height/2-32);
 
 setup_state_paths();
 add_state_path(_APPROACH,90);

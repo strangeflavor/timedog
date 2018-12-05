@@ -378,6 +378,17 @@ if debug == 2 {
     with oEnemy {
         draw_set_halign(fa_middle);
         draw_text(x,y+sprite_get_height(sprite_index)+2,'*a'+string(active)+', p'+string(currentPhase));
+
+        for (var i=0;i&lt;16;i+=1) {
+            if !is_undefined(turret[i,0]) {
+                draw_set_color(c_red);
+                draw_circle(getTurretX(i),getTurretY(i),12,false);
+                draw_set_color(c_black);
+                draw_set_halign(fa_middle);
+                draw_set_valign(fa_center);
+                draw_text(getTurretX(i)+2,getTurretY(i)+2,string(i));
+            }
+        }
     }
 }
 </string>
