@@ -62,7 +62,7 @@ addDialog(_NIGHTBIRD,"This is Nightbird! I'm a sitting duck out here.. .");
 ////////////////////
 
 setupWaves();
-addWave(form_bezchain,1,'w',-30);
+addWave(form_bezchain,1,'w',-30,0,true);
 addWave2(form_bezchain,1,'w',30);
 //addWave(form_bezchain,0,'curve away up right');
 //addWave(form_diagWave);

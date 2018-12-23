@@ -54,6 +54,8 @@ _enemy_direction = -1;
 
 yStop = -1;
 
+my_chain_index = instance_number(fBezChain)+instance_number(fChain)-1;
+
 // g90 stuff
     columns = -1;
     rows = -1;
@@ -103,6 +105,11 @@ with eID {
     bezierEndAction = other.bezierEndAction;
     bezierSpeed = other.bezierSpeed;
 }
+
+eID.my_centerblend = thexBlends[my_chain_index mod 4];
+
+//eID.centerblend = eID.my_centerblend;
+
 
 formationTransferPhaseVars(eID);
 formationTransferVars(eID);

@@ -54,6 +54,13 @@ advancePhase_AbsoluteIndex = 0;
 for (var i=0;i&lt;64;i+=1) myEnemies[i] = -1;
 enemyCount = 0;
 
+// used to assign colors to thex chains
+thexBlends[0] = c_blue;
+thexBlends[1] = c_red;
+thexBlends[2] = c_lime;
+thexBlends[3] = c_white;
+thexBlends[4] = make_color_rgb(160,20,160);
+
 phaseCreateVars();
 </string>
           </argument>

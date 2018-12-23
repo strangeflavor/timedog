@@ -40,7 +40,7 @@
           <argument>
             <kind>1</kind>
             <string>killWhenOffscreen = true;
-offScreenTimer = 6;
+offScreenTimer = 30;
 value = -1;
 image_angle_tween = 0;
 
@@ -53,8 +53,9 @@ invul = true;
 image_xscale = scale*2;
 image_yscale = scale*2;
 
-centerblend = make_color_rgb(0,0,180+irandom(70)); //choose(c_red,c_blue,c_yellow,c_lime);
-explosion_blend = centerblend;
+my_centerblend = c_lime; //make_color_rgb(0,0,180+irandom(70)); //choose(c_red,c_blue,c_yellow,c_lime);
+centerblend = my_centerblend;
+explosion_blend = my_centerblend;
 </string>
           </argument>
         </arguments>
@@ -97,7 +98,8 @@ if currentPhase == 2 {
     image_angle += 2;
     y += sin(objectAge*.2)
 }
-centerblend = merge_color(make_color_rgb(0,0,180+irandom(50)),c_black,.3*abs(sin(objectAge*.1)));
+
+centerblend = merge_color(my_centerblend,c_black,.3*abs(sin(objectAge*.1)));
 
 /*
 if objectAge == fireAge - 12 {

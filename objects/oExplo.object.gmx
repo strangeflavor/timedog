@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0.1;
-image_xscale = 0.1;
-image_yscale = 0.1;
+image_xscale = 0.25;
+image_yscale = 0.25;
 scale_delta = 0.05;
 
 objectAge = 0;
