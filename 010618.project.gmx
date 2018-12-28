@@ -310,6 +310,7 @@
       <sprite>sprites\sThruster</sprite>
       <sprite>sprites\sMegaThrusterOff</sprite>
       <sprite>sprites\sMegaThruster</sprite>
+      <sprite>sprites\_sMegaThrusterOld</sprite>
       <sprite>sprites\sPickupPink</sprite>
       <sprite>sprites\sPickupCrystal</sprite>
       <sprite>sprites\sPickupTop</sprite>

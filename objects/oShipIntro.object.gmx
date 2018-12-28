@@ -95,8 +95,9 @@ if oBG.doBGTween oBG.startBGtween = true;
             <kind>1</kind>
             <string>///make(x,y,oShip);
 if instance_exists(oMegaThruster) {
-    oMegaThruster.image_speed = .25;
-    oMegaThruster.alarm[0] = 60;
+    //oMegaThruster.state = 1;
+    //oMegaThruster.image_speed = .25;
+    //oMegaThruster.alarm[0] = 60;
 }
 make(x,y,oShip);
 if mobile make(vw-24,24,pauseButton);

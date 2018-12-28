@@ -122,8 +122,8 @@ alarm[1] = 90;
             <kind>1</kind>
             <string>// slow down, cut mega thruster
 if instance_exists(oMegaThruster) {
-    oMegaThruster.state = 1;
-    oMegaThruster.alarm[0] = 90;
+    //oMegaThruster.state = 1;
+    //oMegaThruster.alarm[0] = 90;
 }
 //TweenBackgroundSpeedV(0,EaseOutExpo,TWEEN_MODE_ONCE,false,1,120,0,background_vspeed[0],2);
 //TweenBackgroundSpeedV(0,EaseOutExpo,TWEEN_MODE_ONCE,false,1,120,1,background_vspeed[1],1);

@@ -45,7 +45,7 @@ thrusterColor[6] = make_color_rgb(81,125,255);
 thrusterColor[7] = make_color_rgb(231,117,251);
 
 thrusterColorSize = 7;
-drawThruster = true;
+drawThruster = false;
 
 bigShotR = -12;
 

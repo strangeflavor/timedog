@@ -28,12 +28,11 @@
             <string>image_speed = 1;
 
 if !instance_exists(oShip) and !instance_exists(oShipIntro) kill();
-if instance_exists(oShip) oShip.drawThruster = false;
-if instance_exists(oShipIntro) oShipIntro.drawThruster = false;
+//if instance_exists(oShip) oShip.drawThruster = false;
+//if instance_exists(oShipIntro) oShipIntro.drawThruster = false;
 
 state = 0;
 objectAge = 0;
-
 
 thrusterColor[0] = make_color_rgb(34,49,249);
 thrusterColor[1] = make_color_rgb(198,42,252);
@@ -46,7 +45,7 @@ thrusterColor[7] = make_color_rgb(231,117,251);
 
 thrusterColorSize = 7;
 
-alarm[1] = 30;
+//alarm[1] = 30;
 </string>
           </argument>
         </arguments>
@@ -95,6 +94,7 @@ alarm[1] = 30;
             <string>if instance_exists(oOceanBG) or instance_exists(oOceanBG_fast) {
     kill();
     } else {
+        /*
         repeat(6) {
             with instance_create(x,y+70,Smoke) {
                 motion_add(270+random(40)-20,6+random(3));
@@ -104,7 +104,8 @@ alarm[1] = 30;
                 image_yscale = image_xscale;
             }
         }
-        
+        */
+
         if state == 0 alarm[1] = choose(8,10,12);
 }
 </string>
@@ -156,6 +157,13 @@ kill();
             <string>///objectAge += 1;
 objectAge += 1;
 
+if state == 0 {
+    if objectAge &gt; 60 {
+        state = 1;
+        alarm[0] = 12;
+    }
+}
+
 if instance_exists(oShip) {
     x = oShip.x;
     y = oShip.y;
@@ -196,10 +204,12 @@ if state == 0 {
     var thrusterXO = irandom(4)-2;
     var thrusterYO = irandom(2)-1;
 
-    if frac(objectAge/2) == 0 draw_sprite_ext(sMegaThruster,objectAge*image_speed,x+thrusterXO,y+yo+thrusterYO,image_xscale,image_yscale,0,thrusterColor[irandom(thrusterColorSize)],1);
+    //if frac(objectAge/4) == 0 draw_sprite_ext(sMegaThruster,objectAge*image_speed,x+thrusterXO,y+yo+thrusterYO,image_xscale,image_yscale,0,thrusterColor[irandom(thrusterColorSize)],1);
+    draw_sprite_ext(sMegaThruster,objectAge*image_speed,x+thrusterXO,y+yo+thrusterYO,image_xscale,image_yscale,0,thrusterColor[irandom(thrusterColorSize)],1);
 } else {
     if state == 1 {
-        if frac(objectAge/2) == 0 draw_sprite_ext(sMegaThrusterOff,objectAge,x,y+yo,image_xscale,image_yscale,0,thrusterColor[irandom(thrusterColorSize)],1);
+        //if frac(objectAge/4) == 0 draw_sprite_ext(sMegaThrusterOff,objectAge,x,y+yo,image_xscale,image_yscale,0,thrusterColor[irandom(thrusterColorSize)],1);
+        draw_sprite_ext(sMegaThrusterOff,objectAge,x,y+yo,image_xscale,image_yscale,0,thrusterColor[irandom(thrusterColorSize)],1);
     }
 }
 </string>
