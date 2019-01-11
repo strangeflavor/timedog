@@ -106,8 +106,11 @@ alarm[11] = choose(120,150,180);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !surface_exists(noisesurf) noisesurf = surface_create(view_wview[0], view_hview[0]);
-if !surface_exists(starssurf) starssurf = surface_create(view_wview[0], view_hview[0]);
+            <string>var surf_w = base_w;
+var surf_h = base_h;
+
+if !surface_exists(noisesurf) noisesurf = surface_create(surf_w, surf_h);
+if !surface_exists(starssurf) starssurf = surface_create(surf_w, surf_h);
 
 ///////////////////////////////////
 // draw flat bg color cycle
@@ -115,9 +118,7 @@ if !surface_exists(starssurf) starssurf = surface_create(view_wview[0], view_hvi
 
 c1 = make_color_rgb(0,0,30);
 c2 = make_color_rgb(0,5,50);
-//c1 = c_white;
-//c2 = c_gray;
-
+/*
 if ded {
     c1 = make_color_rgb(255,0,0);
     c2 = make_color_rgb(0,10,255);
@@ -130,40 +131,23 @@ draw_rectangle(0,0,vw,vh,false);
 // dark edges
 //makeBlendTester();
 draw_set_blend_mode_ext(9,5);
-draw_circle_colour(vw/2+nrandom(32),vh/2+nrandom(32),vh*2,c_white,c_black,false);
+draw_circle_colour(vw/2+nrandom(32),vh/2+nrandom(32),vh*2*scale,c_white,c_black,false);
 draw_set_blend_mode(bm_normal);
-
 
 ///////////////////////////////////
 // draw starfields
 ///////////////////////////////////
+
 background_vspeed[0] = 1;
 var starfieldColor = merge_color(c_gray,make_color_rgb(16,32,98),abs(sin(objectAge*.002)));
-draw_background_tiled_ext(bgStarfield,0,background_y[0],2,2,starfieldColor,1);
+draw_background_tiled_ext(bgStarfield,0,background_y[0],2*scale,2*scale,starfieldColor,1);
 //draw_background_tiled_ext(bgMoon,0,background_y[0],2,2,starfieldColor,1);
-
+*/
 ///////////////////////////////////
 // draw to and draw noise surface w/ blend mode
 ///////////////////////////////////
-draw_sun();
 
-
-// dark edges
-//makeBlendTester();
-//draw_set_blend_mode_ext(9,5);
-//draw_circle_colour(vw/2+nrandom(32),vh/2+nrandom(32),vh*2,c_white,c_black,false);
-//draw_set_blend_mode(bm_normal);
-///////////////////////////////////
-// draw aura around player ship
-///////////////////////////////////
-/*
-draw_set_blend_mode_ext(9,2);
-draw_set_alpha(irandom(10)*.2);
-draw_sprite_ext(sGradientCircle,0,vw/2,vh/2,4,4,0,c_yellow,1); // ? spotlight ?
-if instance_exists(oShip) draw_sprite(sGradientCircle,0,oShip.x+irandom(6)-3,oShip.y+irandom(6)-3);
-draw_set_alpha(1);
-draw_set_blend_mode(bm_normal);
-*/
+draw_sun(surf_w,surf_h);
 
 display_set_gui_size(room_width, room_height);
 </string>

@@ -115,79 +115,59 @@ draw_sprite_ext(sGradientCircle,0,vw/2+nrandom(64),vh/2+nrandom(64),4,4,0,c_whit
 draw_set_blend_mode(bm_normal);
 
 #define draw_sun
+var surf_w = argument0;
+var surf_h = argument1;
+
 draw_set_blend_mode_ext(5,4);
-//draw_set_blend_mode(bm_normal);
 //makeBlendTester();
 
 if surface_exists(noisesurf) {
     surface_set_target(noisesurf);
 
     if frac(objectAge/60) == 0 {
-        draw_sprite_ext(sFilmGrain,irandom(3),vw/2+irandom(128)-64,vh/2+irandom(128)-64,choose(-1,1),choose(-1,1),1,c_white,.25);
+        draw_sprite_ext(sFilmGrain,irandom(3),surf_w/2+irandom(128)-64,surf_h/2+irandom(128)-64,choose(-1,1),choose(-1,1),1,c_white,.25);
     } else {
         // fade
-        //draw_set_alpha(.0001);
         draw_set_alpha(.1);
-        //draw_clear_alpha(c_white,.1)
-        //var c_fade = merge_color(bg_color,c_black,abs(sin(objectAge*.01)));
         var c_fade = c_black;
-        draw_rectangle_colour(0,0,vw,vh,c_fade,c_fade,c_fade,c_fade,false);
+        draw_rectangle_colour(0,0,surf_w,surf_h,c_fade,c_fade,c_fade,c_fade,false);
         draw_set_alpha(1);
 
         //makeBlendTester();
         draw_set_blend_mode_ext(noiseblendsurf,noiseblenddest);
-        //draw_circle_colour(vw/2+nrandom(64),vh/2+nrandom(64),240,c_black,c_white,false);
-        draw_sprite_ext(sAlphaGradientCircle,0,vw/2+nrandom(64),vh/2+nrandom(64),3,3,0,c_white,1); // ? spotlight ?
-        //draw_sprite_ext(sGradientCircle,0,vw/2+nrandom(64),vh/2+nrandom(64),3,3,0,c_white,1); // ? spotlight ?
-
-        /*
-            if irandom(400) == 1 {
-                draw_clear_alpha(c2,.01);
-                draw_set_alpha(1);
-                draw_rectangle_color(0,0,vw,vh,c_black,c_black,c_black,c_black,false);
-            }
-        */
+        draw_sprite_ext(sAlphaGradientCircle,0,surf_w/2+nrandom(64),surf_h/2+nrandom(64),3,3,0,c_white,1); // ? spotlight ?
     }
     surface_reset_target();
 
-    draw_surface_stretched(noisesurf, 0, 0, display_get_gui_width(), display_get_gui_height());
+    draw_surface_stretched_ext(noisesurf,0,0,vw,vh,c_white,1);
+    //show(surf_w,surf_h)
 }
-
 
 if surface_exists(starssurf) {
     surface_set_target(starssurf);
 
     if frac(objectAge/60) == 0 {
-        draw_sprite_ext(sFilmGrain,irandom(3),vw/2+irandom(128)-64,vh/2+irandom(128)-64,choose(-1,1),choose(-1,1),1,c_white,.25);
+        draw_sprite_ext(sFilmGrain,irandom(3),surf_w/2+irandom(128)-64,surf_h/2+irandom(128)-64,choose(-1,1),choose(-1,1),1,c_white,.25);
     } else {
         // fade
-        //draw_set_alpha(.0001);
         draw_set_alpha(.1);
-        //draw_clear_alpha(c_white,.1)
-        //var c_fade = merge_color(bg_color,c_black,abs(sin(objectAge*.01)));
         var c_fade = c_black;
-        draw_rectangle_colour(0,0,vw,vh,c_fade,c_fade,c_fade,c_fade,false);
+        draw_rectangle_colour(0,0,surf_w,surf_h,c_fade,c_fade,c_fade,c_fade,false);
         draw_set_alpha(1);
-    
+
         //makeBlendTester();
         draw_set_blend_mode_ext(2,2);
-        //draw_circle_colour(vw/2+nrandom(64),vh/2+nrandom(64),240,c_black,c_white,false);
-        //draw_sprite_ext(sAlphaGradientCircle,0,vw/2+nrandom(64),vh/2+nrandom(64),3,3,0,c_white,1); // ? spotlight ?
-        draw_sprite_ext(sGradientCircle,0,vw/2+nrandom(64),vh/2+nrandom(64),1.5,1.5,0,c_white,1); // ? spotlight ?
+        draw_sprite_ext(sGradientCircle,0,surf_w/2+nrandom(64),surf_h/2+nrandom(64),1.5,1.5,0,c_white,1); // ? spotlight ?
 
-            if irandom(400) == 1 {
-                draw_clear_alpha(c2,.01);
-                draw_set_alpha(1);
-                draw_rectangle_color(0,0,vw,vh,c_black,c_black,c_black,c_black,false);
-            }
-
-        
-    }    
+        if irandom(400) == 1 {
+            draw_clear_alpha(c2,.01);
+            draw_set_alpha(1);
+            draw_rectangle_color(0,0,surf_w,surf_h,c_black,c_black,c_black,c_black,false);
+        }
+    }
     surface_reset_target();
 
-    draw_surface_stretched(starssurf, 0, 0, display_get_gui_width(), display_get_gui_height());
+    draw_surface_stretched_ext(starssurf,0,0,vw,vh,c_white,1);
 }
-
-
 
 draw_set_blend_mode(bm_normal);

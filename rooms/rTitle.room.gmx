@@ -10,7 +10,13 @@
   <persistent>0</persistent>
   <colour>0</colour>
   <showcolour>-1</showcolour>
-  <code></code>
+  <code>//window_center();
+var wx = screen_w/2 - vw/2;
+var wy = screen_h/2 - vh/2;
+
+window_set_position(wx,wy);
+
+window_mouse_set(vw/2,vh/2);</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

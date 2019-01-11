@@ -6,23 +6,30 @@ setupFiles();
 
 if os_type == os_ios or os_type == os_android mobile = true else mobile = false;
 
+developer = true;
+debug = 0;
+debugTimelineStartPos = -1;
+
 ///////////////////////////////////////////////
 // screen stuff
 ///////////////////////////////////////////////
 
-debug = 0;
-scale = 1;
-developer = true;
-debugTimelineStartPos = -1;
-
-base_w = 480;
-base_h = 640;
-vw = base_w*scale;
-vh = base_h*scale;
 screen_w = display_get_width();
 screen_h = display_get_height();
 
+base_w = 480;
+base_h = 640;
+
+scale = max(1,floor(screen_h/base_h));
+
+vw = base_w*scale;
+vh = base_h*scale;
+
+window_set_size(vw,vh);
+// note that window_center() gets called in rTitle create event bc it won't work on the same set as window_set_size()
+
 room_set_view(rTitle,0,true,0,0,vw,vh,0,0,vw,vh,0,0,0,0,-1)
+room_set_view(rGrandpa,0,true,0,0,vw,vh,0,0,vw,vh,0,0,0,0,-1)
 room_set_view(rLevelSelect,0,true,0,0,vw,vh,0,0,vw,vh,0,0,0,0,-1)
 room_set_view(rDeepSpace,0,true,0,0,vw,vh,0,0,vw,vh,0,0,0,0,-1)
 room_set_view(rMysteryPlanet,0,true,0,0,vw,vh,0,0,vw,vh,0,0,0,0,-1)
@@ -62,8 +69,6 @@ choose_norepeat_lastvalue2 = -9999;
 make(oConsole);
 make(controller);
 make(oAudio);
-
-window_mouse_set(vw/2,vh/2);
 
 room_goto_next();
 
