@@ -73,7 +73,7 @@ if dialogIndex > -1 {
     gradientSlideIn += 2;
     if room != rShop {
         draw_set_blend_mode_ext(0,3);
-        draw_sprite_ext(sTopGradient,0,0,min(gradientSlideIn,-64),1,1,0,c_white,1);
+        draw_sprite_ext(sTopGradient,0,0,min(gradientSlideIn,-64),scale,scale,0,c_white,1);
         draw_set_blend_mode(bm_normal);
     }
 

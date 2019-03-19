@@ -63,8 +63,9 @@ savedCurrentWorld = false;
 waitForUnlock = false;
 
 pickupHUD = make(oPickup);
+pickupHUD.image_xscale = scale;
+pickupHUD.image_yscale = scale;
 pickupHUD_x = view_xview[0]+view_wview[0] - 100;
-pickupHUD_y = 32;
 </string>
           </argument>
         </arguments>
@@ -280,21 +281,29 @@ objectAge += 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var sliderWidth = room_width - 128;
-var sliderHeight = 32;
+            <string>/*
+var surf_w = base_w;
+var surf_h = base_h;
+
+if !surface_exists(noisesurf) noisesurf = surface_create(surf_w,surf_h);
+*/
+var sliderWidth = vw;//room_width - 128;
+var sliderHeight = 32*scale;
+var yy = vh-80*scale;
+
 draw_set_color(c_white);
 draw_set_alpha(1);
-draw_rectangle(x-sliderWidth,y-sliderHeight,x+sliderWidth,y+sliderHeight,false);
+draw_rectangle(x-sliderWidth,yy-sliderHeight,x+sliderWidth,yy+sliderHeight,false);
 
 draw_set_color(background_color);
 var cx,xx;
 for (var i=0;i&lt;numWorlds;i+=1) {
-    xx = view_wview[0]*.0875+((i*view_wview[0])/(view_wview[0]*numWorlds)*(view_wview[0]*.9));
-    draw_circle(view_xview[0]+xx,y,12,false);
+    //xx = view_wview[0]*.0875+((i*view_wview[0])/(view_wview[0]*numWorlds)*(view_wview[0]*.9));
+    xx = vw*.0875+((i*base_w*scale)/(base_w*numWorlds)*(base_w*.9));
+    draw_circle(view_xview[0]+xx,yy,12*scale,false);
     //if i == currentWorld draw_sprite_ext(sUFO,0,xx,y,1,1,8*sin(objectAge*.05),c_white,1);
     if i == currentWorld slider_position_xx = xx;
 }
-
 
 if ufoX == -1 {
     ufoX = slider_position_xx;
@@ -311,21 +320,25 @@ if ufoX == -1 {
 }
 
 var flipUFO = -dir;
-draw_sprite_ext(sUFO,0,view_xview[0]+ufoX,y,flipUFO,1,8*sin(objectAge*.05),c_white,1);
+draw_sprite_ext(sUFO,0,view_xview[0]+ufoX,yy,flipUFO*scale,scale,8*sin(objectAge*.05),c_white,1);
+
+// menu hud (world name, gem count)
 draw_set_font(fStapler);
 draw_set_color(c_white);
 draw_set_halign(fa_left);
-draw_set_valign(fa_bottom);
-draw_text(view_xview[0]+16,54,'WORLD '+string(currentWorld+1)+'#'+worldNames[currentWorld]);
+draw_set_valign(fa_top);
+
+var _hudYO = 8*scale;
+
+draw_text_ext_transformed(view_xview[0]+16*scale,_hudYO+4*scale,'WORLD '+string(currentWorld+1)+'#'+worldNames[currentWorld],24,-1,scale,scale,0);
 
 var sw = string_width('x'+string(gems));
 
 draw_set_halign(fa_right);
-draw_text(view_xview[0]+view_wview[0]-16,42,'x '+string(gems));
+draw_text_ext_transformed(view_xview[0]+vw-16*scale,_hudYO+12*scale,'x '+string(gems),0,-1,scale,scale,0);
 
-pickupHUD.x = view_xview[0]+view_wview[0]-sw-36;
-pickupHUD.y = pickupHUD_y;
-
+pickupHUD.x = view_xview[0]+vw-sw*scale-40*scale;
+pickupHUD.y = _hudYO+20*scale; //pickupHUD_y*scale;
 
 /*
 pickupHUD.x = pickupHUD_x + view_xview[0];

@@ -40,9 +40,6 @@
           <argument>
             <kind>1</kind>
             <string>buttonSize = 80;
-image_xscale = buttonSize;
-image_yscale = buttonSize;
-
 
 // unlock sequence stuff
 waitForUnlock = false;
@@ -97,8 +94,11 @@ timeline_running = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !waitForUnlock {
-    if (mouse_x &gt; x and mouse_x &lt; x + buttonSize and mouse_y &gt; y and mouse_y &lt; y + buttonSize) {
+            <string>image_xscale = buttonSize*scale;
+image_yscale = buttonSize*scale;
+
+if !waitForUnlock {
+    if (mouse_x &gt; x and mouse_x &lt; x + buttonSize*scale and mouse_y &gt; y and mouse_y &lt; y + buttonSize*scale) {
         if !rollOver sfx(sndRollover);
         rollOver = true;
     } else {
@@ -149,7 +149,7 @@ timeline_running = true;
             <string>var rr = 0;
 var fill = false;
 if (rollOver and !mobile) and !locked {
-    rr = 4;
+    rr = 4*scale;
     fill = true;
     image_blend = merge_color(c_white,c_red,max(.1,.2,abs(sin(objectAge*.1))));
 } else {
@@ -167,21 +167,22 @@ if shop {
     draw_set_valign(fa_bottom);
     draw_set_halign(fa_left);
     draw_set_color(c_white);
-    draw_text(x+4,y+shakeOffset+buttonSize/2,string('SHOP'));//+','+string(levelName));
-    draw_roundrect_colour_ext(x-rr+shakeOffset,y-rr+shakeOffset+buttonSize/2,x+buttonSize+rr+shakeOffset,y+buttonSize+rr+shakeOffset,4,4,image_blend,image_blend,!fill);    
+    //draw_text(x+4,y+shakeOffset+buttonSize/2,string('SHOP'));//+','+string(levelName));
+    draw_text_ext_transformed(x+4,y+shakeOffset+buttonSize/2,string('SHOP'),0,-1,scale,scale,0);//+','+string(levelName));
+    draw_roundrect_colour_ext(x-rr+shakeOffset,y-rr+shakeOffset+(buttonSize*scale)/2,x+(buttonSize*scale)+rr+shakeOffset,y+buttonSize+rr+shakeOffset,4,4,image_blend,image_blend,!fill);
 } else {
     if boss {
-        draw_roundrect_colour_ext(x-rr+shakeOffset,y-rr+shakeOffset,x+buttonSize+rr+shakeOffset,y+buttonSize+rr+shakeOffset,4,4,image_blend,image_blend,!fill);
+        draw_roundrect_colour_ext(x-rr+shakeOffset,y-rr+shakeOffset,x+buttonSize*scale+rr+shakeOffset,y+buttonSize*scale+rr+shakeOffset,4,4,image_blend,image_blend,!fill);
         draw_set_valign(fa_top);
         draw_set_halign(fa_left);
         if locked {
-            draw_sprite_ext(sWarning,0,x+shakeOffset+buttonSize/2,y+shakeOffset+buttonSize/2,1,1,0,c_black,1)
+            draw_sprite_ext(sWarning,0,x+shakeOffset+buttonSize/2,y+shakeOffset+buttonSize/2,scale,scale,0,c_black,1)
         } else {
-            if rollOver draw_sprite_ext(sWarning,0,x+shakeOffset+buttonSize/2,y+shakeOffset+buttonSize/2,1,1,0,c_black,1) else draw_sprite_ext(sWarning,0,x+buttonSize/2,y+buttonSize/2,1,1,0,c_white,1)
+            if rollOver draw_sprite_ext(sWarning,0,x+shakeOffset+buttonSize/2,y+shakeOffset+buttonSize/2,scale,scale,0,c_black,1) else draw_sprite_ext(sWarning,0,x+buttonSize/2,y+buttonSize/2,scale,scale,0,c_white,1)
         }
         //draw_text(x+4,y+4,string(world+1)+'-'+string(levelID - (levelID div 100)*100+1));//+','+string(levelName));
     } else {
-        draw_roundrect_colour_ext(x-rr+shakeOffset,y-rr+shakeOffset,x+buttonSize+rr+shakeOffset,y+buttonSize+rr+shakeOffset,4,4,image_blend,image_blend,!fill);
+        draw_roundrect_colour_ext(x-rr+shakeOffset,y-rr+shakeOffset,x+buttonSize*scale+rr+shakeOffset,y+buttonSize*scale+rr+shakeOffset,4,4,image_blend,image_blend,!fill);
         draw_set_valign(fa_top);
         draw_set_halign(fa_left);
         if rollOver draw_set_color(c_black) else draw_set_color(c_white);

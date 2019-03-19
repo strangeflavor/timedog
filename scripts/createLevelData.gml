@@ -45,7 +45,7 @@ buttonID.levelName = getLevelData(buttonID.levelID,"name");
 buttonID.locked = getLevelData(buttonID.levelID,"locked");
 #define unlockAdjacent
 var completedLevel = argument0;
-var buttonDistance = 80;
+var buttonDistance = buttonSize*scale;
 var buttonID_left,buttonID_right,buttonID_top,buttonID_bottom;
 
 // right
