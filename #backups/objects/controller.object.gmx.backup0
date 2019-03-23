@@ -1,0 +1,190 @@
+// 2019-03-23 17:43:05
+#event create
+manageManagers();
+
+formationArray[0,0] = -1;
+formationLeaderArray[0] = -1;
+formationIndex = -1;
+
+dx = room_width/2;
+
+active = true;
+objectAge = 0;
+
+surf = -1;
+
+screen_scale = 1;
+
+if !mobile cursor_sprite = sCursorBig;
+window_set_cursor(cr_none); // Disable the system cursor
+
+#event alarm0|window_center();
+window_center();
+
+#event step
+if mouse_x < 32 and mouse_y < 32 and mouse_check_button_released(mb_left) {
+    debug += 1;
+    if debug > 2 debug = 0;
+}
+#section
+objectAge += 1;
+
+#event mouse_global_left_press
+originX = mouse_x;
+originY = mouse_y;
+
+xLast = originX;
+yLast = originY;
+
+doMove = true;
+
+#event mouse_global_left_release
+if active {
+    doMove = false;    
+}
+
+#event other_room_start|startroom();
+startroom(room);
+
+#event other_room_end|endroom();
+endroom();
+
+#event draw
+draw_set_color(c_white);
+draw_set_font(fFont);
+draw_set_halign(fa_left);
+draw_set_valign(fa_bottom);
+
+if debug == 2 {
+    draw_text(8*scale,vh-24*scale,instance_count);
+    draw_text(8*scale,vh-8*scale,string(room_speed)+','+string(fps)+','+string(fps_real));
+
+    with oEnemy {
+        draw_set_halign(fa_middle);
+        draw_text(x,y+sprite_get_height(sprite_index)+2,'*a'+string(active)+', p'+string(currentPhase));
+
+        for (var i=0;i<16;i+=1) {
+            if !is_undefined(turret[i,0]) {
+                draw_set_color(c_red);
+                draw_circle(getTurretX(i),getTurretY(i),12,false);
+                draw_set_color(c_black);
+                draw_set_halign(fa_middle);
+                draw_set_valign(fa_center);
+                draw_text(getTurretX(i)+2,getTurretY(i)+2,string(i));
+            }
+        }
+    }
+}
+
+#event draw_gui
+if (live_call()) return live_result;
+
+/*
+if surface_exists(surf) and room != rTitle {
+    // noise test
+    if surface_exists(noisesurf) {
+        if view_wview[1] == vw {
+            // draw new noise every n frames
+            if frac(objectAge/20) == 0 {
+                surface_set_target(noisesurf);
+
+                draw_sprite_ext(sBrak,0,vw/2+irandom(256)-128,vh/2+irandom(256)-128,1,1,1,c_white,1);
+                if irandom(6) == 1 {
+                    draw_set_color(make_color_rgb(64+irandom(128),128+irandom(128),128+irandom(128)));
+                    for(var i=0;i<12;i+=1) {
+                        draw_circle(irandom(view_wview[0]),irandom(view_hview[0]),60+irandom(120),false);
+                    }
+                }
+
+                surface_reset_target();
+            } else {
+                // fade
+                surface_set_target(noisesurf);
+                draw_set_alpha(.1);
+                draw_rectangle_colour(0,0,vw,vh,c_white,c_white,c_white,c_white,false);
+                draw_set_alpha(1);
+
+                surface_reset_target();
+            }
+        }
+    }
+
+    draw_surface_stretched(surf, 0, 0, display_get_gui_width(), display_get_gui_height());    
+    draw_set_blend_mode_ext(bm_dest_color, bm_zero);
+    //draw_set_alpha(.5);
+    draw_surface_stretched(noisesurf, 0, 0, display_get_gui_width(), display_get_gui_height());
+    draw_set_blend_mode(bm_normal);
+    //draw_set_alpha(1);
+}
+*/
+
+if surface_exists(surf) and room == rDeepSpace {
+    //draw_surface_stretched(surf, 0, 0, display_get_gui_width(), display_get_gui_height());    
+}
+
+
+#event draw_begin
+
+//if !surface_exists(surf) surf = surface_create(base_w, base_h);
+
+//if view_wview[1] == vw view_xview[1] = view_xview[0]; // condition here is to allow f2 debug zoomout
+//view_surface_id[1] = surf;
+
+#event draw_end|surface_reset_target();
+//surface_reset_target();
+
+// adding noise?
+/*
+surface_set_target(surf);
+
+draw_set_alpha(.25);
+draw_circle_colour(irandom(view_wview[0]),irandom(view_hview[0]),60+irandom(120),c_black,c_black,false);
+
+for(var i=0;i<16;i+=1) {
+    draw_circle_colour(irandom(view_wview[0]),irandom(view_hview[0]),60+irandom(120),c_black,c_black,false);
+}
+surface_reset_target();
+draw_set_alpha(1);
+*/
+
+#event keypress:vk_return
+//if keyboard_check(vk_lalt) or keyboard_check(vk_ralt) {
+    window_set_fullscreen(!window_get_fullscreen());
+//    keyboard_clear(vk_lalt);
+//    keyboard_clear(vk_ralt);
+    exit;
+//}
+
+#event keypress:vk_escape|game_end();
+game_end();
+
+#event keypress:G|repeat 10 make(mouse_x,mouse_y,oPickup);
+if room == rLevelSelect {
+    gems += 100;
+} else {
+    repeat 10 make(mouse_x,mouse_y,oPickup);
+}
+
+#event keypress:M|sound_stop_all();
+sound_stop_all();
+
+#event keypress:vk_f2 debug zoom out
+if view_wview[1] == vw {
+    view_wview[1] *= 1.5;
+    view_hview[1] *= 1.5;
+    view_xview[1] -= 128 // view_wview[1]*.75;
+    view_yview[1] -= 160 //view_hview[1]*.75;
+} else {
+    view_xview[1] = 0;
+    view_yview[1] = 0;
+    view_wview[1] = vw;
+    view_hview[1] = vh;
+}
+
+#event keypress:vk_f4|screenResize(false);
+screen_scale += .5;
+screenResize(false);
+
+#event keypress:vk_f12
+debugTimelineStartPos = levelManager.timeline_position - 30;
+trace('saved '+string(levelManager.timeline_position)+' to debugTimelineStartPos');

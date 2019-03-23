@@ -1,0 +1,99 @@
+// 2019-03-23 17:09:52
+#event create
+#action action_inherited
+#section
+buttonSize = 80;
+
+// unlock sequence stuff
+waitForUnlock = false;
+shake = false;
+shop = false;
+boss = false;
+
+unlockTimer = -1;
+
+#event alarm0
+timeline_index = tButtonUnlock;
+timeline_running = true;
+
+#event step
+image_xscale = buttonSize*scale;
+image_yscale = buttonSize*scale;
+
+if !waitForUnlock {
+    if (mouse_x > x and mouse_x < x + buttonSize*scale and mouse_y > y and mouse_y < y + buttonSize*scale) {
+        if !rollOver sfx(sndRollover);
+        rollOver = true;
+    } else {
+        unlockTimer = -1;
+        rollOver = false;
+    }
+
+    if rollOver and objectAge > 10 {
+        //if !mobile and mouse_check_button(mb_left) image_alpha = .5;
+        if mouse_check_button_released(mb_left) and !locked and abs(frac(view_xview[0]/vw)) < .03 {
+            saveFiles();
+            if shop {
+                room_goto(rShop);
+            } else {
+                if debug GAMEFLOW_currentLevel = -1 else GAMEFLOW_currentLevel = levelID;
+                room_goto(rDeepSpace);
+            }
+        }
+
+        if mouse_check_button(mb_left) unlockTimer += 1; //and mobile unlockTimer += 1;
+        if mouse_check_button_released(mb_right) or unlockTimer > 40 unlockAdjacent(id);
+    } else {
+        image_alpha = 1;
+    }
+}
+
+#event draw
+if (live_call()) return live_result;
+
+var rr = 0;
+var fill = false;
+if (rollOver and !mobile) and !locked {
+    rr = 4*scale;
+    fill = true;
+    image_blend = merge_color(c_white,c_red,max(.1,.2,abs(sin(objectAge*.1))));
+} else {
+    image_blend = c_white;
+}
+
+if locked fill = true;
+//if waitForUnlock buttonSize = 60 else buttonSize = 80;
+//if alarm[0] > -1 image_blend = c_red;
+
+var shakeOffset = 0;
+if shake shakeOffset = irandom(8) - 4;
+
+if shop {
+    draw_set_valign(fa_bottom);
+    draw_set_halign(fa_left);
+    draw_set_color(c_white);
+    //draw_text(x+4,y+shakeOffset+buttonSize/2,string('SHOP'));//+','+string(levelName));
+    draw_text_ext_transformed(x+4,y+shakeOffset+buttonSize/2,string('SHOP'),0,-1,scale,scale,0);//+','+string(levelName));
+    draw_roundrect_colour_ext(x-rr+shakeOffset,y-rr+shakeOffset+(buttonSize*scale)/2,x+(buttonSize*scale)+rr+shakeOffset,y+(buttonSize*scale)+rr+shakeOffset,4,4,image_blend,image_blend,!fill);
+} else {
+    if boss {
+        draw_roundrect_colour_ext(x-rr+shakeOffset,y-rr+shakeOffset,x+buttonSize*scale+rr+shakeOffset,y+buttonSize*scale+rr+shakeOffset,4,4,image_blend,image_blend,!fill);
+        draw_set_valign(fa_top);
+        draw_set_halign(fa_left);
+        if locked {
+            draw_sprite_ext(sWarning,0,x+shakeOffset+(buttonSize*scale)/2,y+shakeOffset+(buttonSize*scale)/2,scale,scale,0,c_black,1)
+        } else {
+            if rollOver draw_sprite_ext(sWarning,0,x+shakeOffset+(buttonSize*scale)/2,y+shakeOffset+(buttonSize*scale)/2,scale,scale,0,c_black,1) else draw_sprite_ext(sWarning,0,x+(buttonSize*scale)/2,y+(buttonSize*scale)/2,scale,scale,0,c_white,1)
+        }
+        //draw_text(x+4,y+4,string(world+1)+'-'+string(levelID - (levelID div 100)*100+1));//+','+string(levelName));
+    } else {
+        draw_roundrect_colour_ext(x-rr+shakeOffset,y-rr+shakeOffset,x+buttonSize*scale+rr+shakeOffset,y+buttonSize*scale+rr+shakeOffset,4,4,image_blend,image_blend,!fill);
+        draw_set_valign(fa_top);
+        draw_set_halign(fa_left);
+        if rollOver draw_set_color(c_black) else draw_set_color(c_white);
+        //draw_text(x+4+shakeOffset,y+4+shakeOffset,string(world+1)+'-'+string(levelID - (levelID div 100)*100+1));//+','+string(levelName));
+        draw_text_ext_transformed(x+4+shakeOffset,y+4+shakeOffset,string(world+1)+'-'+string(levelID - (levelID div 100)*100+1),-1,-1,scale,scale,0);//+','+string(levelName));
+    }
+}
+
+//draw_text(x+4,y+32,string(levelID));//+','+string(levelName));

@@ -169,16 +169,16 @@ if shop {
     draw_set_color(c_white);
     //draw_text(x+4,y+shakeOffset+buttonSize/2,string('SHOP'));//+','+string(levelName));
     draw_text_ext_transformed(x+4,y+shakeOffset+buttonSize/2,string('SHOP'),0,-1,scale,scale,0);//+','+string(levelName));
-    draw_roundrect_colour_ext(x-rr+shakeOffset,y-rr+shakeOffset+(buttonSize*scale)/2,x+(buttonSize*scale)+rr+shakeOffset,y+buttonSize+rr+shakeOffset,4,4,image_blend,image_blend,!fill);
+    draw_roundrect_colour_ext(x-rr+shakeOffset,y-rr+shakeOffset+(buttonSize*scale)/2,x+(buttonSize*scale)+rr+shakeOffset,y+(buttonSize*scale)+rr+shakeOffset,4,4,image_blend,image_blend,!fill);
 } else {
     if boss {
         draw_roundrect_colour_ext(x-rr+shakeOffset,y-rr+shakeOffset,x+buttonSize*scale+rr+shakeOffset,y+buttonSize*scale+rr+shakeOffset,4,4,image_blend,image_blend,!fill);
         draw_set_valign(fa_top);
         draw_set_halign(fa_left);
         if locked {
-            draw_sprite_ext(sWarning,0,x+shakeOffset+buttonSize/2,y+shakeOffset+buttonSize/2,scale,scale,0,c_black,1)
+            draw_sprite_ext(sWarning,0,x+shakeOffset+(buttonSize*scale)/2,y+shakeOffset+(buttonSize*scale)/2,scale,scale,0,c_black,1)
         } else {
-            if rollOver draw_sprite_ext(sWarning,0,x+shakeOffset+buttonSize/2,y+shakeOffset+buttonSize/2,scale,scale,0,c_black,1) else draw_sprite_ext(sWarning,0,x+buttonSize/2,y+buttonSize/2,scale,scale,0,c_white,1)
+            if rollOver draw_sprite_ext(sWarning,0,x+shakeOffset+(buttonSize*scale)/2,y+shakeOffset+(buttonSize*scale)/2,scale,scale,0,c_black,1) else draw_sprite_ext(sWarning,0,x+(buttonSize*scale)/2,y+(buttonSize*scale)/2,scale,scale,0,c_white,1)
         }
         //draw_text(x+4,y+4,string(world+1)+'-'+string(levelID - (levelID div 100)*100+1));//+','+string(levelName));
     } else {
@@ -186,7 +186,8 @@ if shop {
         draw_set_valign(fa_top);
         draw_set_halign(fa_left);
         if rollOver draw_set_color(c_black) else draw_set_color(c_white);
-        draw_text(x+4+shakeOffset,y+4+shakeOffset,string(world+1)+'-'+string(levelID - (levelID div 100)*100+1));//+','+string(levelName));
+        //draw_text(x+4+shakeOffset,y+4+shakeOffset,string(world+1)+'-'+string(levelID - (levelID div 100)*100+1));//+','+string(levelName));
+        draw_text_ext_transformed(x+4+shakeOffset,y+4+shakeOffset,string(world+1)+'-'+string(levelID - (levelID div 100)*100+1),-1,-1,scale,scale,0);//+','+string(levelName));
     }
 }
 
