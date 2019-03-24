@@ -29,8 +29,9 @@
 dx = 0;
 dy = 0;
 
-image_xscale = 2*scale;
-image_yscale = 2*scale;
+//image_xscale = 2*scale;
+//image_yscale = 2*scale;
+image_scale(2);
 image_speed = .2;
 
 doMove = false;

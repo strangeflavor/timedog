@@ -1,4 +1,4 @@
-// 2019-03-23 17:42:39
+// 2019-03-23 18:20:36
 #event create
 manageManagers();
 
@@ -77,83 +77,25 @@ if debug == 2 {
 }
 
 #event draw_gui
-if (live_call()) return live_result;
-
-/*
-if surface_exists(surf) and room != rTitle {
-    // noise test
-    if surface_exists(noisesurf) {
-        if view_wview[1] == vw {
-            // draw new noise every n frames
-            if frac(objectAge/20) == 0 {
-                surface_set_target(noisesurf);
-
-                draw_sprite_ext(sBrak,0,vw/2+irandom(256)-128,vh/2+irandom(256)-128,1,1,1,c_white,1);
-                if irandom(6) == 1 {
-                    draw_set_color(make_color_rgb(64+irandom(128),128+irandom(128),128+irandom(128)));
-                    for(var i=0;i<12;i+=1) {
-                        draw_circle(irandom(view_wview[0]),irandom(view_hview[0]),60+irandom(120),false);
-                    }
-                }
-
-                surface_reset_target();
-            } else {
-                // fade
-                surface_set_target(noisesurf);
-                draw_set_alpha(.1);
-                draw_rectangle_colour(0,0,vw,vh,c_white,c_white,c_white,c_white,false);
-                draw_set_alpha(1);
-
-                surface_reset_target();
-            }
-        }
-    }
-
-    draw_surface_stretched(surf, 0, 0, display_get_gui_width(), display_get_gui_height());    
-    draw_set_blend_mode_ext(bm_dest_color, bm_zero);
-    //draw_set_alpha(.5);
-    draw_surface_stretched(noisesurf, 0, 0, display_get_gui_width(), display_get_gui_height());
-    draw_set_blend_mode(bm_normal);
-    //draw_set_alpha(1);
-}
-*/
 
 if surface_exists(surf) and room == rDeepSpace {
-    //draw_surface_stretched(surf, 0, 0, display_get_gui_width(), display_get_gui_height());    
+    //draw_surface_stretched(surf, 0, 0, display_get_gui_width(), display_get_gui_height());
+    //draw_set_alpha(1);
+    //draw_surface_stretched(surf, 0, 0, vw,vh);
 }
 
-
 #event draw_begin
-
-//if !surface_exists(surf) surf = surface_create(base_w, base_h);
+if !surface_exists(surf) surf = surface_create(base_w, base_h);
 
 if view_wview[1] == vw view_xview[1] = view_xview[0]; // condition here is to allow f2 debug zoomout
 view_surface_id[1] = surf;
 
 #event draw_end|surface_reset_target();
-//surface_reset_target();
-
-// adding noise?
-/*
-surface_set_target(surf);
-
-draw_set_alpha(.25);
-draw_circle_colour(irandom(view_wview[0]),irandom(view_hview[0]),60+irandom(120),c_black,c_black,false);
-
-for(var i=0;i<16;i+=1) {
-    draw_circle_colour(irandom(view_wview[0]),irandom(view_hview[0]),60+irandom(120),c_black,c_black,false);
-}
-surface_reset_target();
-draw_set_alpha(1);
-*/
+    surface_reset_target();
 
 #event keypress:vk_return
-//if keyboard_check(vk_lalt) or keyboard_check(vk_ralt) {
     window_set_fullscreen(!window_get_fullscreen());
-//    keyboard_clear(vk_lalt);
-//    keyboard_clear(vk_ralt);
     exit;
-//}
 
 #event keypress:vk_escape|game_end();
 game_end();

@@ -1,4 +1,4 @@
-// 2019-03-23 17:40:32
+// 2019-03-23 20:59:58
 #define setup
 
 //if (live_call()) return live_result;
@@ -32,7 +32,7 @@ window_set_size(vw,vh);
 room_set_view(rTitle,0,true,0,0,vw,vh,0,0,vw,vh,0,0,0,0,-1)
 room_set_view(rGrandpa,0,true,0,0,vw,vh,0,0,vw,vh,0,0,0,0,-1)
 room_set_view(rLevelSelect,0,true,0,0,vw,vh,0,0,vw,vh,0,0,0,0,-1)
-room_set_view(rDeepSpace,0,true,0,0,vw,vh,0,0,vw,vh,0,0,0,0,-1)
+room_set_view(rDeepSpace,0,true,0,0,base_w,base_h,0,0,base_w,base_h,0,0,0,0,-1)
 room_set_view(rMysteryPlanet,0,true,0,0,vw,vh,0,0,vw,vh,0,0,0,0,-1)
 
 ///////////////////////////////////////////////

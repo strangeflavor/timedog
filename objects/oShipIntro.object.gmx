@@ -27,17 +27,16 @@
             <kind>1</kind>
             <string>make(oMegaThruster);
 
-x = vw/2;
-y = vh + 64;
+x = base_w/2;
+y = base_h + 64;
 
-TweenSimpleMove(x,y,x,vh-vh/3,45,EaseInOutBack,0);
+TweenSimpleMove(x,y,x,base_h-base_h/3,45,EaseInOutBack,0);
 
 recentDx = 0;
 dx = 0;
 dy = 0;
 
-image_xscale = 2*scale;
-image_yscale = 2*scale;
+image_scale(2);
 image_speed = .2;
 
 doMove = false;
@@ -70,7 +69,7 @@ canFireTriple = 1;
 objectAge = 0;
 
 alarm[0] = 45;
-if oBG.doBGTween oBG.startBGtween = true;
+if instance_exists(oBG) if oBG.doBGTween oBG.startBGtween = true;
 </string>
           </argument>
         </arguments>
@@ -100,7 +99,7 @@ if instance_exists(oMegaThruster) {
     //oMegaThruster.alarm[0] = 60;
 }
 make(x,y,oShip);
-if mobile make(vw-24,24,pauseButton);
+if mobile make(base_w-24,24,pauseButton);
 make(oWeaponSelect);
 //make(levelIntroSplashScreen);
 
