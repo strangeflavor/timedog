@@ -1,6 +1,6 @@
 #define form_gridMissile
 ///form_gridMissile()
-with make(vw/2+100,-80,oGridShip) {
+with make(bw/2+100,-80,oGridShip) {
     phase[0] = enemy_move;
     phaseArguments[0,0] = 270; // direction
     phaseArguments[0,1] = 6; // speed
@@ -46,7 +46,7 @@ for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else
 
 var xpos = arg[0];
 if xpos == -1 {
-    if oShip.x > vw/2 xpos = 0 else xpos = vw;
+    if oShip.x > bw/2 xpos = 0 else xpos = bw;
 }
 
 var ypos = arg[1];
@@ -64,7 +64,7 @@ for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else
 var _xoffset = arg[0];
 if _xoffset == -1 _xoffset = 0;
 
-with make(vw/2+_xoffset,-32,oMultiShot) {
+with make(bw/2+_xoffset,-32,oMultiShot) {
     //formationID = other.newFormationID;
     path = pCurvedApproachMirror;
     path_speed = 6;
@@ -83,7 +83,7 @@ for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else
 var _xoffset = arg[0];
 if _xoffset == -1 _xoffset = 0;
 
-with make(vw/2+_xoffset,32,oCrab) {
+with make(bw/2+_xoffset,32,oCrab) {
     direction = 270 + irandom(60)-30;
     speed = 5;
 }
@@ -97,7 +97,7 @@ for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else
 var _xoffset = arg[0];
 if _xoffset == -1 _xoffset = 0;
 
-with make(vw/2+_xoffset,32,oLaserCrab) {
+with make(bw/2+_xoffset,32,oLaserCrab) {
     direction = 270 + irandom(60)-30;
     speed = 24;
 }
@@ -112,7 +112,7 @@ for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else
 var _xoffset = arg[0];
 if _xoffset == -1 _xoffset = 0;
 
-with make(vw/2+_xoffset,-64,oWaiter) {
+with make(bw/2+_xoffset,-64,oWaiter) {
     changeInto = oMassFireAtPlayer;
     changeAge = other._wait;
 }
@@ -128,7 +128,7 @@ if _wait < 1 _wait = 1;
 
 var _xoffset = arg[1];
 var _ystart = arg[2];
-if _xoffset == -1 _xoffset = choose_norepeat2(0,-vw/3,-vw/6,vw/3,vw/6);
+if _xoffset == -1 _xoffset = choose_norepeat2(0,-bw/3,-bw/6,bw/3,bw/6);
 
 if _ystart == -1 _ystart = -64;
 
@@ -141,7 +141,7 @@ if _ydest == -1 _ydest = 120;
 if _xoffsetDest == -1 _xoffsetDest = _xoffset;
 if _moveduration == -1 _moveduration = 30;
 
-var eID = make(vw/2+_xoffset,_ystart,oCircles);
+var eID = make(bw/2+_xoffset,_ystart,oCircles);
 eID._xoffsetDest = _xoffsetDest;
 eID.ydest = _ydest;
 eID.moveduration = _moveduration;

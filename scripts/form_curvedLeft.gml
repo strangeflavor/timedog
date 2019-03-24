@@ -21,7 +21,7 @@ _wait = arg[4];
 newFormationID = getFormationID();
 
 for (var i=0;i<count;i+=1) {
-    tId = make(vw/2+xoffset+i*2,yoffset,oMiniThex);
+    tId = make(bw/2+xoffset+i*2,yoffset,oMiniThex);
     tId.formationID = other.newFormationID;
     addEnemyToFormationTracker(tId.formationID);
 
@@ -54,7 +54,7 @@ _wait = arg[4];
 newFormationID = getFormationID();
 
 for (var i=0;i<count;i+=1) {
-    tId = make(vw/2+xoffset+i*2,yoffset,oMiniThex);
+    tId = make(bw/2+xoffset+i*2,yoffset,oMiniThex);
     tId.formationID = other.newFormationID;
     addEnemyToFormationTracker(tId.formationID);
 
@@ -76,7 +76,7 @@ for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else
 var _xoffset = arg[0];
 if _xoffset == 1 _xoffset = 0;
 
-with make(vw/2+_xoffset,-96,fChain) {
+with make(bw/2+_xoffset,-96,fChain) {
     enemy = oMiniThex;
     path = pSine;
     _path_speed = 7; //7+(other.i/2);
@@ -104,10 +104,10 @@ var _xoffset = arg[0];
 var _direction = 270;
 
 if _xoffset == -1 {
-    if oShip.x < vw/2 {
-        _xoffset = vw/2;
+    if oShip.x < bw/2 {
+        _xoffset = bw/2;
     } else {
-        _xoffset = -vw/2;
+        _xoffset = -bw/2;
     }
 }
 
@@ -120,7 +120,7 @@ if _speed == -1 _speed = 2;
 var _rotation_speed = arg[3];
 if _rotation_speed == -1 _rotation_speed = 2;
 
-var eID = make(vw/2+_xoffset,-32+_yoffset,oSteerTowardPlayer);
+var eID = make(bw/2+_xoffset,-32+_yoffset,oSteerTowardPlayer);
 eID._speed = _speed;
 eID._rotation_speed = _rotation_speed;
 eID.direction = _direction;

@@ -107,9 +107,9 @@ make(XPcounter);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///TweenSimpleMove(x,y,x,vh/3,120,EaseOutBounce);
+            <string>///TweenSimpleMove(x,y,x,bh/3,120,EaseOutBounce);
 tweening = true;
-TweenSimpleMove(x,y,x,vh/3,120,EaseOutBounce);
+TweenSimpleMove(x,y,x,bh/3,120,EaseOutBounce);
 </string>
           </argument>
         </arguments>

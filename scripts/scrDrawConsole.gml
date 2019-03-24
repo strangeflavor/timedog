@@ -5,7 +5,7 @@ draw_set_font(fArial);
 draw_set_halign(fa_right);
 draw_set_valign(fa_top);
 
-var vx = vw - 16;
+var vx = bw - 16;
 var vy = 32;
 //vh = screen_h;
 

@@ -49,12 +49,14 @@ with oEnemy {
 room_speed = 10;
 cursor_sprite = -1;
 
-oBG.playerDestroyed_x = x;
-oBG.playerDestroyed_y = y;
-oBG.ded = true;
-oBG.bg_color_rate = .05;
-
-oBG.alarm[0] = 1;
+if instance_exists(oBG) {
+    oBG.playerDestroyed_x = x;
+    oBG.playerDestroyed_y = y;
+    oBG.ded = true;
+    oBG.bg_color_rate = .05;
+    
+    oBG.alarm[0] = 1;
+}
 
 with levelManager {
     active = false;

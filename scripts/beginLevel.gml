@@ -75,7 +75,7 @@ if caughtEndLevel {
     if gracePeriod <= 0 and instance_number(oEnemy) <= 0 {
         //levelManager.active = false;
         GAMEFLOW_completedLevel = true;
-        make(vw/2,vh+64,endLevel);
+        make(bw/2,bh+64,endLevel);
         active = false;
     }
 }

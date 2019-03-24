@@ -650,6 +650,7 @@
     <shader type="GLSLES">shaders\sh_saturation.shader</shader>
     <shader type="GLSLES">shaders\shader_blur.shader</shader>
     <shader type="GLSLES">shaders\sh_wavy.shader</shader>
+    <shader type="GLSLES">shaders\shader11.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fStapler</font>
@@ -909,7 +910,7 @@
     <room>rooms\roomTest</room>
     <room>rooms\rWeaponSelect</room>
   </rooms>
-  <constants number="67">
+  <constants number="69">
     <constant name="live_enabled">1</constant>
     <constant name="scale">global._scale</constant>
     <constant name="vw">global._vw</constant>
@@ -918,6 +919,8 @@
     <constant name="screen_h">global._screen_h</constant>
     <constant name="base_w">global._base_w</constant>
     <constant name="base_h">global._base_h</constant>
+    <constant name="bw">global._bw</constant>
+    <constant name="bh">global._bh</constant>
     <constant name="gems">global._gems</constant>
     <constant name="developer">global._developer</constant>
     <constant name="mobile">global._mobile</constant>

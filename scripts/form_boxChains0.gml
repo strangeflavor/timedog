@@ -15,7 +15,7 @@ _path_speed = arg[4];
 _size = arg[5];
 
 if xoffset == -1 xoffset = -64 + choose(64,80,128,160,200);
-if _ystop == -1 _ystop = vh/2 - choose(90,120,180,240); // choose(180,120,200,300,400);
+if _ystop == -1 _ystop = bh/2 - choose(90,120,180,240); // choose(180,120,200,300,400);
 if _path_speed == -1 _path_speed = choose(24,32,40);
 if _rate == -1 _rate = 4;
 if _size == -1 _size = 3;
@@ -44,7 +44,7 @@ with make(-32+xoffset,32,fChain) {
     phaseArguments[1,0] = 8;
 }
 
-with make(vw-32-(32*_size)+xoffset,-32,fChain) {
+with make(bw-32-(32*_size)+xoffset,-32,fChain) {
     formationID = other.newFormationID;
     invul = true;
 
@@ -83,7 +83,7 @@ _direction = arg[6];
 _wait = arg[7];
 
 if xoffset == -1 xoffset = choose(1,-1)*choose(0,60,120,180)
-if _ystop == -1 _ystop = choose(vh/2,vh/3,vh/4) + nrandom(80);
+if _ystop == -1 _ystop = choose(bh/2,bh/3,bh/4) + nrandom(80);
 if _rate == -1 _rate = 8;
 if _path_speed == -1 _path_speed = 32;
 if _size == -1 _size = 3;
@@ -92,7 +92,7 @@ if _direction == -1 _direction = 270;
 
 newFormationID = getFormationID();
 
-with make(vw/2-150+xoffset-(_size*16),32,fChain) {
+with make(bw/2-150+xoffset-(_size*16),32,fChain) {
     formationID = other.newFormationID;
     wait = other._wait;
     invul = true;
@@ -117,8 +117,8 @@ with make(vw/2-150+xoffset-(_size*16),32,fChain) {
     phaseArguments[1,2] = 8;
 }
 
-//with make(46+vw-(32*_size)+xoffset,-32,fChain) {
-with make(vw/2+150+xoffset+(_size*16),32,fChain) {
+//with make(46+bw-(32*_size)+xoffset,-32,fChain) {
+with make(bw/2+150+xoffset+(_size*16),32,fChain) {
     formationID = other.newFormationID;
     if other._direction == 270 wait = other._wait else wait = other._wait + 8;
     invul = true;
@@ -170,12 +170,12 @@ if _wait == -1 _wait = 1;
 var xoffset;
 
 if side == 1 { // right
-    xoffset = vw + (_size-1) * _rate * _speed;
+    xoffset = bw + (_size-1) * _rate * _speed;
 } else { // left
     if side == -1 {
         xoffset = -(_size-1) * _rate * _speed;
     } else {
-        xoffset = vw/2+arg[0];
+        xoffset = bw/2+arg[0];
     }
 }
 
@@ -221,7 +221,7 @@ for (var i = 0; i < 16; i += 1;) if argument_count > i arg[i] = argument[i] else
 
 _wait = arg[0];
 var xoffset = arg[1];
-if xoffset == -1 xoffset = choose(1,-1)*irandom(vw/3)//_xoffset = (1+irandom(8)*vw) - vw/8;;
+if xoffset == -1 xoffset = choose(1,-1)*irandom(bw/3)//_xoffset = (1+irandom(8)*bw) - bw/8;;
 
 var yoffset = arg[2];
 if yoffset == -1 yoffset = choose(12,24,60);
@@ -237,7 +237,7 @@ if xoffset > 0 {
 
 newFormationID = getFormationID();
 
-with make(vw/2+xoffset,32+yoffset,fChain) {
+with make(bw/2+xoffset,32+yoffset,fChain) {
     formationID = other.newFormationID;
     enemy = oMiniThex;
     invul = true;
@@ -296,7 +296,7 @@ if moveDelay == -1 moveDelay = 120;
 
 //newFormationID = getFormationID();
 
-with make(vw/2+xoffset,32+yoffset,fChain) {
+with make(bw/2+xoffset,32+yoffset,fChain) {
     enemy = oMiniThex;
     invul = true;
     size = 12;
@@ -335,14 +335,14 @@ _wait = arg[0];
 var _enemy_x = arg[1];
 var _enemy_y = arg[2];
 
-if _enemy_x == -1 _enemy_x = vw/2 + choose(1,-1)*irandom(vw/4);
+if _enemy_x == -1 _enemy_x = bw/2 + choose(1,-1)*irandom(bw/4);
 if _enemy_y == -1 _enemy_y = choose(40,60);
 
 _direction = arg[3];
 
 if _wait == -1 _wait = 6;
 
-if _enemy_x > vw/2 {
+if _enemy_x > bw/2 {
     _direction = 270 - irandom(15) - 6;
 } else {
     _direction = 270 + irandom(15) + 6;

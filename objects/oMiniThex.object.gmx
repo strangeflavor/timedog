@@ -50,8 +50,7 @@ image_speed = .2;
 HP = 1;
 invul = true;
 
-image_xscale = scale*2;
-image_yscale = scale*2;
+image_scale(2);
 
 centerblend = choose(c_red,c_blue,c_yellow,c_lime);
 explosion_blend = centerblend;

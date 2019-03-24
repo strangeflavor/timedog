@@ -19,6 +19,8 @@ screen_h = display_get_height();
 
 base_w = 480;
 base_h = 640;
+bw = base_w;
+bh = base_h;
 
 scale = max(1,floor(screen_h/base_h));
 

@@ -30,8 +30,8 @@ var size = arg[2];
 var rate = arg[3];
 var rateDelta = arg[4];
 
-if xx == -1 xx = vw/2;
-if _enemy_xshuffle == -1 _enemy_xshuffle = vw/3;
+if xx == -1 xx = bw/2;
+if _enemy_xshuffle == -1 _enemy_xshuffle = bw/3;
 if size == -1 size = 32;
 if rate == -1 rate = 12;
 if rateDelta == -1 rateDelta = 1;

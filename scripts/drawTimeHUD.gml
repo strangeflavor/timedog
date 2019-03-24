@@ -16,32 +16,30 @@ if levelManager.winConditionValue > -2 {
     //var frames = irandom_range(10,59)
     frames = floor(frac((ttime mod 60)*.01)*100);
     //time_string = string(minutes) + ":" + string(seconds);
-    
-    
+
     if minutes < 1 {
         minutes = '00:';
     } else {
         minutes = string(minutes)+':';
     }
-    
+
     if seconds < 10 {
         seconds = string(seconds);
         seconds = '0'+seconds;
     }
-    
+
     if frames < 10 {
         frames = string(frames);
         frames = '0'+frames;
     }
-    
-    
+
     //ttime = string(minutes)+string(seconds);//+'.'+string(frames);
     ttime = string(minutes)+string(seconds)+'.'+string(frames);
-    
+
     draw_set_halign(fa_right);
     draw_set_valign(fa_bottom);
-    draw_text_ext(vw-32,32,ttime,-1,-1);
-    
+    draw_text_ext(bw-32,32,ttime,-1,-1);
+
     draw_set_halign(fa_left);
     //draw_text_ext_transformed(vw-32,24,subframes,-1,-1,.5,.5,0);
 }
@@ -53,14 +51,14 @@ if weapon > 0 {
     var xx;
     xx = 60;
     draw_set_alpha(1);
-    draw_sprite(sItemUI,0,xx-9,vh - 40);
-    draw_sprite(sItemUI,weapon,xx-9,vh - 40);
+    draw_sprite(sItemUI,0,xx-9,bh - 40);
+    draw_sprite(sItemUI,weapon,xx-9,bh - 40);
     draw_set_halign(fa_left);
     draw_set_valign(fa_bottom);
     draw_set_color(c_dkgray);
-    draw_text(xx+4,vh - 12,'EQ');
+    draw_text(xx+4,bh - 12,'EQ');
     draw_set_color(make_color_rgb(20+76,20+150,255));
-    draw_text(xx+2,vh - 10,'EQ');
+    draw_text(xx+2,bh - 10,'EQ');
 }
 
 if instance_exists(levelManager) if levelManager.winCondition == _WIN_TIME drawTimeHUD();
@@ -82,7 +80,7 @@ if dialogIndex > -1 {
         draw_set_halign(fa_left);
         draw_set_valign(fa_top);
         draw_set_color(c_white);
-        draw_text_ext(xx+8,min(yy,gradientSlideIn+128),oDialog.text,-1,vw*.7);
+        draw_text_ext(xx+8,min(yy,gradientSlideIn+128),oDialog.text,-1,bw*.7);
     } else {
         draw_set_font(fDialog);
         draw_set_halign(fa_left);
@@ -103,6 +101,6 @@ if dialogIndex > -1 {
         }
 
         draw_set_color(c_white);
-        draw_text_ext(xx+128,min(yy+20,gradientSlideIn+128),oDialog.text,-1,vw*.7);
+        draw_text_ext(xx+128,min(yy+20,gradientSlideIn+128),oDialog.text,-1,bw*.7);
     }
 }

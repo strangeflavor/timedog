@@ -124,7 +124,7 @@ if !mobile cursor_sprite = sCursorBig;
 with oEnemy kill();
 with oFX kill();
 with Smoke kill();
-make(vw/2,-64,failedLevel);
+make(bw/2,-64,failedLevel);
 
 with make(playerDestroyed_x,playerDestroyed_y,oFX) {
     sprite_index = sPlayerExplosion;
@@ -269,14 +269,17 @@ if surface_exists(starssurf) {
 // draw aura around player ship
 ///////////////////////////////////
 
-draw_set_blend_mode_ext(9,2);
-draw_set_alpha(irandom(10)*.1);
+//draw_set_blend_mode_ext(9,2);
+draw_set_blend_mode_ext(4,5);
+//makeBlendTester();
+//draw_set_alpha(irandom(10)*.1);
+draw_set_alpha(wave(.3,.7,5,0));
 if instance_exists(oShip) draw_sprite(sGradientCircle,0,oShip.x+irandom(6)-3,oShip.y+irandom(6)-3);
 draw_set_alpha(1);
 draw_set_blend_mode(bm_normal);
 
 
-display_set_gui_size(room_width, room_height);
+//display_set_gui_size(room_width, room_height);
 //draw_surface(application_surface,0,0);
 
 ///////////////////////////////////

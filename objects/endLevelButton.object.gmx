@@ -40,7 +40,7 @@
           <argument>
             <kind>1</kind>
             <string>///TweenSimpleMove(x,y,x,vh/3,120,EaseOutBounce);
-TweenSimpleMove(vw/2,vh+200,vw/2,vh*.75,45,EaseOutBounce);
+TweenSimpleMove(bw/2,bh+200,bw/2,bh*.75,45,EaseOutBounce);
 
 buttonSize = 64;
 </string>

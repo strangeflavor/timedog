@@ -2,7 +2,8 @@
 draw_set_blend_mode_ext(4,2);
 
 if surface_exists(noisesurf) {
-    if (view_wview[1] == vw and view_current == 0) or room == rTitle or room == rShop {
+    //if (view_wview[1] == vw and view_current == 0) or room == rTitle or room == rShop {
+    if 1==1 {
         // draw new noise every n frames
         surface_set_target(noisesurf);
         if frac(objectAge/30) == 0 {

@@ -33,7 +33,7 @@ difficulty = 0;
 // background
 ////////////////////
 
-//make(oBG);
+make(oBG);
 
 ////////////////////
 // formations &amp; wave stuff

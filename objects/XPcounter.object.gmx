@@ -50,9 +50,9 @@ XP_banked_array[0] = 0;
 XP_banked_tween = TweenFire(id, XP_banked_array, EaseInExpo, TWEEN_MODE_ONCE, false, 0.0, dur, XP_initial, XP);
 
 x1 = 48;
-y1 = vh-vh/3-16;
-x2 = vw-48
-y2 = vh-vh/3+16;
+y1 = bh-bh/3-16;
+x2 = bw-48
+y2 = bh-bh/3+16;
 
 var barWidth_max = x2 - x1 - 4;
 var barWidth_initial = barWidth_max*(XP_initial/getNextXP_threshold(XP_initial));
@@ -62,7 +62,7 @@ var barWidth_final = min(1,XP/getNextXP_threshold(XP_initial))*barWidth_max;
 barWidth_array[0] = 0;
 barWidth_tween = TweenFire(id, barWidth_array, EaseInExpo, TWEEN_MODE_ONCE, false, 0.0, dur, barWidth_initial, barWidth_final); //TweenFire(id, "", EaseInExpo, TWEEN_MODE_ONCE, true, 0.0, dur, XP, XP + GAMEFLOW_gemsCollectedInLevel);
 
-with make(48+16,vh-vh/3-40,oPickup) {
+with make(48+16,bh-bh/3-40,oPickup) {
     vspeed = 0;
     gravity = 0;
     depth -= 1;
@@ -169,7 +169,7 @@ draw_set_halign(fa_left);
 
 //draw_text(48+32,vh-vh/3-24-6,string(ceil(XP_initial+(XP_banked*GAMEFLOW_gemsCollectedInLevel)))+'/'+string(getCurrentXP_threshold()));
 //draw_text(48+32,vh-vh/3-24-6,string(XP_banked)+'/'+string(getCurrentXP_threshold()));
-draw_text(48+32,vh-vh/3-24-6,string(floor(XP_banked_array[0]))+'/'+string(getNextXP_threshold(XP_initial)));
+draw_text(48+32,bh-bh/3-24-6,string(floor(XP_banked_array[0]))+'/'+string(getNextXP_threshold(XP_initial)));
 
 
 draw_roundrect(x1,y1,x2,y2,true);
