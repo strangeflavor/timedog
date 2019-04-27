@@ -39,6 +39,7 @@ objectAge = 0;
 surf = -1;
 
 screen_scale = 1;
+fullscreen = false;
 
 if !mobile cursor_sprite = sCursorBig;
 window_set_cursor(cr_none); // Disable the system cursor
@@ -358,11 +359,9 @@ if surface_exists(surf) { //and room == rDeepSpace {
             <kind>1</kind>
             <string>if surface_exists(surf) {
     //draw_rectangle_color(0,0,display_get_gui_width(), display_get_gui_height(),c_red,c_blue,c_green,c_yellow,false);
+    draw_sprite_tiled(window_border_image,0,0,0)
     draw_surface_stretched(surf, 0, 0, display_get_gui_width(), display_get_gui_height());
 }
-
-
-
 
 draw_set_color(c_white);
 draw_set_font(fFont);
@@ -440,9 +439,8 @@ trace('saved '+string(levelManager.timeline_position)+' to debugTimelineStartPos
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///screenResize(false);
-screen_scale += .5;
-screenResize(false);
+            <string>///screenResize();
+screenResize();
 </string>
           </argument>
         </arguments>

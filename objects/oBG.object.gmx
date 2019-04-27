@@ -269,11 +269,10 @@ if surface_exists(starssurf) {
 // draw aura around player ship
 ///////////////////////////////////
 
-//draw_set_blend_mode_ext(9,2);
-draw_set_blend_mode_ext(4,5);
+draw_set_blend_mode_ext(9,2);
 //makeBlendTester();
-//draw_set_alpha(irandom(10)*.1);
-draw_set_alpha(wave(.3,.7,5,0));
+draw_set_alpha(irandom(10)*.1);
+//draw_set_alpha(wave(.4,.7,5,0));
 if instance_exists(oShip) draw_sprite(sGradientCircle,0,oShip.x+irandom(6)-3,oShip.y+irandom(6)-3);
 draw_set_alpha(1);
 draw_set_blend_mode(bm_normal);

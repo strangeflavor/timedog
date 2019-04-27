@@ -39,9 +39,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>formScriptName = '';
+            <string>x = bw/2;
+y = bh/2;
+
+formMode = 'forms';
+
+formScriptName = '';
 formScriptIndex = 0;
 formScriptCount = pg_makeFormationScriptArray();
+
+formBossScriptIndex = 0;
+formBossScriptCount = pg_makeBossScriptArray();
 
 /////////////////////
 // win condition stuff
@@ -138,8 +146,16 @@ if mouse_wheel_down() {
             <string>if debug &gt; 0 {
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
-    draw_set_color($EE1010)
-    draw_text(8,16,script_get_name(formScriptArray[formScriptIndex]));
+
+    if formMode == 'forms' {
+        draw_set_color($EE1010)
+        draw_text(8,16,script_get_name(formScriptArray[formScriptIndex]));
+    }
+
+    if formMode == 'bosses' {
+        draw_set_color($10EE010)
+        draw_text(8,16,object_get_name(formBossScriptArray[formBossScriptIndex]));
+    }
 }
 </string>
           </argument>
@@ -163,8 +179,40 @@ if mouse_wheel_down() {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>formScriptIndex += 1;
-if formScriptIndex &gt; formScriptCount formScriptIndex = 0;
+            <string>if formMode == 'forms' {
+    formScriptIndex += 1;
+    if formScriptIndex &gt; formScriptCount formScriptIndex = 0;
+} else {
+    formMode = 'forms';
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="39">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if formMode == 'bosses' {
+    formBossScriptIndex += 1;
+    if formBossScriptIndex &gt; formBossScriptCount formBossScriptIndex = 0;
+} else {
+    formMode = 'bosses';
+}
 </string>
           </argument>
         </arguments>
@@ -187,8 +235,40 @@ if formScriptIndex &gt; formScriptCount formScriptIndex = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>formScriptIndex -= 1;
-if formScriptIndex &lt; 0 formScriptIndex = formScriptCount;
+            <string>if formMode == 'forms' {
+    formScriptIndex -= 1;
+    if formScriptIndex &lt; 0 formScriptIndex = formScriptCount;
+} else {
+    formMode = 'forms';
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="37">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if formMode == 'bosses' {
+    formBossScriptIndex -= 1;
+    if formBossScriptIndex &lt; 0 formBossScriptIndex = formBossScriptCount;
+} else {
+    formMode = 'bosses'
+}
 </string>
           </argument>
         </arguments>
@@ -212,7 +292,8 @@ if formScriptIndex &lt; 0 formScriptIndex = formScriptCount;
           <argument>
             <kind>1</kind>
             <string>///script_execute(formScriptArray[formScriptIndex]);
-script_execute(formScriptArray[formScriptIndex]);
+if formMode == 'forms' script_execute(formScriptArray[formScriptIndex]);
+if formMode == 'bosses' make(formBossScriptArray[formBossScriptIndex]);
 </string>
           </argument>
         </arguments>

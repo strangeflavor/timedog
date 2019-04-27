@@ -340,6 +340,7 @@
       <sprite>sprites\sGridShip</sprite>
       <sprite>sprites\sCircles</sprite>
       <sprite>sprites\sStix</sprite>
+      <sprite>sprites\sMirror</sprite>
       <sprite>sprites\sCrab</sprite>
     </sprites>
     <sprites name="fx">
@@ -813,6 +814,7 @@
       <object>objects\oMerchantPilot</object>
       <object>objects\oSatellite</object>
       <object>objects\oMidBoss</object>
+      <object>objects\oMirror</object>
       <object>objects\oEnergyOrb</object>
       <object>objects\oFireAtPlayer</object>
       <object>objects\oPopo</object>

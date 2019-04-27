@@ -99,3 +99,15 @@ formScriptArray[f] = form_bezWideSine;
 f+=1;
 formScriptArray[f] = wave_sines0;
 return f;
+
+#define pg_makeBossScriptArray
+var f = 0;
+
+formBossScriptArray[f] = oMidBoss;
+f+=1;
+formBossScriptArray[f] = oMerchant;
+f+=1;
+formBossScriptArray[f] = oSkullKing;
+f+=1;
+formBossScriptArray[f] = oMirror;
+return f;
