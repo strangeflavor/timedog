@@ -56,6 +56,8 @@ buttonID_bottom = collision_point(completedLevel.x+buttonSize/2,completedLevel.y
 
 var unlockTime = 1;
 
+//show(buttonID_right,buttonID_left,buttonID_top,buttonID_bottom)
+
 if unlockLevel(buttonID_top,unlockTime) unlockTime += 24;
 if unlockLevel(buttonID_left,unlockTime) unlockTime += 18;
 if unlockLevel(buttonID_right,unlockTime) unlockTime += 12;

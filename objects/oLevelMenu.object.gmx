@@ -32,7 +32,7 @@ mouse_clear(mb_right);
 makeLevelButtons();
 makeEraSliders();
 
-alarm[0] = 1;
+alarm[0] = 2;
 </string>
           </argument>
         </arguments>
@@ -100,53 +100,6 @@ if GAMEFLOW_completedLevel {
         }
     }
 }
-
-
-/*
-if GAMEFLOW_completedLevel {
-    alarm[0] = 6;
-    oEraSlider.waitForUnlock = true;
-
-    if GAMEFLOW_gemsCollectedInLevel &gt; 0 {
-        //if !instance_exists(gemFeeder) make(gemFeeder);
-        alarm[1] = 30;
-    } else {
-        GAMEFLOW_completedLevel = false;
-        with oLevelButton {
-            waitForUnlock = true;
-
-            if levelID == GAMEFLOW_currentLevel {
-                show('unloc')
-                unlockAdjacent(id);
-            }
-        }
-        //alarm[1] = 60;
-    }
-}
-*/
-/*
-    GAMEFLOW_completedLevel = false;
-    oEraSlider.waitForUnlock = true;
-
-
-    if !instance_exists(gemFeeder) {
-        if GAMEFLOW_gemsCollectedInLevel &gt; 0 {
-            make(gemFeeder);
-        } else {
-            make(levelUnlocker);
-        }
-    
-    }
-*/
-    /*
-    with oLevelButton {
-        waitForUnlock = true;
-
-        if levelID == GAMEFLOW_currentLevel {
-            unlockAdjacent(id);
-        }
-    }
-    */
 </string>
           </argument>
         </arguments>

@@ -3,7 +3,7 @@
 var buffer = 48;
 var initialX = 64*scale;
 var initialY = 112*scale;
-var buttonDistance = 90;
+var buttonDistance = 90*scale;
 var buttonsPerSide = 4;
 
 buttonSize = 80;
@@ -15,7 +15,7 @@ var world = 0;
 for (var r=0;r<numWorlds*vw;r+=vw) {
     for (var i=0;i<buttonsPerSide;i+=1) {
         for (var j=0;j<buttonsPerSide;j+=1) {
-            instanceID = make(r+initialX+j*buttonDistance*scale,initialY+i*buttonDistance*scale,oLevelButton);
+            instanceID = make(r+initialX+j*buttonDistance,initialY+i*buttonDistance,oLevelButton);
             instanceID.buttonSize = buttonSize;
             instanceID.levelID = levelID + world*100;
             instanceID.world = (r div vw);
