@@ -50,7 +50,7 @@ slider_position_xx = 0;
 
 dx = 0;
 
-view_xview[0] = currentWorld*view_wview[0];
+view_xview[0] = currentWorld*vw;
 
 view_xview_previous = view_xview[0];
 view_xpos_normalized = 0;
@@ -65,7 +65,7 @@ waitForUnlock = false;
 pickupHUD = make(oPickup);
 pickupHUD.image_xscale = scale;
 pickupHUD.image_yscale = scale;
-pickupHUD_x = view_xview[0]+view_wview[0] - 100;
+pickupHUD_x = view_xview[0]+vw - 100;
 </string>
           </argument>
         </arguments>
@@ -111,8 +111,7 @@ pickupHUD_x = view_xview[0]+view_wview[0] - 100;
         dragTime += 1;
         //dragDistance = point_distance(drag_x, drag_y, drag_x-mouse_x, drag_y);
         // actual dragging logic:
-        view_xview[0] = view_xview[0] + drag_x - mouse_x
-        //view_yview[0] = view_yview[0] + drag_y - mouse_y
+        view_xview[0] = view_xview[0] + (drag_x - mouse_x)*((1/scale)*.2);
     }
 }
 </string>
@@ -150,8 +149,8 @@ pickupHUD_x = view_xview[0]+view_wview[0] - 100;
     }
 }
 
-view_xview[0] = max(view_xview[0],-view_wview[0]);
-view_xview[0] = min(view_xview[0],view_wview[0]*numWorlds);
+view_xview[0] = max(view_xview[0],-vw);
+view_xview[0] = min(view_xview[0],vw*numWorlds);
 
 /////////////////////////////////////////////
 // snap to a world if not dragging
@@ -159,24 +158,24 @@ view_xview[0] = min(view_xview[0],view_wview[0]*numWorlds);
 
 var cx;
 for (var i=0;i&lt;numWorlds;i+=1) {
-    cx[i] = i*view_wview[0]+view_wview[0]/2;
+    cx[i] = i*vw+vw/2;
 }
 
-var vx = view_xview[0]+view_wview[0]/2;
+var vx = view_xview[0]+vw/2;
 
 if view_xview[0] &gt; view_xview_previous dir = -1;
 if view_xview[0] &lt; view_xview_previous dir = 1;
 
 dx = cx[numWorlds-1];
 
-if !dragging and vx - view_wview[0]/2 &gt; 0 and vx + view_wview[0]/2 &lt; numWorlds*view_wview[0] {
+if !dragging and vx - vw/2 &gt; 0 and vx + vw/2 &lt; numWorlds*vw {
 
     // moving right
     if dir == -1 {
-        for (i=0;i&lt;numWorlds-1;i+=1) if vx &gt;= cx[i] - view_wview[0]*.67 and vx &lt; cx[i+1] - view_wview[0]*.67 break;
+        for (i=0;i&lt;numWorlds-1;i+=1) if vx &gt;= cx[i] - vw*.67 and vx &lt; cx[i+1] - vw*.67 break;
         dx = cx[i];
     } else {
-        for (i=numWorlds-1;i&gt;0;i-=1) if vx &lt;= cx[i] + view_wview[0]*.67 and vx &gt; cx[i-1] + view_wview[0]*.67 break;
+        for (i=numWorlds-1;i&gt;0;i-=1) if vx &lt;= cx[i] + vw*.67 and vx &gt; cx[i-1] + vw*.67 break;
         dx = cx[i];
     }
 
@@ -184,16 +183,16 @@ if !dragging and vx - view_wview[0]/2 &gt; 0 and vx + view_wview[0]/2 &lt; numWo
 }
 
 if !dragging {
-    if vx - view_wview[0]/2 &gt; 0 and vx + view_wview[0]/2 &lt; numWorlds*view_wview[0] {
-        if !TweenExists(snapTweenID) snapTweenID = TweenFire(id, tween_xView, EaseLinear, TWEEN_MODE_ONCE, true, 0.0, .1, view_xview[0], dx - view_wview[0]/2);
+    if vx - vw/2 &gt; 0 and vx + vw/2 &lt; numWorlds*vw {
+        if !TweenExists(snapTweenID) snapTweenID = TweenFire(id, tween_xView, EaseLinear, TWEEN_MODE_ONCE, true, 0.0, .1, view_xview[0], dx - vw/2);
     } else {
         if view_xview[0] &lt; 0 {
             dx = cx[0];
-            if !TweenExists(snapTweenID) snapTweenID = TweenFire(id, tween_xView, EaseLinear, TWEEN_MODE_ONCE, true, 0.0, .1, view_xview[0], dx - view_wview[0]/2);
+            if !TweenExists(snapTweenID) snapTweenID = TweenFire(id, tween_xView, EaseLinear, TWEEN_MODE_ONCE, true, 0.0, .1, view_xview[0], dx - vw/2);
         } else {
-            if view_xview[0] &gt; view_wview[0]*(numWorlds-1) {
+            if view_xview[0] &gt; vw*(numWorlds-1) {
                 dx = cx[numWorlds-1];
-                if !TweenExists(snapTweenID) snapTweenID = TweenFire(id, tween_xView, EaseLinear, TWEEN_MODE_ONCE, true, 0.0, .1, view_xview[0], dx - view_wview[0]/2);
+                if !TweenExists(snapTweenID) snapTweenID = TweenFire(id, tween_xView, EaseLinear, TWEEN_MODE_ONCE, true, 0.0, .1, view_xview[0], dx - vw/2);
             }
         }
     }
@@ -202,7 +201,7 @@ if !dragging {
 x = view_xview[0] + xstart;
 y = view_yview[0] + ystart;
 
-view_xpos_normalized = max(0,view_xview[0])/(view_wview[0]*numWorlds);//(view_wview[0]*numWorlds)/(view_xview[0]+view_wview[0]/2);
+view_xpos_normalized = max(0,view_xview[0])/(vw*numWorlds);//(vw*numWorlds)/(view_xview[0]+vw/2);
 /*
 if waitForUnlock {
     background_color = merge_colour(c_red,make_color_rgb(64,127,255),abs(sin(objectAge*.01)));

@@ -15,6 +15,12 @@ debugTimelineStartPos = -1;
 // screen stuff
 ///////////////////////////////////////////////
 
+// what do these all do again?? 
+    // screen: the actual size of the hardware display
+    // base: the base resolution of the game
+    // scale: the greatest amount base can multiplied by to fit within the size of screen
+    // vw: base*scale. views are set to this
+
 screen_w = display_get_width();
 screen_h = display_get_height();
 

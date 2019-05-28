@@ -144,18 +144,22 @@ if mouse_wheel_down() {
           <argument>
             <kind>1</kind>
             <string>if debug &gt; 0 {
+    draw_set_font(fFont);
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
 
     if formMode == 'forms' {
-        draw_set_color($EE1010)
+        draw_set_color($1010EE)
         draw_text(8,16,script_get_name(formScriptArray[formScriptIndex]));
     }
 
     if formMode == 'bosses' {
-        draw_set_color($10EE010)
+        draw_set_color($10EE10)
         draw_text(8,16,object_get_name(formBossScriptArray[formBossScriptIndex]));
     }
+    
+    draw_set_color(c_teal);
+    draw_text_ext_transformed(8,48,'L/R: boss, U/D: enemy, SPC: spawn',0,-1,.5,.5,0);
 }
 </string>
           </argument>

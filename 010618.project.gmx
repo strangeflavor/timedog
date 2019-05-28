@@ -692,7 +692,6 @@
         <object>objects\cloudLevel000</object>
         <object>objects\cloudLevel001</object>
       </objects>
-      <object>objects\levelManDebug</object>
       <object>objects\levelManager</object>
       <object>objects\waveListener</object>
     </objects>
@@ -771,6 +770,7 @@
       <object>objects\oTuner</object>
       <object>objects\blendTester</object>
       <object>objects\oConsole</object>
+      <object>objects\levelManDebug</object>
     </objects>
     <objects name="system">
       <object>objects\controller</object>
