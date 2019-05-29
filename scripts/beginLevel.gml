@@ -64,16 +64,17 @@ switch winCondition {
     */
 }
 
-if keyboard_check_pressed(vk_f9) caughtEndLevel = true;
+var forceEnd = false;
+if keyboard_check_pressed(vk_f9) forceEnd = true;
 
-if caughtEndLevel {
+if caughtEndLevel or forceEnd {
     kill(fChain);
 
     gracePeriod -= 1;
     oShip.invincible = true;
 
-    if gracePeriod <= 0 and instance_number(oEnemy) <= 0 {
-        //levelManager.active = false;
+    if (gracePeriod <= 0 and instance_number(oEnemy) <= 0) or forceEnd {
+        levelManager.active = false;
         GAMEFLOW_completedLevel = true;
         make(bw/2,bh+64,endLevel);
         active = false;

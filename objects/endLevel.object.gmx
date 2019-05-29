@@ -30,10 +30,9 @@ objectAge = 0;
 
 tweening = false;
 
-alarm[0] = 1;
-alarm[1] = 60;
-
-alarm[2] = 60;
+alarm[0] = 1; // bring in CLEAR banner
+alarm[1] = 60; // make XP counter
+alarm[2] = 60; // create 'fly off thruster' object, fly ship away
 </string>
           </argument>
         </arguments>
@@ -56,7 +55,8 @@ alarm[2] = 60;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>kill(oMegaThruster);
+            <string>///kill(oMegaThruster);
+kill(oMegaThruster);
 make(oShip.x,oShip.y,oMegaThrusterEOL);
 oShip.invul = true;
 oShip.active = false;

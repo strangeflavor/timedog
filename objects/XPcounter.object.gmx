@@ -68,6 +68,8 @@ with make(48+16,bh-bh/3-40,oPickup) {
     depth -= 1;
 }
 
+xp_image_alpha = 1;
+
 //alarm[0] = dur+240; // destroy self
 </string>
           </argument>
@@ -142,47 +144,22 @@ if mouse_check_button_pressed(mb_left) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
-if objectAge &gt; 1 {
-    if TweenExists(barWidth_tween) {
-        barWidth = TweenCalc(barWidth_tween);
-    } else {
-        //if !instance_exists(endLevelButton) make(endLevelButton);    
-    }
-    
-    if TweenExists(XP_banked_tween) {
-        //XP_banked = TweenCalc(XP_banked_tween);
-        //trace('xp: '+string(XP_banked))
-    } else {
-        //if objectAge &gt; dur XP_banked = XP;
-        //if !instance_exists(endLevelButton) make(endLevelButton);
-    }
-}
-*/
+            <string>if XP_banked_array[0] == XP if !instance_exists(endLevelButton) make(endLevelButton);
 
-if XP_banked_array[0] == XP if !instance_exists(endLevelButton) make(endLevelButton);
-
-if image_alpha &lt; 1 image_alpha = lerp(image_alpha,1,.01);
-draw_set_alpha(image_alpha);
+if xp_image_alpha &lt; 1 image_alpha = lerp(xp_image_alpha,1,.01);
+draw_set_alpha(xp_image_alpha);
 draw_set_color(c_white);
 draw_set_halign(fa_left);
 
-//draw_text(48+32,vh-vh/3-24-6,string(ceil(XP_initial+(XP_banked*GAMEFLOW_gemsCollectedInLevel)))+'/'+string(getCurrentXP_threshold()));
-//draw_text(48+32,vh-vh/3-24-6,string(XP_banked)+'/'+string(getCurrentXP_threshold()));
 draw_text(48+32,bh-bh/3-24-6,string(floor(XP_banked_array[0]))+'/'+string(getNextXP_threshold(XP_initial)));
 
 
 draw_roundrect(x1,y1,x2,y2,true);
 
-//var barWidth_initial = barWidth*(GAMEFLOW_gemsCollectedInLevel/XP_initial);
-//var barWidth_banked = barWidth*XP_banked - barWidth_initial;
-//var barWidth_final = barWidth*getCurrentXP_threshold();
-
-//trace(string(barWidth_initial));
-
-
 draw_sprite_stretched(sSquareIrrid,objectAge*.25,x1+2,y1+2,barWidth_array[0],y2-y1-4);
 objectAge += 1;
+
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>
