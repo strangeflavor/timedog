@@ -664,6 +664,7 @@
     <objects name="level mans">
       <objects name="dogstar">
         <object>objects\levelMan000</object>
+        <object>objects\levelManMidBoss_0</object>
         <object>objects\levelMan001</object>
         <object>objects\levelManProcGen_0</object>
         <object>objects\levelManMaze_0</object>
@@ -674,7 +675,6 @@
         <object>objects\levelMan012</object>
         <object>objects\levelMan013</object>
         <object>objects\levelMan014</object>
-        <object>objects\levelManMidBoss_0</object>
       </objects>
       <objects name="trash">
         <object>objects\trashLevel000</object>

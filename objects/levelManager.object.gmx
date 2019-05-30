@@ -239,13 +239,11 @@ if active {
           <argument>
             <kind>1</kind>
             <string>if debug == 1 {
-    if timeline_position &gt; 0 {
-        draw_set_color(c_white);
-        draw_set_halign(fa_middle);
-        draw_set_valign(fa_middle);
-        draw_set_alpha(1);
-        draw_text(vw/2,32,timeline_position);
-    }
+    draw_set_color(c_white);
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+    draw_set_alpha(1);
+    draw_text(8,8,object_get_name(object_index)+','+string(timeline_position));
 }
 </string>
           </argument>

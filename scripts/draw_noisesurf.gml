@@ -109,7 +109,7 @@ if surface_exists(noisesurf) {
 }
 
 //makeBlendTester();
-draw_set_blend_mode_ext(9,5);
+draw_set_blend_mode_ext(9,2);
 draw_sprite_ext(sGradientCircle,0,vw/2+nrandom(64),vh/2+nrandom(64),4,4,0,c_white,1); // ? spotlight ?
 
 

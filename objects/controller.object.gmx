@@ -221,90 +221,6 @@ startroom(room);
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="77">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/*
-view_surface_id[0] = surf;
-//surface_reset_target();
-
-if surface_exists(surf) { //and room == rDeepSpace {
-    //draw_surface_stretched(surf, 0, 0, display_get_gui_width(), display_get_gui_height());
-    draw_set_alpha(1);
-    //draw_surface_stretched(surf, 0, 0, vw,vh);
-    draw_rectangle_colour(0,0,vw,vh,c_red,c_red,c_red,c_red,false);
-}
-*/
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="76">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//if !surface_exists(surf) surf = surface_create(base_w, base_h);
-//surface_set_target(surf);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="73">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///surface_reset_target();
-    //surface_reset_target();
-    
-    
-    
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="8" enumb="72">
       <action>
         <libid>1</libid>
@@ -360,6 +276,7 @@ if surface_exists(surf) { //and room == rDeepSpace {
             <string>if surface_exists(surf) {
     //draw_rectangle_color(0,0,display_get_gui_width(), display_get_gui_height(),c_red,c_blue,c_green,c_yellow,false);
     draw_sprite_tiled(window_border_image,0,0,0)
+    draw_rectangle_colour(0,0,display_get_gui_width(), display_get_gui_height(),c_black,c_black,c_black,c_black,false);
     draw_surface_stretched(surf, 0, 0, display_get_gui_width(), display_get_gui_height());
 }
 

@@ -74,7 +74,7 @@ draw_set_alpha(1);
 draw_set_blend_mode(bm_normal);
 */
 
-display_set_gui_size(room_width, room_height);
+//display_set_gui_size(room_width, room_height);
 </string>
           </argument>
         </arguments>
