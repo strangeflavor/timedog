@@ -110,4 +110,6 @@ f+=1;
 formBossScriptArray[f] = oSkullKing;
 f+=1;
 formBossScriptArray[f] = oMirror;
+f+=1;
+formBossScriptArray[f] = oOceanCreep;
 return f;

@@ -311,6 +311,8 @@
         <sprite>sprites\sBattleship</sprite>
         <sprite>sprites\sBattleshipMegaCannon</sprite>
         <sprite>sprites\sBattleshipCannon</sprite>
+        <sprite>sprites\sOceanCreep</sprite>
+        <sprite>sprites\sOceanCreepMask</sprite>
       </sprites>
       <sprites name="skull">
         <sprite>sprites\sSkullKing</sprite>
@@ -320,6 +322,7 @@
       <sprites name="trash">
         <sprite>sprites\sTrashWorm</sprite>
       </sprites>
+      <sprite>sprites\sEye</sprite>
       <sprite>sprites\sprMidboss0</sprite>
       <sprite>sprites\sMerchantTop</sprite>
       <sprite>sprites\sMerchantBottom</sprite>
@@ -805,11 +808,13 @@
         <object>objects\oMantaMine_defective</object>
         <object>objects\oMantaMineExplosion</object>
         <object>objects\oShrimp</object>
+        <object>objects\oOceanCreep</object>
       </objects>
       <objects name="skull">
         <object>objects\oSkull</object>
         <object>objects\oSkullKing</object>
       </objects>
+      <object>objects\object175</object>
       <object>objects\oMerchant</object>
       <object>objects\oMerchantPilot</object>
       <object>objects\oSatellite</object>
