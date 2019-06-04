@@ -1,0 +1,4 @@
+// 2019-06-04 12:35:33
+#event step_begin
+#section
+image_scale(wave(.9,.95,2.666,0));

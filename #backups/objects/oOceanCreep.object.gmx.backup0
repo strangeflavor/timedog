@@ -1,4 +1,4 @@
-// 2019-06-03 22:37:54
+// 2019-06-04 13:14:17
 #event create
 #action action_inherited
 #section
@@ -25,22 +25,36 @@ eyeID_offset = sprite_height/4+8;
 #event step_begin
 #action action_inherited
 #section
-eyeID.x = x;//y+eyeID_offset;
-eyeID.y = y+eyeID_offset;
+if (live_call()) return live_result;
+
+var ed, ex, ey;
+ed = point_direction(x,y,oShip.x,oShip.y);
+ex = lengthdir_x(sprite_width/5,ed);
+ey = lengthdir_y(sprite_width/5,ed);
+
+eyeID.x = x+ex+14;
+eyeID.y = y+ey+6//+eyeID_offset;
 
 if state_path_position > 0 {
     y = ydest + wave(-6,6,90,0)
 }
 
 #event draw
-if (live_call()) return live_result;
 image_scale(wave(.9,.95,3.333,0));
 image_index = 4;
 
 draw_sprite_ext(sprite_index,5,x,y,image_xscale,image_yscale,0,c_white,1); // outline
 draw_sprite_ext(sprite_index,4,x,y,image_xscale,image_yscale,0,c_white,1); // base
+
+//makeBlendTester()
+draw_set_blend_mode_ext(9,4);
+//draw_set_blend_mode_ext(8,4);
+//draw_set_blend_mode_ext(2,4);
+draw_sprite_ext(sAlphaGradientCircle,0,x+18,y-8,image_xscale*3.9,image_yscale*3.9,0,c_white,1);
+draw_set_blend_mode(bm_normal);
+
 draw_set_blend_mode_ext(10,4);
-draw_sprite_ext(sprite_index,1,x,y,image_xscale,image_yscale,0,c_white,wave(.5,.25,1,0)); // 'skin'
+draw_sprite_ext(sprite_index,1,x,y,image_xscale,image_yscale,0,c_white,wave(.5,.25,2.333,0)); // 'skin'
 draw_set_blend_mode(bm_normal);
 draw_sprite_ext(sprite_index,3,x,y,image_xscale,image_yscale,0,c_white,1); // veins
 draw_sprite_ext(sprite_index,2,x,y,image_xscale,image_yscale,0,c_white,1); // flagellum
