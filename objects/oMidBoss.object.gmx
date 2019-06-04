@@ -65,7 +65,7 @@ HP = 360;
 flashing = 0;
 
 xdest = room_width/2;
-ydest = room_height/8;
+ydest = room_height/3;
 
 x1 = 128;
 x2 = room_width-x1;

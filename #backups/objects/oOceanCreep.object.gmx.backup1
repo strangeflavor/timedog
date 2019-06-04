@@ -1,0 +1,46 @@
+// 2019-06-03 22:34:34
+#event create
+#action action_inherited
+#section
+killWhenOffscreen = false;
+y = -bh/2;
+
+xdest = room_width/2;
+ydest = room_height/3;
+xVel = .25;
+x1 = bw/2 - 20;
+x2 = bw/2 + 20;
+
+setup_state_paths();
+add_state_path(_APPROACH,90);
+add_state_path(_BACKANDFORTH_HORI,390);
+state_path_loop_position = 1;
+start_state_paths();
+
+image_scale(1);
+eyeID = make(oOceanCreepEye);
+eyeID.depth = depth - 1;
+eyeID_offset = sprite_height/4+8;
+
+#event step_begin
+#action action_inherited
+#section
+eyeID.x = x;//y+eyeID_offset;
+eyeID.y = y+eyeID_offset;
+
+if state_path_position > 0 {
+    y = ydest + wave(-6,6,90,0)
+}
+
+#event draw
+if (live_call()) return live_result;
+image_scale(wave(.9,.95,3.333,0));
+image_index = 4;
+
+draw_sprite_ext(sprite_index,5,x,y,image_xscale,image_yscale,0,c_white,1); // outline
+draw_sprite_ext(sprite_index,4,x,y,image_xscale,image_yscale,0,c_white,1); // base
+makeBlendTester()
+draw_sprite_ext(sprite_index,1,x,y,image_xscale,image_yscale,0,c_white,wave(.5,.25,1,0)); // 'skin'
+draw_set_blend_mode(bm_normal)
+draw_sprite_ext(sprite_index,3,x,y,image_xscale,image_yscale,0,c_white,1); // veins
+draw_sprite_ext(sprite_index,2,x,y,image_xscale,image_yscale,0,c_white,1); // flagellum

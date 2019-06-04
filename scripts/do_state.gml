@@ -5,12 +5,18 @@ current_state_age += 1;
 
 #define _state_APPROACH
 // _state_APPROACH
+/*
 y+=yVel;
 if y > ydest {
     if yVel > 0.1 {
-        yVel *= .9;
+        yVel *= .99;
+    } else {
+        yVel = 0;
     }
 }
+*/
+
+y = lerp(y,ydest,.08);
 
 #define _state_BACKANDFORTH_HORI
 // state_BACKANDFORTH_HORI

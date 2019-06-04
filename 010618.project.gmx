@@ -809,6 +809,7 @@
         <object>objects\oMantaMineExplosion</object>
         <object>objects\oShrimp</object>
         <object>objects\oOceanCreep</object>
+        <object>objects\oOceanCreepEye</object>
       </objects>
       <objects name="skull">
         <object>objects\oSkull</object>
