@@ -341,6 +341,7 @@
       <sprite>sprites\sCube</sprite>
       <sprite>sprites\sMox</sprite>
       <sprite>sprites\sGridShip</sprite>
+      <sprite>sprites\sRodShip</sprite>
       <sprite>sprites\sCircles</sprite>
       <sprite>sprites\sStix</sprite>
       <sprite>sprites\sMirror</sprite>

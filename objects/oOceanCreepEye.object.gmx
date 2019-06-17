@@ -76,7 +76,7 @@ with make_bhpg_turret(0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_scale(wave(.9,.95,2.666,0));
+            <string>image_scale(wave(my_image_scale-.1,my_image_scale-.05,2.666,0));
 if objectAge &gt;= 120 bhpg_turret[0].active = true;
 objectAge += 1;
 </string>

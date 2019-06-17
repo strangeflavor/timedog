@@ -39,7 +39,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>myDirection = 180;
+            <string>my_image_scale = .5;
+
+myDirection = 180;
 killWhenOffscreen = false;
 y = -bh/2;
 
@@ -54,9 +56,8 @@ add_state_path(_APPROACH,90);
 add_state_path(_BACKANDFORTH_HORI,390);
 state_path_loop_position = 1;
 start_state_paths();
-
-image_scale(1);
 eyeID = make(oOceanCreepEye);
+eyeID.my_image_scale = my_image_scale;
 eyeID.depth = depth - 1;
 eyeID_offset = sprite_height/4+8;
 </string>
@@ -137,7 +138,7 @@ if instance_exists(oShip) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_scale(wave(.9,.95,3.333,0));
+            <string>image_scale(wave(my_image_scale-.1,my_image_scale-.05,3.333,0));
 image_index = 4;
 
 draw_sprite_ext(sprite_index,5,x,y,image_xscale,image_yscale,0,c_white,1); // outline
