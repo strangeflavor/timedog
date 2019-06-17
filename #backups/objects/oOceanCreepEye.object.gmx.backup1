@@ -1,4 +1,36 @@
-// 2019-06-04 12:35:33
+// 2019-06-15 19:10:06
+#event create
+objectAge = 0;
+
+with make_bhpg_turret(0) {
+    sprite_index = other.sprite_index;
+    bhpg_pattern_init(3,50,220,1,90,15,-0.25,0,30,6,32,16,0,16);
+    bhpg_bullet_init(oBullet,4,0,0);
+    
+    bullets[1] = 2;
+    bullets[2] = 1;
+    bullets[3] = 3;
+    bullets[4] = 2;
+    bullets[5] = 1;
+    bullets[6] = 3;
+    bullets[7] = 2;
+    bullets[8] = 1;
+    bullets[9] = 5;
+    bullets[10] = 1;
+    spin_reset_advanceBulletsIndex = true;
+    
+    spin_reset = 50;
+    spin_reset_wait = 45;
+
+    spin_reset_adjustStartAngle = 64; // added and then subtracted from start_angle each time spin resets
+    spin_reset_spin_direction_reverse = true;
+    spin_reset_adjustBullets = -1;
+
+    //TweenFire(id, tween_spin_reset_wait, EaseLinear, TWEEN_MODE_LOOP, true, 0.0, 1, 7, 60);
+}
+
+
 #event step_begin
-#section
 image_scale(wave(.9,.95,2.666,0));
+if objectAge >= 120 bhpg_turret[0].active = true;
+objectAge += 1;

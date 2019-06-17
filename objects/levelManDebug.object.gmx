@@ -143,7 +143,7 @@ if mouse_wheel_down() {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if debug &gt; 0 {
+            <string>if debug == 1 or debug == 2 {
     draw_set_font(fFont);
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);

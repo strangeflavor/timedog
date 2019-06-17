@@ -624,6 +624,7 @@
       <script>scripts\tune.gml</script>
       <script>scripts\trace.gml</script>
       <script>scripts\makeBlendTester.gml</script>
+      <script>scripts\angleLerp.gml</script>
     </scripts>
     <scripts name="data">
       <script>scripts\getWeaponName.gml</script>

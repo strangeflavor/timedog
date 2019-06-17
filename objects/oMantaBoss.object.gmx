@@ -254,6 +254,7 @@ image_angle = 90
                 TweenSimpleMove(x,y,vw/2,150,60,EaseOutQuint);
             }
 
+            // activate turret!
             if current_state_age &gt;= 210 bhpg_turret[0].active = true;
 
             var mine_freq = 0;

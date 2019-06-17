@@ -1,0 +1,106 @@
+// 2019-06-15 19:07:24
+#event create
+#action action_inherited
+#section
+x = bw/2;
+y = bh/2;
+
+formMode = 'forms';
+
+formScriptName = '';
+formScriptIndex = 0;
+formScriptCount = pg_makeFormationScriptArray();
+
+formBossScriptIndex = 0;
+formBossScriptCount = pg_makeBossScriptArray();
+
+/////////////////////
+// win condition stuff
+/////////////////////
+
+winCondition = _WIN_TIME;
+winConditionValue = -2;
+
+/////////////////////
+// dialog stuff
+/////////////////////
+
+//addDialog(_NONE,"debug room");
+
+////////////////////
+// background
+////////////////////
+
+//make(oBG);
+//kill(oBG);
+//make(oTrenchBG);
+//make(oMoonBG);
+//make(oOceanBG);
+
+alarm[1] = -1;
+kill(oMegaThruster);
+
+#event step
+if mouse_wheel_up() {
+    formScriptIndex -= 1;
+    if formScriptIndex < 0 formScriptIndex = formScriptCount;
+}
+
+if mouse_wheel_down() {
+    formScriptIndex += 1;
+    if formScriptIndex > formScriptCount formScriptIndex = 0;
+}
+
+#event draw_begin
+#action action_inherited
+#section
+if debug == 1 or debug == 2 {
+    draw_set_font(fFont);
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+    draw_set_color($1010EE)
+
+    var mmode = '';
+    if formMode == 'forms' mmode = script_get_name(formScriptArray[formScriptIndex]);
+    if formMode == 'bosses' mmode = object_get_name(formBossScriptArray[formBossScriptIndex]);
+    draw_text(8,16,mmode);
+
+    draw_set_color(c_teal);
+    draw_text_ext_transformed(8,32,'L/R: boss, U/D: enemy, SPC: spawn',0,-1,.5,.5,0);
+}
+
+#event keypress:vk_space|script_execute(formScriptArray[formScriptIndex]);
+if formMode == 'forms' script_execute(formScriptArray[formScriptIndex]);
+if formMode == 'bosses' make(formBossScriptArray[formBossScriptIndex]);
+
+#event keypress:vk_left
+if formMode == 'bosses' {
+    formBossScriptIndex -= 1;
+    if formBossScriptIndex < 0 formBossScriptIndex = formBossScriptCount;
+} else {
+    formMode = 'bosses'
+}
+
+#event keypress:vk_up
+if formMode == 'forms' {
+    formScriptIndex -= 1;
+    if formScriptIndex < 0 formScriptIndex = formScriptCount;
+} else {
+    formMode = 'forms';
+}
+
+#event keypress:vk_right
+if formMode == 'bosses' {
+    formBossScriptIndex += 1;
+    if formBossScriptIndex > formBossScriptCount formBossScriptIndex = 0;
+} else {
+    formMode = 'bosses';
+}
+
+#event keypress:vk_down
+if formMode == 'forms' {
+    formScriptIndex += 1;
+    if formScriptIndex > formScriptCount formScriptIndex = 0;
+} else {
+    formMode = 'forms';
+}

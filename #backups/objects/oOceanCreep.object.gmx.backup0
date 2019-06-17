@@ -1,7 +1,8 @@
-// 2019-06-04 13:14:17
+// 2019-06-15 23:28:50
 #event create
 #action action_inherited
 #section
+myDirection = 180;
 killWhenOffscreen = false;
 y = -bh/2;
 
@@ -26,17 +27,24 @@ eyeID_offset = sprite_height/4+8;
 #action action_inherited
 #section
 if (live_call()) return live_result;
+if instance_exists(oShip) {
+    var ed, dd, ex, ey, dx;
 
-var ed, ex, ey;
-ed = point_direction(x,y,oShip.x,oShip.y);
-ex = lengthdir_x(sprite_width/5,ed);
-ey = lengthdir_y(sprite_width/5,ed);
+    ed = point_direction(x,y,oShip.x,oShip.y);
+    dd = angle_difference(myDirection, ed);
+    dx = .1+abs(dd*.01);
 
-eyeID.x = x+ex+14;
-eyeID.y = y+ey+6//+eyeID_offset;
+    myDirection -= (min(abs(dd), 10) * sign(dd))*dx;
 
-if state_path_position > 0 {
-    y = ydest + wave(-6,6,90,0)
+    ex = lengthdir_x(sprite_width/5,myDirection);
+    ey = lengthdir_y(sprite_width/5,myDirection);
+    
+    eyeID.x = x+ex+14;
+    eyeID.y = y+ey+6;
+
+    if state_path_position > 0 {
+        y = ydest + wave(-6,6,90,0)
+    }
 }
 
 #event draw
@@ -47,10 +55,16 @@ draw_sprite_ext(sprite_index,5,x,y,image_xscale,image_yscale,0,c_white,1); // ou
 draw_sprite_ext(sprite_index,4,x,y,image_xscale,image_yscale,0,c_white,1); // base
 
 //makeBlendTester()
-draw_set_blend_mode_ext(9,4);
-//draw_set_blend_mode_ext(8,4);
-//draw_set_blend_mode_ext(2,4);
-draw_sprite_ext(sAlphaGradientCircle,0,x+18,y-8,image_xscale*3.9,image_yscale*3.9,0,c_white,1);
+//draw_set_blend_mode_ext(9,4);
+draw_set_blend_mode_ext(8,4);
+draw_set_blend_mode_ext(2,4);
+
+// use this when weak
+    //draw_set_blend_mode_ext(2,2);
+    //draw_sprite_ext(sAlphaGradientCircle,0,x+24,y-8,image_xscale*4.5,image_yscale*4.5,0,c_red,1);
+// use this when weak
+    
+draw_sprite_ext(sAlphaGradientCircle,0,x+24,y-8,image_xscale*4,image_yscale*4,0,c_purple,1);
 draw_set_blend_mode(bm_normal);
 
 draw_set_blend_mode_ext(10,4);
