@@ -11,6 +11,20 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -29,8 +43,10 @@
 HP = 360;
 flashing = 0;
 
-xdest = room_width/2;
-ydest = room_height/8;
+
+y = -64;
+//xdest = room_width/2;
+//ydest = room_height/8;
 
 x1 = 128;
 x2 = room_width-x1;
@@ -39,17 +55,16 @@ yVel = 7;
 slowdown = 0;
 
 attack_state = -1;
-change_attack_state = 70;
-next_attack_state = _ATK_BEAMS;
 
 attack_started = false;
+state = _WAIT;
+
+image_speed = .1;
 
 setup_state_paths();
-add_state_path(_APPROACH,90);
-add_state_path(_BACKANDFORTH_HORI,390);
 add_state_path(_WAIT,120);
-state_path_loop_position = 1;
-
+add_state_path(_BACKANDFORTH_HORI,9999);
+state_path_loop_position = -1;
 /*
 add_attack_state_path(_WAIT,180);
 add_attack_state_path(_ATK_BEAMS,-1);
@@ -59,6 +74,8 @@ start_state_paths();
           </argument>
         </arguments>
       </action>
+    </event>
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>604</id>
@@ -73,8 +90,6 @@ start_state_paths();
         <relative>0</relative>
         <isnot>0</isnot>
       </action>
-    </event>
-    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -94,89 +109,146 @@ start_state_paths();
             <string>if active {
     switch state {
         case _WAIT:
-            if state_path_position &gt; 1 or state_path_loops &gt; 0 {
-                if current_state_age &gt; 30 {
-                    shoot_spray(2,24,choose(2,3,3,4),sShot3);
-                }
+            x = lerp(oShip.x,x,.1);  // +wave(-16,16,1.5,0),
+            y = lerp(max(20,oShip.y-bh*.25),y,.07);
+
+            if current_state_age &gt; 60 {
+                state = _BACKANDFORTH_HORI;
             }
+            image_speed = .5;
         break;
         case _BACKANDFORTH_HORI:
-            if current_state_age == 15 {
-                addRecoil(20);
-
-                beam[0] = make(getTurretX(0),getTurretY(0),oBeam);
-                with beam[0] {
-                    xo = x - other.x;
-                    yo = 0;//y + sprite_height/3;
-                    owner = other.id;
-                    duration = 330;
-                }
-
-                beam[1] = make(getTurretX(1),getTurretY(1),oBeam);
-                with beam[1] {
-                    xo = x - other.x;
-                    yo = 0;//y + sprite_height/3;
-                    owner = other.id;
-                    duration = 330;
-                }
-
-                if state_path_position &gt; 0 or state_path_loops &gt; 0 {
-                    shoot_spray(2,24,choose(2,3,3,4),sShot3);
+            if instance_exists(oShip) {
+                x = lerp(oShip.x,x,.75);// + wave(-16,16,1.5,0);
+                y = lerp(max(20,oShip.y-bh*.25),y,.7);
+                if x &lt; oShip.x - 8 {
+                    image_angle = lerp(-8,image_angle,.95);
+                } else {
+                    if x &gt; oShip.x + 8 {
+                        image_angle = lerp(8,image_angle,.95);
+                    } else {
+                        image_angle = lerp(0,image_angle,.99);
+                    }
                 }
             }
+
+            image_speed = wave(.5,.2,2,0);
         break;
         case _SPIRAL:
-            if frac(objectAge/2) == 0 {
-                if current_state_age &lt; 120 {
-                    with make(getTurretX(0),getTurretY(0),oBullet) {
-                        sprite_index = sShot1;
-                        depth -= 1;
-                        direction = 360*sin(other.objectAge*.04);
-                        speed = 5;
-                        friction = .02;
-                        image_blend = make_color_rgb(255,0,128);
-                    }
-                } else {
-                    with make(getTurretX(1),getTurretY(1),oBullet) {
-                        sprite_index = sShot1;
-                        depth -= 1;
-                        direction = 360*sin(other.objectAge*.03);
-                        speed = 5;
-                        friction = .02;
-                        image_blend = make_color_rgb(255,0,128);
-                    }
-                }
-            }
+
         break;
     }
-
-    /*
-    if change_attack_state &gt; -1 {
-        change_attack_state -= 1;
-        if change_attack_state &lt; 0 {
-            change_attack_state = -1;
-            attack_state = next_attack_state;
-        }
-    }
-    */
 }
 </string>
           </argument>
         </arguments>
       </action>
+    </event>
+    <event eventtype="4" ename="oBullet">
       <action>
         <libid>1</libid>
-        <id>604</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_inherited</functionname>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if active and !invul and y &gt; 0 {
+    with other {
+        HP -= 1;
+        if HP &lt;= 0 {
+            kill();
+            sfx(sndDamageEnemy)
+        }
+    }
+    //HP -= other.damage;
+    //if HP &lt; 0 kill();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="oShot">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if active and !invul and y &gt; 0 {
+    with other {
+        HP -= 1;
+        if HP &lt;= 0 {
+            kill();
+            sfx(sndDamageEnemy)
+        }
+    }
+    //HP -= other.damage;
+    //if HP &lt; 0 kill();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if flashing &lt; 0 {
+    flashing += 1;
+    if flashing == 0 flashing = 12;
+} else {
+    if flashing &gt; 0 flashing -= 1;
+}
+
+draw_self();
+if flashing &lt; 0 {
+    draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,c_white,1);
+}
+
+if debug &gt;= 1 {
+    draw_set_halign(fa_middle);
+    draw_set_valign(fa_middle);
+    draw_set_font(fFont);
+    draw_set_color(c_white);
+    draw_text(x,y+abs(sprite_height/2)+8,state_get_name(state));
+}
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
   </events>

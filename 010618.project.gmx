@@ -822,6 +822,7 @@
       <object>objects\oMerchantPilot</object>
       <object>objects\oSatellite</object>
       <object>objects\oMidBoss</object>
+      <object>objects\oShield</object>
       <object>objects\oMirror</object>
       <object>objects\oEnergyOrb</object>
       <object>objects\oFireAtPlayer</object>
