@@ -357,6 +357,10 @@ trace('saved '+string(levelManager.timeline_position)+' to debugTimelineStartPos
           <argument>
             <kind>1</kind>
             <string>///screenResize();
+if keyboard_check(vk_shift) {
+    scale += 1;
+    if scale &gt; floor(screen_h/base_h) scale = 1;
+}
 screenResize();
 </string>
           </argument>

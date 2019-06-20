@@ -166,15 +166,17 @@ if active {
           <argument>
             <kind>1</kind>
             <string>if active and !invul and y &gt; 0 {
-    with other {
-        HP -= 1;
-        if HP &lt;= 0 {
-            kill();
-            sfx(sndDamageEnemy)
+    with other kill();
+    repeat 3 {
+        with make(oFX) {
+            sprite_index = sSparkle;
+            image_speed = choose(.1,.2,.3);
+            depth = other.depth - 1;
+            direction = irandom(360);
+            speed = 4;
+            friction = .02;
         }
     }
-    //HP -= other.damage;
-    //if HP &lt; 0 kill();
 }
 </string>
           </argument>
@@ -199,15 +201,17 @@ if active {
           <argument>
             <kind>1</kind>
             <string>if active and !invul and y &gt; 0 {
-    with other {
-        HP -= 1;
-        if HP &lt;= 0 {
-            kill();
-            sfx(sndDamageEnemy)
+    with other kill();
+    repeat 3 {
+        with make(oFX) {
+            sprite_index = sSparkle;
+            image_speed = choose(.1,.2,.3);
+            depth = other.depth - 1;
+            direction = irandom(360);
+            speed = 4;
+            friction = .02;
         }
     }
-    //HP -= other.damage;
-    //if HP &lt; 0 kill();
 }
 </string>
           </argument>

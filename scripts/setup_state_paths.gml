@@ -111,12 +111,18 @@ stateNames[_ATK_BEAMS] = '_ATK_BEAMS';
 stateNames[_CIRCLE] = 'CIRCLE';
 stateNames[_MOVETOWARD] = 'MOVETOWARD';
 stateNames[_MOVECENTER] = 'MOVECENTER';
+stateNames[_EMPTYSTATE0] = 'EMPTSTATE0';
+stateNames[_EMPTYSTATE1] = 'EMPTSTATE1';
+stateNames[_EMPTYSTATE2] = 'EMPTSTATE2';
+stateNames[_EMPTYSTATE3] = 'EMPTSTATE3';
+stateNames[_EMPTYSTATE4] = 'EMPTSTATE4';
 
 if argument0 <= -1 {
     return '-1';
 } else {
     return stateNames[argument0];
 }
+
 #define do_next_state
 ///do_next_state()
 
