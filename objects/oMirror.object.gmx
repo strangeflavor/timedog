@@ -50,8 +50,8 @@ y = -64;
 
 x1 = 128;
 x2 = room_width-x1;
-xVel = 2;
-yVel = 7;
+//xVel = 2;
+//yVel = 7;
 slowdown = 0;
 
 attack_state = -1;
@@ -63,7 +63,7 @@ image_speed = .1;
 
 setup_state_paths();
 add_state_path(_WAIT,120);
-add_state_path(_BACKANDFORTH_HORI,9999);
+add_state_path(_EMPTYSTATE0,99);
 state_path_loop_position = -1;
 /*
 add_attack_state_path(_WAIT,180);
@@ -106,7 +106,8 @@ start_state_paths();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if active {
+            <string>if (live_call()) return live_result;
+if active {
     switch state {
         case _WAIT:
             x = lerp(oShip.x,x,.1);  // +wave(-16,16,1.5,0),
@@ -119,20 +120,23 @@ start_state_paths();
         break;
         case _BACKANDFORTH_HORI:
             if instance_exists(oShip) {
-                x = lerp(oShip.x,x,.75);// + wave(-16,16,1.5,0);
+                x = lerp(x,oShip.x,.25);
+                //if abs(x-oShip.x) &lt;= 6 x = oShip.x;
                 y = lerp(max(20,oShip.y-bh*.25),y,.7);
+
                 if x &lt; oShip.x - 8 {
-                    image_angle = lerp(-8,image_angle,.95);
+                    image_angle = lerp(-15,image_angle,.9);
                 } else {
                     if x &gt; oShip.x + 8 {
-                        image_angle = lerp(8,image_angle,.95);
+                        image_angle = lerp(15,image_angle,.9);
                     } else {
-                        image_angle = lerp(0,image_angle,.99);
+                        image_angle = lerp(0,image_angle,.9);
                     }
                 }
             }
 
-            image_speed = wave(.5,.2,2,0);
+            trace(string(x)+','+string(oShip.x));
+            image_speed = wave(.75,.1,2,0);
         break;
         case _SPIRAL:
 

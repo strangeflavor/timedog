@@ -1,3 +1,4 @@
+// 2019-06-19 22:38:29
 #define setup_state_paths
 use_state_path = true;
 disable_script = false; // allows you to run a state but disable 

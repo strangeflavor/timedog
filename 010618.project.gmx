@@ -625,7 +625,7 @@
       <script>scripts\tune.gml</script>
       <script>scripts\trace.gml</script>
       <script>scripts\makeBlendTester.gml</script>
-      <script>scripts\angleLerp.gml</script>
+      <script>scripts\smoothstep.gml</script>
     </scripts>
     <scripts name="data">
       <script>scripts\getWeaponName.gml</script>
@@ -921,7 +921,7 @@
     <room>rooms\roomTest</room>
     <room>rooms\rWeaponSelect</room>
   </rooms>
-  <constants number="69">
+  <constants number="74">
     <constant name="live_enabled">1</constant>
     <constant name="scale">global._scale</constant>
     <constant name="vw">global._vw</constant>
@@ -962,6 +962,11 @@
     <constant name="_CIRCLE">8</constant>
     <constant name="_MOVETOWARD">9</constant>
     <constant name="_MOVECENTER">10</constant>
+    <constant name="_EMPTYSTATE0">11</constant>
+    <constant name="_EMPTYSTATE1">12</constant>
+    <constant name="_EMPTYSTATE2">13</constant>
+    <constant name="_EMPTYSTATE3">14</constant>
+    <constant name="_EMPTYSTATE4">15</constant>
     <constant name="_WIN_TIME">0</constant>
     <constant name="_WIN_BOSS">1</constant>
     <constant name="_WIN_FORMATIONS_COMPLETE">2</constant>

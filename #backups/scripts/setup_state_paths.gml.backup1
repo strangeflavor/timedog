@@ -1,3 +1,4 @@
+// 2019-06-19 22:34:24
 #define setup_state_paths
 use_state_path = true;
 disable_script = false; // allows you to run a state but disable 
@@ -71,11 +72,11 @@ if state_path_position > -1 {
         // loop back to first position if this is the end
         if state_path_position >= state_path_size {
             if state_path_loop_position == -1 {
-                state_path_position = state_path_size - 1;
+                state_path_position = state_path_size;
             } else {
                 state_path_position = state_path_loop_position;
+                state_path_loops += 1;
             }
-            state_path_loops += 1;
         }
 
         // actually enter the new state

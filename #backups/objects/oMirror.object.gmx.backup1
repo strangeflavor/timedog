@@ -1,0 +1,123 @@
+// 2019-06-19 23:38:51
+#event create
+#action action_inherited
+#section
+value = 10;
+HP = 360;
+flashing = 0;
+
+
+y = -64;
+//xdest = room_width/2;
+//ydest = room_height/8;
+
+x1 = 128;
+x2 = room_width-x1;
+//xVel = 2;
+//yVel = 7;
+slowdown = 0;
+
+attack_state = -1;
+
+attack_started = false;
+state = _WAIT;
+
+image_speed = .1;
+
+setup_state_paths();
+add_state_path(_WAIT,120);
+add_state_path(_BACKANDFORTH_HORI,99);
+state_path_loop_position = -1;
+/*
+add_attack_state_path(_WAIT,180);
+add_attack_state_path(_ATK_BEAMS,-1);
+*/
+start_state_paths();
+
+#event step
+#action action_inherited
+#section
+if (live_call()) return live_result;
+if active {
+    switch state {
+        case _WAIT:
+            x = lerp(oShip.x,x,.1);  // +wave(-16,16,1.5,0),
+            y = lerp(max(20,oShip.y-bh*.25),y,.07);
+
+            if current_state_age > 60 {
+                state = _BACKANDFORTH_HORI;
+            }
+            image_speed = .5;
+        break;
+        case _BACKANDFORTH_HORI:
+            if instance_exists(oShip) {
+                x = lerp(x,oShip.x,.25);
+                //if abs(x-oShip.x) <= 6 x = oShip.x;
+                y = lerp(max(20,oShip.y-bh*.25),y,.7);
+
+                if x < oShip.x - 8 {
+                    image_angle = lerp(-15,image_angle,.9);
+                } else {
+                    if x > oShip.x + 8 {
+                        image_angle = lerp(15,image_angle,.9);
+                    } else {
+                        image_angle = lerp(0,image_angle,.9);
+                    }
+                }
+            }
+
+            trace(string(x)+','+string(oShip.x));
+            image_speed = wave(.75,.1,2,0);
+        break;
+        case _SPIRAL:
+
+        break;
+    }
+}
+
+#event collision:oShot
+if active and !invul and y > 0 {
+    with other {
+        HP -= 1;
+        if HP <= 0 {
+            kill();
+            sfx(sndDamageEnemy)
+        }
+    }
+    //HP -= other.damage;
+    //if HP < 0 kill();
+}
+
+#event collision:oBullet
+if active and !invul and y > 0 {
+    with other {
+        HP -= 1;
+        if HP <= 0 {
+            kill();
+            sfx(sndDamageEnemy)
+        }
+    }
+    //HP -= other.damage;
+    //if HP < 0 kill();
+}
+
+#event draw
+if flashing < 0 {
+    flashing += 1;
+    if flashing == 0 flashing = 12;
+} else {
+    if flashing > 0 flashing -= 1;
+}
+
+draw_self();
+if flashing < 0 {
+    draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,c_white,1);
+}
+
+if debug >= 1 {
+    draw_set_halign(fa_middle);
+    draw_set_valign(fa_middle);
+    draw_set_font(fFont);
+    draw_set_color(c_white);
+    draw_text(x,y+abs(sprite_height/2)+8,state_get_name(state));
+}
