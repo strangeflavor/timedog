@@ -53,7 +53,10 @@ x2 = room_width-x1;
 //xVel = 2;
 //yVel = 7;
 slowdown = 0;
+
 absorb = false; // used to build energy and display particles when shot
+absorbCount = -1;
+
 attack_state = -1;
 
 attack_started = false;
@@ -106,9 +109,14 @@ start_state_paths();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (live_call()) return live_result;
+            <string>var _BEAM = _EMPTYSTATE1;
+var _FOLLOW = _EMPTYSTATE0;
+
+if (live_call()) return live_result;
 if active {
     if absorb {
+        absorbCount += 1;
+
         _sparkdirection = irandom(360);
         _sparkx = lengthdir_x(sprite_width/2+32,_sparkdirection);
         _sparky = lengthdir_y(sprite_height/2+32,_sparkdirection);
@@ -129,23 +137,21 @@ if active {
     }
     image_scale(lerp(image_xscale,2,.05));
     absorb = false;
-    
+    if absorbCount &gt; 180 {
+        change_state(_BEAM);
+        absorbCount = -1;
+    }
+
     switch state {
         case _WAIT:
             x = lerp(oShip.x,x,.1);  // +wave(-16,16,1.5,0),
             y = lerp(max(20,oShip.y-bh*.25),y,.07);
 
-            /*
-            if current_state_age &gt; 60 {
-                state = _EMPTYSTATE0;
-            }
-            */
             image_speed = .5;
         break;
-        case _EMPTYSTATE0:
+        case _FOLLOW:
             if instance_exists(oShip) {
                 x = lerp(x,oShip.x,.25);
-                //if abs(x-oShip.x) &lt;= 6 x = oShip.x;
                 y = lerp(max(20,oShip.y-bh*.25),y,.7);
 
                 if x &lt; oShip.x - 8 {
@@ -159,10 +165,26 @@ if active {
                 }
             }
 
-            //trace(string(x)+','+string(oShip.x));
             image_speed = wave(.75,.1,2,0);
         break;
-        case _SPIRAL:
+        // fire beam
+        case _BEAM:
+            if current_state_age &lt; 60 {
+                x = lerp(x,oShip.x,.001);
+                y = lerp(y,max(20,oShip.y-bh*.25),.001);
+            }
+            image_angle = lerp(image_angle,0,.5);
+            image_speed = 1;
+
+            if current_state_age == 90 {
+                with make(oBeam) {
+                    xo = 0;
+                    yo = 8;
+                    owner = other.id;
+                    duration = 120;
+                    //if other.aimAtPlayer duration = 90 else duration = 120;
+                }
+            }
 
         break;
     }
@@ -259,7 +281,7 @@ if debug &gt;= 1 {
     draw_set_valign(fa_middle);
     draw_set_font(fFont);
     draw_set_color(c_white);
-    draw_text(x,y+abs(sprite_height/2)+8,state_get_name(state));
+    draw_text(x,y+abs(sprite_height/2)+8,state_get_name(state)+'/'+string(current_state_age));
 }
 </string>
           </argument>

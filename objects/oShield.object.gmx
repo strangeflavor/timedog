@@ -250,7 +250,7 @@ if debug &gt;= 1 {
     draw_set_valign(fa_middle);
     draw_set_font(fFont);
     draw_set_color(c_white);
-    draw_text(x,y+abs(sprite_height/2)+8,state_get_name(state));
+    draw_text(x,y+abs(sprite_height/2)+8,state_get_name(state)+' / '+string(current_state_age));
 }
 </string>
           </argument>

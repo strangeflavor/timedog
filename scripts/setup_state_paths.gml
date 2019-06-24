@@ -127,3 +127,12 @@ if argument0 <= -1 {
 ///do_next_state()
 
 current_state_duration = -1;
+#define change_state
+///change_state(state,duration)
+// forces a change in enemy state and resets current_state_age
+// to re-enter the state path, set state_path_position again
+
+state = argument0;
+current_state_age = -1;
+state_path_position = -1;
+//if argument_count > 1 current_state_duration = argument1 else current_state_duration = -2;
