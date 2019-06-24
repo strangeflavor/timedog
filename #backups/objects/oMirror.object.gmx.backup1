@@ -1,4 +1,4 @@
-// 2019-06-19 23:38:51
+// 2019-06-23 18:15:56
 #event create
 #action action_inherited
 #section
@@ -16,7 +16,7 @@ x2 = room_width-x1;
 //xVel = 2;
 //yVel = 7;
 slowdown = 0;
-
+absorb = false; // used to build energy and display particles when shot
 attack_state = -1;
 
 attack_started = false;
@@ -26,7 +26,7 @@ image_speed = .1;
 
 setup_state_paths();
 add_state_path(_WAIT,120);
-add_state_path(_BACKANDFORTH_HORI,99);
+add_state_path(_EMPTYSTATE0,99);
 state_path_loop_position = -1;
 /*
 add_attack_state_path(_WAIT,180);
@@ -39,17 +39,41 @@ start_state_paths();
 #section
 if (live_call()) return live_result;
 if active {
+    if absorb {
+        _sparkdirection = irandom(360);
+        _sparkx = lengthdir_x(sprite_width/2+32,_sparkdirection);
+        _sparky = lengthdir_y(sprite_height/2+32,_sparkdirection);
+        repeat 2 {
+            with make(x+_sparkx,y+_sparky,oMirrorFX) {
+                parentID = other.id;
+                image_angle = irandom(360);
+                sprite_index = sSparkle;
+                image_speed = choose(.2,.3);
+                image_scale(2);
+                depth = other.depth - 1;
+                //direction = other._sparkdirection - 180;
+                //speed = 7;
+                //friction = .02;
+            }
+        }
+        image_scale(wave(2,2.5,.75,0));
+    }
+    image_scale(lerp(image_xscale,2,.05));
+    absorb = false;
+    
     switch state {
         case _WAIT:
             x = lerp(oShip.x,x,.1);  // +wave(-16,16,1.5,0),
             y = lerp(max(20,oShip.y-bh*.25),y,.07);
 
+            /*
             if current_state_age > 60 {
-                state = _BACKANDFORTH_HORI;
+                state = _EMPTYSTATE0;
             }
+            */
             image_speed = .5;
         break;
-        case _BACKANDFORTH_HORI:
+        case _EMPTYSTATE0:
             if instance_exists(oShip) {
                 x = lerp(x,oShip.x,.25);
                 //if abs(x-oShip.x) <= 6 x = oShip.x;
@@ -66,7 +90,7 @@ if active {
                 }
             }
 
-            trace(string(x)+','+string(oShip.x));
+            //trace(string(x)+','+string(oShip.x));
             image_speed = wave(.75,.1,2,0);
         break;
         case _SPIRAL:
@@ -77,28 +101,15 @@ if active {
 
 #event collision:oShot
 if active and !invul and y > 0 {
-    with other {
-        HP -= 1;
-        if HP <= 0 {
-            kill();
-            sfx(sndDamageEnemy)
-        }
-    }
-    //HP -= other.damage;
-    //if HP < 0 kill();
+    with other kill();
+    absorb = true;
 }
 
 #event collision:oBullet
+if (live_call()) return live_result;
 if active and !invul and y > 0 {
-    with other {
-        HP -= 1;
-        if HP <= 0 {
-            kill();
-            sfx(sndDamageEnemy)
-        }
-    }
-    //HP -= other.damage;
-    //if HP < 0 kill();
+    with other kill();
+    absorb = true;
 }
 
 #event draw

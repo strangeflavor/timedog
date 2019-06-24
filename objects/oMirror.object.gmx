@@ -53,7 +53,7 @@ x2 = room_width-x1;
 //xVel = 2;
 //yVel = 7;
 slowdown = 0;
-
+absorb = false; // used to build energy and display particles when shot
 attack_state = -1;
 
 attack_started = false;
@@ -108,17 +108,41 @@ start_state_paths();
             <kind>1</kind>
             <string>if (live_call()) return live_result;
 if active {
+    if absorb {
+        _sparkdirection = irandom(360);
+        _sparkx = lengthdir_x(sprite_width/2+32,_sparkdirection);
+        _sparky = lengthdir_y(sprite_height/2+32,_sparkdirection);
+        repeat 2 {
+            with make(x+_sparkx,y+_sparky,oMirrorFX) {
+                parentID = other.id;
+                image_angle = irandom(360);
+                sprite_index = sSparkle;
+                image_speed = choose(.2,.3);
+                image_scale(2);
+                depth = other.depth - 1;
+                //direction = other._sparkdirection - 180;
+                //speed = 7;
+                //friction = .02;
+            }
+        }
+        image_scale(wave(2,2.5,.666,0));
+    }
+    image_scale(lerp(image_xscale,2,.05));
+    absorb = false;
+    
     switch state {
         case _WAIT:
             x = lerp(oShip.x,x,.1);  // +wave(-16,16,1.5,0),
             y = lerp(max(20,oShip.y-bh*.25),y,.07);
 
+            /*
             if current_state_age &gt; 60 {
-                state = _BACKANDFORTH_HORI;
+                state = _EMPTYSTATE0;
             }
+            */
             image_speed = .5;
         break;
-        case _BACKANDFORTH_HORI:
+        case _EMPTYSTATE0:
             if instance_exists(oShip) {
                 x = lerp(x,oShip.x,.25);
                 //if abs(x-oShip.x) &lt;= 6 x = oShip.x;
@@ -135,7 +159,7 @@ if active {
                 }
             }
 
-            trace(string(x)+','+string(oShip.x));
+            //trace(string(x)+','+string(oShip.x));
             image_speed = wave(.75,.1,2,0);
         break;
         case _SPIRAL:
@@ -165,18 +189,10 @@ if active {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if active and !invul and y &gt; 0 {
+            <string>if (live_call()) return live_result;
+if active and !invul and y &gt; 0 {
     with other kill();
-    repeat 3 {
-        with make(oFX) {
-            sprite_index = sSparkle;
-            image_speed = choose(.1,.2,.3);
-            depth = other.depth - 1;
-            direction = irandom(360);
-            speed = 4;
-            friction = .02;
-        }
-    }
+    absorb = true;
 }
 </string>
           </argument>
@@ -202,16 +218,7 @@ if active {
             <kind>1</kind>
             <string>if active and !invul and y &gt; 0 {
     with other kill();
-    repeat 3 {
-        with make(oFX) {
-            sprite_index = sSparkle;
-            image_speed = choose(.1,.2,.3);
-            depth = other.depth - 1;
-            direction = irandom(360);
-            speed = 4;
-            friction = .02;
-        }
-    }
+    absorb = true;
 }
 </string>
           </argument>

@@ -47,7 +47,7 @@ image_angle_tween = 0;
 
 image_speed = .2;
 
-HP = 1;
+HP = .5;
 invul = true;
 
 image_scale(2);

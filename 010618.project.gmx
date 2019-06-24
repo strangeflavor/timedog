@@ -817,7 +817,6 @@
         <object>objects\oSkull</object>
         <object>objects\oSkullKing</object>
       </objects>
-      <object>objects\object175</object>
       <object>objects\oMerchant</object>
       <object>objects\oMerchantPilot</object>
       <object>objects\oSatellite</object>
@@ -869,6 +868,7 @@
       <object>objects\oLargeExplo</object>
       <object>objects\oExploChain</object>
       <object>objects\oFXFlare</object>
+      <object>objects\oMirrorFX</object>
       <object>objects\oButtonUnlockFX</object>
       <object>objects\oPickupCollectedFX</object>
     </objects>

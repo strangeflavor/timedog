@@ -1,0 +1,7 @@
+// 2019-06-23 16:51:24
+#event create
+image_xscale = scale*2;
+image_yscale = scale*2;
+
+#event other_animation_end
+kill();
