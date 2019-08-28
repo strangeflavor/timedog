@@ -67,6 +67,8 @@ WEAPON_bomb = false;
 WEAPON_shield = false;
 WEAPON_warp = false;
 
+copilot = 0;
+
 choose_norepeat_lastvalue = -9999;
 choose_norepeat_lastvalue2 = -9999;
 

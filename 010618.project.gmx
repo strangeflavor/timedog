@@ -277,6 +277,8 @@
       <sprite>sprites\sMegaThrusterOff</sprite>
       <sprite>sprites\sMegaThruster</sprite>
       <sprite>sprites\_sMegaThrusterOld</sprite>
+      <sprite>sprites\sDiesnake</sprite>
+      <sprite>sprites\sTimedog</sprite>
       <sprite>sprites\sPickupPink</sprite>
       <sprite>sprites\sPickupCrystal</sprite>
       <sprite>sprites\sPickupTop</sprite>
@@ -742,9 +744,11 @@
       <object>objects\oMenu</object>
       <object>objects\oMenuBird</object>
       <object>objects\oLevelMenu</object>
+      <object>objects\oLevelConfirm</object>
       <object>objects\oEraSlider</object>
       <object>objects\oButton</object>
       <object>objects\oLevelButton</object>
+      <object>objects\oLaunchButton</object>
       <object>objects\oTitleBird</object>
       <object>objects\oTitleDog</object>
       <object>objects\gemFeeder</object>
