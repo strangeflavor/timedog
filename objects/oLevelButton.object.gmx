@@ -120,6 +120,7 @@ if !waitForUnlock and !waitForConfirm {
                 } else {
                     GAMEFLOW_currentLevel = levelID;
                     make(oLevelConfirm);
+                    waitForConfirm = true;
                     //room_goto(rDeepSpace);
                 }
             }

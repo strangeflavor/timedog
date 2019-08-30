@@ -744,11 +744,13 @@
       <object>objects\oMenu</object>
       <object>objects\oMenuBird</object>
       <object>objects\oLevelMenu</object>
+      <object>objects\oLevelButton</object>
       <object>objects\oLevelConfirm</object>
+      <object>objects\oLaunchButton</object>
+      <object>objects\oCancelLaunchButton</object>
+      <object>objects\oSelectCopilotButton</object>
       <object>objects\oEraSlider</object>
       <object>objects\oButton</object>
-      <object>objects\oLevelButton</object>
-      <object>objects\oLaunchButton</object>
       <object>objects\oTitleBird</object>
       <object>objects\oTitleDog</object>
       <object>objects\gemFeeder</object>
@@ -925,7 +927,7 @@
     <room>rooms\roomTest</room>
     <room>rooms\rWeaponSelect</room>
   </rooms>
-  <constants number="74">
+  <constants number="75">
     <constant name="live_enabled">1</constant>
     <constant name="scale">global._scale</constant>
     <constant name="vw">global._vw</constant>
@@ -1000,6 +1002,7 @@
     <constant name="_LARGE">3</constant>
     <constant name="choose_norepeat_lastvalue">global._choose_norepeat_lastvalue</constant>
     <constant name="choose_norepeat_lastvalue2">global._choose_norepeat_lastvalue2</constant>
+    <constant name="copilot">global._copilot</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

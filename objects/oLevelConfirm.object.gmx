@@ -29,7 +29,11 @@
 y = (bh/2) * scale;
 
 with oLevelButton waitForConfirm = true;
-make(x,y+220,oLaunchButton);
+make(x,y+16*scale,oLaunchButton);
+make(x,bh*scale-(bh/3)*scale,oCancelLaunchButton);
+with make(x-150*scale,y-90*scale,oSelectCopilotButton) facing = 'left';
+with make(x+150*scale,y-90*scale,oSelectCopilotButton) facing = 'right';
+
 </string>
           </argument>
         </arguments>
@@ -61,16 +65,24 @@ image_blend = c_white;
 draw_roundrect_colour_ext(x-_ww,y-_hh,x+_ww,y+_hh-60*scale,4,4,image_blend,image_blend,false);
 draw_roundrect_colour_ext(x-_ww+_bb,y-_hh+_bb,x+_ww-_bb,y+_hh-60*scale-_bb,4,4,c_black,c_black,false);
 
-draw_sprite_ext(sTimedog,0,x,y-40*scale,scale,scale,0,c_white,1);
-draw_sprite_ext(sDiesnake,0,x-100*scale,y-40*scale,scale*2,scale*2,0,c_white,1);
-draw_sprite_ext(sPickupCrystal,0,x+100*scale,y-40*scale,scale*2,scale*2,0,c_white,1);
-
-draw_set_color(c_white);
 draw_set_valign(fa_middle);
 draw_set_halign(fa_center);
 
-draw_text_ext_transformed(x,y-350,string('Select co-pilot'),-1,-1,scale,scale,0);//+','+string(levelName));
-//draw_text_ext_transformed(x,y+220,string('LAUNCH'),-1,-1,scale*2,scale*2,0);//+','+string(levelName));
+draw_set_color(make_color_rgb(11,48,80));
+draw_text_ext_transformed(x,y-200*scale,string('co-pilot'),-1,-1,scale*wave(1,1.2,1,0),scale*wave(1,1.2,1,0),0);//+','+string(levelName));
+draw_set_color(c_white);
+draw_text_ext_transformed(x,y-200*scale,string('co-pilot'),-1,-1,scale,scale,0);//+','+string(levelName));
+
+var copilotSprite;
+copilotSprite[0] = sTimedog;
+copilotSprite[1] = sDiesnake;
+copilotSprite[2] = sPickupCrystal;
+
+draw_sprite_ext(copilotSprite[copilot],0,x,y-100*scale,scale*2,scale*2,0,c_white,1);
+//draw_text(x,y-40*scale,string(copilot));
+
+draw_set_color(c_white);
+
 /*
         draw_set_valign(fa_top);
         draw_set_halign(fa_left);
