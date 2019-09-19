@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>//surfaceID = makeMenuSurface();
+if copilot &lt; 0 copilot = copilot_TIMEDOG;
 mouse_clear(mb_left);
 mouse_clear(mb_right);
 

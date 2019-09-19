@@ -39,19 +39,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>value = 10;
+            <string>_xo = 0;
+
+x = choose(-80,bw+80);
+y = 20;
+
+value = 10;
 HP = 360;
 flashing = 0;
 
+if x &lt; bw/2 {
+    x1 = bw+100+irandom(300);
+    y1 = -100-irandom(300);
+} else {
+    x1 = -100-irandom(300);
+    y1 = -100-irandom(300);
+}
 
-y = -64;
-//xdest = room_width/2;
-//ydest = room_height/8;
-
-x1 = 128;
-x2 = room_width-x1;
-//xVel = 2;
-//yVel = 7;
 slowdown = 0;
 
 absorb = false; // used to build energy and display particles when shot
@@ -65,13 +69,11 @@ state = _WAIT;
 image_speed = .1;
 
 setup_state_paths();
-add_state_path(_WAIT,120);
-add_state_path(_EMPTYSTATE0,99);
+add_state_path(_APPROACH,60);
+add_state_path(_FOLLOW,180);
+add_state_path(_MOVETOWARD,999);
 state_path_loop_position = -1;
-/*
-add_attack_state_path(_WAIT,180);
-add_attack_state_path(_ATK_BEAMS,-1);
-*/
+
 start_state_paths();
 </string>
           </argument>
@@ -109,11 +111,9 @@ start_state_paths();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var _BEAM = _EMPTYSTATE1;
-var _FOLLOW = _EMPTYSTATE0;
+            <string>if active {
+    if _xo != 0 and instance_number(oMirror) == 1 _xo = 0;
 
-if (live_call()) return live_result;
-if active {
     if absorb {
         absorbCount += 1;
 
@@ -135,32 +135,36 @@ if active {
         }
         image_scale(wave(2,2.5,.666,0));
     }
+
     image_scale(lerp(image_xscale,2,.05));
     absorb = false;
-    if absorbCount &gt; 180 {
-        change_state(_BEAM);
+    if absorbCount &gt; 17 {
+        change_state(_ATK_BEAMS);
         absorbCount = -1;
     }
 
     switch state {
-        case _WAIT:
-            x = lerp(oShip.x,x,.1);  // +wave(-16,16,1.5,0),
-            y = lerp(max(20,oShip.y-bh*.25),y,.07);
+        case _APPROACH:
+            x = Ease(x,oShip.x+_xo,.15,EaseInBounce);
+            y = Ease(max(20,oShip.y-bh*.25),y,.07,EaseInQuad);
 
             image_speed = .5;
         break;
         case _FOLLOW:
+
             if instance_exists(oShip) {
-                x = lerp(x,oShip.x,.25);
+                //if instance_number(oMirror) &gt;= 2 _xo = xo else _xo = 0;
+
+                x = lerp(x,oShip.x+_xo,.2);
                 y = lerp(max(20,oShip.y-bh*.25),y,.7);
 
                 if x &lt; oShip.x - 8 {
-                    image_angle = lerp(-15,image_angle,.9);
+                    image_angle = lerp(-15,image_angle,.7);
                 } else {
                     if x &gt; oShip.x + 8 {
-                        image_angle = lerp(15,image_angle,.9);
+                        image_angle = lerp(15,image_angle,.7);
                     } else {
-                        image_angle = lerp(0,image_angle,.9);
+                        image_angle = lerp(0,image_angle,.7);
                     }
                 }
             }
@@ -168,24 +172,40 @@ if active {
             image_speed = wave(.75,.1,2,0);
         break;
         // fire beam
-        case _BEAM:
-            if current_state_age &lt; 60 {
-                x = lerp(x,oShip.x,.001);
-                y = lerp(y,max(20,oShip.y-bh*.25),.001);
-            }
-            image_angle = lerp(image_angle,0,.5);
-            image_speed = 1;
-
-            if current_state_age == 90 {
-                with make(oBeam) {
-                    xo = 0;
-                    yo = 8;
-                    owner = other.id;
-                    duration = 120;
-                    //if other.aimAtPlayer duration = 90 else duration = 120;
+        case _ATK_BEAMS:
+            if current_state_age &lt; 45 {
+                x = lerp(x,oShip.x,.02) + _xo;// + irandom(16)-8;
+                y = lerp(y,max(20,oShip.y-bh*.25),.001);// + irandom(16)-8;
+                if current_state_age == 0 TweenSimpleRotate(0,360,44,EaseOutBounce);
+            } else {
+                if current_state_age == 50 {
+                    with make(oBeam) {
+                        xo = 0;
+                        yo = 8;
+                        owner = other.id;
+                        duration = 120;
+                        //if other.aimAtPlayer duration = 90 else duration = 120;
+                    }
+                } else {
+                    if current_state_age &lt; 60 {
+                        x = lerp(x,oShip.x,.008) + _xo;
+                    } else {
+                        if current_state_age &lt; 90 {
+                            x = lerp(x,oShip.x,.0025) + _xo;
+                        }
+                    }
                 }
             }
 
+            image_speed = 1;
+
+            if current_state_age == 90+120 {
+                state = _MOVETOWARD;
+            }
+        break;
+        case _MOVETOWARD:
+            xVel = 10;
+            yVel = 10;
         break;
     }
 }
@@ -211,10 +231,25 @@ if active {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (live_call()) return live_result;
-if active and !invul and y &gt; 0 {
+            <string>//if (live_call()) return live_result;
+if active if !invul and y &gt; 0 {
     with other kill();
-    absorb = true;
+    if state == _FOLLOW {
+        absorb = true;
+    } else {
+        _d = irandom(360);
+        var xo = lengthdir_x(30,_d);
+        var yo = lengthdir_y(30,_d);
+
+        with make(xo,yo,oFX) {
+            sprite_index = sSparkle;
+            image_speed = choose(.1,.2,.3);
+            depth = other.depth - 1;
+            direction = irandom(360);
+            speed = 4;
+            friction = .02;
+        }
+    }
 }
 </string>
           </argument>
@@ -238,9 +273,29 @@ if active and !invul and y &gt; 0 {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if active and !invul and y &gt; 0 {
-    with other kill();
-    absorb = true;
+            <string>//if (live_call()) return live_result;
+if active if !invul and y &gt; 0 {
+    if state == _FOLLOW {
+        with other kill();
+        absorb = true;
+    } else {
+        with other kill();
+        _d = irandom(360);
+        var xo = lengthdir_x(30,_d);
+        var yo = lengthdir_y(30,_d);
+
+        if irandom(2) == 1 {
+            with make(x+xo,y+yo,oFX) {
+                sprite_index = sSparkle;
+                image_index = 4;
+                image_speed = choose(.1,.2);
+                depth = other.depth - 1;
+                direction = other. _d;//irandom(360);
+                speed = 4;
+                friction = .02;
+            }
+        }
+    }
 }
 </string>
           </argument>

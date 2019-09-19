@@ -40,6 +40,7 @@
           <argument>
             <kind>1</kind>
             <string>buttonSize = 80;
+image_scale(buttonSize*scale);
 
 // unlock/confirm sequence stuff
 waitForUnlock = false;
@@ -95,10 +96,7 @@ timeline_running = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_xscale = buttonSize*scale;
-image_yscale = buttonSize*scale;
-
-if !waitForUnlock and !waitForConfirm {
+            <string>if !waitForUnlock and !waitForConfirm {
     if (mouse_x &gt; x and mouse_x &lt; x + buttonSize*scale and mouse_y &gt; y and mouse_y &lt; y + buttonSize*scale) {
         if !rollOver sfx(sndRollover);
         rollOver = true;
@@ -107,7 +105,7 @@ if !waitForUnlock and !waitForConfirm {
         rollOver = false;
     }
 
-    if rollOver and objectAge &gt; 10 {
+    if rollOver and objectAge &gt; 6 {
         //if !mobile and mouse_check_button(mb_left) image_alpha = .5;
         if mouse_check_button_released(mb_left) and !locked and abs(frac(view_xview[0]/vw)) &lt; .03 {
             saveFiles();
@@ -115,14 +113,9 @@ if !waitForUnlock and !waitForConfirm {
             if shop {
                 room_goto(rShop);
             } else {
-                if debug {
-                    GAMEFLOW_currentLevel = -1;
-                } else {
-                    GAMEFLOW_currentLevel = levelID;
-                    make(oLevelConfirm);
-                    waitForConfirm = true;
-                    //room_goto(rDeepSpace);
-                }
+                if debug GAMEFLOW_currentLevel = -1 else GAMEFLOW_currentLevel = levelID;
+                make(oLevelConfirm);
+                waitForConfirm = true;
             }
         }
 

@@ -472,7 +472,8 @@ with bID[0] {
 // chain up
 ////////////////////////
 
-var eID = make(vw/2+_xoffset,-96,fBezChain);
+//var eID = make(bw/2+_xoffset,-96,fBezChain);
+var eID = make(bw/2,-96,fBezChain);
 eID.bezierID = other.bID[0];
 eID.enemy = oBezThex;
 eID.bezierSpeed = 9;

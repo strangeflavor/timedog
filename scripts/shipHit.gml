@@ -14,6 +14,14 @@ if debug {
         }
      }
 } else {
+    if copilot == copilot_TIMEDOG {
+        copilot = -1;
+        buttonSize = 32;
+        buttonUnlockBurst();
+
+        kill(other);
+    }
+    /*
     if weapon == 4 {
         weapon = -1
         buttonSize = 32;
@@ -33,6 +41,7 @@ if debug {
             visible = false;
         }
     }
+    */
 }
 
 #define shipDestroy

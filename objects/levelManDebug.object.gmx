@@ -152,6 +152,13 @@ if mouse_wheel_down() {
     var mmode = '';
     if formMode == 'forms' mmode = script_get_name(formScriptArray[formScriptIndex]);
     if formMode == 'bosses' mmode = object_get_name(formBossScriptArray[formBossScriptIndex]);
+    /*
+    if object_exists(formScriptArray[formScriptIndex]) {
+        mmode = object_get_name(formBossScriptArray[formBossScriptIndex]);
+    } else {
+        mmode = script_get_name(formScriptArray[formScriptIndex]);
+    }
+    */
     draw_text(8,16,mmode);
 
     draw_set_color(c_teal);
@@ -293,6 +300,13 @@ if mouse_wheel_down() {
             <kind>1</kind>
             <string>///script_execute(formScriptArray[formScriptIndex]);
 if formMode == 'forms' script_execute(formScriptArray[formScriptIndex]);
+/*
+if object_exists(formScriptArray[formScriptIndex]) {
+    make(formScriptArray[formScriptIndex]);
+} else {
+    script_execute(formScriptArray[formScriptIndex]);
+}
+*/
 if formMode == 'bosses' make(formBossScriptArray[formBossScriptIndex]);
 </string>
           </argument>

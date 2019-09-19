@@ -74,9 +74,9 @@ draw_set_color(c_white);
 draw_text_ext_transformed(x,y-200*scale,string('co-pilot'),-1,-1,scale,scale,0);//+','+string(levelName));
 
 var copilotSprite;
-copilotSprite[0] = sTimedog;
-copilotSprite[1] = sDiesnake;
-copilotSprite[2] = sPickupCrystal;
+copilotSprite[copilot_TIMEDOG] = sTimedog;
+copilotSprite[copilot_DIESNAKE] = sDiesnake;
+copilotSprite[copilot_CRYSTAL] = sPickupCrystal;
 
 draw_sprite_ext(copilotSprite[copilot],0,x,y-100*scale,scale*2,scale*2,0,c_white,1);
 //draw_text(x,y-40*scale,string(copilot));

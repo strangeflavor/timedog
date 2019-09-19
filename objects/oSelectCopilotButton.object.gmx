@@ -92,8 +92,8 @@ if rollOver and mouse_check_button_released(mb_left) and objectAge &gt; 10 {
         copilot += 1;
     }
 
-    if copilot &gt; 2 copilot = 0;
-    if copilot &lt; 0 copilot = 2;
+    if copilot &gt; copilot_CRYSTAL copilot = copilot_TIMEDOG;
+    if copilot &lt; copilot_TIMEDOG copilot = copilot_CRYSTAL;
 } else {
     image_alpha = 1;
 }

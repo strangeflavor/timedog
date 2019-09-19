@@ -2,7 +2,7 @@
 <object>
   <spriteName>sUFO</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>formationParent</parentName>
@@ -90,7 +90,7 @@ my_chain_index = instance_number(fBezChain)+instance_number(fChain)-1;
 if rows &gt; 0 {
     var _column = ((count) mod (columns));
     var _row = (count div (size/rows));
-    
+
     phaseConditionArguments[1,0] = xo + (xspacing * _column);
     phaseConditionArguments[1,1] = yo + (yspacing * _row);
 }

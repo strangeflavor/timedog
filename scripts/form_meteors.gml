@@ -40,3 +40,5 @@ var mID = make(xx,-32,fLargeMissiles);
 mID.size = size;
 mID.rate = rate;
 mID._enemy_xshuffle = _enemy_xshuffle;
+#define script139
+

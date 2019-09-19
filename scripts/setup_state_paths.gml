@@ -108,6 +108,7 @@ stateNames[_APPROACH] = 'APPROACH';
 stateNames[_BACKANDFORTH_HORI] = 'BACKANDFORTH_HORI';
 stateNames[_SPIRAL] = 'SPIRAL';
 stateNames[_ATK_BEAMS] = '_ATK_BEAMS';
+stateNames[_FOLLOW] = '_FOLLOW';
 stateNames[_CIRCLE] = 'CIRCLE';
 stateNames[_MOVETOWARD] = 'MOVETOWARD';
 stateNames[_MOVECENTER] = 'MOVECENTER';

@@ -98,6 +98,11 @@ f+=1;
 formScriptArray[f] = form_bezWideSine;
 f+=1;
 formScriptArray[f] = wave_sines0;
+f+=1;
+formScriptArray[f] = form_mirror;
+f+=1;
+formScriptArray[f] = form_2mirror;
+
 return f;
 
 #define pg_makeBossScriptArray
@@ -110,8 +115,6 @@ f+=1;
 formBossScriptArray[f] = oSkullKing;
 f+=1;
 formBossScriptArray[f] = oBattleship;
-f+=1;
-formBossScriptArray[f] = oMirror;
 f+=1;
 formBossScriptArray[f] = oOceanCreep;
 f+=1;
