@@ -26,51 +26,95 @@
           <argument>
             <kind>1</kind>
             <string>// if this is the only battleship object so far, make it the bottom chunk and create all the other chunks
+image_speed = 0;
 sprite_index = sBattleship;
+vspeed = 1;
+set_hspeed = .5;
+alarm[0] = 1; // create objects based on defense type
 
 if instance_number(oBattleship) == 1 {
+    y = bh-16;
     image_index = 0;
     defenses = 'stern';
+    myBattleship = id;
+
+    alarm[1] = choose(600,800)/5;
 
     with make(x,y-sprite_height,oBattleship) {
         image_index = 1;
         defenses = 'none';
+        myBattleship = other.id;
     }
 
     with make(x,y-sprite_height*2,oBattleship) {
         image_index = 1;
         defenses = 'none';
+        myBattleship = other.id;
     }
 
     with make(x,y-sprite_height*3,oBattleship) {
         image_index = 1;
         defenses = '3x2';
+        myBattleship = other.id;
     }
 
     with make(x,y-sprite_height*4,oBattleship) {
         image_index = 1;
         defenses = 'none';
+        myBattleship = other.id;
     }
 
     with make(x,y-sprite_height*5,oBattleship) {
         image_index = 1;
         defenses = 'none';
+        myBattleship = other.id;
     }
 
     with make(x,y-sprite_height*6,oBattleship) {
         image_index = 1;
         defenses = 'mega 2x1';
+        myBattleship = other.id;
     }
 
     with make(x,y-sprite_height*7,oBattleship) {
         image_index = 2;
         defenses = 'bow';
+        myBattleship = other.id;
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with oBattleshipCannon {
+    if myBattleship == other.id hspeed = other.set_hspeed;
+}
 
-image_speed = 0;
+with oBattleshipMegaCannon {
+    if myBattleship == other.id hspeed = other.set_hspeed;
+}
 
-alarm[0] = 1; // create 
+with oBattleship {
+    if myBattleship == other.id hspeed = other.set_hspeed;
+}
 </string>
           </argument>
         </arguments>
@@ -93,32 +137,30 @@ alarm[0] = 1; // create
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed = .25;
-
-switch defenses {
+            <string>switch defenses {
     case 'stern':
-        with make(x-140,y-90,oBattleshipCannon) myBattleship = other.id;
-        with make(x-55,y-54,oBattleshipCannon) myBattleship = other.id;
-        with make(x+55,y-54,oBattleshipCannon) myBattleship = other.id;
-        with make(x+140,y-90,oBattleshipCannon) myBattleship = other.id;
+        with make(x-140,y-90,oBattleshipCannon) myBattleship = other.myBattleship;
+        with make(x-55,y-54,oBattleshipCannon) myBattleship = other.myBattleship;
+        with make(x+55,y-54,oBattleshipCannon) myBattleship = other.myBattleship;
+        with make(x+140,y-90,oBattleshipCannon) myBattleship = other.myBattleship;
 
-        with make(x,y-180,oBattleshipMegaCannon) myBattleship = other.id;
+        with make(x,y-180,oBattleshipMegaCannon) myBattleship = other.myBattleship;
     break;
     case 'bow':
     break;
     case '3x2':
-        with make(x-40,y-30,oBattleshipCannon) myBattleship = other.id;
-        with make(x+40,y-30,oBattleshipCannon) myBattleship = other.id;
-        with make(x-40,y-110,oBattleshipCannon) myBattleship = other.id;
-        with make(x+40,y-110,oBattleshipCannon) myBattleship = other.id;
-        with make(x-40,y-190,oBattleshipCannon) myBattleship = other.id;
-        with make(x+40,y-190,oBattleshipCannon) myBattleship = other.id;
+        with make(x-40,y-30,oBattleshipCannon) myBattleship = other.myBattleship;
+        with make(x+40,y-30,oBattleshipCannon) myBattleship = other.myBattleship;
+        with make(x-40,y-110,oBattleshipCannon) myBattleship = other.myBattleship;
+        with make(x+40,y-110,oBattleshipCannon) myBattleship = other.myBattleship;
+        with make(x-40,y-190,oBattleshipCannon) myBattleship = other.myBattleship;
+        with make(x+40,y-190,oBattleshipCannon) myBattleship = other.myBattleship;
     break;
     case 'mega 2x1':
-        with make(x-90,y-80,oBattleshipMegaCannon) myBattleship = other.id;
-        with make(x+90,y-80,oBattleshipMegaCannon) myBattleship = other.id;
+        with make(x-90,y-80,oBattleshipMegaCannon) myBattleship = other.myBattleship;
+        with make(x+90,y-80,oBattleshipMegaCannon) myBattleship = other.myBattleship;
     break;
-}   
+}
 </string>
           </argument>
         </arguments>

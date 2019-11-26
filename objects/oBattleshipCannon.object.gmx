@@ -42,8 +42,8 @@
             <string>image_scale(1);
 flashing = 0;
 
-value = 5;
-HP = 100;
+value = 2;
+HP = 30;
 explosionType = _LARGE;
 
 dangerous = false;

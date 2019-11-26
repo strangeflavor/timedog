@@ -41,4 +41,3 @@ mID.size = size;
 mID.rate = rate;
 mID._enemy_xshuffle = _enemy_xshuffle;
 #define script139
-
